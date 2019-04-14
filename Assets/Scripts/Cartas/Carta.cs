@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Carta : MonoBehaviour
+[CreateAssetMenu(menuName = "Cartas/Nova Carta")]
+public class Carta : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TipoCarta tipoCarta;
+    public Propriedades[] propriedades;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

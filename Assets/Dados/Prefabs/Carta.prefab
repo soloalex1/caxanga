@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709304726619928443}
+  - component: {fileID: 6439320136881553125}
   m_Layer: 5
   m_Name: Carta
   m_TagString: Untagged
@@ -38,6 +39,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6439320136881553125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298387790361344561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carta: {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
+  propriedades:
+  - texto: {fileID: 4947005154173240299}
+    imagem: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
+  - texto: {fileID: 4947005154115073608}
+    imagem: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
+  - texto: {fileID: 4947005153970001620}
+    imagem: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
+  - texto: {fileID: 4947005153425941873}
+    imagem: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
+  - texto: {fileID: 0}
+    imagem: {fileID: 4947005154762007086}
+    elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
 --- !u!1 &4947005153425941875
 GameObject:
   m_ObjectHideFlags: 0
@@ -50,7 +80,7 @@ GameObject:
   - component: {fileID: 4947005153425941872}
   - component: {fileID: 4947005153425941873}
   m_Layer: 5
-  m_Name: "For\xE7a"
+  m_Name: Poder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +161,7 @@ GameObject:
   - component: {fileID: 4947005153970001627}
   - component: {fileID: 4947005153970001620}
   m_Layer: 5
-  m_Name: Atributos
+  m_Name: Efeito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,7 +395,7 @@ GameObject:
   - component: {fileID: 4947005154173240298}
   - component: {fileID: 4947005154173240299}
   m_Layer: 5
-  m_Name: "T\xEDtulo"
+  m_Name: Nome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,7 +476,7 @@ GameObject:
   - component: {fileID: 4947005154277086097}
   - component: {fileID: 4947005154277086098}
   m_Layer: 5
-  m_Name: "Background For\xE7a"
+  m_Name: Background Poder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
