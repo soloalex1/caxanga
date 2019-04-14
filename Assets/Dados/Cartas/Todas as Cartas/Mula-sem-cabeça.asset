@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d4b2670406acf4ebe9678b7648fea1, type: 3}
   m_Name: "Mula-sem-cabe\xE7a"
   m_EditorClassIdentifier: 
+  tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   propriedades:
   - stringValor: "Mula-sem-cabe\xE7a"
     intValor: 0
@@ -33,3 +34,7 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 3abc638bbd55cbe4bb502ec48aaea004, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
+  - stringValor: 
+    intValor: 0
+    sprite: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 083f78e4049cb0f49b6203d350cdbc42, type: 2}

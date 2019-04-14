@@ -7,5 +7,10 @@ public abstract class TipoCarta : ScriptableObject
 {
     public string nomeTipo;
 
-    public abstract void Inicializar(ExibirInfoCarta e);
+    public virtual void Inicializar(ExibirInfoCarta e)
+    {
+        Elemento t = Configurações.GetAdmRecursos().tipoElemento;
+        ExibirInfoPropriedades tipo = e.GetPropriedade(t);
+        tipo.texto.text = nomeTipo;
+    }
 }

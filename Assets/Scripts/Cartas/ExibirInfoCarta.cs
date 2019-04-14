@@ -6,7 +6,7 @@ public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
     public ExibirInfoPropriedades[] propriedades;
-    public GameObject admStatus;
+    public GameObject mostrarPoder;
     private void Start()
     {
         CarregarCarta(carta);

@@ -6,6 +6,7 @@ public class TipoFeitico : TipoCarta
 {
     public override void Inicializar(ExibirInfoCarta e)
     {
-        e.admStatus.SetActive(false);
+        base.Inicializar(e);
+        e.mostrarPoder.SetActive(false);
     }
 }

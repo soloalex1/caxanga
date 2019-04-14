@@ -7,6 +7,7 @@ public class TipoLenda : TipoCarta
 {
     public override void Inicializar(ExibirInfoCarta e)
     {
-        e.admStatus.SetActive(true);
+        base.Inicializar(e);
+        e.mostrarPoder.SetActive(true);
     }
 }
