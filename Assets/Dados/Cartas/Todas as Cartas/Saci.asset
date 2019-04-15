@@ -10,36 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9d4b2670406acf4ebe9678b7648fea1, type: 3}
-  m_Name: "Fogueira S\xE3o Jo\xE3o"
+  m_Name: Saci
   m_EditorClassIdentifier: 
-  tipoCarta: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
+  tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   propriedades:
-  - stringValor: "FOGUEIRA DE S\xC3O JO\xC3O"
+  - stringValor: "SACI PERER\xCA"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
   - stringValor: 
-    intValor: 2
+    intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: 'Fogo animador: Aumenta o Poder de todas a sua Lendas em campo em
-      1'
+  - stringValor: 'Azedar o leite: Reduz em 2 o Poder de uma Lenda inimiga'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
   - stringValor: 
-    intValor: 0
+    intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: acd909e0e389c3940875de79c51300b5, type: 3}
+    sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: 
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 083f78e4049cb0f49b6203d350cdbc42, type: 2}
-  - stringValor: "Festividades: Pula, pula, pula a fogueira de S\xE3o Jo\xE3o"
+  - stringValor: "Cren\xE7as e Religiosidades: O Saci \xE9 um negro jovem de uma perna
+      s\xF3, portador de uma carapu\xE7a sobre a cabe\xE7a que lhe concede poderes
+      m\xE1gicos."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}

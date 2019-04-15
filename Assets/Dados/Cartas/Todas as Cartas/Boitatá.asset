@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   propriedades:
-  - stringValor: "Boitat\xE1"
+  - stringValor: "BOITAT\xC1"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -22,7 +22,8 @@ MonoBehaviour:
     intValor: 4
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Come o c\xFA de curioso"
+  - stringValor: "Paralisar: Impede que uma Lenda inimiga ataque at\xE9 o pr\xF3ximo
+      turno"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -38,3 +39,8 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 083f78e4049cb0f49b6203d350cdbc42, type: 2}
+  - stringValor: "Cren\xE7as e Religiosidades: N\xE3o olhe para o Boitat\xE1, ele
+      pode te queimar... hehe"
+    intValor: 0
+    sprite: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
