@@ -23,12 +23,8 @@ public class DetectarMouseSobre : Acao
                 IClicavel c = r.gameObject.GetComponentInParent<IClicavel>();
                 if (c != null)
                 {
-                    c.AoClicar();
+                    c.AoSelecionar();
                     break;
-                }
-                else
-                {
-                    Debug.Log(r.gameObject.name);
                 }
             }
         }

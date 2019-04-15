@@ -11,7 +11,7 @@ public class ExibirInfoCarta : MonoBehaviour
     {
         CarregarCarta(carta);
     }
-    void CarregarCarta(Carta c)
+    public void CarregarCarta(Carta c)
     {
         if (c == null)
             return;

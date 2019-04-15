@@ -5,6 +5,12 @@ using UnityEngine;
 public class InstanciaCarta : MonoBehaviour, IClicavel
 {
     public LogicaInstanciaCarta logicaAtual;
+    public ExibirInfoCarta infoCarta;
+
+    void Start()
+    {
+        infoCarta = GetComponent<ExibirInfoCarta>();
+    }
 
     void IClicavel.AoClicar()
     {

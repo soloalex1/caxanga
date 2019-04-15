@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Configurações
+public static class Configuracoes
 {
     private static AdmRecursos _admRecursos;
     public static AdmRecursos GetAdmRecursos()
