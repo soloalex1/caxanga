@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
+  carta: {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
   propriedades:
   - texto: {fileID: 4947005154173240299}
     imagem: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicaAtual: {fileID: 0}
+  infoCarta: {fileID: 0}
 --- !u!1 &4947005153425941875
 GameObject:
   m_ObjectHideFlags: 0

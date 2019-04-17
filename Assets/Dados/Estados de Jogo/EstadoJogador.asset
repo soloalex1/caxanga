@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acoes:
   - {fileID: 11400000, guid: 3c9d17495b90b924faaa86ec514e9006, type: 2}
+  - {fileID: 11400000, guid: 376108d0567575d4bbc56ac62ba8a491, type: 2}

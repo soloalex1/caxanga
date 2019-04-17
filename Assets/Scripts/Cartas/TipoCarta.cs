@@ -12,6 +12,5 @@ public abstract class TipoCarta : ScriptableObject
         Elemento t = Configuracoes.GetAdmRecursos().tipoElemento;
         ExibirInfoPropriedades tipo = e.GetPropriedade(t);
         tipo.texto.text = nomeTipo;
-        Debug.Log("Vou definir o valor do elemento " + t.name + " para " + tipo.texto.text);
     }
 }

@@ -11,18 +11,15 @@ public class SelecaoAtual : MonoBehaviour
 
     public void CarregarCarta()
     {
-        if(cartaAtual != null)
-        {
-            // também não sei
-            cartaAtual.valor.gameObject.SetActive(false);
-            infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
-            infoCarta.gameObject.SetActive(true);
-        }
+        cartaAtual.valor.gameObject.SetActive(false);
+        infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
+        infoCarta.gameObject.SetActive(true);
 
     }
 
     private void Start()
     {
+        infoCarta.gameObject.SetActive(false);
         mTransform = this.transform;
     }
 

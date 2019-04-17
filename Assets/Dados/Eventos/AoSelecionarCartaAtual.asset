@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 723f7f48da8e4b14c98de08977d5dd97, type: 3}
-  m_Name: Carta Atual
+  m_Script: {fileID: 11500000, guid: 91e3854b616cb9a4c82b9608f0c20e7f, type: 3}
+  m_Name: AoSelecionarCartaAtual
   m_EditorClassIdentifier: 
-  valor: {fileID: 0}
