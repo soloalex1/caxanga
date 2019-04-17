@@ -10,14 +10,7 @@ public class AoClicarMouse : Acao
     {
         if (Input.GetMouseButtonDown(0))
         {
-            PointerEventData dadosDoPonto = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-
-            List<RaycastResult> resultados = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(dadosDoPonto, resultados);
-
+            List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
             {
                 IClicavel c = r.gameObject.GetComponentInParent<IClicavel>();

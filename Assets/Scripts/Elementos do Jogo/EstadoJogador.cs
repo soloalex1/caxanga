@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EstadoJogo", menuName = "EstadoJogo", order = 0)]
-public class EstadoJogo : ScriptableObject
+[CreateAssetMenu(fileName = "EstadoJogador", menuName = "EstadoJogador", order = 0)]
+public class EstadoJogador : ScriptableObject
 {
     public Acao[] acoes;
     public void Tick(float d)

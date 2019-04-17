@@ -16,10 +16,14 @@ public class SelecaoAtual : MonoBehaviour
         infoCarta.gameObject.SetActive(true);
 
     }
-
-    private void Start()
+    public void FecharCarta()
     {
         infoCarta.gameObject.SetActive(false);
+
+    }
+    private void Start()
+    {
+        FecharCarta();
         mTransform = this.transform;
     }
 

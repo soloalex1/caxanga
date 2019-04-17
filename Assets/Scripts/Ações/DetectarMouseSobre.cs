@@ -8,25 +8,18 @@ public class DetectarMouseSobre : Acao
 {
     public override void Executar(float d)
     {
-        if (Input.GetMouseButtonDown(0))
+        List<RaycastResult> resultados = Configuracoes.GetUIObjs();
+        IClicavel c = null;
+
+        foreach (RaycastResult r in resultados)
         {
-            PointerEventData dadosDoPonto = new PointerEventData(EventSystem.current)
+            c = r.gameObject.GetComponentInParent<IClicavel>();
+            if (c != null)
             {
-                position = Input.mousePosition
-            };
-
-            List<RaycastResult> resultados = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(dadosDoPonto, resultados);
-
-            foreach (RaycastResult r in resultados)
-            {
-                IClicavel c = r.gameObject.GetComponentInParent<IClicavel>();
-                if (c != null)
-                {
-                    c.AoSelecionar();
-                    break;
-                }
+                c.AoSelecionar();
+                break;
             }
         }
+
     }
 }
