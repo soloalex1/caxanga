@@ -8,6 +8,7 @@ public class SegurarMouseComCarta : Acao
 {
     //Essa classe é um tipo de ação. Nela, definimos o que o jogador pode fazer quando estiver no estado 'SEGURANDO CARTA'
 
+    public VariavelCarta cartaAtual;
     public GameEvent aoControlarEstadoJogador;
     public EstadoJogador controladorEstadoJogador;//variável para poder controlar o estado do jogador
 
@@ -20,10 +21,29 @@ public class SegurarMouseComCarta : Acao
         {
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
 
+            bool foiDropadoNaArea = false;
+
             foreach (RaycastResult r in resultados)
             {
                 //procurando por áreas em que o jogador pode jogar uma carta
+
+                Area a = r.gameObject.GetComponentInParent<Area>();
+                if(a != null)
+                {
+                    foiDropadoNaArea = true;
+                    a.AoDropar();
+                }
             }
+
+            if(!foiDropadoNaArea)
+            {
+                cartaAtual.valor.gameObject.SetActive(true);
+            }
+            else 
+            {
+                cartaAtual.valor = null;
+            }
+
             Configuracoes.admJogo.DefinirEstado(controladorEstadoJogador);
             aoControlarEstadoJogador.Raise();
             return;

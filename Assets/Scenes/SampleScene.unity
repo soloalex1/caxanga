@@ -3009,6 +3009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053250634}
   - component: {fileID: 1053250635}
+  - component: {fileID: 1053250636}
   m_Layer: 5
   m_Name: Cartas Baixadas
   m_TagString: Untagged
@@ -3061,6 +3062,19 @@ MonoBehaviour:
   m_Spacing: {x: 150, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &1053250636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053250633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variavelTransform: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}
 --- !u!1 &1059192155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,6 +3561,7 @@ GameObject:
   - component: {fileID: 1159225581}
   - component: {fileID: 1159225583}
   - component: {fileID: 1159225582}
+  - component: {fileID: 1159225584}
   m_Layer: 5
   m_Name: Campo do Jogador
   m_TagString: Untagged
@@ -3610,6 +3625,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159225580}
   m_CullTransparentMesh: 0
+--- !u!114 &1159225584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159225580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dead9391b8e2f3644b36c7cebe43996c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logica: {fileID: 11400000, guid: 8b4d1d9b2d247c94b8e2e17c3ab38930, type: 2}
 --- !u!1 &1167574002
 GameObject:
   m_ObjectHideFlags: 0
