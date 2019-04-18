@@ -21,7 +21,6 @@ public class SegurarMouseComCarta : Acao
         {
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
 
-            bool foiDropadoNaArea = false;
 
             foreach (RaycastResult r in resultados)
             {
@@ -30,19 +29,13 @@ public class SegurarMouseComCarta : Acao
                 Area a = r.gameObject.GetComponentInParent<Area>();
                 if(a != null)
                 {
-                    foiDropadoNaArea = true;
                     a.AoDropar();
+                    break;
                 }
             }
 
-            if(!foiDropadoNaArea)
-            {
-                cartaAtual.valor.gameObject.SetActive(true);
-            }
-            else 
-            {
-                cartaAtual.valor = null;
-            }
+            cartaAtual.valor.gameObject.SetActive(true);
+            cartaAtual.valor = null;
 
             Configuracoes.admJogo.DefinirEstado(controladorEstadoJogador);
             aoControlarEstadoJogador.Raise();

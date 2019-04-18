@@ -15,3 +15,4 @@ MonoBehaviour:
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   gridArea: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}
+  logicaCartaBaixa: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
