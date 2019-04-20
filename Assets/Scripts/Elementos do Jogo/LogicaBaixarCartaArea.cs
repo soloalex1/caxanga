@@ -15,16 +15,16 @@ public class LogicaBaixarCartaArea : LogicaArea
 
     public override void Executar()
     {
-        if(cartaAtual.valor != null)
+        if (cartaAtual.valor != null)
         {
-            if(cartaAtual.valor.infoCarta.carta.tipoCarta == tipoCarta)
+            if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoCarta)
             {
                 // Baixa a carta no campo, transferindo do parent atual (a mão) pro campo (novo parent)
                 cartaAtual.valor.transform.SetParent(gridArea.valor.transform);
 
                 // Seta a escala para um tamanho que ficou bom no tabuleiro, porque tava quebrando antes
                 // Se precisar, pode mudar, não faço ideia do que mais pode ser feito pra deixar direito
-                cartaAtual.valor.transform.localScale = new Vector3(0.4F, 0.4F, 0.4F);
+                cartaAtual.valor.transform.localScale = new Vector3(0.3F, 0.3F, 0.3F);
 
                 // Zera o posicionamento da carta, pra mostrar em tela sem quebrar tudo
                 cartaAtual.valor.transform.localPosition = Vector3.zero;
