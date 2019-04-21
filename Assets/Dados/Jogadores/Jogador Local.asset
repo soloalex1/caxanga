@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
+  m_Name: Jogador Local
+  m_EditorClassIdentifier: 
+  cartasMaoInicio:
+  - "Boitat\xE1"
+  - Saci
+  - "Fogueira S\xE3o Jo\xE3o"
+  gridMao: {fileID: 11400000, guid: 086a15ce291f0dd4195aaaadad7d0eb7, type: 2}
+  gridCartasBaixadas: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}
+  logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
+  logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}

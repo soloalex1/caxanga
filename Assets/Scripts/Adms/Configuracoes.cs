@@ -11,6 +11,7 @@ public static class Configuracoes
         if (_admRecursos == null)
         {
             _admRecursos = Resources.Load("AdmRecursos") as AdmRecursos;
+            _admRecursos.AoIniciar();
         }
         return _admRecursos;
     }
@@ -26,5 +27,14 @@ public static class Configuracoes
         List<RaycastResult> resultados = new List<RaycastResult>();
         EventSystem.current.RaycastAll(dadosDoPonto, resultados);
         return resultados;
+    }
+
+    public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
+    {
+        carta.SetParent(pai);//define o pai da carta
+        //depois faz os ajustes de posição, rotação e de escala
+        carta.localPosition = Vector3.zero;
+        carta.eulerAngles = pai.eulerAngles;//pra ficar na mesma perspectiva
+        carta.localScale = new Vector3(0.3F, 0.3F, 0.3F);
     }
 }
