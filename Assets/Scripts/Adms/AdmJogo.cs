@@ -9,6 +9,9 @@ public class AdmJogo : MonoBehaviour
 
     //definir no editor \/
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
+    public Turno[] turnos;
+    public int indiceTurno;
+
 
     private void Start()
     {
@@ -32,7 +35,21 @@ public class AdmJogo : MonoBehaviour
     }
     private void Update()
     {
-        estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
+        bool foiCompleto = turnos[indiceTurno].Executar();
+
+        if(foiCompleto)
+        {
+            indiceTurno++;
+            if(indiceTurno > turnos.Length - 1)
+            {
+                indiceTurno = 0;
+            }
+        }
+
+        if(estadoAtual != null)
+        {
+            estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
+        }
     }
 
     public void DefinirEstado(EstadoJogador estado)//função que altera o estado do jogador

@@ -1630,9 +1630,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
-  estadoAtual: {fileID: 11400000, guid: 9a48ba66e33ee0b45b542f3ed0dd3f4e, type: 2}
+  estadoAtual: {fileID: 0}
   prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
     type: 3}
+  turnos:
+  - {fileID: 11400000, guid: 5246b4bfc9682414d860ae4aa864b298, type: 2}
+  - {fileID: 11400000, guid: da4f92e57a848ce49bed7f5095329ca9, type: 2}
+  indiceTurno: 0
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
