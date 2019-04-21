@@ -17,11 +17,20 @@ public class FaseBatalha : Fase
 
     public override void AoIniciarFase()
     {
-
+        if(!foiIniciada)
+        {
+            Configuracoes.admJogo.DefinirEstado(null);
+            Configuracoes.admJogo.aoMudarFase.Raise();
+            foiIniciada = true;
+        }
     }
 
     public override void AoEncerrarFase()
     {
-
+        if(foiIniciada)
+        {
+            Configuracoes.admJogo.DefinirEstado(null);
+            foiIniciada = false;
+        }
     }
 }

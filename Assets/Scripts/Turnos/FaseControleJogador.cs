@@ -25,6 +25,7 @@ public class FaseControleJogador : Fase
         if(!foiIniciada)
         {
             Configuracoes.admJogo.DefinirEstado(estadoControleJogador);
+            Configuracoes.admJogo.aoMudarFase.Raise();
             foiIniciada = true;
         }
 

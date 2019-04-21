@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc0ef05d5874d5479f548e277c682d4, type: 3}
-  m_Name: FaseControleJogador
+  m_Script: {fileID: 11500000, guid: 84b5b44f901b10f4d9cc5be39270cec3, type: 3}
+  m_Name: Fase Atual
   m_EditorClassIdentifier: 
-  nomeFase: Fase de Controle
-  forcarSaida: 0
-  estadoControleJogador: {fileID: 11400000, guid: 9a48ba66e33ee0b45b542f3ed0dd3f4e,
-    type: 2}
+  valor: {fileID: 0}

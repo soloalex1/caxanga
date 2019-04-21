@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8491cd312b4977140949e9b4e7db0a09, type: 3}
   m_Name: FaseBatalha
   m_EditorClassIdentifier: 
+  nomeFase: Fase de Batalha
   forcarSaida: 0

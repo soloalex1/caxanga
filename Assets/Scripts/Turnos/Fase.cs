@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Fase : ScriptableObject
 {
+    public string nomeFase;
     public bool forcarSaida;
     public abstract bool FoiCompletada();
 

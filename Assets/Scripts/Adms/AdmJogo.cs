@@ -9,14 +9,23 @@ public class AdmJogo : MonoBehaviour
 
     //definir no editor \/
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
-    public Turno[] turnos;
     public int indiceTurno;
+    public Turno[] turnos;
+    public VariavelString textoTurno;
+    public GameEvent aoMudarTurno;
+    public GameEvent aoMudarFase;
 
 
     private void Start()
     {
-        Configuracoes.admJogo = this;//A classe estática configurações vai possuir o adm jogo como atributo, assim, nas configurações podemos mudar o admJogo também
+        /*  
+        A classe estática configurações vai possuir o admJogo como atributo,
+        assim, nas configurações podemos mudar o admJogo também.
+        */  
+        Configuracoes.admJogo = this;
         CriarCartasIniciais();
+        textoTurno.valor = turnos[indiceTurno].nomeTurno;
+        aoMudarTurno.Raise();
     }
 
     void CriarCartasIniciais()
@@ -39,11 +48,15 @@ public class AdmJogo : MonoBehaviour
 
         if(foiCompleto)
         {
+            
             indiceTurno++;
             if(indiceTurno > turnos.Length - 1)
             {
                 indiceTurno = 0;
             }
+
+            textoTurno.valor = turnos[indiceTurno].nomeTurno;
+            aoMudarTurno.Raise();
         }
 
         if(estadoAtual != null)
