@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: AdmRecursos
   m_EditorClassIdentifier: 
   tipoElemento: {fileID: 11400000, guid: 083f78e4049cb0f49b6203d350cdbc42, type: 2}
+  todasAsCartas:
+  - {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
+  - {fileID: 11400000, guid: 234bd4f6b713ce145ae96ea0e0f83081, type: 2}
+  - {fileID: 11400000, guid: 39d9b46b7fde2cb4495f1c55837a5ee5, type: 2}
+  - {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
