@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
-  m_Name: Jogador Local
+  m_Name: Jogador Inimigo
   m_EditorClassIdentifier: 
-  nomeJogador: Algerbley
+  nomeJogador: Bastrogilda
   cartasMaoInicio:
   - "Boitat\xE1"
   - Saci
