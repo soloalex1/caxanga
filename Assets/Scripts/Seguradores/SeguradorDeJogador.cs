@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public string nomeJogador;
     public string[] cartasMaoInicio;
     public VariavelTransform gridMao;
     public VariavelTransform gridCartasBaixadas;

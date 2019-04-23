@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Turnos/Turno")]
+[CreateAssetMenu(menuName = "Turnos/Turno")]
 public class Turno : ScriptableObject
 {
     // pra nunca salvar o valor do index, setei como NonSerialized e deixei o valor padrão como zero
     [System.NonSerialized]
     public int index = 0;
-    public string nomeTurno;
+
+    public SeguradorDeJogador jogador;
     public VariavelFase faseAtual;
     public Fase[] fases;
 
@@ -21,13 +22,13 @@ public class Turno : ScriptableObject
         bool faseFoiEncerrada = fases[index].FoiCompletada();
         bool resultado = false;
 
-        if(faseFoiEncerrada)
+        if (faseFoiEncerrada)
         {
             fases[index].AoEncerrarFase();
             // aoCompletarFase.Raise();
 
             index++;
-            if(index > fases.Length - 1)
+            if (index > fases.Length - 1)
             {
                 index = 0;
                 resultado = true;

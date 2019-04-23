@@ -21,10 +21,10 @@ public class AdmJogo : MonoBehaviour
         /*  
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
-        */  
+        */
         Configuracoes.admJogo = this;
         CriarCartasIniciais();
-        textoTurno.valor = turnos[indiceTurno].nomeTurno;
+        textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
     }
 
@@ -46,20 +46,20 @@ public class AdmJogo : MonoBehaviour
     {
         bool foiCompleto = turnos[indiceTurno].Executar();
 
-        if(foiCompleto)
+        if (foiCompleto)
         {
-            
+
             indiceTurno++;
-            if(indiceTurno > turnos.Length - 1)
+            if (indiceTurno > turnos.Length - 1)
             {
                 indiceTurno = 0;
             }
 
-            textoTurno.valor = turnos[indiceTurno].nomeTurno;
+            textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
             aoMudarTurno.Raise();
         }
 
-        if(estadoAtual != null)
+        if (estadoAtual != null)
         {
             estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
         }
