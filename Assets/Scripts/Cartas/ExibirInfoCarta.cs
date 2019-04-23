@@ -16,6 +16,8 @@ public class ExibirInfoCarta : MonoBehaviour
 
         c.tipoCarta.Inicializar(this);
 
+        FecharPropsIndefinidas();
+
         for (int i = 0; i < propriedades.Length; i++)
         {
             Propriedades p = c.propriedades[i];
@@ -28,18 +30,31 @@ public class ExibirInfoCarta : MonoBehaviour
             if (ep.elemento is ElementoNum)
             {
                 ep.texto.text = p.intValor.ToString();
+                ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoTexto)
             {
                 ep.texto.text = p.stringValor;
+                ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoImagem)
             {
                 ep.imagem.sprite = p.sprite;
+                ep.imagem.gameObject.SetActive(true);
             }
         }
     }
 
+    public void FecharPropsIndefinidas()
+    {
+        foreach (ExibirInfoPropriedades e in propriedades)
+        {
+            if (e.imagem != null)
+                e.imagem.gameObject.SetActive(false);
+            if (e.texto != null)
+                e.texto.gameObject.SetActive(false);
+        }
+    }
     public ExibirInfoPropriedades GetPropriedade(Elemento e)
     {
         ExibirInfoPropriedades resultado = null;
