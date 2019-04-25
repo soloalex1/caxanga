@@ -16,7 +16,6 @@ public static class Configuracoes
         return _admRecursos;
     }
 
-    //
     public static List<RaycastResult> GetUIObjs()
     {
         PointerEventData dadosDoPonto = new PointerEventData(EventSystem.current)

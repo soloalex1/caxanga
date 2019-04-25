@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea268b6abb78374cad92340673ded82, type: 3}
-  m_Name: Grid Cartas Baixadas
+  m_Script: {fileID: 11500000, guid: 69748b20e784f344fa1406e6a5c4e903, type: 3}
+  m_Name: Segurador De Cartas Jogador Principal
   m_EditorClassIdentifier: 
-  valor: {fileID: 0}
+  gridMao: {fileID: 11400000, guid: 086a15ce291f0dd4195aaaadad7d0eb7, type: 2}
+  gridCartasBaixadas: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}

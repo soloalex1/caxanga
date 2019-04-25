@@ -5,6 +5,10 @@ using UnityEngine;
 public class AdmJogo : MonoBehaviour
 {
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
+    public SeguradorDeJogador[] todosJogadores;
+    public SeguradorDeCartas seguradorJogadorPrincipal;
+    public SeguradorDeCartas seguradorJogadorQualquer;
+
     public EstadoJogador estadoAtual;//variávei que nos diz qual é o estado atual do jogador atual
 
     //definir no editor \/
@@ -23,27 +27,62 @@ public class AdmJogo : MonoBehaviour
         assim, nas configurações podemos mudar o admJogo também.
         */
         Configuracoes.admJogo = this;
+
+        InicializarJogadores();
+
         CriarCartasIniciais();
         textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
+    }
+
+    void InicializarJogadores()
+    {
+        foreach (SeguradorDeJogador jogador in todosJogadores)
+        {
+            jogador.magia = 10;
+            jogador.vida = 20;
+            if (jogador.jogadorHumano == true)
+            {
+                jogador.seguradorAtual = seguradorJogadorPrincipal;
+            }
+            else
+            {
+                jogador.seguradorAtual = seguradorJogadorQualquer;
+            }
+        }
     }
 
     void CriarCartasIniciais()
     {
         AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
 
-        for (int i = 0; i < jogadorAtual.cartasMaoInicio.Length; i++)//para cada carta na mão do jogador atual...
+        for (int p = 0; p < todosJogadores.Length; p++)
         {
-            GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
-            ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-            e.CarregarCarta(ar.obterInstanciaCarta(jogadorAtual.cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
-            InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-            instCarta.logicaAtual = jogadorAtual.logicaMao;//define a lógica pra ser a lógica da mão
-            Configuracoes.DefinirPaiCarta(carta.transform, jogadorAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+            for (int i = 0; i < todosJogadores[p].cartasMaoInicio.Length; i++)//para cada carta na mão do jogador atual...
+            {
+                GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
+                ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
+                e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
+                InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
+                instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
+                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+                todosJogadores[p].cartasMao.Add(instCarta);
+            }
         }
     }
+
+    public bool trocarJogador;
     private void Update()
     {
+
+        if (trocarJogador == true)
+        {
+            trocarJogador = false;
+
+            seguradorJogadorPrincipal.CarregarJogador(todosJogadores[0]);
+            seguradorJogadorQualquer.CarregarJogador(todosJogadores[1]);
+        }
+
         bool foiCompleto = turnos[indiceTurno].Executar();
 
         if (foiCompleto)
@@ -54,7 +93,6 @@ public class AdmJogo : MonoBehaviour
             {
                 indiceTurno = 0;
             }
-
             textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
             aoMudarTurno.Raise();
         }
@@ -69,4 +107,10 @@ public class AdmJogo : MonoBehaviour
     {
         estadoAtual = estado;
     }
+
+    public void FinalizarFaseAtual()
+    {
+        turnos[indiceTurno].FinalizarFaseAtual();
+    }
+
 }

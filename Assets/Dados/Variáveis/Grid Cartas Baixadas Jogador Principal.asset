@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bea268b6abb78374cad92340673ded82, type: 3}
-  m_Name: "Grid Cartas M\xE3o"
+  m_Name: Grid Cartas Baixadas Jogador Principal
   m_EditorClassIdentifier: 
   valor: {fileID: 0}

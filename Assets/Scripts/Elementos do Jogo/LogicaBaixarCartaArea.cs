@@ -7,7 +7,8 @@ public class LogicaBaixarCartaArea : LogicaArea
 {
 
     public VariavelCarta cartaAtual;
-    public TipoCarta tipoCarta;
+    public TipoCarta tipoLenda;
+    public TipoCarta tipoFeitico;
 
     public VariavelTransform gridArea;
 
@@ -17,15 +18,23 @@ public class LogicaBaixarCartaArea : LogicaArea
     {
         if (cartaAtual.valor != null)
         {
-            if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoCarta)
+
+            Carta c = cartaAtual.valor.infoCarta.carta;
+            if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoLenda)
             {
-                //define o pai da carta para ser o grid lá do Cartas Baixadas
-                Configuracoes.DefinirPaiCarta(cartaAtual.valor.transform, gridArea.valor.transform);
+                bool podeUsarCarta = Configuracoes.admJogo.jogadorAtual.PodeUsarCarta(c);
+                if (podeUsarCarta) //pode baixar carta
+                {
+                    //define o pai da carta para ser o grid lá do Cartas Baixadas
+                    Configuracoes.DefinirPaiCarta(cartaAtual.valor.transform, gridArea.valor.transform);
+                    cartaAtual.valor.logicaAtual = logicaCartaBaixa;
+
+                }
                 // Dá um SetActive() pra sobrescrever o que tem no SelecaoAtual
                 cartaAtual.valor.gameObject.SetActive(true);
 
-                cartaAtual.valor.logicaAtual = logicaCartaBaixa;
             }
+
         }
     }
 }
