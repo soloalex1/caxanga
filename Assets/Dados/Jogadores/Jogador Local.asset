@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
   nomeJogador: Algerbley
-  magia: 0
+  magia: 10
   vida: 20
   jogadorHumano: 1
   cartasMaoInicio:
