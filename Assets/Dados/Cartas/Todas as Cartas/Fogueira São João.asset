@@ -43,3 +43,7 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  - stringValor: "Festividades: Pula, pula, pula a fogueira de S\xE3o Jo\xE3o"
+    intValor: 0
+    sprite: {fileID: 0}
+    elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}

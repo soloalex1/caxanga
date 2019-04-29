@@ -5,9 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public string nomeJogador;
+    public int magia;
+    public int vida;
+    public bool jogadorHumano;
     public string[] cartasMaoInicio;
-    public VariavelTransform gridMao;
-    public VariavelTransform gridCartasBaixadas;
+
+    [System.NonSerialized]
+    public SeguradorDeCartas seguradorAtual;
 
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
@@ -17,4 +22,23 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>();//lista de cartas no campo do jogador em questão
 
+    public void BaixarCarta(InstanciaCarta instCarta)
+    {
+        if (cartasMao.Contains(instCarta))
+        {
+            cartasMao.Remove(instCarta);
+        }
+        cartasBaixadas.Add(instCarta);
+    }
+    public bool PodeUsarCarta(Carta c)
+    {
+        bool resultado = false;
+        Propriedades custo = c.AcharPropriedadePeloNome("Custo");
+        if (c != null && magia >= custo.intValor)
+        {
+            magia -= custo.intValor;
+            resultado = true;
+        }
+        return resultado;
+    }
 }

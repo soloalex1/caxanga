@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea268b6abb78374cad92340673ded82, type: 3}
-  m_Name: "Grid Cartas M\xE3o"
+  m_Script: {fileID: 11500000, guid: d90304d679b7c0940a25dee6ec051ebe, type: 3}
+  m_Name: "Cartas M\xE3o Qualquer"
   m_EditorClassIdentifier: 
-  valor: {fileID: 0}
+  aoSelecionarCartaAtual: {fileID: 0}
+  cartaAtual: {fileID: 0}
+  segurandoCarta: {fileID: 0}

@@ -16,7 +16,6 @@ public static class Configuracoes
         return _admRecursos;
     }
 
-    //
     public static List<RaycastResult> GetUIObjs()
     {
         PointerEventData dadosDoPonto = new PointerEventData(EventSystem.current)
@@ -27,6 +26,13 @@ public static class Configuracoes
         List<RaycastResult> resultados = new List<RaycastResult>();
         EventSystem.current.RaycastAll(dadosDoPonto, resultados);
         return resultados;
+    }
+
+    public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
+    {
+        DefinirPaiCarta(c, p);
+        // admJogo.jogadorAtual.PodeUsarCarta(instCarta.infoCarta.carta);
+        admJogo.jogadorAtual.BaixarCarta(instCarta);
     }
 
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
