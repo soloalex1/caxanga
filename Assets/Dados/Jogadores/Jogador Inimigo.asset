@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador Inimigo
   m_EditorClassIdentifier: 
+  corJogador: {r: 0.7924528, g: 0.12335351, b: 0.12335351, a: 1}
   nomeJogador: Bastrogilda
   magia: 10
   vida: 20

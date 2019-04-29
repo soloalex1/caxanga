@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public Color corJogador;
     public string nomeJogador;
     public int magia;
     public int vida;
@@ -29,6 +30,7 @@ public class SeguradorDeJogador : ScriptableObject
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
+        Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
     }
     public bool PodeUsarCarta(Carta c)
     {

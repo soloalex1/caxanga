@@ -6,6 +6,17 @@ public static class Configuracoes
 {
     public static AdmJogo admJogo;
     private static AdmRecursos _admRecursos;
+    private static ConsoleHook _admConsole;
+
+    public static void RegistrarEvento(string e, Color color)
+    {
+        if (_admConsole == null)
+        {
+            _admConsole = Resources.Load("ConsoleHook") as ConsoleHook;
+        }
+        _admConsole.RegistrarEvento(e, color);
+    }
+
     public static AdmRecursos GetAdmRecursos()
     {
         if (_admRecursos == null)

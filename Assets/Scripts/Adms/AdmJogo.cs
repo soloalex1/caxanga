@@ -68,6 +68,7 @@ public class AdmJogo : MonoBehaviour
                 Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
                 todosJogadores[p].cartasMao.Add(instCarta);
             }
+            Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
 
@@ -77,10 +78,19 @@ public class AdmJogo : MonoBehaviour
 
         if (trocarJogador == true)
         {
-            trocarJogador = false;
 
             seguradorJogadorPrincipal.CarregarJogador(todosJogadores[0]);
             seguradorJogadorQualquer.CarregarJogador(todosJogadores[1]);
+            if (jogadorAtual == seguradorJogadorPrincipal)
+            {
+                jogadorAtual = todosJogadores[1];
+            }
+            else
+            {
+                jogadorAtual = todosJogadores[0];
+            }
+            trocarJogador = false;
+
         }
 
         bool foiCompleto = turnos[indiceTurno].Executar();
@@ -110,6 +120,7 @@ public class AdmJogo : MonoBehaviour
 
     public void FinalizarFaseAtual()
     {
+        Configuracoes.RegistrarEvento(turnos[indiceTurno].name + " terminou", jogadorAtual.corJogador);
         turnos[indiceTurno].FinalizarFaseAtual();
     }
 
