@@ -26,7 +26,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                 if (podeUsarCarta) //pode baixar carta
                 {
                     //define o pai da carta para ser o grid lá do Cartas Baixadas
-                    Configuracoes.DefinirPaiCarta(cartaAtual.valor.transform, gridArea.valor.transform);
+                    Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
                     cartaAtual.valor.logicaAtual = logicaCartaBaixa;
 
                 }

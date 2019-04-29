@@ -22,6 +22,14 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>();//lista de cartas no campo do jogador em questão
 
+    public void BaixarCarta(InstanciaCarta instCarta)
+    {
+        if (cartasMao.Contains(instCarta))
+        {
+            cartasMao.Remove(instCarta);
+        }
+        cartasBaixadas.Add(instCarta);
+    }
     public bool PodeUsarCarta(Carta c)
     {
         bool resultado = false;

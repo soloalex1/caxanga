@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
   nomeJogador: Algerbley
-  magia: 10
+  magia: 4
   vida: 20
   jogadorHumano: 1
   cartasMaoInicio:
   - "Boitat\xE1"
-  - Saci
-  - "Fogueira S\xE3o Jo\xE3o"
   - Saci
   - "Boitat\xE1"
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}

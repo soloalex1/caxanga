@@ -19,7 +19,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
   - stringValor: 
-    intValor: 4
+    intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
   - stringValor: "Paralisar: Impede que uma Lenda inimiga ataque at\xE9 o pr\xF3ximo

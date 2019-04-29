@@ -28,6 +28,13 @@ public static class Configuracoes
         return resultados;
     }
 
+    public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
+    {
+        DefinirPaiCarta(c, p);
+        // admJogo.jogadorAtual.PodeUsarCarta(instCarta.infoCarta.carta);
+        admJogo.jogadorAtual.BaixarCarta(instCarta);
+    }
+
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
     {
         carta.SetParent(pai);//define o pai da carta
