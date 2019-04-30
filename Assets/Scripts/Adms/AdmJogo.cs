@@ -19,6 +19,12 @@ public class AdmJogo : MonoBehaviour
     public GameEvent aoMudarTurno;
     public GameEvent aoMudarFase;
 
+    public static AdmJogo singleton;
+
+    private void Awake()
+    {
+        singleton = this;
+    }
 
     private void Start()
     {
