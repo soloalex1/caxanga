@@ -1386,12 +1386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
-  todosJogadores:
-  - {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  - {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
-  seguradorJogadorPrincipal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
+  seguradorCartasJogadorPrincipal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
-  seguradorJogadorQualquer: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
+  seguradorCartasJogadorQualquer: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
     type: 2}
   estadoAtual: {fileID: 0}
   prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
@@ -1403,7 +1400,6 @@ MonoBehaviour:
   textoTurno: {fileID: 11400000, guid: 0508aa4964227f946855f51caf2f8006, type: 2}
   aoMudarTurno: {fileID: 11400000, guid: f1162435137084a4680d883689f1f064, type: 2}
   aoMudarFase: {fileID: 11400000, guid: 236fd74c81568894199347fcc235c1e6, type: 2}
-  trocarJogador: 0
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0

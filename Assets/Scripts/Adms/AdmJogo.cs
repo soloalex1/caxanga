@@ -5,9 +5,10 @@ using UnityEngine;
 public class AdmJogo : MonoBehaviour
 {
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
+    [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
-    public SeguradorDeCartas seguradorJogadorPrincipal;
-    public SeguradorDeCartas seguradorJogadorQualquer;
+    public SeguradorDeCartas seguradorCartasJogadorPrincipal;
+    public SeguradorDeCartas seguradorCartasJogadorQualquer;
 
     public EstadoJogador estadoAtual;//variávei que nos diz qual é o estado atual do jogador atual
 
@@ -20,27 +21,42 @@ public class AdmJogo : MonoBehaviour
     public GameEvent aoMudarFase;
 
     public static AdmJogo singleton;
-
     private void Awake()
     {
         singleton = this;
+        todosJogadores = new SeguradorDeJogador[turnos.Length];
+        for (int i = 0; i < turnos.Length; i++)
+        {
+            todosJogadores[i] = turnos[i].jogador;
+        }
+        jogadorAtual = turnos[0].jogador;
     }
-
     private void Start()
     {
         /*  
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
+
         Configuracoes.admJogo = this;
-
         InicializarJogadores();
-
         CriarCartasIniciais();
         textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
     }
-
+    void TrocarPosicaoJogadores()
+    {
+        if (jogadorAtual == todosJogadores[0])
+        {
+            seguradorCartasJogadorPrincipal.CarregarJogador(todosJogadores[1]);
+            seguradorCartasJogadorQualquer.CarregarJogador(todosJogadores[0]);
+        }
+        else
+        {
+            seguradorCartasJogadorPrincipal.CarregarJogador(todosJogadores[0]);
+            seguradorCartasJogadorQualquer.CarregarJogador(todosJogadores[1]);
+        }
+    }
     void InicializarJogadores()
     {
         foreach (SeguradorDeJogador jogador in todosJogadores)
@@ -49,11 +65,12 @@ public class AdmJogo : MonoBehaviour
             jogador.vida = 20;
             if (jogador.jogadorHumano == true)
             {
-                jogador.seguradorAtual = seguradorJogadorPrincipal;
+                jogador.seguradorCartasAtual = seguradorCartasJogadorPrincipal;
+
             }
             else
             {
-                jogador.seguradorAtual = seguradorJogadorQualquer;
+                jogador.seguradorCartasAtual = seguradorCartasJogadorQualquer;
             }
         }
     }
@@ -71,34 +88,26 @@ public class AdmJogo : MonoBehaviour
                 e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
                 InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
                 instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
-                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
                 todosJogadores[p].cartasMao.Add(instCarta);
             }
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
 
-    public bool trocarJogador;
+    public void TrocarJogadorAtual()
+    {
+        if (jogadorAtual == todosJogadores[0])
+        {
+            jogadorAtual = todosJogadores[1];
+        }
+        else
+        {
+            jogadorAtual = todosJogadores[0];
+        }
+    }
     private void Update()
     {
-
-        if (trocarJogador == true)
-        {
-
-            seguradorJogadorPrincipal.CarregarJogador(todosJogadores[0]);
-            seguradorJogadorQualquer.CarregarJogador(todosJogadores[1]);
-            if (jogadorAtual == seguradorJogadorPrincipal)
-            {
-                jogadorAtual = todosJogadores[1];
-            }
-            else
-            {
-                jogadorAtual = todosJogadores[0];
-            }
-            trocarJogador = false;
-
-        }
-
         bool foiCompleto = turnos[indiceTurno].Executar();
 
         if (foiCompleto)
@@ -109,8 +118,13 @@ public class AdmJogo : MonoBehaviour
             {
                 indiceTurno = 0;
             }
+            //O jogador atual muda aqui
+            TrocarPosicaoJogadores();
+            TrocarJogadorAtual();
+            turnos[indiceTurno].AoIniciarTurno();
             textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
             aoMudarTurno.Raise();
+
         }
 
         if (estadoAtual != null)

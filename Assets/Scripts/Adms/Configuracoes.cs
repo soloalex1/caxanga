@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 public static class Configuracoes
 {
     public static AdmJogo admJogo;
@@ -41,8 +43,13 @@ public static class Configuracoes
 
     public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
     {
+        instCarta.podeAtacar = false;
+        //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
+        if (instCarta.podeAtacar == false)
+        {
+            instCarta.transform.Find("Sombra").gameObject.SetActive(true);
+        }
         DefinirPaiCarta(c, p);
-        // admJogo.jogadorAtual.PodeUsarCarta(instCarta.infoCarta.carta);
         admJogo.jogadorAtual.BaixarCarta(instCarta);
     }
 

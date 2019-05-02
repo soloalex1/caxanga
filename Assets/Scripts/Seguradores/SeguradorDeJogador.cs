@@ -13,7 +13,7 @@ public class SeguradorDeJogador : ScriptableObject
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
-    public SeguradorDeCartas seguradorAtual;
+    public SeguradorDeCartas seguradorCartasAtual;
 
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
