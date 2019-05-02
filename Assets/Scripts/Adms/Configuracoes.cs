@@ -43,9 +43,9 @@ public static class Configuracoes
 
     public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
     {
-        instCarta.podeAtacar = false;
+        instCarta.podeAtacarNesteTurno = false;
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
-        if (instCarta.podeAtacar == false)
+        if (instCarta.podeAtacarNesteTurno == false)
         {
             instCarta.transform.Find("Sombra").gameObject.SetActive(true);
         }

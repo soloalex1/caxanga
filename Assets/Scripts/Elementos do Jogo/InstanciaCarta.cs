@@ -6,7 +6,21 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
 {
     public LogicaInstanciaCarta logicaAtual;
     public ExibirInfoCarta infoCarta;
-    public bool podeAtacar;
+    public bool podeAtacarNesteTurno;
+
+    public bool PodeAtacar()
+    {
+        bool resultado = true;
+        if (podeAtacarNesteTurno == false)
+        {
+            resultado = false;
+        }
+        if (infoCarta.carta.tipoCarta.DiferenteTipoDeAtacar(this))
+        {
+            resultado = true;
+        }
+        return resultado;
+    }
     void Start()
     {
         infoCarta = GetComponent<ExibirInfoCarta>();

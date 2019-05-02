@@ -13,7 +13,7 @@ public class InicioFaseBatalha : Condicao
 
         for (int i = 0; i < jogadorAtual.cartasBaixadas.Count; i++)
         {
-            if (!jogadorAtual.cartasBaixadas[i].podeAtacar)
+            if (!jogadorAtual.cartasBaixadas[i].podeAtacarNesteTurno)
             {
                 cont--;
             }

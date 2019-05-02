@@ -9,9 +9,9 @@ public class AtivarAtaqueLendas : AcaoJogador
     {
         foreach (InstanciaCarta instCarta in jogador.cartasBaixadas)
         {
-            if (instCarta.podeAtacar == false)
+            if (instCarta.podeAtacarNesteTurno == false)
             {
-                instCarta.podeAtacar = true;
+                instCarta.podeAtacarNesteTurno = true;
                 instCarta.transform.Find("Sombra").gameObject.SetActive(false);
             }
         }
