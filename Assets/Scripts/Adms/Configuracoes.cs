@@ -52,7 +52,6 @@ public static class Configuracoes
         DefinirPaiCarta(c, p);
         admJogo.jogadorAtual.BaixarCarta(instCarta);
     }
-
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
     {
         carta.SetParent(pai);//define o pai da carta

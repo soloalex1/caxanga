@@ -6,9 +6,11 @@ using UnityEngine;
 public class SeguradorDeJogador : ScriptableObject
 {
     public Color corJogador;
+    public Sprite retratoJogador;
     public string nomeJogador;
     public int magia;
     public int vida;
+    public InfoUIJogador infoUI;
     public bool jogadorHumano;
     public string[] cartasMaoInicio;
 
@@ -30,6 +32,7 @@ public class SeguradorDeJogador : ScriptableObject
         }
         cartasBaixadas.Add(instCarta);
         Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
+        infoUI.AtualizarMagia();
     }
     public bool PodeUsarCarta(Carta c)
     {
@@ -41,5 +44,19 @@ public class SeguradorDeJogador : ScriptableObject
             resultado = true;
         }
         return resultado;
+    }
+    public void LevarDano(int dano)
+    {
+        vida -= dano;
+        if (infoUI != null)
+            infoUI.AtualizarVida();
+    }
+    public void CarregarInfoUIJogador()
+    {
+        if (infoUI != null)
+        {
+            infoUI.jogador = this;
+            infoUI.AtualizarTudo();
+        }
     }
 }

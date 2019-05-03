@@ -7,8 +7,7 @@ public class SeguradorDeCartas : ScriptableObject
 {
     public VariavelTransform gridMao;
     public VariavelTransform gridCartasBaixadas;
-
-    public void CarregarJogador(SeguradorDeJogador seguradorJogador)
+    public void CarregarCartasJogador(SeguradorDeJogador seguradorJogador, InfoUIJogador InfoUIJogador)
     {
         foreach (InstanciaCarta c in seguradorJogador.cartasBaixadas)
         {
@@ -18,5 +17,7 @@ public class SeguradorDeCartas : ScriptableObject
         {
             Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridMao.valor.transform);
         }
+        seguradorJogador.infoUI = InfoUIJogador;
+        seguradorJogador.CarregarInfoUIJogador();
     }
 }

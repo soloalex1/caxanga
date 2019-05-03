@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Turnos/Fase de Batalha [Jogador]")]
 public class FaseBatalha : Fase
 {
-    public Condicao batalhaPossivel;
-    public EstadoJogador controladorFaseBatalha;
+    public Condicao condicaoBatalhaPossivel;
+    public EstadoJogador emFaseBatalha;
     public override bool FoiCompletada()
     {
         if (forcarSaida)
@@ -21,8 +21,8 @@ public class FaseBatalha : Fase
     {
         if (!foiIniciada)
         {
-            forcarSaida = !batalhaPossivel.condicaoValida(); //se a batalha não for possível, força a saída
-            Configuracoes.admJogo.DefinirEstado((!forcarSaida) ? controladorFaseBatalha : null);
+            forcarSaida = !condicaoBatalhaPossivel.condicaoValida(); //se a batalha não for possível, força a saída
+            Configuracoes.admJogo.DefinirEstado((!forcarSaida) ? emFaseBatalha : null);
             Configuracoes.admJogo.aoMudarFase.Raise();
             foiIniciada = true;
         }

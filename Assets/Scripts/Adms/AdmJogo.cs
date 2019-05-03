@@ -9,16 +9,19 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador[] todosJogadores;
     public SeguradorDeCartas seguradorCartasJogadorPrincipal;
     public SeguradorDeCartas seguradorCartasJogadorQualquer;
-
     public EstadoJogador estadoAtual;//variávei que nos diz qual é o estado atual do jogador atual
 
     //definir no editor \/
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
     public int indiceTurno;
     public Turno[] turnos;
+    public InfoUIJogador[] infoJogadores;
     public VariavelString textoTurno;
     public GameEvent aoMudarTurno;
     public GameEvent aoMudarFase;
+
+    public InstanciaCarta cartaAtacada;
+    public InstanciaCarta cartaAtacante;
 
     public static AdmJogo singleton;
     private void Awake()
@@ -48,29 +51,36 @@ public class AdmJogo : MonoBehaviour
     {
         if (jogadorAtual == todosJogadores[0])
         {
-            seguradorCartasJogadorPrincipal.CarregarJogador(todosJogadores[1]);
-            seguradorCartasJogadorQualquer.CarregarJogador(todosJogadores[0]);
+            seguradorCartasJogadorPrincipal.CarregarCartasJogador(todosJogadores[1], infoJogadores[0]);
+            seguradorCartasJogadorQualquer.CarregarCartasJogador(todosJogadores[0], infoJogadores[1]);
+
         }
         else
         {
-            seguradorCartasJogadorPrincipal.CarregarJogador(todosJogadores[0]);
-            seguradorCartasJogadorQualquer.CarregarJogador(todosJogadores[1]);
+            seguradorCartasJogadorPrincipal.CarregarCartasJogador(todosJogadores[0], infoJogadores[0]);
+            seguradorCartasJogadorQualquer.CarregarCartasJogador(todosJogadores[1], infoJogadores[1]);
         }
     }
     void InicializarJogadores()
     {
-        foreach (SeguradorDeJogador jogador in todosJogadores)
+        for (int i = 0; i < todosJogadores.Length; i++)
         {
-            jogador.magia = 10;
-            jogador.vida = 20;
-            if (jogador.jogadorHumano == true)
+            todosJogadores[i].magia = 10;
+            todosJogadores[i].vida = 20;
+            if (todosJogadores[i].jogadorHumano == true)
             {
-                jogador.seguradorCartasAtual = seguradorCartasJogadorPrincipal;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorPrincipal;
 
             }
             else
             {
-                jogador.seguradorCartasAtual = seguradorCartasJogadorQualquer;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorQualquer;
+            }
+            if (i < 2)
+            {
+                infoJogadores[i].jogador = todosJogadores[i];
+                todosJogadores[i].infoUI = infoJogadores[i];
+                infoJogadores[i].jogador.CarregarInfoUIJogador();
             }
         }
     }
@@ -89,6 +99,7 @@ public class AdmJogo : MonoBehaviour
                 InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
                 instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
                 Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+                instCarta.podeSerAtacada = true;
                 todosJogadores[p].cartasMao.Add(instCarta);
             }
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
@@ -109,7 +120,7 @@ public class AdmJogo : MonoBehaviour
     private void Update()
     {
         bool foiCompleto = turnos[indiceTurno].Executar();
-
+        Atacar();
         if (foiCompleto)
         {
 
@@ -143,5 +154,20 @@ public class AdmJogo : MonoBehaviour
         Configuracoes.RegistrarEvento(turnos[indiceTurno].name + " terminou", jogadorAtual.corJogador);
         turnos[indiceTurno].FinalizarFaseAtual();
     }
-
+    public void Atacar()
+    {
+        if (cartaAtacada != null && cartaAtacante != null)
+        {
+            int poderCartaAtacante = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            int poderCartaAtacada = cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacante;
+            cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacada;
+            Configuracoes.RegistrarEvento("A carta " + cartaAtacante.infoCarta.carta.name + " atacou a carta " + cartaAtacada.infoCarta.carta.name + "e tirou " + poderCartaAtacante, Color.white);
+            cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
+            cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
+            cartaAtacada = null;
+            cartaAtacante = null;
+            DefinirEstado(null);
+        }
+    }
 }

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2acada327591748a9914b5295a54f8, type: 3}
-  m_Name: Selecionar Carta Atacante
+  m_Script: {fileID: 11500000, guid: 4b82ca5af6dedb148b97ce9ae8ad6366, type: 3}
+  m_Name: Em Fase Batalha
   m_EditorClassIdentifier: 
-  atacando: {fileID: 11400000, guid: 75d68e34e60d8d145843916fd7442566, type: 2}
+  acoes:
+  - {fileID: 11400000, guid: c5df51ae6cb9ac44aae544a9184d904c, type: 2}

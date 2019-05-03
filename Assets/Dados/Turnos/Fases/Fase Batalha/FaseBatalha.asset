@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nomeFase: Fase de Batalha
   forcarSaida: 0
-  batalhaPossivel: {fileID: 11400000, guid: 3745118c8a379664cb4594da930036bb, type: 2}
-  controladorFaseBatalha: {fileID: 11400000, guid: a678b1bd9ad6b344da24135e188de5d1,
+  condicaoBatalhaPossivel: {fileID: 11400000, guid: 3745118c8a379664cb4594da930036bb,
     type: 2}
+  emFaseBatalha: {fileID: 11400000, guid: a678b1bd9ad6b344da24135e188de5d1, type: 2}

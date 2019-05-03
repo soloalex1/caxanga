@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b82ca5af6dedb148b97ce9ae8ad6366, type: 3}
-  m_Name: Controlador Fase Batalha
+  m_Name: Atacando
   m_EditorClassIdentifier: 
   acoes:
-  - {fileID: 11400000, guid: c5df51ae6cb9ac44aae544a9184d904c, type: 2}
+  - {fileID: 11400000, guid: e836c3d5dfc40bc45ac4661cd666344d, type: 2}

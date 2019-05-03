@@ -7,7 +7,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     public LogicaInstanciaCarta logicaAtual;
     public ExibirInfoCarta infoCarta;
     public bool podeAtacarNesteTurno;
-
+    public bool podeSerAtacada;
     public bool PodeAtacar()
     {
         bool resultado = true;

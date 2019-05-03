@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Ações/InicioFaseBatalha")]
-public class InicioFaseBatalha : Condicao
+public class HaveraFaseBatalha : Condicao
 {
     public override bool condicaoValida()
     {

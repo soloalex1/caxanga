@@ -15,5 +15,5 @@ MonoBehaviour:
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   aoControlarEstadoJogador: {fileID: 11400000, guid: 5673fd764dffe3e4a8c1eabfd76b068a,
     type: 2}
-  controladorEstadoJogador: {fileID: 11400000, guid: 9a48ba66e33ee0b45b542f3ed0dd3f4e,
+  controladorEstadoJogador: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85,
     type: 2}
