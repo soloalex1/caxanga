@@ -7,8 +7,13 @@ using UnityEngine.EventSystems;
 public class SelecionarCartaAtacante : Acao
 {
     public EstadoJogador atacando;
+    public EstadoJogador faseDeBatalha;
     public override void Executar(float d)
     {
+        if (Configuracoes.admJogo.estadoAtual != atacando)
+        {
+            Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
