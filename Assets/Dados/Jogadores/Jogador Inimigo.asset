@@ -25,5 +25,7 @@ MonoBehaviour:
   - "Fogueira S\xE3o Jo\xE3o"
   - Saci
   - "Boitat\xE1"
+  lendasBaixadasNoTurno: 1
+  maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}

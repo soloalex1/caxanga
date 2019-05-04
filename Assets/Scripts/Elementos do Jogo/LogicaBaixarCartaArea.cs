@@ -23,7 +23,7 @@ public class LogicaBaixarCartaArea : LogicaArea
             if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoLenda)
             {
                 bool podeUsarCarta = Configuracoes.admJogo.jogadorAtual.PodeUsarCarta(c);
-                if (podeUsarCarta) //pode baixar carta
+                if (podeUsarCarta && Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno < Configuracoes.admJogo.jogadorAtual.maxLendasTurno) //pode baixar carta
                 {
                     //define o pai da carta para ser o grid lá do Cartas Baixadas
                     Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
@@ -32,7 +32,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                 }
                 else
                 {
-                    Configuracoes.RegistrarEvento("Não há magia o suficiente para baixar esta carta", Color.white);
+                    Configuracoes.RegistrarEvento("Você não pode baixar mais de uma Lenda por turno", Color.white);
                 }
                 // Dá um SetActive() pra sobrescrever o que tem no SelecaoAtual
                 cartaAtual.valor.gameObject.SetActive(true);

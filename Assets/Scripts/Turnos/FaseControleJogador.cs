@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Turnos/Fase de Controle [Jogador]")]
+[CreateAssetMenu(menuName = "Turnos/Fase de Controle [Jogador]")]
 public class FaseControleJogador : Fase
 {
     public EstadoJogador estadoControleJogador;
-    
+    public bool cartasOponenteViradas;
     // método a ser executado quando a fase é completada
     public override bool FoiCompletada()
     {
-        if(forcarSaida)
+        if (forcarSaida)
         {
             forcarSaida = false;
             return true;
-        } 
+        }
 
         return false;
 
@@ -22,10 +22,29 @@ public class FaseControleJogador : Fase
 
     public override void AoIniciarFase()
     {
-        if(!foiIniciada)
+        if (!foiIniciada)
         {
+            cartasOponenteViradas = false;
             Configuracoes.admJogo.DefinirEstado(estadoControleJogador);
             Configuracoes.admJogo.aoMudarFase.Raise();
+            Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno = 0;
+            if (!cartasOponenteViradas)
+            {
+
+                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+                {
+                    c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+                }
+                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorLocal.cartasMao)
+                {
+                    c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+                }
+                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorAtual.cartasMao)
+                {
+                    c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+                }
+                cartasOponenteViradas = true;
+            }
             foiIniciada = true;
         }
 
@@ -33,9 +52,10 @@ public class FaseControleJogador : Fase
 
     public override void AoEncerrarFase()
     {
-        if(foiIniciada)
+        if (foiIniciada)
         {
             Configuracoes.admJogo.DefinirEstado(null);
+
             foiIniciada = false;
         }
     }

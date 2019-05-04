@@ -1404,6 +1404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
+  jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
+  jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   seguradorCartasJogadorPrincipal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
   seguradorCartasJogadorQualquer: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
@@ -1415,12 +1417,16 @@ MonoBehaviour:
   turnos:
   - {fileID: 11400000, guid: 5246b4bfc9682414d860ae4aa864b298, type: 2}
   - {fileID: 11400000, guid: da4f92e57a848ce49bed7f5095329ca9, type: 2}
+  infoJogadorLocal: {fileID: 390571243}
+  infoJogadorInimigo: {fileID: 816887048}
   infoJogadores:
   - {fileID: 390571243}
   - {fileID: 816887048}
   textoTurno: {fileID: 11400000, guid: 0508aa4964227f946855f51caf2f8006, type: 2}
   aoMudarTurno: {fileID: 11400000, guid: f1162435137084a4680d883689f1f064, type: 2}
   aoMudarFase: {fileID: 11400000, guid: 236fd74c81568894199347fcc235c1e6, type: 2}
+  cartaAtacada: {fileID: 0}
+  cartaAtacante: {fileID: 0}
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
@@ -1517,6 +1523,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &552365199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1443821461680721779, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4807505984437409572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594092353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -600}
+  m_AnchoredPosition: {x: 18, y: -532}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812562179
@@ -2709,6 +2727,7 @@ GameObject:
   - component: {fileID: 1159225583}
   - component: {fileID: 1159225582}
   - component: {fileID: 1159225584}
+  - component: {fileID: 1159225585}
   m_Layer: 5
   m_Name: Campo do Jogador
   m_TagString: Untagged
@@ -2785,6 +2804,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logica: {fileID: 11400000, guid: 8b4d1d9b2d247c94b8e2e17c3ab38930, type: 2}
+--- !u!114 &1159225585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159225580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variavelTransform: {fileID: 11400000, guid: f8f4c42e8f0a41e48b2d268cfaf3d612, type: 2}
 --- !u!1 &1167574002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,6 +5027,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8307601525992657370, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+        type: 3}
+      propertyPath: propriedades.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307601525992657370, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+        type: 3}
+      propertyPath: propriedades.Array.data[6].texto
+      value: 
+      objectReference: {fileID: 552365199}
+    - target: {fileID: 8307601525992657370, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+        type: 3}
+      propertyPath: propriedades.Array.data[6].elemento
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e,
+        type: 2}
     - target: {fileID: 4444810429067335748, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
         type: 3}
       propertyPath: m_LocalPosition.x

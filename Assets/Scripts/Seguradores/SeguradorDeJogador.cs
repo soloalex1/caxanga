@@ -17,6 +17,8 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartasAtual;
 
+    public int lendasBaixadasNoTurno;
+    public int maxLendasTurno;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
 
@@ -42,6 +44,10 @@ public class SeguradorDeJogador : ScriptableObject
         {
             magia -= custo.intValor;
             resultado = true;
+        }
+        if (resultado == false)
+        {
+            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta Lenda", Color.white);
         }
         return resultado;
     }

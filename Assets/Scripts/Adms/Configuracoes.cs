@@ -43,6 +43,7 @@ public static class Configuracoes
 
     public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
     {
+
         instCarta.podeAtacarNesteTurno = false;
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
         if (instCarta.podeAtacarNesteTurno == false)
@@ -51,6 +52,7 @@ public static class Configuracoes
         }
         DefinirPaiCarta(c, p);
         admJogo.jogadorAtual.BaixarCarta(instCarta);
+        admJogo.jogadorAtual.lendasBaixadasNoTurno++;
     }
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
     {

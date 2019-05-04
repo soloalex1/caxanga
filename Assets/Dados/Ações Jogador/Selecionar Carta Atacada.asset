@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446ddf35effac3844a2a056f6c2723a6, type: 3}
   m_Name: Selecionar Carta Atacada
   m_EditorClassIdentifier: 
-  cartaAtacada: {fileID: 0}
+  faseDeBatalha: {fileID: 11400000, guid: a678b1bd9ad6b344da24135e188de5d1, type: 2}

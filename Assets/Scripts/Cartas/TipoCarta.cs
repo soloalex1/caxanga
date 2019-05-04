@@ -12,7 +12,7 @@ public abstract class TipoCarta : ScriptableObject
     {
         Elemento t = Configuracoes.GetAdmRecursos().tipoElemento;
         ExibirInfoPropriedades tipo = e.GetPropriedade(t);
-        tipo.texto.text = nomeTipo;
+        // tipo.texto.text = nomeTipo;
     }
 
     public bool DiferenteTipoDeAtacar(InstanciaCarta instCarta)

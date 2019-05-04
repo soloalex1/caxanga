@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90304d679b7c0940a25dee6ec051ebe, type: 3}
   m_Name: "Cartas M\xE3o Qualquer"
   m_EditorClassIdentifier: 
-  aoSelecionarCartaAtual: {fileID: 11400000, guid: 41f8c2ec4a726b647a82c9e6c83ca96d,
-    type: 2}
-  cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
-  segurandoCarta: {fileID: 11400000, guid: b8729640012d31c4ba0df32d9bdb8a0c, type: 2}
+  aoSelecionarCartaAtual: {fileID: 0}
+  cartaAtual: {fileID: 0}
+  segurandoCarta: {fileID: 0}
