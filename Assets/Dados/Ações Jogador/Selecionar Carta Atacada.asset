@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc0ef05d5874d5479f548e277c682d4, type: 3}
-  m_Name: FaseControleJogador
+  m_Script: {fileID: 11500000, guid: 446ddf35effac3844a2a056f6c2723a6, type: 3}
+  m_Name: Selecionar Carta Atacada
   m_EditorClassIdentifier: 
-  nomeFase: Fase de Controle
-  forcarSaida: 0
-  estadoControleJogador: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85,
-    type: 2}
+  cartaAtacada: {fileID: 0}

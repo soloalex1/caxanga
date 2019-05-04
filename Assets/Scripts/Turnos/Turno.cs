@@ -12,8 +12,16 @@ public class Turno : ScriptableObject
     public SeguradorDeJogador jogador;
     public VariavelFase faseAtual;
     public Fase[] fases;
-
-
+    public AcaoJogador[] acoesIniciais;
+    public void AoIniciarTurno()
+    {
+        if (acoesIniciais == null)
+            return;
+        for (int i = 0; i < acoesIniciais.Length; i++)
+        {
+            acoesIniciais[i].Executar(jogador);
+        }
+    }
     public bool Executar()
     {
         faseAtual.valor = fases[indice];

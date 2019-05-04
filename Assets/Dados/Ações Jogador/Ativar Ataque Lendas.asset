@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90304d679b7c0940a25dee6ec051ebe, type: 3}
-  m_Name: "Cartas M\xE3o Qualquer"
+  m_Script: {fileID: 11500000, guid: ceb0ca2794c34ca42b8adbd33acff9eb, type: 3}
+  m_Name: Ativar Ataque Lendas
   m_EditorClassIdentifier: 
-  aoSelecionarCartaAtual: {fileID: 0}
-  cartaAtual: {fileID: 0}
-  segurandoCarta: {fileID: 0}

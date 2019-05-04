@@ -5,14 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public Color corJogador;
+    public Sprite retratoJogador;
     public string nomeJogador;
     public int magia;
     public int vida;
+    public InfoUIJogador infoUI;
     public bool jogadorHumano;
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
-    public SeguradorDeCartas seguradorAtual;
+    public SeguradorDeCartas seguradorCartasAtual;
 
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
@@ -21,7 +24,6 @@ public class SeguradorDeJogador : ScriptableObject
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>();//lista de cartas na mão do jogador em questão
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>();//lista de cartas no campo do jogador em questão
-
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -29,6 +31,8 @@ public class SeguradorDeJogador : ScriptableObject
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
+        Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
+        infoUI.AtualizarMagia();
     }
     public bool PodeUsarCarta(Carta c)
     {
@@ -40,5 +44,19 @@ public class SeguradorDeJogador : ScriptableObject
             resultado = true;
         }
         return resultado;
+    }
+    public void LevarDano(int dano)
+    {
+        vida -= dano;
+        if (infoUI != null)
+            infoUI.AtualizarVida();
+    }
+    public void CarregarInfoUIJogador()
+    {
+        if (infoUI != null)
+        {
+            infoUI.jogador = this;
+            infoUI.AtualizarTudo();
+        }
     }
 }

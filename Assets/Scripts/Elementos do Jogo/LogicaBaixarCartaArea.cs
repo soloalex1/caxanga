@@ -28,7 +28,11 @@ public class LogicaBaixarCartaArea : LogicaArea
                     //define o pai da carta para ser o grid lá do Cartas Baixadas
                     Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
                     cartaAtual.valor.logicaAtual = logicaCartaBaixa;
-
+                    cartaAtual.valor.gameObject.SetActive(true);
+                }
+                else
+                {
+                    Configuracoes.RegistrarEvento("Não há magia o suficiente para baixar esta carta", Color.white);
                 }
                 // Dá um SetActive() pra sobrescrever o que tem no SelecaoAtual
                 cartaAtual.valor.gameObject.SetActive(true);

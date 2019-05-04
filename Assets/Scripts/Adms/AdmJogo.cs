@@ -5,49 +5,82 @@ using UnityEngine;
 public class AdmJogo : MonoBehaviour
 {
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
+    [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
-    public SeguradorDeCartas seguradorJogadorPrincipal;
-    public SeguradorDeCartas seguradorJogadorQualquer;
-
+    public SeguradorDeCartas seguradorCartasJogadorPrincipal;
+    public SeguradorDeCartas seguradorCartasJogadorQualquer;
     public EstadoJogador estadoAtual;//variávei que nos diz qual é o estado atual do jogador atual
 
     //definir no editor \/
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
     public int indiceTurno;
     public Turno[] turnos;
+    public InfoUIJogador[] infoJogadores;
     public VariavelString textoTurno;
     public GameEvent aoMudarTurno;
     public GameEvent aoMudarFase;
 
+    public InstanciaCarta cartaAtacada;
+    public InstanciaCarta cartaAtacante;
 
+    public static AdmJogo singleton;
+    private void Awake()
+    {
+        singleton = this;
+        todosJogadores = new SeguradorDeJogador[turnos.Length];
+        for (int i = 0; i < turnos.Length; i++)
+        {
+            todosJogadores[i] = turnos[i].jogador;
+        }
+        jogadorAtual = turnos[0].jogador;
+    }
     private void Start()
     {
         /*  
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
+
         Configuracoes.admJogo = this;
-
         InicializarJogadores();
-
         CriarCartasIniciais();
         textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
     }
+    void TrocarPosicaoJogadores()
+    {
+        if (jogadorAtual == todosJogadores[0])
+        {
+            seguradorCartasJogadorPrincipal.CarregarCartasJogador(todosJogadores[1], infoJogadores[0]);
+            seguradorCartasJogadorQualquer.CarregarCartasJogador(todosJogadores[0], infoJogadores[1]);
 
+        }
+        else
+        {
+            seguradorCartasJogadorPrincipal.CarregarCartasJogador(todosJogadores[0], infoJogadores[0]);
+            seguradorCartasJogadorQualquer.CarregarCartasJogador(todosJogadores[1], infoJogadores[1]);
+        }
+    }
     void InicializarJogadores()
     {
-        foreach (SeguradorDeJogador jogador in todosJogadores)
+        for (int i = 0; i < todosJogadores.Length; i++)
         {
-            jogador.magia = 10;
-            jogador.vida = 20;
-            if (jogador.jogadorHumano == true)
+            todosJogadores[i].magia = 10;
+            todosJogadores[i].vida = 20;
+            if (todosJogadores[i].jogadorHumano == true)
             {
-                jogador.seguradorAtual = seguradorJogadorPrincipal;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorPrincipal;
+
             }
             else
             {
-                jogador.seguradorAtual = seguradorJogadorQualquer;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorQualquer;
+            }
+            if (i < 2)
+            {
+                infoJogadores[i].jogador = todosJogadores[i];
+                todosJogadores[i].infoUI = infoJogadores[i];
+                infoJogadores[i].jogador.CarregarInfoUIJogador();
             }
         }
     }
@@ -65,26 +98,29 @@ public class AdmJogo : MonoBehaviour
                 e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
                 InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
                 instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
-                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+                instCarta.podeSerAtacada = true;
                 todosJogadores[p].cartasMao.Add(instCarta);
             }
+            Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
 
-    public bool trocarJogador;
+    public void TrocarJogadorAtual()
+    {
+        if (jogadorAtual == todosJogadores[0])
+        {
+            jogadorAtual = todosJogadores[1];
+        }
+        else
+        {
+            jogadorAtual = todosJogadores[0];
+        }
+    }
     private void Update()
     {
-
-        if (trocarJogador == true)
-        {
-            trocarJogador = false;
-
-            seguradorJogadorPrincipal.CarregarJogador(todosJogadores[0]);
-            seguradorJogadorQualquer.CarregarJogador(todosJogadores[1]);
-        }
-
         bool foiCompleto = turnos[indiceTurno].Executar();
-
+        Atacar();
         if (foiCompleto)
         {
 
@@ -93,8 +129,13 @@ public class AdmJogo : MonoBehaviour
             {
                 indiceTurno = 0;
             }
+            //O jogador atual muda aqui
+            TrocarPosicaoJogadores();
+            TrocarJogadorAtual();
+            turnos[indiceTurno].AoIniciarTurno();
             textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
             aoMudarTurno.Raise();
+
         }
 
         if (estadoAtual != null)
@@ -110,7 +151,23 @@ public class AdmJogo : MonoBehaviour
 
     public void FinalizarFaseAtual()
     {
+        Configuracoes.RegistrarEvento(turnos[indiceTurno].name + " terminou", jogadorAtual.corJogador);
         turnos[indiceTurno].FinalizarFaseAtual();
     }
-
+    public void Atacar()
+    {
+        if (cartaAtacada != null && cartaAtacante != null)
+        {
+            int poderCartaAtacante = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            int poderCartaAtacada = cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacante;
+            cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacada;
+            Configuracoes.RegistrarEvento("A carta " + cartaAtacante.infoCarta.carta.name + " atacou a carta " + cartaAtacada.infoCarta.carta.name + "e tirou " + poderCartaAtacante, Color.white);
+            cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
+            cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
+            cartaAtacada = null;
+            cartaAtacante = null;
+            DefinirEstado(null);
+        }
+    }
 }

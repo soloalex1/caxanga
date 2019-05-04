@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TipoLenda
   m_EditorClassIdentifier: 
   nomeTipo: Lenda
+  podeAtacar: 1

@@ -15,4 +15,7 @@ MonoBehaviour:
   jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   faseAtual: {fileID: 11400000, guid: 98104beb8173f0b4faa999160db045a9, type: 2}
   fases:
+  - {fileID: 11400000, guid: 2b98c69ef9616fc4498c8ca11c2f436c, type: 2}
   - {fileID: 11400000, guid: 74fa6696dec61eb4b918b5632e5cbf1d, type: 2}
+  acoesIniciais:
+  - {fileID: 11400000, guid: a418d4ad6d281f747bb4ce8c171c8361, type: 2}
