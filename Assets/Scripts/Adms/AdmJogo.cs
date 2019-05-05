@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AdmJogo : MonoBehaviour
 {
+    bool fimDaRodada = false;
+    public int rodadaAtual;
+    public int numCartasPuxadasInicioRodada;
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
@@ -164,6 +167,31 @@ public class AdmJogo : MonoBehaviour
         estadoAtual = estado;
     }
 
+    public void RedefinirJogadores()
+    {
+        if (fimDaRodada)
+        {
+            rodadaAtual++;
+            //redefinir jogadores
+            for (int i = 0; i < todosJogadores.Length; i++)
+            {
+                todosJogadores[i].magia = todosJogadores[i].magiaInicial + (2 * rodadaAtual);
+                todosJogadores[i].vida = todosJogadores[i].vidaInicial;
+                for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
+                {
+                    PuxarCarta(todosJogadores[i]);
+                }
+                if (i < 2)
+                {
+                    infoJogadores[i].jogador = todosJogadores[i];
+                    todosJogadores[i].infoUI = infoJogadores[i];
+                    infoJogadores[i].jogador.CarregarInfoUIJogador();
+                }
+            }
+            fimDaRodada = false;
+            Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
+        }
+    }
     public void FinalizarFaseAtual()
     {
         Configuracoes.RegistrarEvento(turnos[indiceTurno].name + " terminou", jogadorAtual.corJogador);
@@ -214,6 +242,8 @@ public class AdmJogo : MonoBehaviour
             {
                 jogadorAtacado.vida = 0;
                 Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
+                fimDaRodada = true;
+                RedefinirJogadores();
                 if (jogadorInimigo.barrasDeVida > 0)
                 {
                     jogadorInimigo.barrasDeVida--;
