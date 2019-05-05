@@ -238,6 +238,7 @@ public class AdmJogo : MonoBehaviour
                 Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
                 jogador.cartasBaixadas.Remove(c);
+                jogador.ColocarCartaNoCemiterio(c);
             }
         }
     }
