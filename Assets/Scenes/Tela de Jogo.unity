@@ -1708,9 +1708,10 @@ MonoBehaviour:
   jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   jogadorAtacado: {fileID: 0}
-  seguradorCartasJogadorPrincipal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
+  jogadorIA: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  seguradorCartasJogadorAtual: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
-  seguradorCartasJogadorQualquer: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
+  seguradorCartasJogadorInimigo: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
     type: 2}
   estadoAtual: {fileID: 0}
   prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
@@ -1720,7 +1721,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5246b4bfc9682414d860ae4aa864b298, type: 2}
   - {fileID: 11400000, guid: da4f92e57a848ce49bed7f5095329ca9, type: 2}
   infoJogadorLocal: {fileID: 390571243}
-  infoJogadorInimigo: {fileID: 816887048}
+  infoJogadorIA: {fileID: 0}
   infoJogadores:
   - {fileID: 390571243}
   - {fileID: 816887048}
