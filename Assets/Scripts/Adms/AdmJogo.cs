@@ -8,6 +8,7 @@ public class AdmJogo : MonoBehaviour
 
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
+    public SeguradorDeJogador jogadorAtacado;
     [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
     public SeguradorDeCartas seguradorCartasJogadorPrincipal;
@@ -69,6 +70,7 @@ public class AdmJogo : MonoBehaviour
         {
             todosJogadores[i].magia = 10;
             todosJogadores[i].vida = 20;
+            todosJogadores[i].barrasDeVida = 3;
             if (todosJogadores[i].jogadorHumano == true)
             {
                 todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorPrincipal;
@@ -175,13 +177,41 @@ public class AdmJogo : MonoBehaviour
             }
             if (poderCartaAtacanteDepois <= 0)
             {
-                Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 MatarCarta(cartaAtacante, jogadorAtual);
             }
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
+            cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacada = null;
             cartaAtacante = null;
+        }
+        //Atacar um jogador
+        if (cartaAtacante != null && jogadorAtacado != null)
+        {
+            int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            jogadorAtacado.vida -= poderCartaAtacanteAntes;
+            cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor--;
+            jogadorAtacado.infoUI.AtualizarVida();
+            cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
+            if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
+            {
+                MatarCarta(cartaAtacante, jogadorAtual);
+            }
+            if (jogadorAtacado.vida <= 0)
+            {
+                Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
+                if (jogadorInimigo.barrasDeVida > 0)
+                {
+                    jogadorInimigo.barrasDeVida--;
+                    if (jogadorInimigo.barrasDeVida <= 0)
+                    {
+                        Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + "venceu a partida", jogadorAtual.corJogador);
+                    }
+                }
+            }
+            cartaAtacante.podeAtacarNesteTurno = false;
+            cartaAtacante = null;
+            jogadorAtacado = null;
         }
     }
 
@@ -191,6 +221,7 @@ public class AdmJogo : MonoBehaviour
         {
             if (jogador.cartasBaixadas.Contains(c))
             {
+                Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
                 jogador.cartasBaixadas.Remove(c);
             }

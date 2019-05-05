@@ -28,6 +28,7 @@ public class FaseControleJogador : Fase
             Configuracoes.admJogo.DefinirEstado(estadoControleJogador);
             Configuracoes.admJogo.aoMudarFase.Raise();
             Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno = 0;
+
             if (!cartasOponenteViradas)
             {
 

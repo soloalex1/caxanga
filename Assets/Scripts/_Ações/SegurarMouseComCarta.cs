@@ -23,9 +23,8 @@ public class SegurarMouseComCarta : Acao
         }
         if (btMouseApertado == false)//se o jogador não estiver apertando o botão do mouse
         {
+            gridAreaDropavel.valor.gameObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
-
-
             foreach (RaycastResult r in resultados)
             {
                 //procurando por áreas em que o jogador pode jogar uma carta

@@ -12,10 +12,13 @@ public class SeguradorDeJogador : ScriptableObject
     public int vida;
     public InfoUIJogador infoUI;
     public bool jogadorHumano;
+    public bool podeSerAtacado;
+    public int barrasDeVida;
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartasAtual;
+
 
     public int lendasBaixadasNoTurno;
     public int maxLendasTurno;

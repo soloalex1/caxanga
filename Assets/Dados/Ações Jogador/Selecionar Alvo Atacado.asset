@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446ddf35effac3844a2a056f6c2723a6, type: 3}
-  m_Name: Selecionar Carta Atacada
+  m_Name: Selecionar Alvo Atacado
   m_EditorClassIdentifier: 
   faseDeBatalha: {fileID: 11400000, guid: a678b1bd9ad6b344da24135e188de5d1, type: 2}

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[CreateAssetMenu(menuName = "Ações/Selecionar Carta Atacada")]
-public class SelecionarCartaAtacada : Acao
+[CreateAssetMenu(menuName = "Ações/Selecionar Alvo Atacado")]
+public class SelecionarAlvoAtacado : Acao
 {
     public EstadoJogador faseDeBatalha;
     public override void Executar(float d)
@@ -23,6 +23,18 @@ public class SelecionarCartaAtacada : Acao
                 {
                     jogadorInimigo = Configuracoes.admJogo.jogadorLocal;
                 }
+                //logica para atacar o jogador inimigo
+                InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponent<InfoUIJogador>();
+                if (infoJogadorInimigo != null)
+                {
+                    if (infoJogadorInimigo.jogador == jogadorInimigo)
+                    {
+                        Configuracoes.admJogo.jogadorAtacado = jogadorInimigo;
+                        Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        Configuracoes.RegistrarEvento("O alvo " + jogadorInimigo.nomeJogador + " foi selecionado para ser atacado", Color.white);
+                    }
+                }
+                //logica para atacar uma carta
                 InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
                 if (instCarta == Configuracoes.admJogo.cartaAtacante)
                 {
