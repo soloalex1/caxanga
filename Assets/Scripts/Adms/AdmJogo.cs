@@ -67,9 +67,16 @@ public class AdmJogo : MonoBehaviour
     {
         for (int i = 0; i < todosJogadores.Length; i++)
         {
-            todosJogadores[i].magia = 10;
-            todosJogadores[i].vida = 20;
+            todosJogadores[i].magia = todosJogadores[i].magiaInicial;
+            todosJogadores[i].vida = todosJogadores[i].vidaInicial;
             todosJogadores[i].barrasDeVida = 3;
+            todosJogadores[i].baralho = new Baralho();
+            todosJogadores[i].baralho.cartasBaralho = new List<string>();
+            foreach (string carta in todosJogadores[i].baralhoInicial.cartasBaralho)
+            {
+                todosJogadores[i].baralho.cartasBaralho.Add(carta);
+            }
+
             if (todosJogadores[i].jogadorHumano == true)
             {
                 todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorPrincipal;
@@ -89,7 +96,6 @@ public class AdmJogo : MonoBehaviour
     }
     public void PuxarCarta(SeguradorDeJogador jogador)
     {
-        Debug.Log("ssaaaaaaaaaaaaaa");
         AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
         GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
         ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
@@ -98,15 +104,15 @@ public class AdmJogo : MonoBehaviour
         instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
+        Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
         jogador.cartasMao.Add(instCarta);
-        Configuracoes.RegistrarEvento("A carta " + instCarta.infoCarta.carta.name + " foi puxada", jogador.corJogador);
         jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
     }
     void PuxarCartasIniciais()
     {
         for (int p = 0; p < todosJogadores.Length; p++)
         {
-            todosJogadores[p].baralho.jogador = todosJogadores[p];
+            // todosJogadores[p].baralho.jogador = todosJogadores[p];
             for (int i = 0; i < todosJogadores[p].numCartasMaoInicio; i++)
             {
                 PuxarCarta(todosJogadores[p]);

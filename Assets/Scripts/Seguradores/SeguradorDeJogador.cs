@@ -6,10 +6,12 @@ using UnityEngine;
 public class SeguradorDeJogador : ScriptableObject
 {
     public int numCartasMaoInicio;
-    public Baralho baralho;
+    public Baralho baralho = null;
+    public Baralho baralhoInicial;
     public Color corJogador;
     public Sprite retratoJogador;
     public string nomeJogador;
+    public int vidaInicial, magiaInicial;
     public int magia;
     public int vida;
     public InfoUIJogador infoUI;

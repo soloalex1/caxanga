@@ -12,15 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador Inimigo
   m_EditorClassIdentifier: 
+  numCartasMaoInicio: 5
+  baralho: {fileID: 0}
+  baralhoInicial: {fileID: 11400000, guid: b8c31aa264b081b4dba1f3639560332c, type: 2}
   corJogador: {r: 0.7924528, g: 0.12335351, b: 0.12335351, a: 1}
   retratoJogador: {fileID: 21300000, guid: b50c6e9de917b6942b7f5fe78cb8b1da, type: 3}
   nomeJogador: Bastrogilda
-  magia: 10
-  vida: 20
+  vidaInicial: 3
+  magiaInicial: 10
+  magia: 6
+  vida: -1
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 0
-  barrasDeVida: 3
+  barrasDeVida: 2
   cartasMaoInicio:
   - "Boitat\xE1"
   - Saci
@@ -29,7 +34,7 @@ MonoBehaviour:
   - Curupira
   - "Vit\xF3ria-r\xE9gia"
   - Mapinguari
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}

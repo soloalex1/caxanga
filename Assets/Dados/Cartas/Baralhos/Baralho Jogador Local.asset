@@ -10,6 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332b0d6684fa10b438d5d5e125ac0d50, type: 3}
-  m_Name: Baralho Inicial
+  m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
-  cartasBaralho: []
+  cartasBaralho:
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  - Cuca
+  jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
