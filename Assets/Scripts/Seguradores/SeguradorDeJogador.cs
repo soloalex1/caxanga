@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public int numCartasMaoInicio;
+    public Baralho baralho;
     public Color corJogador;
     public Sprite retratoJogador;
     public string nomeJogador;

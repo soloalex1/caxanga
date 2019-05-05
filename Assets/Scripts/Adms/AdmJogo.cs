@@ -5,7 +5,6 @@ using UnityEngine;
 public class AdmJogo : MonoBehaviour
 {
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
-
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorAtacado;
@@ -46,7 +45,7 @@ public class AdmJogo : MonoBehaviour
 
         Configuracoes.admJogo = this;
         InicializarJogadores();
-        CriarCartasIniciais();
+        PuxarCartasIniciais();
         textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
     }
@@ -88,24 +87,41 @@ public class AdmJogo : MonoBehaviour
             }
         }
     }
-
-    void CriarCartasIniciais()
+    public void PuxarCarta(SeguradorDeJogador jogador)
     {
+        Debug.Log("ssaaaaaaaaaaaaaa");
         AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
-
+        GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
+        ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
+        e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
+        InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
+        instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
+        Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+        instCarta.podeSerAtacada = true;
+        jogador.cartasMao.Add(instCarta);
+        Configuracoes.RegistrarEvento("A carta " + instCarta.infoCarta.carta.name + " foi puxada", jogador.corJogador);
+        jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
+    }
+    void PuxarCartasIniciais()
+    {
         for (int p = 0; p < todosJogadores.Length; p++)
         {
-            for (int i = 0; i < todosJogadores[p].cartasMaoInicio.Length; i++)//para cada carta na mão do jogador atual...
+            todosJogadores[p].baralho.jogador = todosJogadores[p];
+            for (int i = 0; i < todosJogadores[p].numCartasMaoInicio; i++)
             {
-                GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
-                ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-                e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
-                InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-                instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
-                Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
-                instCarta.podeSerAtacada = true;
-                todosJogadores[p].cartasMao.Add(instCarta);
+                PuxarCarta(todosJogadores[p]);
             }
+            // for (int i = 0; i < todosJogadores[p].cartasMaoInicio.Length; i++)//para cada carta na mão do jogador atual...
+            // {
+            //     GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
+            //     ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
+            //     e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
+            //     InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
+            //     instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
+            //     Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+            //     instCarta.podeSerAtacada = true;
+            //     todosJogadores[p].cartasMao.Add(instCarta);
+            // }
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
