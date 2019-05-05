@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Ações/Selecionar Alvo Atacado")]
 public class SelecionarAlvoAtacado : Acao
 {
     public EstadoJogador faseDeBatalha;
-
+    public VariavelTransform gridAreaDropavel;
     public EstadoJogador jogadorAtacando;
     public override void Executar(float d)
     {
@@ -34,6 +35,10 @@ public class SelecionarAlvoAtacado : Acao
                         Configuracoes.admJogo.jogadorAtacado = jogadorInimigo;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                         Configuracoes.RegistrarEvento("O alvo " + jogadorInimigo.nomeJogador + " foi selecionado para ser atacado", Color.white);
+                        if (gridAreaDropavel != null)
+                        {
+                            gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                        }
                     }
                 }
                 //logica para atacar uma carta
@@ -50,12 +55,20 @@ public class SelecionarAlvoAtacado : Acao
                     Configuracoes.admJogo.cartaAtacada = instCarta;
                     Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                     Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
+                    if (gridAreaDropavel != null)
+                    {
+                        gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                    }
                     return;
                 }
             }
 
-            if(Configuracoes.admJogo.estadoAtual == jogadorAtacando)
+            if (Configuracoes.admJogo.estadoAtual == jogadorAtacando)
             {
+                if (gridAreaDropavel != null)
+                {
+                    gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                }
                 Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
                 Configuracoes.admJogo.estadoAtual = faseDeBatalha;
             }

@@ -192,6 +192,7 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor--;
             jogadorAtacado.infoUI.AtualizarVida();
+            Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " atacou " + jogadorInimigo.nomeJogador + " e lhe tirou " + poderCartaAtacanteAntes + " de vida", jogadorAtual.corJogador);
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
             {
