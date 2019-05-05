@@ -112,22 +112,11 @@ public class AdmJogo : MonoBehaviour
     {
         for (int p = 0; p < todosJogadores.Length; p++)
         {
-            // todosJogadores[p].baralho.jogador = todosJogadores[p];
+            todosJogadores[p].baralho.Embaralhar();
             for (int i = 0; i < todosJogadores[p].numCartasMaoInicio; i++)
             {
                 PuxarCarta(todosJogadores[p]);
             }
-            // for (int i = 0; i < todosJogadores[p].cartasMaoInicio.Length; i++)//para cada carta na mão do jogador atual...
-            // {
-            //     GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
-            //     ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-            //     e.CarregarCarta(ar.obterInstanciaCarta(todosJogadores[p].cartasMaoInicio[i]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
-            //     InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-            //     instCarta.logicaAtual = todosJogadores[p].logicaMao;//define a lógica pra ser a lógica da mão
-            //     Configuracoes.DefinirPaiCarta(carta.transform, todosJogadores[p].seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
-            //     instCarta.podeSerAtacada = true;
-            //     todosJogadores[p].cartasMao.Add(instCarta);
-            // }
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
@@ -182,6 +171,7 @@ public class AdmJogo : MonoBehaviour
     }
     public void Atacar()
     {
+        //Atacar uma carta
         if (cartaAtacada != null && cartaAtacante != null)
         {
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
@@ -222,6 +212,7 @@ public class AdmJogo : MonoBehaviour
             }
             if (jogadorAtacado.vida <= 0)
             {
+                jogadorAtacado.vida = 0;
                 Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
                 if (jogadorInimigo.barrasDeVida > 0)
                 {

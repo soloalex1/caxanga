@@ -7,7 +7,7 @@ public class Baralho : ScriptableObject
     public List<string> cartasBaralho = new List<string>();
     public SeguradorDeJogador jogador;
 
-    public void Embaralhar(List<string> cartasBaralho)
+    public void Embaralhar()
     {
         for (int i = cartasBaralho.Count - 1; i > 0; i--)
         {
