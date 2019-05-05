@@ -417,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -429, y: -329}
+  m_AnchoredPosition: {x: -428.99994, y: -329}
   m_SizeDelta: {x: 980.56006, y: 1332.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &112490973
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5246b4bfc9682414d860ae4aa864b298, type: 2}
   - {fileID: 11400000, guid: da4f92e57a848ce49bed7f5095329ca9, type: 2}
   infoJogadorLocal: {fileID: 390571243}
-  infoJogadorIA: {fileID: 0}
+  infoJogadorIA: {fileID: 816887048}
   infoJogadores:
   - {fileID: 390571243}
   - {fileID: 816887048}

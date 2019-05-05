@@ -20,7 +20,7 @@ MonoBehaviour:
   nomeJogador: Bastrogilda
   vidaInicial: 20
   magiaInicial: 10
-  magia: 6
+  magia: 2
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 0
@@ -34,9 +34,8 @@ MonoBehaviour:
   - Curupira
   - "Vit\xF3ria-r\xE9gia"
   - Mapinguari
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
   variavelCemiterio: {fileID: 11400000, guid: 1787aeded8bead448951db2acefe3fdc, type: 2}
-  cartasCemiterio: []
