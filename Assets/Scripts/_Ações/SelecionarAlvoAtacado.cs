@@ -25,7 +25,6 @@ public class SelecionarAlvoAtacado : Acao
                 else
                 {
                     jogadorInimigo = Configuracoes.admJogo.jogadorLocal;
-                    Debug.Log("O jogador inimigo é o " + jogadorInimigo.nomeJogador);
                 }
                 //logica para atacar o jogador inimigo
                 InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponent<InfoUIJogador>();
@@ -40,7 +39,9 @@ public class SelecionarAlvoAtacado : Acao
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
-                    } else {
+                    }
+                    else
+                    {
                         Configuracoes.admJogo.jogadorAtacado = Configuracoes.admJogo.jogadorLocal;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                         Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.jogadorLocal.nomeJogador + " foi selecionado para ser atacado", Color.white);

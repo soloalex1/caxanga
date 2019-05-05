@@ -18,10 +18,10 @@ MonoBehaviour:
   corJogador: {r: 0.8679245, g: 0.35617658, b: 0.35617658, a: 1}
   retratoJogador: {fileID: 21300000, guid: b50c6e9de917b6942b7f5fe78cb8b1da, type: 3}
   nomeJogador: Bastrogilda
-  vidaInicial: 3
+  vidaInicial: 20
   magiaInicial: 10
   magia: 6
-  vida: 3
+  vida: 15
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 0
