@@ -187,6 +187,14 @@ public class AdmJogo : MonoBehaviour
                     todosJogadores[i].infoUI = infoJogadores[i];
                     infoJogadores[i].jogador.CarregarInfoUIJogador();
                 }
+
+                foreach(InstanciaCarta carta in todosJogadores[i].cartasBaixadas)
+                {
+                    if(todosJogadores[i].cartasBaixadas.Contains(carta))
+                    {
+                        MatarCarta(carta, todosJogadores[i]);
+                    }
+                }
             }
             fimDaRodada = false;
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
