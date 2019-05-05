@@ -32,7 +32,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
+    sprite: {fileID: 21300000, guid: ae27519e44d61004abc1fd1fe680a9a0, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: O gigante protetor da floresta. Ataca e engole seus inimigos.
     intValor: 0
