@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Ações/Selecionar Carta Atacante")]
 public class SelecionarCartaAtacante : Acao
 {
     public EstadoJogador atacando;
+    public EstadoJogador faseDeBatalha;
+    public VariavelTransform gridAreaDropavel;
     public override void Executar(float d)
     {
+        if (Configuracoes.admJogo.estadoAtual != atacando)
+        {
+            Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
@@ -21,8 +28,16 @@ public class SelecionarCartaAtacante : Acao
                 if (instCarta.podeAtacarNesteTurno)
                 {
                     Configuracoes.RegistrarEvento("A Carta " + instCarta.infoCarta.carta.name + " foi selecionada para atacar", Color.white);
+                    if (gridAreaDropavel != null)
+                    {
+                        gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = false;
+                    }
                     Configuracoes.admJogo.DefinirEstado(atacando);
                     Configuracoes.admJogo.cartaAtacante = instCarta;
+                }
+                else
+                {
+                    Configuracoes.RegistrarEvento("A Carta " + instCarta.infoCarta.carta.name + " não pode atacar neste turno", Color.white);
                 }
             }
         }

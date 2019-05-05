@@ -16,6 +16,7 @@ public class DetectarMouseSobre : Acao
             c = r.gameObject.GetComponentInParent<IClicavel>();
             if (c != null)
             {
+                // Debug.Log("To com o mouse em cima");
                 c.AoSelecionar();
                 break;
             }

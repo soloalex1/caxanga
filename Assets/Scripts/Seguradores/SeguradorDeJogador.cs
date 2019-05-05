@@ -5,25 +5,35 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public int numCartasMaoInicio;
+    public Baralho baralho = null;
+    public Baralho baralhoInicial;
     public Color corJogador;
     public Sprite retratoJogador;
     public string nomeJogador;
+    public int vidaInicial, magiaInicial;
     public int magia;
     public int vida;
     public InfoUIJogador infoUI;
     public bool jogadorHumano;
+    public bool podeSerAtacado;
+    public int barrasDeVida;
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartasAtual;
-
+    public int lendasBaixadasNoTurno;
+    public int maxLendasTurno;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
 
-    [System.NonSerialized]//não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
-    public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>();//lista de cartas na mão do jogador em questão
+    [System.NonSerialized] // não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
+    public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
-    public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>();//lista de cartas no campo do jogador em questão
+    public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
+    public VariavelTransform variavelCemiterio;
+    List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
+
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -43,14 +53,20 @@ public class SeguradorDeJogador : ScriptableObject
             magia -= custo.intValor;
             resultado = true;
         }
+        if (resultado == false)
+        {
+            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta Lenda", Color.white);
+        }
         return resultado;
     }
+    
     public void LevarDano(int dano)
     {
         vida -= dano;
         if (infoUI != null)
             infoUI.AtualizarVida();
     }
+
     public void CarregarInfoUIJogador()
     {
         if (infoUI != null)
@@ -58,5 +74,22 @@ public class SeguradorDeJogador : ScriptableObject
             infoUI.jogador = this;
             infoUI.AtualizarTudo();
         }
+    }
+
+    public void ColocarCartaNoCemiterio(InstanciaCarta carta)
+    {
+        cartasCemiterio.Add(carta);
+        carta.transform.parent = variavelCemiterio.valor;
+
+        Vector3 posicao = Vector3.zero;
+        posicao.x = cartasCemiterio.Count * 10;
+        posicao.z = cartasCemiterio.Count * 10;
+
+        carta.transform.localPosition = posicao;
+        carta.transform.localRotation = Quaternion.identity;
+        carta.transform.localScale = Vector3.one;
+
+        carta.gameObject.SetActive(true);
+
     }
 }
