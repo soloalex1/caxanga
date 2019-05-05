@@ -11,10 +11,12 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorAtacado;
+    public SeguradorDeJogador jogadorIA;
+
     [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
-    public SeguradorDeCartas seguradorCartasJogadorPrincipal;
-    public SeguradorDeCartas seguradorCartasJogadorQualquer;
+    public SeguradorDeCartas seguradorCartasJogadorAtual;
+    public SeguradorDeCartas seguradorCartasJogadorInimigo;
     public EstadoJogador estadoAtual;//variávei que nos diz qual é o estado atual do jogador atual
 
     //definir no editor \/
@@ -22,7 +24,7 @@ public class AdmJogo : MonoBehaviour
     public int indiceTurno;
     public Turno[] turnos;
     public InfoUIJogador infoJogadorLocal;
-    public InfoUIJogador infoJogadorInimigo;
+    public InfoUIJogador infoJogadorIA;
     public InfoUIJogador[] infoJogadores;
     public VariavelString textoTurno;
     public GameEvent aoMudarTurno;
@@ -36,7 +38,7 @@ public class AdmJogo : MonoBehaviour
         singleton = this;
         todosJogadores = new SeguradorDeJogador[turnos.Length];
         todosJogadores[0] = jogadorLocal;
-        todosJogadores[1] = jogadorInimigo;
+        todosJogadores[1] = jogadorIA;
         jogadorAtual = jogadorLocal;
     }
     private void Start()
@@ -52,20 +54,7 @@ public class AdmJogo : MonoBehaviour
         textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
     }
-    void TrocarPosicaoJogadores()
-    {
-        if (jogadorAtual == jogadorLocal)
-        {
-            seguradorCartasJogadorPrincipal.CarregarCartasJogador(jogadorInimigo, infoJogadorLocal);
-            seguradorCartasJogadorQualquer.CarregarCartasJogador(jogadorLocal, infoJogadorInimigo);
 
-        }
-        else
-        {
-            seguradorCartasJogadorPrincipal.CarregarCartasJogador(jogadorLocal, infoJogadorLocal);
-            seguradorCartasJogadorQualquer.CarregarCartasJogador(jogadorInimigo, infoJogadorInimigo);
-        }
-    }
     void InicializarJogadores()
     {
         for (int i = 0; i < todosJogadores.Length; i++)
@@ -82,12 +71,12 @@ public class AdmJogo : MonoBehaviour
 
             if (todosJogadores[i].jogadorHumano == true)
             {
-                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorPrincipal;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorAtual;
 
             }
             else
             {
-                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorQualquer;
+                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorInimigo;
             }
             if (i < 2)
             {
@@ -123,17 +112,25 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
         }
     }
-
     public void TrocarJogadorAtual()
     {
+        //se na hora da troca o jogador de baixo for o Player
         if (jogadorAtual == jogadorLocal)
         {
             jogadorAtual = jogadorInimigo;
+            jogadorInimigo = jogadorLocal;
+            seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
+            seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
         }
         else
         {
             jogadorAtual = jogadorLocal;
+            jogadorInimigo = jogadorIA;
+            seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
+            seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
         }
+        Debug.Log("Troquei o jogador atual para " + jogadorAtual.nomeJogador);
+        Debug.Log("O jogador inimigo é: " + jogadorInimigo.nomeJogador);
     }
     private void Update()
     {
@@ -148,7 +145,6 @@ public class AdmJogo : MonoBehaviour
                 indiceTurno = 0;
             }
             //O jogador atual muda aqui
-            TrocarPosicaoJogadores();
             TrocarJogadorAtual();
             turnos[indiceTurno].AoIniciarTurno();
             textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
@@ -213,6 +209,7 @@ public class AdmJogo : MonoBehaviour
             if (poderCartaAtacadaDepois <= 0)
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
+                Debug.Log("o JOGADOR INIMIGO NO MOMENTO É" + jogadorInimigo.nomeJogador);
                 MatarCarta(cartaAtacada, jogadorInimigo);
             }
             if (poderCartaAtacanteDepois <= 0)
@@ -234,6 +231,7 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado.infoUI.AtualizarVida();
             Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " atacou " + jogadorInimigo.nomeJogador + " e lhe tirou " + poderCartaAtacanteAntes + " de vida", jogadorAtual.corJogador);
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
+
             if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
             {
                 MatarCarta(cartaAtacante, jogadorAtual);

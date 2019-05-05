@@ -36,10 +36,6 @@ public class FaseControleJogador : Fase
                 {
                     c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
                 }
-                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorLocal.cartasMao)
-                {
-                    c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-                }
                 foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorAtual.cartasMao)
                 {
                     c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
