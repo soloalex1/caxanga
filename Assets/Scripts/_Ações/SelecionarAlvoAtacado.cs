@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class SelecionarAlvoAtacado : Acao
 {
     public EstadoJogador faseDeBatalha;
+
+    public EstadoJogador jogadorAtacando;
     public override void Executar(float d)
     {
         if (Input.GetMouseButtonDown(0))
@@ -48,7 +50,14 @@ public class SelecionarAlvoAtacado : Acao
                     Configuracoes.admJogo.cartaAtacada = instCarta;
                     Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                     Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
+                    return;
                 }
+            }
+
+            if(Configuracoes.admJogo.estadoAtual == jogadorAtacando)
+            {
+                Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
+                Configuracoes.admJogo.estadoAtual = faseDeBatalha;
             }
         }
     }
