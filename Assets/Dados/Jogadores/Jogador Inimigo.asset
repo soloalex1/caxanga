@@ -15,17 +15,17 @@ MonoBehaviour:
   numCartasMaoInicio: 5
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: b8c31aa264b081b4dba1f3639560332c, type: 2}
-  corJogador: {r: 0.7924528, g: 0.12335351, b: 0.12335351, a: 1}
+  corJogador: {r: 0.8679245, g: 0.35617658, b: 0.35617658, a: 1}
   retratoJogador: {fileID: 21300000, guid: b50c6e9de917b6942b7f5fe78cb8b1da, type: 3}
   nomeJogador: Bastrogilda
   vidaInicial: 3
   magiaInicial: 10
   magia: 6
-  vida: -1
+  vida: 3
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 0
-  barrasDeVida: 2
+  barrasDeVida: 3
   cartasMaoInicio:
   - "Boitat\xE1"
   - Saci
