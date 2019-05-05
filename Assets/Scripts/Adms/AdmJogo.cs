@@ -183,6 +183,14 @@ public class AdmJogo : MonoBehaviour
                     todosJogadores[i].infoUI = infoJogadores[i];
                     infoJogadores[i].jogador.CarregarInfoUIJogador();
                 }
+
+                foreach(InstanciaCarta carta in todosJogadores[i].cartasBaixadas)
+                {
+                    if(todosJogadores[i].cartasBaixadas.Contains(carta))
+                    {
+                        MatarCarta(carta, todosJogadores[i]);
+                    }
+                }
             }
             fimDaRodada = false;
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
@@ -266,6 +274,7 @@ public class AdmJogo : MonoBehaviour
                 Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
                 jogador.cartasBaixadas.Remove(c);
+                jogador.ColocarCartaNoCemiterio(c);
             }
         }
     }

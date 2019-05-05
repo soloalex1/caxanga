@@ -7,6 +7,7 @@ public class SeguradorDeCartas : ScriptableObject
 {
     public VariavelTransform gridMao;
     public VariavelTransform gridCartasBaixadas;
+
     public void CarregarCartasJogador(SeguradorDeJogador seguradorJogador, InfoUIJogador InfoUIJogador)
     {
         foreach (InstanciaCarta c in seguradorJogador.cartasBaixadas)
