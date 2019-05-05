@@ -129,8 +129,6 @@ public class AdmJogo : MonoBehaviour
             seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
             seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
         }
-        Debug.Log("Troquei o jogador atual para " + jogadorAtual.nomeJogador);
-        Debug.Log("O jogador inimigo é: " + jogadorInimigo.nomeJogador);
     }
     private void Update()
     {
@@ -184,13 +182,19 @@ public class AdmJogo : MonoBehaviour
                     infoJogadores[i].jogador.CarregarInfoUIJogador();
                 }
 
-                foreach(InstanciaCarta carta in todosJogadores[i].cartasBaixadas)
+                foreach (InstanciaCarta carta in todosJogadores[i].cartasBaixadas)
                 {
-                    if(todosJogadores[i].cartasBaixadas.Contains(carta))
+                    if (todosJogadores[i].cartasBaixadas.Contains(carta))
                     {
+                        Debug.Log(carta.infoCarta.carta.name + " está no campo de " + todosJogadores[i]);
                         MatarCarta(carta, todosJogadores[i]);
                     }
+                    if (todosJogadores[i].cartasBaixadas.Count <= 0)
+                    {
+                        break;
+                    }
                 }
+
             }
             fimDaRodada = false;
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
@@ -217,7 +221,6 @@ public class AdmJogo : MonoBehaviour
             if (poderCartaAtacadaDepois <= 0)
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
-                Debug.Log("o JOGADOR INIMIGO NO MOMENTO É" + jogadorInimigo.nomeJogador);
                 MatarCarta(cartaAtacada, jogadorInimigo);
             }
             if (poderCartaAtacanteDepois <= 0)
@@ -246,7 +249,7 @@ public class AdmJogo : MonoBehaviour
             }
             if (jogadorAtacado.vida <= 0)
             {
-                jogadorAtacado.vida = 0;
+                // jogadorAtacado.vida = 0;
                 Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
                 fimDaRodada = true;
                 RedefinirJogadores();
@@ -273,8 +276,11 @@ public class AdmJogo : MonoBehaviour
             {
                 Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
-                jogador.cartasBaixadas.Remove(c);
+                Debug.Log("Colocando " + cartaAtacante.infoCarta.carta.name + " no cemitério");
                 jogador.ColocarCartaNoCemiterio(c);
+                Debug.Log("Removendo " + cartaAtacante.infoCarta.carta.name + " do campo");
+                jogador.cartasBaixadas.Remove(c);
+                Debug.Log("Terminando função de matar carta");
             }
         }
     }
