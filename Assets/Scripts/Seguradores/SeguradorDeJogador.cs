@@ -83,6 +83,7 @@ public class SeguradorDeJogador : ScriptableObject
     {
         cartasCemiterio.Add(carta);
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
+        carta.transform.Find("Sombra").gameObject.SetActive(false);
 
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;

@@ -41,6 +41,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     {
         if (logicaAtual != null)
         {
+            Debug.Log("To com o mouse em cima de qualquer carta");
             logicaAtual.AoSelecionar(this);
         }
     }

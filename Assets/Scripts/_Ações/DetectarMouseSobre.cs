@@ -13,10 +13,9 @@ public class DetectarMouseSobre : Acao
 
         foreach (RaycastResult r in resultados)
         {
-            c = r.gameObject.GetComponentInParent<IClicavel>();
+            c = r.gameObject.GetComponentInParent<InstanciaCarta>();
             if (c != null)
             {
-                // Debug.Log("To com o mouse em cima");
                 c.AoSelecionar();
                 break;
             }

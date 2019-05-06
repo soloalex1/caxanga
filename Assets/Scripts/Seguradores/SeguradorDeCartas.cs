@@ -21,8 +21,7 @@ public class SeguradorDeCartas : ScriptableObject
         }
         foreach (InstanciaCarta c in seguradorJogador.cartasCemiterio)
         {
-            Debug.Log(c);
-            // if (c != null)
+
             Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridCemiterio.valor.transform);
             Vector3 posicao = Vector3.zero;
             posicao.x = seguradorJogador.cartasCemiterio.Count * 10;
