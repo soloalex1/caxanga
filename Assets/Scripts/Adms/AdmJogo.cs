@@ -216,7 +216,7 @@ public class AdmJogo : MonoBehaviour
                 }
 
             }
-            FinalizarFaseAtual();
+            // FinalizarFaseAtual();
             fimDaRodada = false;
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
         }
@@ -283,6 +283,8 @@ public class AdmJogo : MonoBehaviour
                     }
                     else
                     {
+                        FinalizarFaseAtual();
+                        // TrocarJogadorAtual();
                         RedefinirJogadores();
                     }
                 }
