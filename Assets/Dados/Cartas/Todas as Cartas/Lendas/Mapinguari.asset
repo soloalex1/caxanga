@@ -38,3 +38,4 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 11400000, guid: 87f62c957292db44a85adedfc056991c, type: 2}

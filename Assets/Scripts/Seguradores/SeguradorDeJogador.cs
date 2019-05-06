@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
     public Baralho baralho = null;
     public Baralho baralhoInicial;
@@ -23,6 +24,8 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartasAtual;
     public int lendasBaixadasNoTurno;
+    public int feiticosBaixadosNoTurno;
+    public int maxFeiticosTurno;
     public int maxLendasTurno;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
@@ -33,7 +36,7 @@ public class SeguradorDeJogador : ScriptableObject
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
     public VariavelTransform variavelCemiterio;
     List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
-
+    public EstadoJogador usandoEfeito;
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -43,6 +46,7 @@ public class SeguradorDeJogador : ScriptableObject
         cartasBaixadas.Add(instCarta);
         Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
         infoUI.AtualizarMagia();
+        Configuracoes.admJogo.DefinirEstado(usandoEfeito);
     }
     public bool PodeUsarCarta(Carta c)
     {
@@ -55,11 +59,11 @@ public class SeguradorDeJogador : ScriptableObject
         }
         if (resultado == false)
         {
-            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta Lenda", Color.white);
+            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta carta", Color.white);
         }
         return resultado;
     }
-    
+
     public void LevarDano(int dano)
     {
         vida -= dano;

@@ -9,7 +9,6 @@ public static class Configuracoes
     public static AdmJogo admJogo;
     private static AdmRecursos _admRecursos;
     private static ConsoleHook _admConsole;
-
     public static void RegistrarEvento(string e, Color color)
     {
         if (_admConsole == null)
@@ -52,7 +51,6 @@ public static class Configuracoes
         }
         DefinirPaiCarta(c, p);
         admJogo.jogadorAtual.BaixarCarta(instCarta);
-        admJogo.jogadorAtual.lendasBaixadasNoTurno++;
     }
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
     {

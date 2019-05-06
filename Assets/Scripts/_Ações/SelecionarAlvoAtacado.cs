@@ -17,15 +17,7 @@ public class SelecionarAlvoAtacado : Acao
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
             {
-                SeguradorDeJogador jogadorInimigo = null;
-                if (Configuracoes.admJogo.jogadorAtual == Configuracoes.admJogo.jogadorLocal)
-                {
-                    jogadorInimigo = Configuracoes.admJogo.jogadorInimigo;
-                }
-                else
-                {
-                    jogadorInimigo = Configuracoes.admJogo.jogadorLocal;
-                }
+                SeguradorDeJogador jogadorInimigo = Configuracoes.admJogo.jogadorInimigo;
                 //logica para atacar o jogador inimigo
                 InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponent<InfoUIJogador>();
                 if (infoJogadorInimigo != null)

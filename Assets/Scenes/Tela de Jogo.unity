@@ -417,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -422, y: -104}
+  m_AnchoredPosition: {x: -421.99994, y: -104}
   m_SizeDelta: {x: 980.56006, y: 1332.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &112490973
@@ -1758,6 +1758,7 @@ MonoBehaviour:
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   jogadorAtacado: {fileID: 0}
   jogadorIA: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  efeitoAtual: {fileID: 0}
   seguradorCartasJogadorAtual: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
   seguradorCartasJogadorInimigo: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
@@ -3082,7 +3083,6 @@ GameObject:
   - component: {fileID: 1107021279}
   - component: {fileID: 1107021280}
   - component: {fileID: 1107021281}
-  - component: {fileID: 1107021282}
   m_Layer: 5
   m_Name: Painel Jogador Qualquer
   m_TagString: Untagged
@@ -3150,23 +3150,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &1107021282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107021278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7434d88839c034b824df18230c0257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  retratoJogador: {fileID: 128723831}
-  vidaJogador: {fileID: 1313927521}
-  magiaJogador: {fileID: 71402719}
-  nomeJogador: {fileID: 700624913}
 --- !u!1 &1159225580
 GameObject:
   m_ObjectHideFlags: 0

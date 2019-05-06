@@ -24,6 +24,8 @@ public class FaseBatalha : Fase
             forcarSaida = !condicaoBatalhaPossivel.condicaoValida(); //se a batalha não for possível, força a saída
             Configuracoes.admJogo.DefinirEstado((!forcarSaida) ? emFaseBatalha : null);
             Configuracoes.admJogo.aoMudarFase.Raise();
+            Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno = 0;
+            Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno = 0;
             foiIniciada = true;
         }
     }

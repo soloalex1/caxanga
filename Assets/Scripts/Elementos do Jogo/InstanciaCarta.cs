@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InstanciaCarta : MonoBehaviour, IClicavel
 {
+    public Efeito efeito;
+    public bool efeitoUsado = false;
+    public bool podeSofrerEfeito = true;
     public LogicaInstanciaCarta logicaAtual;
     public ExibirInfoCarta infoCarta;
     public bool podeAtacarNesteTurno;

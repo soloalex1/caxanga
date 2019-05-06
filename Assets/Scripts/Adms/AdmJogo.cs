@@ -12,6 +12,7 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorAtacado;
     public SeguradorDeJogador jogadorIA;
+    public Efeito efeitoAtual;
 
     [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
@@ -94,6 +95,9 @@ public class AdmJogo : MonoBehaviour
         e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
         instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
+        instCarta.efeito = e.carta.efeito;
+        instCarta.efeito.cartaQueInvoca = instCarta;
+        instCarta.efeito.jogadorQueInvoca = jogador;
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
         Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
@@ -134,6 +138,10 @@ public class AdmJogo : MonoBehaviour
     {
         bool foiCompleto = turnos[indiceTurno].Executar();
         Atacar();
+        if (efeitoAtual != null)
+        {
+            DefinirEstado(efeitoAtual.usandoEfeito);
+        }
         if (foiCompleto)
         {
 
@@ -186,7 +194,6 @@ public class AdmJogo : MonoBehaviour
                 {
                     if (todosJogadores[i].cartasBaixadas.Contains(carta))
                     {
-                        Debug.Log(carta.infoCarta.carta.name + " está no campo de " + todosJogadores[i]);
                         MatarCarta(carta, todosJogadores[i]);
                     }
                     if (todosJogadores[i].cartasBaixadas.Count <= 0)
@@ -276,11 +283,8 @@ public class AdmJogo : MonoBehaviour
             {
                 Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
-                Debug.Log("Colocando " + cartaAtacante.infoCarta.carta.name + " no cemitério");
                 jogador.ColocarCartaNoCemiterio(c);
-                Debug.Log("Removendo " + cartaAtacante.infoCarta.carta.name + " do campo");
                 jogador.cartasBaixadas.Remove(c);
-                Debug.Log("Terminando função de matar carta");
             }
         }
     }
