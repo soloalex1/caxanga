@@ -21,8 +21,8 @@ MonoBehaviour:
   nomeJogador: Bastrogilda
   vidaInicial: 20
   magiaInicial: 10
-  magia: 10
-  vida: 1
+  magia: 7
+  vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
@@ -41,5 +41,6 @@ MonoBehaviour:
   maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
-  variavelCemiterio: {fileID: 11400000, guid: 1787aeded8bead448951db2acefe3fdc, type: 2}
+  cartasCemiterio:
+  - {fileID: 0}
   usandoEfeito: {fileID: 11400000, guid: 1af0afd04737e7c4b81ee144aa6eec4f, type: 2}

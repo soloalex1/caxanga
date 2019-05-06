@@ -19,13 +19,22 @@ public class SeguradorDeCartas : ScriptableObject
         {
             Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridMao.valor.transform);
         }
+        foreach (InstanciaCarta c in seguradorJogador.cartasCemiterio)
+        {
+            Debug.Log(c);
+            // if (c != null)
+            Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridCemiterio.valor.transform);
+            Vector3 posicao = Vector3.zero;
+            posicao.x = seguradorJogador.cartasCemiterio.Count * 10;
+            posicao.z = seguradorJogador.cartasCemiterio.Count * 10;
+
+            c.transform.localPosition = posicao;
+            c.transform.localRotation = Quaternion.identity;
+            c.transform.localScale = Vector3.one;
+
+        }
+
         seguradorJogador.infoUI = InfoUIJogador;
         seguradorJogador.CarregarInfoUIJogador();
-    }
-
-    public void CarregarCemiterio(SeguradorDeJogador jogador)
-    {
-        gridCemiterio.valor.transform.SetParent(jogador.variavelCemiterio.valor);
-        Debug.Log(jogador.nomeJogador + " recebeu cemitério");
     }
 }

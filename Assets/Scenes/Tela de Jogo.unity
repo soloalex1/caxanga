@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 112490972}
   - component: {fileID: 112490973}
   m_Layer: 5
-  m_Name: "Cemit\xE9rio"
+  m_Name: " Cemit\xE9rio Jogador Principal"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -351.6, y: -48.69}
+  m_AnchoredPosition: {x: -351.60004, y: -48.690002}
   m_SizeDelta: {x: 980.56006, y: 1332.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &112490973
@@ -3204,7 +3204,7 @@ GameObject:
   - component: {fileID: 1042846461}
   - component: {fileID: 1042846462}
   m_Layer: 5
-  m_Name: "Cemit\xE9rio"
+  m_Name: "Cemit\xE9rio Jogador Qualquer"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4473,12 +4473,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 09af1a9b2fa2ed540b04f8c23ca92e90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b4370cc218fcb54d9888d3adcb8ed82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 17.07, y: 14.17}
+  m_Size: {x: 80, y: 45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

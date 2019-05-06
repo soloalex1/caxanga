@@ -66,6 +66,7 @@ public class AdmJogo : MonoBehaviour
             todosJogadores[i].barrasDeVida = 3;
             todosJogadores[i].baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
             todosJogadores[i].baralho.cartasBaralho = new List<string>();
+            todosJogadores[i].cartasCemiterio.Clear();
             todosJogadores[i].lendasBaixadasNoTurno = 0;
             todosJogadores[i].feiticosBaixadosNoTurno = 0;
             todosJogadores[i].podeUsarEfeito = true;
@@ -78,12 +79,12 @@ public class AdmJogo : MonoBehaviour
 
             if (todosJogadores[i].jogadorHumano == true)
             {
-                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorAtual;
+                todosJogadores[i].seguradorCartas = seguradorCartasJogadorAtual;
 
             }
             else
             {
-                todosJogadores[i].seguradorCartasAtual = seguradorCartasJogadorInimigo;
+                todosJogadores[i].seguradorCartas = seguradorCartasJogadorInimigo;
             }
             if (i < 2)
             {
@@ -106,7 +107,7 @@ public class AdmJogo : MonoBehaviour
         instCarta.efeito = novoEfeito;
         instCarta.efeito.cartaQueInvoca = instCarta;
         instCarta.efeito.jogadorQueInvoca = jogador;
-        Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+        Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
         // Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
         jogador.cartasMao.Add(instCarta);
@@ -131,20 +132,15 @@ public class AdmJogo : MonoBehaviour
         {
             jogadorAtual = jogadorInimigo;
             jogadorInimigo = jogadorLocal;
-            seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
-            seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
-            seguradorCartasJogadorAtual.CarregarCemiterio(jogadorInimigo);
-            seguradorCartasJogadorInimigo.CarregarCemiterio(jogadorAtual);
         }
         else
         {
             jogadorAtual = jogadorLocal;
             jogadorInimigo = jogadorIA;
-            seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
-            seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
-            seguradorCartasJogadorAtual.CarregarCemiterio(jogadorAtual);
-            seguradorCartasJogadorInimigo.CarregarCemiterio(jogadorInimigo);
+
         }
+        seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
+        seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
     }
     private void Update()
     {

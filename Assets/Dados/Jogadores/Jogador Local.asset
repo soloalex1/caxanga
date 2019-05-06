@@ -21,7 +21,7 @@ MonoBehaviour:
   nomeJogador: Algerbley
   vidaInicial: 20
   magiaInicial: 10
-  magia: 12
+  magia: 8
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1
@@ -41,5 +41,6 @@ MonoBehaviour:
   maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
-  variavelCemiterio: {fileID: 11400000, guid: f208931fc392f4344a30f766e719fe44, type: 2}
+  cartasCemiterio:
+  - {fileID: 0}
   usandoEfeito: {fileID: 11400000, guid: 1af0afd04737e7c4b81ee144aa6eec4f, type: 2}

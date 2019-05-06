@@ -22,7 +22,7 @@ public class SeguradorDeJogador : ScriptableObject
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
-    public SeguradorDeCartas seguradorCartasAtual;
+    public SeguradorDeCartas seguradorCartas;
     public int lendasBaixadasNoTurno;
     public int feiticosBaixadosNoTurno;
     public int maxFeiticosTurno;
@@ -34,8 +34,7 @@ public class SeguradorDeJogador : ScriptableObject
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
-    public VariavelTransform variavelCemiterio;
-    List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
+    public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
     public EstadoJogador usandoEfeito;
     public void BaixarCarta(InstanciaCarta instCarta)
     {
@@ -83,7 +82,7 @@ public class SeguradorDeJogador : ScriptableObject
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);
-        carta.transform.SetParent(variavelCemiterio.valor, false);
+        carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
 
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;
