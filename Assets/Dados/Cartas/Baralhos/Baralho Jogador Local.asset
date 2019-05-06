@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - "Mula-sem-cabe\xE7a"
-  - Mapinguari
-  - "Cabe\xE7a de Cuia"
-  - Lobisomem
-  - Corpo Seco
-  - Curupira
+  - Pisadeira
+  - "Vit\xF3ria-r\xE9gia"
+  - Pisadeira
+  - "Vit\xF3ria-r\xE9gia"
   - Pisadeira
   - "Acaraj\xE9"
+  - Pisadeira
   - "Acaraj\xE9"
-  - "Acaraj\xE9"
+  - "Vit\xF3ria-r\xE9gia"
+  - Pisadeira
   - Aboio
-  - Aboio
+  - Pisadeira
   - "Acaraj\xE9"
-  - Aboio
-  - "Acaraj\xE9"
+  - "Vit\xF3ria-r\xE9gia"
+  - "Vit\xF3ria-r\xE9gia"
   jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}

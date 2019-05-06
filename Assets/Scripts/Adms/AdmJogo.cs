@@ -63,8 +63,13 @@ public class AdmJogo : MonoBehaviour
             todosJogadores[i].magia = todosJogadores[i].magiaInicial;
             todosJogadores[i].vida = todosJogadores[i].vidaInicial;
             todosJogadores[i].barrasDeVida = 3;
-            todosJogadores[i].baralho = new Baralho();
+            todosJogadores[i].baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
             todosJogadores[i].baralho.cartasBaralho = new List<string>();
+            todosJogadores[i].lendasBaixadasNoTurno = 0;
+            todosJogadores[i].feiticosBaixadosNoTurno = 0;
+            todosJogadores[i].podeUsarEfeito = true;
+            todosJogadores[i].podeSerAtacado = true;
+
             foreach (string carta in todosJogadores[i].baralhoInicial.cartasBaralho)
             {
                 todosJogadores[i].baralho.cartasBaralho.Add(carta);
@@ -95,7 +100,9 @@ public class AdmJogo : MonoBehaviour
         e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
         instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
-        instCarta.efeito = e.carta.efeito;
+        Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
+        novoEfeito = e.carta.efeito;
+        instCarta.efeito = novoEfeito;
         instCarta.efeito.cartaQueInvoca = instCarta;
         instCarta.efeito.jogadorQueInvoca = jogador;
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
@@ -179,6 +186,11 @@ public class AdmJogo : MonoBehaviour
             {
                 todosJogadores[i].magia = todosJogadores[i].magiaInicial + (2 * rodadaAtual);
                 todosJogadores[i].vida = todosJogadores[i].vidaInicial;
+                todosJogadores[i].lendasBaixadasNoTurno = 0;
+                todosJogadores[i].feiticosBaixadosNoTurno = 0;
+                todosJogadores[i].podeSerAtacado = true;
+                todosJogadores[i].podeUsarEfeito = true;
+
                 for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
                 {
                     PuxarCarta(todosJogadores[i]);

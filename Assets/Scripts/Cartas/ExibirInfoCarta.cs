@@ -7,6 +7,11 @@ public class ExibirInfoCarta : MonoBehaviour
     public Carta carta;
     public ExibirInfoPropriedades[] propriedades;
     public GameObject mostrarPoder;
+    public TipoFeitico tipoFeitico;
+    public TipoLenda tipoLenda;
+
+    public Sprite templateLenda;
+    public Sprite templateFeitico;
 
     public void CarregarCarta(Carta c)
     {
@@ -14,6 +19,14 @@ public class ExibirInfoCarta : MonoBehaviour
             return;
         carta = c;
 
+        if (carta.tipoCarta == tipoFeitico)
+        {
+            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateFeitico;
+        }
+        else
+        {
+            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateLenda;
+        }
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();

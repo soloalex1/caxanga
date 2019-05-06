@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47260bd2bca10046813749eb471eec2, type: 3}
   m_Name: Saci
   m_EditorClassIdentifier: 
-  jogadorQueInvoca: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
+  jogadorQueInvoca: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   jogadorAlvo: {fileID: 0}
   cartaQueInvoca: {fileID: 0}
   cartaAlvo: {fileID: 0}

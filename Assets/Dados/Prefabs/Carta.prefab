@@ -210,6 +210,10 @@ MonoBehaviour:
     imagem: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   mostrarPoder: {fileID: 4947005154277086092}
+  tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
+  tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
+  templateLenda: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
+  templateFeitico: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
 --- !u!114 &1175978647429325657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fb7e1cc6c15449973b929744475ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  efeito: {fileID: 0}
+  efeitoUsado: 0
+  podeSofrerEfeito: 1
   logicaAtual: {fileID: 0}
   infoCarta: {fileID: 0}
   podeAtacarNesteTurno: 0
@@ -467,7 +474,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 42f87d60479c20240845dfacb3ee3c4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11b2d0c9396d5af4c9786d9e8673a92f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

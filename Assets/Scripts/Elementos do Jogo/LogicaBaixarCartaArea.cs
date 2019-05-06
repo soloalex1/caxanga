@@ -31,6 +31,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                         //define o pai da carta para ser o grid lá do Cartas Baixadas
                         Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
                         cartaAtual.valor.logicaAtual = logicaCartaBaixa;
+                        cartaAtual.valor.efeito.cartaQueInvoca = cartaAtual.valor;
                         Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno++;
                         cartaAtual.valor.gameObject.SetActive(true);
                     }
@@ -41,15 +42,23 @@ public class LogicaBaixarCartaArea : LogicaArea
                 }
                 if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoFeitico)
                 {
-                    if (Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno < Configuracoes.admJogo.jogadorAtual.maxFeiticosTurno)
+                    if (Configuracoes.admJogo.jogadorAtual.podeUsarEfeito)
                     {
-                        Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.infoCarta.carta.efeito;
-                        Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
+                        if (Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno < Configuracoes.admJogo.jogadorAtual.maxFeiticosTurno)
+                        {
+                            Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.infoCarta.carta.efeito;
+                            Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
+                        }
+                        else
+                        {
+                            Configuracoes.RegistrarEvento("Você não pode baixar mais de um Feitiço por turno", Color.white);
+                        }
                     }
                     else
                     {
-                        Configuracoes.RegistrarEvento("Você não pode baixar mais de um Feitiço por turno", Color.white);
+                        Configuracoes.RegistrarEvento("Você não pode utilizar efeitos neste turno", Color.white);
                     }
+
                 }
             }
             else

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b82ca5af6dedb148b97ce9ae8ad6366, type: 3}
   m_Name: EstadoSegurandoCarta
   m_EditorClassIdentifier: 
+  tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
+  tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   acoes:
   - {fileID: 11400000, guid: aef09c6eeaf06e04f85a755fb1205039, type: 2}

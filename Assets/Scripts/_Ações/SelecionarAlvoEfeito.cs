@@ -17,20 +17,18 @@ public class SelecionarAlvoEfeito : Acao
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
             {
-                SeguradorDeJogador jogadorInimigo = Configuracoes.admJogo.jogadorInimigo;
 
-                //logica para atacar o jogador inimigo
+                //logica para afetar o jogador inimigo
                 InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
                 if (infoJogadorAlvo != null)
                 {
-                    if (infoJogadorAlvo.jogador == jogadorInimigo)
+                    if (infoJogadorAlvo.jogador == Configuracoes.admJogo.jogadorAtual)
                     {
-                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = jogadorInimigo;
+                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorAtual;
                     }
                     else
                     {
-                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorLocal;
-
+                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorInimigo;
                     }
 
                     Configuracoes.admJogo.DefinirEstado(faseDeControle);
@@ -41,6 +39,7 @@ public class SelecionarAlvoEfeito : Acao
                     {
                         gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                     }
+                    return;
                 }
 
                 //logica para atacar uma carta

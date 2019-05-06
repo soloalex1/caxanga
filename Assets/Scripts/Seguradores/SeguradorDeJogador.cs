@@ -83,7 +83,7 @@ public class SeguradorDeJogador : ScriptableObject
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);
-        carta.transform.parent = variavelCemiterio.valor;
+        carta.transform.SetParent(variavelCemiterio.valor, false);
 
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;

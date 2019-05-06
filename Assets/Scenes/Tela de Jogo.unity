@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rodadaAtual: 0
-  numCartasPuxadasInicioRodada: 0
+  numCartasPuxadasInicioRodada: 2
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}

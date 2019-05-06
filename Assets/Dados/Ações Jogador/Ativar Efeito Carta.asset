@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625c3a7c1fcc92b48b85756aa5e678ca, type: 3}
   m_Name: Ativar Efeito Carta
   m_EditorClassIdentifier: 
+  faseDeControle: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}

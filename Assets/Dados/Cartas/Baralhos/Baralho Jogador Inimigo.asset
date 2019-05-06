@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Baralho Jogador Inimigo
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Curupira
-  - "Cabe\xE7a de Cuia"
-  - Cuca
-  - Mapinguari
-  - Lobisomem
+  - Pisadeira
+  - "Vit\xF3ria-r\xE9gia"
+  - Pisadeira
+  - Pisadeira
+  - Pisadeira
   - Aboio
   - "Acaraj\xE9"
-  - "Acaraj\xE9"
-  - "Acaraj\xE9"
+  - Pisadeira
+  - "Vit\xF3ria-r\xE9gia"
   - Aboio
-  - Aboio
+  - Pisadeira
   - "Acaraj\xE9"
   - "Vit\xF3ria-r\xE9gia"
   - Saci

@@ -26,6 +26,8 @@ public class FaseBatalha : Fase
             Configuracoes.admJogo.aoMudarFase.Raise();
             Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno = 0;
             Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno = 0;
+            Configuracoes.admJogo.jogadorAtual.podeSerAtacado = true;
+            Configuracoes.admJogo.jogadorAtual.podeUsarEfeito = true;
             foiIniciada = true;
         }
     }
