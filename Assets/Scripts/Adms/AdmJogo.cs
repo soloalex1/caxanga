@@ -133,6 +133,8 @@ public class AdmJogo : MonoBehaviour
             jogadorInimigo = jogadorLocal;
             seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
             seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
+            seguradorCartasJogadorAtual.CarregarCemiterio(jogadorInimigo);
+            seguradorCartasJogadorInimigo.CarregarCemiterio(jogadorAtual);
         }
         else
         {
@@ -140,6 +142,8 @@ public class AdmJogo : MonoBehaviour
             jogadorInimigo = jogadorIA;
             seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
             seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
+            seguradorCartasJogadorAtual.CarregarCemiterio(jogadorAtual);
+            seguradorCartasJogadorInimigo.CarregarCemiterio(jogadorInimigo);
         }
     }
     private void Update()

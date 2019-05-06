@@ -15,9 +15,9 @@ MonoBehaviour:
   cartasBaralho:
   - Pisadeira
   - "Vit\xF3ria-r\xE9gia"
-  - Pisadeira
-  - Pisadeira
-  - Pisadeira
+  - Cuca
+  - Pai do Mato
+  - Lobisomem
   - Aboio
   - "Acaraj\xE9"
   - Pisadeira
@@ -25,7 +25,7 @@ MonoBehaviour:
   - Aboio
   - Pisadeira
   - "Acaraj\xE9"
-  - "Vit\xF3ria-r\xE9gia"
+  - Perna Cabeluda
   - Saci
-  - Saci
+  - Mapinguari
   jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}

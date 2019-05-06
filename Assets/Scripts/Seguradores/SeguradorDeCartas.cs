@@ -7,6 +7,7 @@ public class SeguradorDeCartas : ScriptableObject
 {
     public VariavelTransform gridMao;
     public VariavelTransform gridCartasBaixadas;
+    public VariavelTransform gridCemiterio;
 
     public void CarregarCartasJogador(SeguradorDeJogador seguradorJogador, InfoUIJogador InfoUIJogador)
     {
@@ -20,5 +21,11 @@ public class SeguradorDeCartas : ScriptableObject
         }
         seguradorJogador.infoUI = InfoUIJogador;
         seguradorJogador.CarregarInfoUIJogador();
+    }
+
+    public void CarregarCemiterio(SeguradorDeJogador jogador)
+    {
+        gridCemiterio.valor.transform.SetParent(jogador.variavelCemiterio.valor);
+        Debug.Log(jogador.nomeJogador + " recebeu cemitério");
     }
 }
