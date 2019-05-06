@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
   podeUsarEfeito: 1
-  numCartasMaoInicio: 8
+  numCartasMaoInicio: 5
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: fa7faa2089006dc458feb68fd71e3e7d, type: 2}
   corJogador: {r: 0.8392157, g: 0.8052997, b: 0.11372549, a: 1}
@@ -21,7 +21,7 @@ MonoBehaviour:
   nomeJogador: Algerbley
   vidaInicial: 20
   magiaInicial: 10
-  magia: 10
+  magia: 12
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1

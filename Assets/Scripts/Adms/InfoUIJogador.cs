@@ -20,15 +20,17 @@ public class InfoUIJogador : MonoBehaviour
     }
     public void AtualizarBarraDeVida()
     {
-        int cont = 1;
         Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(3);
         for (int i = 1; i <= 3; i++)
         {
             barraDeVida = painelBarrasVida.Find("Barra de vida " + i).GetComponent<Image>();
-            if (cont <= jogador.barrasDeVida)
+            if (i <= jogador.barrasDeVida)
             {
                 barraDeVida.color = new Color(1, 1, 1, 1);
-                cont++;
+            }
+            else
+            {
+                barraDeVida.color = new Color(0, 0, 0, 1);
             }
         }
     }

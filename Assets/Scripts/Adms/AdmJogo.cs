@@ -7,6 +7,7 @@ public class AdmJogo : MonoBehaviour
     bool fimDaRodada = false;
     public int rodadaAtual;
     public int numCartasPuxadasInicioRodada;
+    public EstadoJogador EstadoInicialTurno;
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
@@ -107,7 +108,7 @@ public class AdmJogo : MonoBehaviour
         instCarta.efeito.jogadorQueInvoca = jogador;
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartasAtual.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
-        Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
+        // Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
         jogador.cartasMao.Add(instCarta);
         jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
     }
@@ -215,6 +216,7 @@ public class AdmJogo : MonoBehaviour
                 }
 
             }
+            FinalizarFaseAtual();
             fimDaRodada = false;
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
         }
@@ -268,16 +270,20 @@ public class AdmJogo : MonoBehaviour
             }
             if (jogadorAtacado.vida <= 0)
             {
-                // jogadorAtacado.vida = 0;
-                Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
-                fimDaRodada = true;
-                RedefinirJogadores();
                 if (jogadorInimigo.barrasDeVida > 0)
                 {
+                    Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
+                    fimDaRodada = true;
                     jogadorInimigo.barrasDeVida--;
+
                     if (jogadorInimigo.barrasDeVida <= 0)
                     {
                         Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + "venceu a partida", jogadorAtual.corJogador);
+                        return;
+                    }
+                    else
+                    {
+                        RedefinirJogadores();
                     }
                 }
             }

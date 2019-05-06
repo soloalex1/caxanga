@@ -17,16 +17,15 @@ public class SelecionarAlvoAtacado : Acao
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
             {
-                SeguradorDeJogador jogadorInimigo = Configuracoes.admJogo.jogadorInimigo;
                 //logica para atacar o jogador inimigo
-                InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponent<InfoUIJogador>();
+                InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponentInParent<InfoUIJogador>();
                 if (infoJogadorInimigo != null)
                 {
-                    if (infoJogadorInimigo.jogador == jogadorInimigo)
+                    if (infoJogadorInimigo.jogador == Configuracoes.admJogo.jogadorInimigo)
                     {
-                        Configuracoes.admJogo.jogadorAtacado = jogadorInimigo;
+                        Configuracoes.admJogo.jogadorAtacado = Configuracoes.admJogo.jogadorInimigo;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                        Configuracoes.RegistrarEvento("O alvo " + jogadorInimigo.nomeJogador + " foi selecionado para ser atacado", Color.white);
+                        Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.jogadorAtacado.nomeJogador + " foi selecionado para ser atacado", Color.white);
                         if (gridAreaDropavel != null)
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
@@ -42,26 +41,30 @@ public class SelecionarAlvoAtacado : Acao
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
                     }
+                    return;
                 }
                 //logica para atacar uma carta
                 InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                if (instCarta == Configuracoes.admJogo.cartaAtacante)
+                if (instCarta != null)
                 {
-                    Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                    return;
-                }
-                if (!jogadorInimigo.cartasBaixadas.Contains(instCarta))
-                    return;
-                if (instCarta.podeSerAtacada)
-                {
-                    Configuracoes.admJogo.cartaAtacada = instCarta;
-                    Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                    Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
-                    if (gridAreaDropavel != null)
+                    if (instCarta == Configuracoes.admJogo.cartaAtacante)
                     {
-                        gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                        Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        return;
                     }
-                    return;
+                    // if (!Configuracoes.admJogo.jogadorAtacado.cartasBaixadas.Contains(instCarta))
+                    //     return;
+                    if (instCarta.podeSerAtacada)
+                    {
+                        Configuracoes.admJogo.cartaAtacada = instCarta;
+                        Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
+                        if (gridAreaDropavel != null)
+                        {
+                            gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                        }
+                        return;
+                    }
                 }
             }
 

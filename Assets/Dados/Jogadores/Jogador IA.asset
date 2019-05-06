@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jogador IA
   m_EditorClassIdentifier: 
   podeUsarEfeito: 1
-  numCartasMaoInicio: 8
+  numCartasMaoInicio: 5
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: b8c31aa264b081b4dba1f3639560332c, type: 2}
   corJogador: {r: 0.8679245, g: 0.35617658, b: 0.35617658, a: 1}
@@ -21,12 +21,12 @@ MonoBehaviour:
   nomeJogador: Bastrogilda
   vidaInicial: 1
   magiaInicial: 10
-  magia: 10
+  magia: 12
   vida: 1
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
-  barrasDeVida: 3
+  barrasDeVida: 2
   cartasMaoInicio:
   - "Boitat\xE1"
   - Saci
