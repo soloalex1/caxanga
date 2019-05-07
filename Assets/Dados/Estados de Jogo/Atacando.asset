@@ -16,3 +16,4 @@ MonoBehaviour:
   tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   acoes:
   - {fileID: 11400000, guid: e836c3d5dfc40bc45ac4661cd666344d, type: 2}
+  - {fileID: 11400000, guid: 3c9d17495b90b924faaa86ec514e9006, type: 2}

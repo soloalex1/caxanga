@@ -46,5 +46,11 @@ public class DetectarMouseSobre : Acao
                 }
             }
         }
+        if (cartaAtual.valor != null)
+        {
+            cartaAtual.valor.gameObject.SetActive(true);
+            cartaAtual.valor = null;
+            aoPararDeOlharCarta.Raise();
+        }
     }
 }
