@@ -21,6 +21,7 @@ public class SegurarMouseComCarta : Acao
         {
             gridAreaDropavel.valor.gameObject.GetComponent<Image>().color = new Color(0, 0.8F, 0, 0.5F);
         }
+
         if (btMouseApertado == false)//se o jogador não estiver apertando o botão do mouse
         {
             gridAreaDropavel.valor.gameObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);

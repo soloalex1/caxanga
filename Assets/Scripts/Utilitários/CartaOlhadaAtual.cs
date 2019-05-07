@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelecaoAtual : MonoBehaviour
+public class CartaOlhadaAtual : MonoBehaviour
 {
 
     public VariavelCarta cartaAtual;
@@ -30,6 +30,6 @@ public class SelecaoAtual : MonoBehaviour
     }
     void Update()
     {
-        mTransform.position = Input.mousePosition;
+        // mTransform.position = Input.mousePosition;
     }
 }
