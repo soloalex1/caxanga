@@ -58,6 +58,6 @@ public static class Configuracoes
         //depois faz os ajustes de posição, rotação e de escala
         carta.localPosition = Vector3.zero;
         carta.eulerAngles = pai.eulerAngles;//pra ficar na mesma perspectiva
-        carta.localScale = new Vector3(0.3F, 0.3F, 0.3F);
+        carta.localScale = new Vector3(0.28F, 0.28F, 0.28F);
     }
 }

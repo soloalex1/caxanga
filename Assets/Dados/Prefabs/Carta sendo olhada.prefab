@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
+  carta: {fileID: 0}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}

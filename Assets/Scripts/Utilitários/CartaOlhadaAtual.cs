@@ -28,8 +28,4 @@ public class CartaOlhadaAtual : MonoBehaviour
         FecharCarta();
         mTransform = this.transform;
     }
-    void Update()
-    {
-        // mTransform.position = Input.mousePosition;
-    }
 }
