@@ -7,15 +7,9 @@ public class CartaOlhadaAtual : MonoBehaviour
 
     public VariavelCarta cartaAtual;
     public ExibirInfoCarta infoCarta;
-    Transform mTransform;
+    Vector3 posicao;
     public void CarregarCartaOlhada()
     {
-        infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
-        infoCarta.gameObject.SetActive(true);
-    }
-    public void CarregarCarta()
-    {
-        cartaAtual.valor.gameObject.SetActive(false);
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);
     }
@@ -25,7 +19,7 @@ public class CartaOlhadaAtual : MonoBehaviour
     }
     private void Start()
     {
+        Vector3 posicao = Vector3.zero;
         FecharCarta();
-        mTransform = this.transform;
     }
 }

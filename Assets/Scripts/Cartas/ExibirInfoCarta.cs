@@ -44,6 +44,12 @@ public class ExibirInfoCarta : MonoBehaviour
             {
                 ep.texto.text = p.intValor.ToString();
                 ep.texto.gameObject.SetActive(true);
+                Outline contorno = ep.texto.gameObject.GetComponent<Outline>();
+                if (contorno != null)
+                {
+                    contorno.effectColor = Color.black;
+                    contorno.effectDistance.Set(2, 2);
+                }
             }
             else if (p.elemento is ElementoTexto)
             {
