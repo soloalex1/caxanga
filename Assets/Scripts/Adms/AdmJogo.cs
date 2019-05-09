@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 public class AdmJogo : MonoBehaviour
 {
+    public GameEvent cartaMorreu;
     bool fimDaRodada = false;
     public int rodadaAtual;
     public int numCartasPuxadasInicioRodada;
@@ -33,6 +37,8 @@ public class AdmJogo : MonoBehaviour
     public GameEvent aoMudarFase;
     public InstanciaCarta cartaAtacada;
     public InstanciaCarta cartaAtacante;
+    public InstanciaCarta cartaAlvo;
+    public SeguradorDeJogador jogadorAlvo;
 
     public static AdmJogo singleton;
     private void Awake()
@@ -102,14 +108,27 @@ public class AdmJogo : MonoBehaviour
         e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
         instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
-        Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
-        novoEfeito = e.carta.efeito;
-        instCarta.efeito = novoEfeito;
-        instCarta.efeito.cartaQueInvoca = instCarta;
-        instCarta.efeito.jogadorQueInvoca = jogador;
+
+        if (e.carta.efeito != null)
+        {
+            Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
+            novoEfeito = e.carta.efeito;
+            instCarta.efeito = novoEfeito;
+            instCarta.efeito.cartaQueInvoca = instCarta;
+            instCarta.efeito.jogadorQueInvoca = jogador;
+
+            // if (e.carta.tipoCarta.nomeTipo == "Feitiço")
+            // {
+            //     GameEventListener ouvidorEfeitoCarta = gameObject.AddComponent<GameEventListener>();
+            //     ouvidorEfeitoCarta.gameEvent = instCarta.efeito.eventoAtivador;
+            //     ouvidorEfeitoCarta.gameEvent.Register(ouvidorEfeitoCarta);
+            //     ouvidorEfeitoCarta.response = new UnityEvent();
+            //     ouvidorEfeitoCarta.response.AddListener(instCarta.efeito.ExecutarEfeito);
+            // }
+        }
+
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
-        // Configuracoes.RegistrarEvento("A carta " + instCarta + " foi puxada", jogador.corJogador);
         jogador.cartasMao.Add(instCarta);
         jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
     }
@@ -142,14 +161,11 @@ public class AdmJogo : MonoBehaviour
         seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
         seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
     }
+
     private void Update()
     {
         bool foiCompleto = turnos[indiceTurno].Executar();
         Atacar();
-        if (efeitoAtual != null)
-        {
-            DefinirEstado(efeitoAtual.usandoEfeito);
-        }
         if (foiCompleto)
         {
 
@@ -163,7 +179,6 @@ public class AdmJogo : MonoBehaviour
             turnos[indiceTurno].AoIniciarTurno();
             textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
             aoMudarTurno.Raise();
-
         }
 
         if (estadoAtual != null)
@@ -242,6 +257,12 @@ public class AdmJogo : MonoBehaviour
             if (poderCartaAtacadaDepois <= 0)
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
+
+                if (cartaAtacada.efeito.eventoAtivador == cartaMorreu)
+                {
+                    StartCoroutine("ExecutarEfeito", cartaAtacada.efeito);
+                }
+
                 MatarCarta(cartaAtacada, jogadorInimigo);
             }
             if (poderCartaAtacanteDepois <= 0)
@@ -263,7 +284,6 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado.infoUI.AtualizarVida();
             Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " atacou " + jogadorInimigo.nomeJogador + " e lhe tirou " + poderCartaAtacanteAntes + " de vida", jogadorAtual.corJogador);
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
-
             if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
             {
                 MatarCarta(cartaAtacante, jogadorAtual);
@@ -284,7 +304,6 @@ public class AdmJogo : MonoBehaviour
                     else
                     {
                         FinalizarFaseAtual();
-                        // TrocarJogadorAtual();
                         RedefinirJogadores();
                     }
                 }
@@ -294,7 +313,6 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado = null;
         }
     }
-
     public void MatarCarta(InstanciaCarta c, SeguradorDeJogador jogador)
     {
         for (int i = 0; i < jogador.cartasBaixadas.Count; i++)
@@ -305,6 +323,152 @@ public class AdmJogo : MonoBehaviour
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
+            }
+        }
+    }
+
+    IEnumerator EscolherCartaAlvo()
+    {
+        Debug.Log("Escolha uma carta alvo");
+        while (cartaAlvo == null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                List<RaycastResult> resultados = Configuracoes.GetUIObjs();
+                foreach (RaycastResult r in resultados)
+                {
+                    //logica para afetar o jogador inimigo
+                    InstanciaCarta carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
+                    Debug.Log(carta);
+                    if (carta != null)
+                    {
+                        cartaAlvo = carta;
+                        Configuracoes.RegistrarEvento("O alvo " + carta.infoCarta.carta.name + " foi selecionado(a) para sofrer o efeito", Color.white);
+                    }
+                }
+                if (cartaAlvo == null)
+                {
+                    Debug.Log("Desisti de usar o efeito");
+                    StopCoroutine("EscolherJogadorAlvo");
+                }
+            }
+            yield return null;
+        }
+        cartaAlvo = null;
+    }
+    IEnumerator EscolherJogadorAlvo()
+    {
+        Debug.Log("Escolha um jogador alvo");
+        while (jogadorAlvo == null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                List<RaycastResult> resultados = Configuracoes.GetUIObjs();
+                foreach (RaycastResult r in resultados)
+                {
+                    //logica para afetar o jogador inimigo
+                    InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
+                    Debug.Log(infoJogadorAlvo);
+                    if (infoJogadorAlvo != null)
+                    {
+                        jogadorAlvo = infoJogadorAlvo.jogador;
+                        Configuracoes.RegistrarEvento("O alvo " + jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
+                    }
+                }
+                if (jogadorAlvo == null)
+                {
+                    Debug.Log("Desisti de usar o efeito");
+                    StopCoroutine("EscolherJogadorAlvo");
+                }
+            }
+            yield return null;
+        }
+        jogadorAlvo = null;
+    }
+    public IEnumerator ExecutarEfeito(Efeito efeito)
+    {
+        if (efeito.tipoEfeito.tipoNome == "Passivo")
+        {
+
+        }
+        else if (efeito.tipoEfeito.tipoNome == "Único")
+        {
+
+            if (efeito.modoDeExecucao.nomeModo == "Alterar Magia Jogador"
+                || efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador"
+                || efeito.modoDeExecucao.nomeModo == "Silenciar Jogador")
+            {
+                if (efeito.ativacao.nomeAtivacao == "Ativa")
+                {
+                    StartCoroutine("EscolherJogadorAlvo");
+                    Debug.Log("Vou esperar vc escolher");
+                    yield return new WaitUntil(() => jogadorAlvo != null);
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Alterar Magia Jogador")
+                {
+                    jogadorAlvo.magia += efeito.alteracaoMagia;
+                    Debug.Log("Vou alterar a magia do jogador");
+                }
+                else if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador")
+                {
+                    Debug.Log("Vou alterar a vida do jogador");
+                    jogadorAlvo.vida += efeito.alteracaoVida;
+                    jogadorAlvo.CarregarInfoUIJogador();
+                }
+                else if (efeito.modoDeExecucao.nomeModo == "Silenciar Jogador")
+                {
+                    jogadorAlvo.podeUsarEfeito = false;
+                    Debug.Log("vou silenciar jogador");
+                }
+            }
+            if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta"
+                || efeito.modoDeExecucao.nomeModo == "Carta Ataca Duas Vezes"
+                || efeito.modoDeExecucao.nomeModo == "Paralisar Carta"
+                || efeito.modoDeExecucao.nomeModo == "Proteger Lenda"
+                || efeito.modoDeExecucao.nomeModo == "Silenciar Carta")
+            {
+                if (efeito.ativacao.nomeAtivacao == "Ativa")
+                {
+                    StartCoroutine("EscolherCartaAlvo");
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta")
+                {
+                    Debug.Log("Vou alterar o poder da carta");
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Carta Ataca Duas Vezes")
+                {
+                    Debug.Log("executando efeito");
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Paralisar Carta")
+                {
+                    Debug.Log("Vou paralisar a carta");
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Proteger Lenda")
+                {
+                    Debug.Log("Vou proteger a Lenda");
+
+                }
+                if (efeito.modoDeExecucao.nomeModo == "Silenciar Carta")
+                {
+                    Debug.Log("vou silenciar carta");
+                }
+            }
+
+            if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador ou Alterar Poder Carta")
+            {
+                Debug.Log("executando efeito");
+
+            }
+
+            if (efeito.modoDeExecucao.nomeModo == "Puxar Carta")
+            {
+                Debug.Log("vou puxar uma carta");
+
+            }
+            if (efeito.modoDeExecucao.nomeModo == "Reviver do Cemitério")
+            {
+                Debug.Log("vou reviver do cemitério");
+
             }
         }
     }

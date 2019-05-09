@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public static class Configuracoes
@@ -50,6 +51,14 @@ public static class Configuracoes
             instCarta.transform.Find("Sombra").gameObject.SetActive(true);
         }
         DefinirPaiCarta(c, p);
+        if (instCarta.infoCarta.carta.efeito != null)
+        {
+            Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
+            novoEfeito = instCarta.infoCarta.carta.efeito;
+            instCarta.efeito = novoEfeito;
+            instCarta.efeito.cartaQueInvoca = instCarta;
+            instCarta.efeito.jogadorQueInvoca = admJogo.jogadorAtual;
+        }
         admJogo.jogadorAtual.BaixarCarta(instCarta);
     }
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(

@@ -12,76 +12,76 @@ public class SelecionarAlvoEfeito : Acao
     public EstadoJogador jogadorUsandoEfeito;
     public override void Executar(float d)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            List<RaycastResult> resultados = Configuracoes.GetUIObjs();
-            foreach (RaycastResult r in resultados)
-            {
+        //     if (Input.GetMouseButtonDown(0))
+        //     {
+        //         List<RaycastResult> resultados = Configuracoes.GetUIObjs();
+        //         foreach (RaycastResult r in resultados)
+        //         {
 
-                //logica para afetar o jogador inimigo
-                InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
-                if (infoJogadorAlvo != null)
-                {
-                    if (infoJogadorAlvo.jogador == Configuracoes.admJogo.jogadorAtual)
-                    {
-                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorAtual;
-                    }
-                    else
-                    {
-                        Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorInimigo;
-                    }
+        //             //logica para afetar o jogador inimigo
+        //             InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
+        //             if (infoJogadorAlvo != null)
+        //             {
+        //                 if (infoJogadorAlvo.jogador == Configuracoes.admJogo.jogadorAtual)
+        //                 {
+        //                     Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorAtual;
+        //                 }
+        //                 else
+        //                 {
+        //                     Configuracoes.admJogo.efeitoAtual.jogadorAlvo = Configuracoes.admJogo.jogadorInimigo;
+        //                 }
 
-                    Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                    Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.efeitoAtual.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
-                    Configuracoes.admJogo.efeitoAtual.ExecutarEfeito();
+        //                 Configuracoes.admJogo.DefinirEstado(faseDeControle);
+        //                 Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.efeitoAtual.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
+        //                 // Configuracoes.admJogo.efeitoAtual.ExecutarEfeito();
 
-                    if (gridAreaDropavel != null)
-                    {
-                        gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
-                    }
-                    return;
-                }
+        //                 if (gridAreaDropavel != null)
+        //                 {
+        //                     gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+        //                 }
+        //                 return;
+        //             }
 
-                //logica para atacar uma carta
-                InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                if (instCarta != null)
-                {
-                    //clicou na mesma carta para cancelar o efeito
-                    if (instCarta == Configuracoes.admJogo.efeitoAtual.cartaQueInvoca && !Configuracoes.admJogo.efeitoAtual.podeUsarEmSi)
-                    {
-                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                        Configuracoes.RegistrarEvento("O jogador desistiu de usar o efeito", Color.white);
-                        Configuracoes.admJogo.efeitoAtual = null;
-                        return;
-                    }
-                    //selecionar uma carta como alvo do efeito
-                    if (instCarta != null && instCarta.podeSofrerEfeito)
-                    {
-                        if (gridAreaDropavel != null)
-                        {
-                            gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
-                        }
-                        Configuracoes.admJogo.efeitoAtual.cartaAlvo = instCarta;
-                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                        Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para sofrer o efeito", Color.white);
-                        Configuracoes.admJogo.efeitoAtual.ExecutarEfeito();
-                        return;
-                    }
-                }
+        //             //logica para atacar uma carta
+        //             InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
+        //             if (instCarta != null)
+        //             {
+        //                 //clicou na mesma carta para cancelar o efeito
+        //                 if (instCarta == Configuracoes.admJogo.efeitoAtual.cartaQueInvoca && !Configuracoes.admJogo.efeitoAtual.podeUsarEmSi)
+        //                 {
+        //                     Configuracoes.admJogo.DefinirEstado(faseDeControle);
+        //                     Configuracoes.RegistrarEvento("O jogador desistiu de usar o efeito", Color.white);
+        //                     Configuracoes.admJogo.efeitoAtual = null;
+        //                     return;
+        //                 }
+        //                 //selecionar uma carta como alvo do efeito
+        //                 if (instCarta != null && instCarta.podeSofrerEfeito)
+        //                 {
+        //                     if (gridAreaDropavel != null)
+        //                     {
+        //                         gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+        //                     }
+        //                     Configuracoes.admJogo.efeitoAtual.cartaAlvo = instCarta;
+        //                     Configuracoes.admJogo.DefinirEstado(faseDeControle);
+        //                     Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para sofrer o efeito", Color.white);
+        //                     // Configuracoes.admJogo.efeitoAtual.ExecutarEfeito();
+        //                     return;
+        //                 }
+        //             }
 
-            }
-            //clicar em qualquer lugar da tela
-            if (Configuracoes.admJogo.estadoAtual == jogadorUsandoEfeito)
-            {
-                if (gridAreaDropavel != null)
-                {
-                    gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
-                }
-                Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                Configuracoes.RegistrarEvento("O jogador desistiu de usar o efeito", Color.white);
-                Configuracoes.admJogo.efeitoAtual = null;
-                return;
-            }
-        }
+        //         }
+        //         //clicar em qualquer lugar da tela
+        //         if (Configuracoes.admJogo.estadoAtual == jogadorUsandoEfeito)
+        //         {
+        //             if (gridAreaDropavel != null)
+        //             {
+        //                 gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+        //             }
+        //             Configuracoes.admJogo.DefinirEstado(faseDeControle);
+        //             Configuracoes.RegistrarEvento("O jogador desistiu de usar o efeito", Color.white);
+        //             Configuracoes.admJogo.efeitoAtual = null;
+        //             return;
+        //         }
+        //     }
     }
 }

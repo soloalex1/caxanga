@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Pisadeira
-  - Saci
-  - Mapinguari
-  - Perna Cabeluda
+  - "Acaraj\xE9"
+  - "Acaraj\xE9"
+  - "Acaraj\xE9"
+  - "Acaraj\xE9"
   - Aboio
   - "Acaraj\xE9"
-  - Lobisomem
-  - Cuca
+  - "Acaraj\xE9"
+  - "Acaraj\xE9"
   - Corpo Seco
-  - Pisadeira
+  - "Acaraj\xE9"
   - Aboio
   - Pisadeira
   - "Acaraj\xE9"

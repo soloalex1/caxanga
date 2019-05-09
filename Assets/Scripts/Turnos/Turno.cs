@@ -33,7 +33,6 @@ public class Turno : ScriptableObject
         if (faseFoiEncerrada)
         {
             fases[indice].AoEncerrarFase();
-            // aoCompletarFase.Raise();
 
             indice++;
             if (indice > fases.Length - 1)

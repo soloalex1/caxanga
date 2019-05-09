@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador IA
   m_EditorClassIdentifier: 
+  cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
+  cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
   numCartasMaoInicio: 5
   baralho: {fileID: 0}
@@ -21,7 +23,7 @@ MonoBehaviour:
   nomeJogador: Bastrogilda
   vidaInicial: 20
   magiaInicial: 10
-  magia: 7
+  magia: 10
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 0
@@ -30,7 +32,7 @@ MonoBehaviour:
   cartasMaoInicio:
   - "Boitat\xE1"
   - Saci
-  - "Fogueira S\xE3o Jo\xE3o"
+  - Festa Junina
   - Saci
   - Curupira
   - "Vit\xF3ria-r\xE9gia"
@@ -41,6 +43,4 @@ MonoBehaviour:
   maxLendasTurno: 1
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
-  cartasCemiterio:
-  - {fileID: 0}
-  usandoEfeito: {fileID: 11400000, guid: 1af0afd04737e7c4b81ee144aa6eec4f, type: 2}
+  cartasCemiterio: []

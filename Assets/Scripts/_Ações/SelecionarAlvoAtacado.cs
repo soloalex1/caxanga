@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Ações/Selecionar Alvo Atacado")]
 public class SelecionarAlvoAtacado : Acao
 {
+    public GameEvent cartaFoiAtacada;
     public EstadoJogador faseDeBatalha;
     public VariavelTransform gridAreaDropavel;
     public EstadoJogador jogadorAtacando;
@@ -52,12 +53,15 @@ public class SelecionarAlvoAtacado : Acao
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                         return;
                     }
-                    // if (!Configuracoes.admJogo.jogadorAtacado.cartasBaixadas.Contains(instCarta))
-                    //     return;
+
                     if (instCarta.podeSerAtacada)
                     {
                         Configuracoes.admJogo.cartaAtacada = instCarta;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        if (instCarta.efeito.eventoAtivador == cartaFoiAtacada)
+                        {
+                            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
+                        }
                         Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
                         if (gridAreaDropavel != null)
                         {

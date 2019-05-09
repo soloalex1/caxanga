@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562a77f1edba16b4dbda05bf0d7b148b, type: 3}
   m_Name: Logica Baixar Carta Area
   m_EditorClassIdentifier: 
+  jogadorAtivouEfeito: {fileID: 11400000, guid: a91568b52a40d8f4d8f467975c296a64,
+    type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
-  tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
-  tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   gridArea: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}
   logicaCartaBaixa: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}

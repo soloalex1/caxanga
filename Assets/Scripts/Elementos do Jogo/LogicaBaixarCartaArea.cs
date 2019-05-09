@@ -6,10 +6,8 @@ using UnityEngine;
 public class LogicaBaixarCartaArea : LogicaArea
 {
 
+    public GameEvent jogadorAtivouEfeito;
     public VariavelCarta cartaAtual;
-    public TipoCarta tipoLenda;
-    public TipoCarta tipoFeitico;
-
     public VariavelTransform gridArea;
 
     public LogicaInstanciaCarta logicaCartaBaixa;
@@ -24,14 +22,17 @@ public class LogicaBaixarCartaArea : LogicaArea
             bool podeUsarCarta = Configuracoes.admJogo.jogadorAtual.PodeUsarCarta(c);
             if (podeUsarCarta)
             {
-                if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoLenda)
+                if (cartaAtual.valor.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
                 {
                     if (Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno < Configuracoes.admJogo.jogadorAtual.maxLendasTurno) //pode baixar carta
                     {
                         //define o pai da carta para ser o grid lá do Cartas Baixadas
                         Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
                         cartaAtual.valor.logicaAtual = logicaCartaBaixa;
-                        cartaAtual.valor.efeito.cartaQueInvoca = cartaAtual.valor;
+                        if (cartaAtual.valor.efeito != null)
+                        {
+                            cartaAtual.valor.efeito.cartaQueInvoca = cartaAtual.valor;
+                        }
                         Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno++;
                         cartaAtual.valor.gameObject.SetActive(true);
                     }
@@ -40,13 +41,15 @@ public class LogicaBaixarCartaArea : LogicaArea
                         Configuracoes.RegistrarEvento("Você não pode baixar mais de uma Lenda por turno", Color.white);
                     }
                 }
-                if (cartaAtual.valor.infoCarta.carta.tipoCarta == tipoFeitico)
+                if (cartaAtual.valor.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                 {
                     if (Configuracoes.admJogo.jogadorAtual.podeUsarEfeito)
                     {
                         if (Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno < Configuracoes.admJogo.jogadorAtual.maxFeiticosTurno)
                         {
                             Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.infoCarta.carta.efeito;
+                            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", cartaAtual.valor.efeito);
+
                             Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
                         }
                         else

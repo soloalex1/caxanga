@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
     public Baralho baralho = null;
@@ -35,7 +36,6 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
     public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
-    public EstadoJogador usandoEfeito;
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -43,9 +43,14 @@ public class SeguradorDeJogador : ScriptableObject
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
+
+        if (instCarta.efeito.eventoAtivador == cartaEntrouEmCampo && instCarta.efeito != null)
+        {
+            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
+        }
+
         Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
         infoUI.AtualizarMagia();
-        Configuracoes.admJogo.DefinirEstado(usandoEfeito);
     }
     public bool PodeUsarCarta(Carta c)
     {
@@ -62,14 +67,6 @@ public class SeguradorDeJogador : ScriptableObject
         }
         return resultado;
     }
-
-    public void LevarDano(int dano)
-    {
-        vida -= dano;
-        if (infoUI != null)
-            infoUI.AtualizarVida();
-    }
-
     public void CarregarInfoUIJogador()
     {
         if (infoUI != null)
@@ -84,7 +81,10 @@ public class SeguradorDeJogador : ScriptableObject
         cartasCemiterio.Add(carta);
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
         carta.transform.Find("Sombra").gameObject.SetActive(false);
-
+        if (carta.efeito.eventoAtivador == cartaMorreu)
+        {
+            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
+        }
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;
         posicao.z = cartasCemiterio.Count * 10;
