@@ -62,6 +62,13 @@ public class ExibirInfoCarta : MonoBehaviour
                 ep.imagem.gameObject.SetActive(true);
             }
         }
+        if (carta.efeito == null)
+        {
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(false);
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(false);
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
+
+        }
     }
 
     public void FecharPropsIndefinidas()

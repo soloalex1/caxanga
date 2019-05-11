@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Saci
-  - Saci
-  - Saci
-  - Saci
+  - Lobisomem
+  - Lobisomem
+  - Lobisomem
+  - Lobisomem
   - Aboio
   - "Acaraj\xE9"
   - Saci
