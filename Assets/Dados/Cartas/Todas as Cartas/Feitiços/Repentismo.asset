@@ -35,7 +35,9 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: a415d2167a80ee444a82fce24409bb1d, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "M\xFAsica e Dan\xE7a: \xC9 uma arte brasileira baseada no canto
+      alternado que se d\xE1 em forma de improviso po\xE9tico \u2013 a cria\xE7\xE3o
+      de versos \"de repente\".\uFEFF"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
