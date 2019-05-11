@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 1aa2f4331b0273643acf0514c548826c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Lie to Me
+  fontNames:
+  - Lie to Me
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d28d2dd80dd295c4dbc0763528d25732, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
