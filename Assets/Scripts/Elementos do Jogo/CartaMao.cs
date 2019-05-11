@@ -7,6 +7,7 @@ public class CartaMao : LogicaInstanciaCarta
 {
     public GameEvent aoSelecionarCartaAtual;
     public GameEvent aoDeixarDeOlhar;
+    public GameEvent aoOlharCarta;
     public VariavelCarta cartaAtual;
     public EstadoJogador segurandoCarta;
     public override void AoClicar(InstanciaCarta c)
@@ -16,7 +17,13 @@ public class CartaMao : LogicaInstanciaCarta
         aoDeixarDeOlhar.Raise();
         aoSelecionarCartaAtual.Raise();
     }
-    public override void AoSelecionar(InstanciaCarta c)
+    public override void AoOlhar(InstanciaCarta carta)
     {
+
+        if (carta != cartaAtual.valor)//se for diferente
+        {
+            cartaAtual.Set(carta);
+            aoOlharCarta.Raise();
+        }
     }
 }

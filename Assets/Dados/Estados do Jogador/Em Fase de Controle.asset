@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b82ca5af6dedb148b97ce9ae8ad6366, type: 3}
-  m_Name: Usando Efeito
+  m_Name: Em Fase de Controle
   m_EditorClassIdentifier: 
-  tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
-  tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   acoes:
   - {fileID: 11400000, guid: 3c9d17495b90b924faaa86ec514e9006, type: 2}
-  - {fileID: 11400000, guid: 5d719066f1cc4294eb4c48a911aadf8d, type: 2}
+  - {fileID: 11400000, guid: 376108d0567575d4bbc56ac62ba8a491, type: 2}

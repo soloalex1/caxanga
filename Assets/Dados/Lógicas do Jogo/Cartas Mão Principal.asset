@@ -15,5 +15,6 @@ MonoBehaviour:
   aoSelecionarCartaAtual: {fileID: 11400000, guid: 41f8c2ec4a726b647a82c9e6c83ca96d,
     type: 2}
   aoDeixarDeOlhar: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68, type: 2}
+  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   segurandoCarta: {fileID: 11400000, guid: b8729640012d31c4ba0df32d9bdb8a0c, type: 2}

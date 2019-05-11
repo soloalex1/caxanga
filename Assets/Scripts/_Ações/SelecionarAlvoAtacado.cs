@@ -58,7 +58,7 @@ public class SelecionarAlvoAtacado : Acao
                     {
                         Configuracoes.admJogo.cartaAtacada = instCarta;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                        if (instCarta.efeito.eventoAtivador == cartaFoiAtacada)
+                        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaFoiAtacada)
                         {
                             Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
                         }

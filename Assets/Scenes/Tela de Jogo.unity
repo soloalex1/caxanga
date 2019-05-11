@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa642a70c43ca445b7162ffb9cf17d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5673fd764dffe3e4a8c1eabfd76b068a, type: 2}
+  gameEvent: {fileID: 11400000, guid: 374a4d04621d8524089dbaafc31bb67c, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -2039,7 +2039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9344ee8ceaf9184fa43d76523e812b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventoAtual: {fileID: 11400000, guid: a91568b52a40d8f4d8f467975c296a64, type: 2}
+  usandoEfeito: 0
+  efeitoAtual: {fileID: 0}
+  faseDeControle: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
   rodadaAtual: 0
   numCartasPuxadasInicioRodada: 2
   EstadoInicialTurno: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
@@ -2048,7 +2050,6 @@ MonoBehaviour:
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   jogadorAtacado: {fileID: 0}
   jogadorIA: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  efeitoAtual: {fileID: 0}
   seguradorCartasJogadorAtual: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
   seguradorCartasJogadorInimigo: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
@@ -2070,6 +2071,8 @@ MonoBehaviour:
   aoMudarFase: {fileID: 11400000, guid: 236fd74c81568894199347fcc235c1e6, type: 2}
   cartaAtacada: {fileID: 0}
   cartaAtacante: {fileID: 0}
+  cartaAlvo: {fileID: 0}
+  jogadorAlvo: {fileID: 0}
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
@@ -3861,7 +3864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

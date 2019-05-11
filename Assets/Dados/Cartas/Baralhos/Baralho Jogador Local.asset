@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - "Acaraj\xE9"
-  - "Acaraj\xE9"
-  - "Acaraj\xE9"
-  - "Acaraj\xE9"
+  - Saci
+  - Saci
+  - Saci
+  - Saci
   - Aboio
   - "Acaraj\xE9"
-  - "Acaraj\xE9"
-  - "Acaraj\xE9"
+  - Saci
+  - Saci
   - Corpo Seco
   - "Acaraj\xE9"
   - Aboio

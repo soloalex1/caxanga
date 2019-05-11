@@ -19,7 +19,6 @@ public class Efeito : ScriptableObject
     public int alteracaoMagia;
     public bool apenasJogador;
     public bool apenasCarta;
-    public EstadoJogador usandoEfeito;
     public bool podeUsarEmSi;
 
 }

@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
-    public GameEvent cartaMorreu;
+    public bool usandoEfeito;
+    public Efeito efeitoAtual;
+    public EstadoJogador faseDeControle;
     bool fimDaRodada = false;
     public int rodadaAtual;
     public int numCartasPuxadasInicioRodada;
@@ -17,7 +19,6 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorAtacado;
     public SeguradorDeJogador jogadorIA;
-    public Efeito efeitoAtual;
 
     [System.NonSerialized]
     public SeguradorDeJogador[] todosJogadores;
@@ -116,15 +117,6 @@ public class AdmJogo : MonoBehaviour
             instCarta.efeito = novoEfeito;
             instCarta.efeito.cartaQueInvoca = instCarta;
             instCarta.efeito.jogadorQueInvoca = jogador;
-
-            // if (e.carta.tipoCarta.nomeTipo == "Feitiço")
-            // {
-            //     GameEventListener ouvidorEfeitoCarta = gameObject.AddComponent<GameEventListener>();
-            //     ouvidorEfeitoCarta.gameEvent = instCarta.efeito.eventoAtivador;
-            //     ouvidorEfeitoCarta.gameEvent.Register(ouvidorEfeitoCarta);
-            //     ouvidorEfeitoCarta.response = new UnityEvent();
-            //     ouvidorEfeitoCarta.response.AddListener(instCarta.efeito.ExecutarEfeito);
-            // }
         }
 
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
@@ -258,7 +250,7 @@ public class AdmJogo : MonoBehaviour
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
 
-                if (cartaAtacada.efeito.eventoAtivador == cartaMorreu)
+                if (cartaAtacada.efeito.eventoAtivador.name == "Carta Morreu")
                 {
                     StartCoroutine("ExecutarEfeito", cartaAtacada.efeito);
                 }
@@ -326,99 +318,47 @@ public class AdmJogo : MonoBehaviour
             }
         }
     }
-
-    IEnumerator EscolherCartaAlvo()
-    {
-        Debug.Log("Escolha uma carta alvo");
-        while (cartaAlvo == null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                List<RaycastResult> resultados = Configuracoes.GetUIObjs();
-                foreach (RaycastResult r in resultados)
-                {
-                    //logica para afetar o jogador inimigo
-                    InstanciaCarta carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                    Debug.Log(carta);
-                    if (carta != null)
-                    {
-                        cartaAlvo = carta;
-                        Configuracoes.RegistrarEvento("O alvo " + carta.infoCarta.carta.name + " foi selecionado(a) para sofrer o efeito", Color.white);
-                    }
-                }
-                if (cartaAlvo == null)
-                {
-                    Debug.Log("Desisti de usar o efeito");
-                    StopCoroutine("EscolherJogadorAlvo");
-                }
-            }
-            yield return null;
-        }
-        cartaAlvo = null;
-    }
-    IEnumerator EscolherJogadorAlvo()
-    {
-        Debug.Log("Escolha um jogador alvo");
-        while (jogadorAlvo == null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                List<RaycastResult> resultados = Configuracoes.GetUIObjs();
-                foreach (RaycastResult r in resultados)
-                {
-                    //logica para afetar o jogador inimigo
-                    InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
-                    Debug.Log(infoJogadorAlvo);
-                    if (infoJogadorAlvo != null)
-                    {
-                        jogadorAlvo = infoJogadorAlvo.jogador;
-                        Configuracoes.RegistrarEvento("O alvo " + jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
-                    }
-                }
-                if (jogadorAlvo == null)
-                {
-                    Debug.Log("Desisti de usar o efeito");
-                    StopCoroutine("EscolherJogadorAlvo");
-                }
-            }
-            yield return null;
-        }
-        jogadorAlvo = null;
-    }
-    public IEnumerator ExecutarEfeito(Efeito efeito)
+    public void ExecutarEfeito(Efeito efeito)
     {
         if (efeito.tipoEfeito.tipoNome == "Passivo")
         {
-
         }
         else if (efeito.tipoEfeito.tipoNome == "Único")
         {
-
+            //efeito afeta apenas jogadores
             if (efeito.modoDeExecucao.nomeModo == "Alterar Magia Jogador"
                 || efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador"
                 || efeito.modoDeExecucao.nomeModo == "Silenciar Jogador")
             {
                 if (efeito.ativacao.nomeAtivacao == "Ativa")
                 {
-                    StartCoroutine("EscolherJogadorAlvo");
-                    Debug.Log("Vou esperar vc escolher");
-                    yield return new WaitUntil(() => jogadorAlvo != null);
+                    if (efeito.cartaQueInvoca.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
+                    {
+                        DefinirEstado(faseDeControle);
+                        jogadorAtual.ColocarCartaNoCemiterio(efeito.cartaQueInvoca);
+                    }
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Alterar Magia Jogador")
                 {
                     jogadorAlvo.magia += efeito.alteracaoMagia;
+                    jogadorAlvo.CarregarInfoUIJogador();
+                    jogadorAtual.CarregarInfoUIJogador();
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou magia de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     Debug.Log("Vou alterar a magia do jogador");
                 }
                 else if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador")
                 {
                     Debug.Log("Vou alterar a vida do jogador");
+                    Configuracoes.RegistrarEvento("", Color.white);
                     jogadorAlvo.vida += efeito.alteracaoVida;
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     jogadorAlvo.CarregarInfoUIJogador();
+                    jogadorAtual.CarregarInfoUIJogador();
                 }
                 else if (efeito.modoDeExecucao.nomeModo == "Silenciar Jogador")
                 {
                     jogadorAlvo.podeUsarEfeito = false;
-                    Debug.Log("vou silenciar jogador");
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " silenciou " + jogadorAlvo.nomeJogador, Color.white);
                 }
             }
             if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta"
@@ -427,39 +367,49 @@ public class AdmJogo : MonoBehaviour
                 || efeito.modoDeExecucao.nomeModo == "Proteger Lenda"
                 || efeito.modoDeExecucao.nomeModo == "Silenciar Carta")
             {
-                if (efeito.ativacao.nomeAtivacao == "Ativa")
-                {
-                    StartCoroutine("EscolherCartaAlvo");
-                }
                 if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta")
                 {
+                    cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor += efeito.alteracaoPoder;
+                    cartaAlvo.infoCarta.CarregarCarta(cartaAlvo.infoCarta.carta);
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou o poder de " + cartaAlvo.infoCarta.carta.name + " em " + efeito.alteracaoPoder, Color.white);
                     Debug.Log("Vou alterar o poder da carta");
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Carta Ataca Duas Vezes")
                 {
+                    cartaAlvo.podeAtacarNesteTurno = true;
                     Debug.Log("executando efeito");
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Paralisar Carta")
                 {
+                    cartaAlvo.podeAtacarNesteTurno = false;
                     Debug.Log("Vou paralisar a carta");
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Proteger Lenda")
                 {
-                    Debug.Log("Vou proteger a Lenda");
-
+                    cartaAlvo.podeSofrerEfeito = false;
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.name + " silenciou " + cartaAlvo.infoCarta.carta.name, Color.white);
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Silenciar Carta")
                 {
-                    Debug.Log("vou silenciar carta");
+                    cartaAlvo.podeAtacarNesteTurno = false;
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.name + " silenciou" + cartaAlvo.infoCarta.carta.name, Color.white);
                 }
             }
-
             if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador ou Alterar Poder Carta")
             {
-                Debug.Log("executando efeito");
+                if (jogadorAlvo != null)
+                {
+                    Configuracoes.RegistrarEvento("", Color.white);
+                    jogadorAlvo.vida += efeito.alteracaoVida;
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
+                    jogadorAlvo.CarregarInfoUIJogador();
+                    jogadorAtual.CarregarInfoUIJogador();
+                }
+                if (cartaAlvo != null)
+                {
 
+                }
             }
-
             if (efeito.modoDeExecucao.nomeModo == "Puxar Carta")
             {
                 Debug.Log("vou puxar uma carta");
@@ -468,8 +418,8 @@ public class AdmJogo : MonoBehaviour
             if (efeito.modoDeExecucao.nomeModo == "Reviver do Cemitério")
             {
                 Debug.Log("vou reviver do cemitério");
-
             }
+            efeito.cartaQueInvoca.efeitoUsado = true;
         }
     }
 }

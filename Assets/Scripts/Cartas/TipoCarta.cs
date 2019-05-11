@@ -17,21 +17,6 @@ public abstract class TipoCarta : ScriptableObject
 
     public bool DiferenteTipoDeAtacar(InstanciaCarta instCarta)
     {
-        /*
-        por exemplo: Tipo 'investida' pode atacar no primeiro turno que for colocado
-
-        bool r = logica.Executar(instCarta) 
-
-        logica.Executar(instCarta c)
-        {
-            if (!c.podeAtacarNesteTurno) 
-            {
-                c.podeAtacarNesteTurno = true;
-            }
-            return c.podeAtacarNesteTurno;
-        }
-
-        */
 
         if (podeAtacar)
         {

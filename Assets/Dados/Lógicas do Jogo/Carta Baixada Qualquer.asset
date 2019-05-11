@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a79bdd18aa00c4abe8e3cedf0b14ba, type: 3}
   m_Name: Carta Baixada Qualquer
   m_EditorClassIdentifier: 
+  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
+  cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
+  usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}

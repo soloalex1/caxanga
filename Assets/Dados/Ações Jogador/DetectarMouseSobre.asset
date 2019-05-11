@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f0a9ff5c44d754197df28418eb715c, type: 3}
   m_Name: DetectarMouseSobre
   m_EditorClassIdentifier: 
-  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
   aoPararDeOlharCarta: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68,
     type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}

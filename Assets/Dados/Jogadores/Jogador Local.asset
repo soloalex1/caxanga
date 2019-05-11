@@ -15,7 +15,7 @@ MonoBehaviour:
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
-  numCartasMaoInicio: 5
+  numCartasMaoInicio: 8
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: fa7faa2089006dc458feb68fd71e3e7d, type: 2}
   corJogador: {r: 0.8392157, g: 0.8052997, b: 0.11372549, a: 1}
@@ -23,7 +23,7 @@ MonoBehaviour:
   nomeJogador: Algerbley
   vidaInicial: 20
   magiaInicial: 10
-  magia: 6
+  magia: 7
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   - Curupira
   - Capoeira
   - Aboio
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1

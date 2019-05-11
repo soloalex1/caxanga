@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IClicavel
 {
     void AoClicar();
-    void AoSelecionar();
+    void AoOlhar();
 }

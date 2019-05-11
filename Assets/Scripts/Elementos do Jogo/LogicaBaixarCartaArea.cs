@@ -6,10 +6,9 @@ using UnityEngine;
 public class LogicaBaixarCartaArea : LogicaArea
 {
 
-    public GameEvent jogadorAtivouEfeito;
     public VariavelCarta cartaAtual;
     public VariavelTransform gridArea;
-
+    public EstadoJogador usandoEfeito;
     public LogicaInstanciaCarta logicaCartaBaixa;
 
     public override void Executar()
@@ -47,10 +46,9 @@ public class LogicaBaixarCartaArea : LogicaArea
                     {
                         if (Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno < Configuracoes.admJogo.jogadorAtual.maxFeiticosTurno)
                         {
-                            Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.infoCarta.carta.efeito;
-                            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", cartaAtual.valor.efeito);
-
+                            Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.efeito;
                             Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
+                            Configuracoes.admJogo.DefinirEstado(usandoEfeito);
                         }
                         else
                         {
@@ -63,10 +61,6 @@ public class LogicaBaixarCartaArea : LogicaArea
                     }
 
                 }
-            }
-            else
-            {
-                //não pode usar cartas essa rodada
             }
             // Dá um SetActive() pra sobrescrever o que tem no SelecaoAtual
             cartaAtual.valor.gameObject.SetActive(true);

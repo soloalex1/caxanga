@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: SegurarMouseComCarta
   m_EditorClassIdentifier: 
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
-  aoControlarEstadoJogador: {fileID: 11400000, guid: 5673fd764dffe3e4a8c1eabfd76b068a,
-    type: 2}
+  aoJogarCartaDaMao: {fileID: 11400000, guid: 374a4d04621d8524089dbaafc31bb67c, type: 2}
   controladorEstadoJogador: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85,
     type: 2}
   gridAreaDropavel: {fileID: 11400000, guid: f8f4c42e8f0a41e48b2d268cfaf3d612, type: 2}

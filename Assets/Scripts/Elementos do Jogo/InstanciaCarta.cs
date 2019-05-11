@@ -37,11 +37,11 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         }
     }
 
-    void IClicavel.AoSelecionar()
+    void IClicavel.AoOlhar()
     {
         if (logicaAtual != null)
         {
-            logicaAtual.AoSelecionar(this);
+            logicaAtual.AoOlhar(this);
         }
     }
 }

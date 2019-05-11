@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
@@ -44,7 +44,7 @@ public class SeguradorDeJogador : ScriptableObject
         }
         cartasBaixadas.Add(instCarta);
 
-        if (instCarta.efeito.eventoAtivador == cartaEntrouEmCampo && instCarta.efeito != null)
+        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaEntrouEmCampo)
         {
             Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
         }
@@ -80,7 +80,9 @@ public class SeguradorDeJogador : ScriptableObject
     {
         cartasCemiterio.Add(carta);
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
-        carta.transform.Find("Sombra").gameObject.SetActive(false);
+        carta.transform.Find("Sombra").gameObject.SetActive(true);
+        carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
         if (carta.efeito.eventoAtivador == cartaMorreu)
         {
             Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
