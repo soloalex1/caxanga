@@ -17,11 +17,19 @@ public class SelecionarAlvoEfeito : Acao
                 InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
                 if (infoJogadorAlvo != null)
                 {
-                    Configuracoes.admJogo.jogadorAlvo = infoJogadorAlvo.jogador;
-                    Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
-                    Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual);
-                    Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                    return;
+                    if (!Configuracoes.admJogo.efeitoAtual.apenasCarta)
+                    {
+                        Configuracoes.admJogo.jogadorAlvo = infoJogadorAlvo.jogador;
+                        Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
+                        Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual);
+                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        return;
+                    }
+                    else
+                    {
+                        Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a cartas", Color.white);
+                        return;
+                    }
                 }
                 else
                 {
