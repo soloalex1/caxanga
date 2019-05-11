@@ -34,8 +34,8 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 74ee9cfa836abce4ba2fbdf5062bd026, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Ser mal\xEDgno que se esconde nas matas, surpreendendo e assombrando
-      viajantes."
+  - stringValor: "Cren\xE7as e Religiosidades: Ser mal\xEDgno que se esconde nas matas,
+      surpreendendo e assombrando viajantes."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}

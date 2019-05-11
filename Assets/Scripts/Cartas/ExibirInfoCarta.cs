@@ -68,6 +68,9 @@ public class ExibirInfoCarta : MonoBehaviour
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
+            // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextMaxSize = 32;
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = true;
+            
 
         }
         else
