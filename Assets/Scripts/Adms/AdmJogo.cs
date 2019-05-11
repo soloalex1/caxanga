@@ -349,7 +349,6 @@ public class AdmJogo : MonoBehaviour
                 else if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador")
                 {
                     Debug.Log("Vou alterar a vida do jogador");
-                    Configuracoes.RegistrarEvento("", Color.white);
                     jogadorAlvo.vida += efeito.alteracaoVida;
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     jogadorAlvo.CarregarInfoUIJogador();
