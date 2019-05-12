@@ -250,7 +250,7 @@ public class AdmJogo : MonoBehaviour
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
 
-                if (cartaAtacada.efeito.eventoAtivador.name == "Carta Morreu")
+                if (cartaAtacada.efeito != null && cartaAtacada.efeito.eventoAtivador.name == "Carta Morreu")
                 {
                     StartCoroutine("ExecutarEfeito", cartaAtacada.efeito);
                 }

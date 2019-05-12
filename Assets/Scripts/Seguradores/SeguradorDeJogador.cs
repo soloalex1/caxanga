@@ -83,7 +83,7 @@ public class SeguradorDeJogador : ScriptableObject
         carta.transform.Find("Sombra").gameObject.SetActive(true);
         carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
         carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
-        if (carta.efeito.eventoAtivador == cartaMorreu)
+        if (carta.efeito != null && carta.efeito.eventoAtivador == cartaMorreu)
         {
             Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
         }

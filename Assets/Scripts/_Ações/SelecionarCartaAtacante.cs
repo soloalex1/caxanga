@@ -33,7 +33,7 @@ public class SelecionarCartaAtacante : Acao
                     {
                         gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = false;
                     }
-                    if (instCarta.efeito.eventoAtivador == cartaAtacou)
+                    if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaAtacou)
                     {
                         Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
                     }
