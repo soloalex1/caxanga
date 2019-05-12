@@ -11,5 +11,6 @@ public class AdmCena : MonoBehaviour
     {
         // loadSceneAsync tá demorando mais
         SceneManager.LoadScene(proximaCena, LoadSceneMode.Single);
+        Debug.Log("Indo para a  " + proximaCena);   
     }
 }
