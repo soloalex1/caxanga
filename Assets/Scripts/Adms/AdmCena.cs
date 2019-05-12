@@ -9,6 +9,7 @@ public class AdmCena : MonoBehaviour
     // gerenciamento de cenas
     public void CarregarCena(string proximaCena)
     {
-        SceneManager.LoadSceneAsync(proximaCena, LoadSceneMode.Single);
+        // loadSceneAsync tá demorando mais
+        SceneManager.LoadScene(proximaCena, LoadSceneMode.Single);
     }
 }
