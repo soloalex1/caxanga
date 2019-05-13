@@ -10,6 +10,7 @@ public class DetectarMouseSobre : Acao
     public GameEvent aoPararDeOlharCarta;
     public VariavelCarta cartaAtual;
     public Sprite cursorClicavel;
+    public Sprite cursorAlvoCinza;
 
     public override void Executar(float d)
     {
