@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: {fileID: 0}
+  instCarta: {fileID: 0}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -138,6 +139,9 @@ MonoBehaviour:
   tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   templateLenda: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
   templateFeitico: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
+  spritePodeAtacar: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
+  spriteNaoPodeAtacar: {fileID: 21300000, guid: 746204a71d3e27b48961e00bf12f0389,
+    type: 3}
 --- !u!1 &5642848132162286904
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +440,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

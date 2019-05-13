@@ -32,6 +32,14 @@ public class SeguradorDeCartas : ScriptableObject
             c.transform.localScale = Vector3.one;
 
         }
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        {
+            c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+        }
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorAtual.cartasMao)
+        {
+            c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        }
 
         seguradorJogador.infoUI = InfoUIJogador;
         seguradorJogador.CarregarInfoUIJogador();

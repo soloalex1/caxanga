@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
+    public InstanciaCarta instCarta;
     public ExibirInfoPropriedades[] propriedades;
     public GameObject mostrarPoder;
     public TipoFeitico tipoFeitico;
@@ -12,6 +13,9 @@ public class ExibirInfoCarta : MonoBehaviour
 
     public Sprite templateLenda;
     public Sprite templateFeitico;
+    public Sprite spritePodeAtacar;
+
+    public Sprite spriteNaoPodeAtacar;
 
     public void CarregarCarta(Carta c)
     {
@@ -19,14 +23,7 @@ public class ExibirInfoCarta : MonoBehaviour
             return;
         carta = c;
 
-        if (carta.tipoCarta == tipoFeitico)
-        {
-            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateFeitico;
-        }
-        else
-        {
-            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateLenda;
-        }
+
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();
@@ -62,9 +59,9 @@ public class ExibirInfoCarta : MonoBehaviour
                 ep.imagem.gameObject.SetActive(true);
             }
         }
+
         if (carta.efeito == null)
         {
-            Debug.Log(carta.name + " não tem efeito");
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
@@ -79,6 +76,19 @@ public class ExibirInfoCarta : MonoBehaviour
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(true);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.UpperCenter;
         }
+        if (carta.tipoCarta == tipoFeitico)
+        {
+            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateFeitico;
+        }
+        else
+        {
+            this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateLenda;
+            if (instCarta != null && instCarta.podeAtacarNesteTurno == false)
+            {
+                this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeAtacar;
+            }
+        }
+
     }
 
     public void FecharPropsIndefinidas()

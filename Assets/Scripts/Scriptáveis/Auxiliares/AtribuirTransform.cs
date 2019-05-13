@@ -8,6 +8,6 @@ public class AtribuirTransform : MonoBehaviour
     private void OnEnable()
     {
         variavelTransform.valor = this.transform;
-        Destroy(this);
+        // Destroy(this);
     }
 }

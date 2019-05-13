@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    public bool pause;
+    public GameObject telaFimDeJogo;
+
+    public GameObject telaPause;
     public bool usandoEfeito;
     public Efeito efeitoAtual;
     public EstadoJogador faseDeControle;
@@ -56,14 +60,47 @@ public class AdmJogo : MonoBehaviour
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
-
+        pause = false;
         Configuracoes.admJogo = this;
         InicializarJogadores();
         PuxarCartasIniciais();
-        textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
+
+
+
+        textoTurno.valor = "Turno de\n" + turnos[indiceTurno].jogador.nomeJogador;
         aoMudarTurno.Raise();
+        StartCoroutine("FadeTextoTurno");
     }
 
+    private void Update()
+    {
+        if (!pause)
+        {
+            bool foiCompleto = turnos[indiceTurno].Executar();
+            if (foiCompleto)
+            {
+
+                indiceTurno++;
+                if (indiceTurno > turnos.Length - 1)
+                {
+                    indiceTurno = 0;
+                }
+                //O jogador atual muda aqui
+                TrocarJogadorAtual();
+                turnos[indiceTurno].AoIniciarTurno();
+                StopCoroutine("FadeTextoTurno");
+                StartCoroutine("FadeTextoTurno");
+                textoTurno.valor = "Turno de\n" + jogadorAtual.nomeJogador;
+                aoMudarTurno.Raise();
+            }
+
+            if (estadoAtual != null)
+            {
+                estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
+            }
+        }
+
+    }
     void InicializarJogadores()
     {
         for (int i = 0; i < todosJogadores.Length; i++)
@@ -109,7 +146,7 @@ public class AdmJogo : MonoBehaviour
         e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
         instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
-
+        e.instCarta = instCarta;
         if (e.carta.efeito != null)
         {
             Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
@@ -118,7 +155,7 @@ public class AdmJogo : MonoBehaviour
             instCarta.efeito.cartaQueInvoca = instCarta;
             instCarta.efeito.jogadorQueInvoca = jogador;
         }
-
+        instCarta.jogadorDono = jogador;
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
         jogador.cartasMao.Add(instCarta);
@@ -134,6 +171,13 @@ public class AdmJogo : MonoBehaviour
                 PuxarCarta(todosJogadores[p]);
             }
             Configuracoes.RegistrarEvento("Cartas do jogador(a) " + todosJogadores[p].nomeJogador + " foram criadas", todosJogadores[p].corJogador);
+        }
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        {
+            if (c != null)
+            {
+                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
         }
     }
     public void TrocarJogadorAtual()
@@ -152,33 +196,30 @@ public class AdmJogo : MonoBehaviour
         }
         seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
         seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
+
+
     }
 
-    private void Update()
+    public void Pausar()
     {
-        bool foiCompleto = turnos[indiceTurno].Executar();
-        Atacar();
-        if (foiCompleto)
-        {
-
-            indiceTurno++;
-            if (indiceTurno > turnos.Length - 1)
-            {
-                indiceTurno = 0;
-            }
-            //O jogador atual muda aqui
-            TrocarJogadorAtual();
-            turnos[indiceTurno].AoIniciarTurno();
-            textoTurno.valor = turnos[indiceTurno].jogador.nomeJogador;
-            aoMudarTurno.Raise();
-        }
-
-        if (estadoAtual != null)
-        {
-            estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
-        }
+        telaPause.gameObject.SetActive(true);
+        pause = true;
+    }
+    public void Retomar()
+    {
+        pause = false;
+        telaPause.gameObject.SetActive(false);
     }
 
+    public IEnumerator FimDeJogo(SeguradorDeJogador jogadorVencedor)
+    {
+        telaFimDeJogo.gameObject.SetActive(true);
+        telaFimDeJogo.transform.Find("Retrato Jogador").GetComponent<Image>().sprite = jogadorVencedor.retratoJogador;
+        telaFimDeJogo.transform.Find("Moldura").GetComponent<Image>().sprite = jogadorVencedor.moldura;
+        yield return new WaitForSeconds(3);
+        telaFimDeJogo.gameObject.SetActive(false);
+        Pausar();
+    }
     public void DefinirEstado(EstadoJogador estado)//função que altera o estado do jogador
     {
         estadoAtual = estado;
@@ -228,18 +269,33 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
         }
     }
+
+    public Image ImagemTextoTurno;
+    public IEnumerator FadeTextoTurno()
+    {
+        ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
+        ImagemTextoTurno.gameObject.SetActive(true);
+        pause = true;
+        yield return new WaitForSeconds(1);
+        pause = false;
+        ImagemTextoTurno.gameObject.SetActive(false);
+    }
     public void FinalizarFaseAtual()
     {
-        Configuracoes.RegistrarEvento(turnos[indiceTurno].name + " terminou", jogadorAtual.corJogador);
+        Configuracoes.RegistrarEvento("Turno de " + jogadorAtual.nomeJogador + " terminou", jogadorAtual.corJogador);
         turnos[indiceTurno].FinalizarFaseAtual();
     }
-    public void Atacar()
+    public IEnumerator Atacar()
     {
         //Atacar uma carta
         if (cartaAtacada != null && cartaAtacante != null)
         {
+            cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
             int poderCartaAtacadaAntes = cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes));
+            StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes));
+            yield return new WaitForSeconds(0.8f);
             cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacadaAntes;
             Configuracoes.RegistrarEvento("A carta " + cartaAtacante.infoCarta.carta.name + " atacou a carta " + cartaAtacada.infoCarta.carta.name + " e tirou " + poderCartaAtacanteAntes, Color.white);
@@ -250,16 +306,15 @@ public class AdmJogo : MonoBehaviour
             {
                 Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " destruiu " + cartaAtacada.infoCarta.carta.name, jogadorAtual.corJogador);
 
-                if (cartaAtacada.efeito.eventoAtivador.name == "Carta Morreu")
+                if (cartaAtacada.efeito != null && cartaAtacada.efeito.eventoAtivador.name == "Carta Morreu")
                 {
                     StartCoroutine("ExecutarEfeito", cartaAtacada.efeito);
                 }
-
-                MatarCarta(cartaAtacada, jogadorInimigo);
+                MatarCarta(cartaAtacada, cartaAtacada.jogadorDono);
             }
             if (poderCartaAtacanteDepois <= 0)
             {
-                MatarCarta(cartaAtacante, jogadorAtual);
+                MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
@@ -270,7 +325,11 @@ public class AdmJogo : MonoBehaviour
         //Atacar um jogador
         if (cartaAtacante != null && jogadorAtacado != null)
         {
+            cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
+            StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes));
+            StartCoroutine(cartaAtacante.AnimacaoDano(-1));
+            yield return new WaitForSeconds(0.8f);
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor--;
             jogadorAtacado.infoUI.AtualizarVida();
@@ -278,7 +337,7 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
             {
-                MatarCarta(cartaAtacante, jogadorAtual);
+                MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
             if (jogadorAtacado.vida <= 0)
             {
@@ -290,8 +349,9 @@ public class AdmJogo : MonoBehaviour
 
                     if (jogadorInimigo.barrasDeVida <= 0)
                     {
+                        StartCoroutine(FimDeJogo(jogadorAtual));
                         Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + "venceu a partida", jogadorAtual.corJogador);
-                        return;
+                        yield return null;
                     }
                     else
                     {
@@ -304,6 +364,7 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante = null;
             jogadorAtacado = null;
         }
+        yield return null;
     }
     public void MatarCarta(InstanciaCarta c, SeguradorDeJogador jogador)
     {
@@ -311,15 +372,15 @@ public class AdmJogo : MonoBehaviour
         {
             if (jogador.cartasBaixadas.Contains(c))
             {
-                Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
             }
         }
     }
-    public void ExecutarEfeito(Efeito efeito)
+    public IEnumerator ExecutarEfeito(Efeito efeito)
     {
+        efeito.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
         if (efeito.tipoEfeito.tipoNome == "Passivo")
         {
         }
@@ -344,11 +405,15 @@ public class AdmJogo : MonoBehaviour
                     jogadorAlvo.CarregarInfoUIJogador();
                     jogadorAtual.CarregarInfoUIJogador();
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou magia de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
-                    Debug.Log("Vou alterar a magia do jogador");
                 }
                 else if (efeito.modoDeExecucao.nomeModo == "Alterar Vida Jogador")
                 {
-                    Debug.Log("Vou alterar a vida do jogador");
+                    if (efeito.alteracaoVida > 0)
+                        StartCoroutine(jogadorAlvo.infoUI.AnimacaoCura(efeito.alteracaoVida));
+                    else
+                        StartCoroutine(jogadorAlvo.infoUI.AnimacaoDano(efeito.alteracaoVida));
+
+                    yield return new WaitForSeconds(0.8f);
                     jogadorAlvo.vida += efeito.alteracaoVida;
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     jogadorAlvo.CarregarInfoUIJogador();
@@ -368,20 +433,31 @@ public class AdmJogo : MonoBehaviour
             {
                 if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta")
                 {
+                    if (efeito.alteracaoPoder > 0)
+                    {
+                        StartCoroutine(cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                    }
+                    else
+                    {
+                        StartCoroutine(cartaAlvo.AnimacaoDano(efeito.alteracaoPoder));
+                    }
+                    yield return new WaitForSeconds(0.8f);
                     cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor += efeito.alteracaoPoder;
                     cartaAlvo.infoCarta.CarregarCarta(cartaAlvo.infoCarta.carta);
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou o poder de " + cartaAlvo.infoCarta.carta.name + " em " + efeito.alteracaoPoder, Color.white);
-                    Debug.Log("Vou alterar o poder da carta");
+                    if (cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
+                    {
+                        MatarCarta(cartaAlvo, cartaAlvo.jogadorDono);
+                    }
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Carta Ataca Duas Vezes")
                 {
                     cartaAlvo.podeAtacarNesteTurno = true;
-                    Debug.Log("executando efeito");
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Paralisar Carta")
                 {
-                    cartaAlvo.podeAtacarNesteTurno = false;
-                    Debug.Log("Vou paralisar a carta");
+                    if (cartaAlvo != null)
+                        cartaAlvo.podeAtacarNesteTurno = false;
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Proteger Lenda")
                 {
@@ -398,27 +474,35 @@ public class AdmJogo : MonoBehaviour
             {
                 if (jogadorAlvo != null)
                 {
-                    Configuracoes.RegistrarEvento("", Color.white);
+                    StartCoroutine(jogadorAlvo.infoUI.AnimacaoCura(efeito.alteracaoVida));
+                    yield return new WaitForSeconds(0.8f);
                     jogadorAlvo.vida += efeito.alteracaoVida;
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     jogadorAlvo.CarregarInfoUIJogador();
                     jogadorAtual.CarregarInfoUIJogador();
+                    yield return null;
                 }
                 if (cartaAlvo != null)
                 {
-
+                    StartCoroutine(cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                    yield return new WaitForSeconds(0.8f);
+                    cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor += efeito.alteracaoPoder;
+                    cartaAlvo.infoCarta.CarregarCarta(cartaAlvo.infoCarta.carta);
+                    yield return null;
+                    Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou o poder de " + cartaAlvo.infoCarta.carta.name + " em " + efeito.alteracaoPoder, Color.white);
                 }
             }
             if (efeito.modoDeExecucao.nomeModo == "Puxar Carta")
             {
-                Debug.Log("vou puxar uma carta");
+                // Debug.Log("vou puxar uma carta");
 
             }
             if (efeito.modoDeExecucao.nomeModo == "Reviver do Cemitério")
             {
-                Debug.Log("vou reviver do cemitério");
+                // Debug.Log("vou reviver do cemitério");
             }
             efeito.cartaQueInvoca.efeitoUsado = true;
         }
+        yield return null;
     }
 }

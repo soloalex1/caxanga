@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Ações/Ações do Jogador/Ativar Ataque das Lendas")]
 public class AtivarAtaqueLendas : AcaoJogador
@@ -12,7 +13,7 @@ public class AtivarAtaqueLendas : AcaoJogador
             if (instCarta.podeAtacarNesteTurno == false)
             {
                 instCarta.podeAtacarNesteTurno = true;
-                instCarta.transform.Find("Sombra").gameObject.SetActive(false);
+                instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spritePodeAtacar;
             }
         }
     }

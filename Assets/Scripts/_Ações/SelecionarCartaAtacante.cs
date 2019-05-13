@@ -33,12 +33,13 @@ public class SelecionarCartaAtacante : Acao
                     {
                         gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = false;
                     }
-                    if (instCarta.efeito.eventoAtivador == cartaAtacou)
+                    if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaAtacou)
                     {
                         Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
                     }
                     Configuracoes.admJogo.DefinirEstado(atacando);
                     Configuracoes.admJogo.cartaAtacante = instCarta;
+                    Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
                 }
                 else
                 {

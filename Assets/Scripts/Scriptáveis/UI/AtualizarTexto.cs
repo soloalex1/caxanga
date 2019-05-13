@@ -7,12 +7,13 @@ public class AtualizarTexto : AtualizadorPropriedadeUI
 {
     public VariavelString stringAlvo;
     public Text textoAlvo;
-    
+
     public override void Raise()
     {
+        textoAlvo.color = Configuracoes.admJogo.jogadorAtual.corJogador;
         textoAlvo.text = stringAlvo.valor;
     }
-    
+
     public void Raise(string alvo)
     {
         textoAlvo.text = alvo;
