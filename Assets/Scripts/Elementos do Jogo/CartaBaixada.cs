@@ -19,6 +19,7 @@ public class CartaBaixada : LogicaInstanciaCarta
             Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para ativar o efeito", Color.white);
             Configuracoes.admJogo.efeitoAtual = carta.efeito;
             Configuracoes.admJogo.DefinirEstado(usandoEfeito);
+            carta.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
         }
         else
         {

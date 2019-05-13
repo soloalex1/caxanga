@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Tela Inicial.unity
+    guid: 2fa28066b1030d646accae0c89bac304
+  - enabled: 1
+    path: "Assets/Scenes/Tela Cr\xE9ditos.unity"
+    guid: d1fbfe041c6c44549967dc21f97afe32
+  - enabled: 1
+    path: Assets/Scenes/Tela de Jogo.unity
+    guid: 168929295adab004089b7162a40812ee
+  - enabled: 1
+    path: "Assets/Scenes/Tela Cole\xE7\xE3o.unity"
+    guid: 7b5ed71af1bd02b4599784e6e2b719fb
+  - enabled: 1
+    path: "Assets/Scenes/Tela Configura\xE7\xF5es.unity"
+    guid: ae5e621a8a604d4459fbbf0b65ec3783
   m_configObjects: {}

@@ -60,7 +60,7 @@ public class AdmJogo : MonoBehaviour
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
-
+        pause = false;
         Configuracoes.admJogo = this;
         InicializarJogadores();
         PuxarCartasIniciais();
@@ -174,7 +174,10 @@ public class AdmJogo : MonoBehaviour
         }
         foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
         {
-            c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            if (c != null)
+            {
+                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
         }
     }
     public void TrocarJogadorAtual()
@@ -377,6 +380,7 @@ public class AdmJogo : MonoBehaviour
     }
     public IEnumerator ExecutarEfeito(Efeito efeito)
     {
+        efeito.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
         if (efeito.tipoEfeito.tipoNome == "Passivo")
         {
         }

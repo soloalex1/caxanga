@@ -27,6 +27,7 @@ public class SelecionarAlvoEfeito : Acao
                     }
                     else
                     {
+                        Configuracoes.admJogo.cartaAlvo.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a cartas", Color.white);
                         return;
                     }
@@ -36,6 +37,7 @@ public class SelecionarAlvoEfeito : Acao
                     if (carta != null && Configuracoes.admJogo.efeitoAtual.apenasJogador)
                     {
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a jogadores", Color.white);
+                        Configuracoes.admJogo.cartaAlvo.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                         return;
                     }
                 }
@@ -50,6 +52,8 @@ public class SelecionarAlvoEfeito : Acao
             }
             if (Configuracoes.admJogo.cartaAlvo == null && Configuracoes.admJogo.jogadorAlvo == null)
             {
+
+                Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                 Configuracoes.admJogo.DefinirEstado(faseDeControle);
                 Configuracoes.admJogo.efeitoAtual = null;
