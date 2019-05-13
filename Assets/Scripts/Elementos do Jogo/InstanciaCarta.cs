@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InstanciaCarta : MonoBehaviour, IClicavel
 {
+    public SeguradorDeJogador jogadorDono;
     public Efeito efeito;
     public bool efeitoUsado = false;
     public bool podeSofrerEfeito = true;
@@ -39,6 +40,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         }
         else
         {
+            Debug.Log("Não tem");
             transform.Find("Coração Dano").gameObject.transform.Rotate(0, 0, 0);
         }
         transform.Find("Coração Dano").gameObject.SetActive(true);

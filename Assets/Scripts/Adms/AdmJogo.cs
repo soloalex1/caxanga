@@ -155,7 +155,7 @@ public class AdmJogo : MonoBehaviour
             instCarta.efeito.cartaQueInvoca = instCarta;
             instCarta.efeito.jogadorQueInvoca = jogador;
         }
-
+        instCarta.jogadorDono = jogador;
         Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
         instCarta.podeSerAtacada = true;
         jogador.cartasMao.Add(instCarta);
@@ -293,8 +293,8 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
             int poderCartaAtacadaAntes = cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
-            StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes * -1));
-            StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes * -1));
+            StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes));
+            StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes));
             yield return new WaitForSeconds(0.8f);
             cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacadaAntes;
@@ -327,7 +327,8 @@ public class AdmJogo : MonoBehaviour
         {
             cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
-            StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes * -1));
+            StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes));
+            StartCoroutine(cartaAtacante.AnimacaoDano(-1));
             yield return new WaitForSeconds(0.8f);
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor--;
@@ -371,7 +372,6 @@ public class AdmJogo : MonoBehaviour
         {
             if (jogador.cartasBaixadas.Contains(c))
             {
-                Configuracoes.RegistrarEvento(cartaAtacante.infoCarta.carta.name + " foi destruido(a) no combate", jogadorAtual.corJogador);
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
@@ -433,11 +433,22 @@ public class AdmJogo : MonoBehaviour
             {
                 if (efeito.modoDeExecucao.nomeModo == "Alterar Poder Carta")
                 {
-                    StartCoroutine(cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                    if (efeito.alteracaoPoder > 0)
+                    {
+                        StartCoroutine(cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                    }
+                    else
+                    {
+                        StartCoroutine(cartaAlvo.AnimacaoDano(efeito.alteracaoPoder));
+                    }
                     yield return new WaitForSeconds(0.8f);
                     cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor += efeito.alteracaoPoder;
                     cartaAlvo.infoCarta.CarregarCarta(cartaAlvo.infoCarta.carta);
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou o poder de " + cartaAlvo.infoCarta.carta.name + " em " + efeito.alteracaoPoder, Color.white);
+                    if (cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
+                    {
+                        MatarCarta(cartaAlvo, cartaAlvo.jogadorDono);
+                    }
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Carta Ataca Duas Vezes")
                 {
@@ -445,7 +456,8 @@ public class AdmJogo : MonoBehaviour
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Paralisar Carta")
                 {
-                    cartaAlvo.podeAtacarNesteTurno = false;
+                    if (cartaAlvo != null)
+                        cartaAlvo.podeAtacarNesteTurno = false;
                 }
                 if (efeito.modoDeExecucao.nomeModo == "Proteger Lenda")
                 {
@@ -462,12 +474,13 @@ public class AdmJogo : MonoBehaviour
             {
                 if (jogadorAlvo != null)
                 {
-                    StartCoroutine(jogadorAlvo.infoUI.AnimacaoCura(efeito.alteracaoPoder));
+                    StartCoroutine(jogadorAlvo.infoUI.AnimacaoCura(efeito.alteracaoVida));
                     yield return new WaitForSeconds(0.8f);
                     jogadorAlvo.vida += efeito.alteracaoVida;
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou vida de " + jogadorAlvo.nomeJogador + " em " + efeito.alteracaoVida, Color.white);
                     jogadorAlvo.CarregarInfoUIJogador();
                     jogadorAtual.CarregarInfoUIJogador();
+                    yield return null;
                 }
                 if (cartaAlvo != null)
                 {
@@ -475,17 +488,18 @@ public class AdmJogo : MonoBehaviour
                     yield return new WaitForSeconds(0.8f);
                     cartaAlvo.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor += efeito.alteracaoPoder;
                     cartaAlvo.infoCarta.CarregarCarta(cartaAlvo.infoCarta.carta);
+                    yield return null;
                     Configuracoes.RegistrarEvento(efeito.cartaQueInvoca.infoCarta.carta.name + " alterou o poder de " + cartaAlvo.infoCarta.carta.name + " em " + efeito.alteracaoPoder, Color.white);
                 }
             }
             if (efeito.modoDeExecucao.nomeModo == "Puxar Carta")
             {
-                Debug.Log("vou puxar uma carta");
+                // Debug.Log("vou puxar uma carta");
 
             }
             if (efeito.modoDeExecucao.nomeModo == "Reviver do Cemitério")
             {
-                Debug.Log("vou reviver do cemitério");
+                // Debug.Log("vou reviver do cemitério");
             }
             efeito.cartaQueInvoca.efeitoUsado = true;
         }
