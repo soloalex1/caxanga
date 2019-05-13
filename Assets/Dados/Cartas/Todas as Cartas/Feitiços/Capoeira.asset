@@ -35,7 +35,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: eed4ff3197a7faa408cd5a19322a9a20, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "M\xFAsica e Dan\xE7a: A capoeira ou \xE9 uma express\xE3o cultural
+      brasileira que mistura arte marcial, esporte, cultura popular, dan\xE7a e m\xFAsica.
+      Desenvolvida por descendentes de escravos, \xE9 caracterizada por movimentos
+      \xE1geis e complexos."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}

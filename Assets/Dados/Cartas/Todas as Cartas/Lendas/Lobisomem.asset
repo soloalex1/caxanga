@@ -34,7 +34,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: b5c9bc9f9094b59419514ae83077df46, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "Cren\xE7as e religiosidades: Trata-se de uma criatura feroz que
+      \xE9 homem de dia e lobo nas noites de lua cheia. Acredita-se, assim, que por
+      castigo divino, ele est\xE1 condenado a essa transforma\xE7\xE3o at\xE9 o final
+      de sua vida."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
