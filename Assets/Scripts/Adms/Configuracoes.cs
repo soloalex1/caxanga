@@ -9,6 +9,8 @@ public static class Configuracoes
 {
     public static AdmJogo admJogo;
     private static AdmRecursos _admRecursos;
+
+    public static admCursor admCursor;
     private static ConsoleHook _admConsole;
     public static void RegistrarEvento(string e, Color color)
     {

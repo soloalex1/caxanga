@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
+  instCarta: {fileID: 0}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -254,7 +255,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 123.9, y: 25}
+  m_SizeDelta: {x: 144.5, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9168270029411459480
 CanvasRenderer:
@@ -402,7 +403,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 564, y: 139.9}
+  m_SizeDelta: {x: 532.5, y: 139.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7976089226829216228
 CanvasRenderer:
@@ -439,7 +440,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -875,7 +876,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 423.42, y: 139.9}
+  m_SizeDelta: {x: 541, y: 139.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8798016240329122424
 CanvasRenderer:
@@ -912,7 +913,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 162
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

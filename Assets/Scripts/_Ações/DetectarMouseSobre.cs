@@ -9,6 +9,8 @@ public class DetectarMouseSobre : Acao
 
     public GameEvent aoPararDeOlharCarta;
     public VariavelCarta cartaAtual;
+    public Sprite cursorClicavel;
+
     public override void Executar(float d)
     {
         List<RaycastResult> resultados = Configuracoes.GetUIObjs();
@@ -18,6 +20,7 @@ public class DetectarMouseSobre : Acao
             //se acertou algo, mas não é uma carta
             if (carta != null)
             {
+                Configuracoes.admCursor.MudarSprite(cursorClicavel);
                 carta.AoOlhar();
                 return;
             }
@@ -36,7 +39,7 @@ public class DetectarMouseSobre : Acao
             cartaAtual.valor.gameObject.SetActive(true);
             cartaAtual.valor = null;
         }
-        aoPararDeOlharCarta.Raise();
+        // aoPararDeOlharCarta.Raise();
         // Debug.Log("Não to com o mouse em nada");
 
     }

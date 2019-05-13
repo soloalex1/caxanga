@@ -20,7 +20,7 @@ public class CartaMao : LogicaInstanciaCarta
     public override void AoOlhar(InstanciaCarta carta)
     {
 
-        if (carta != cartaAtual.valor)//se for diferente
+        if (carta != cartaAtual.valor && Configuracoes.admJogo.jogadorAtual.cartasMao.Contains(carta))//se for diferente
         {
             cartaAtual.Set(carta);
             aoOlharCarta.Raise();

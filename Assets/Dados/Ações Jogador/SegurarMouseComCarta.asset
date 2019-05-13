@@ -17,3 +17,6 @@ MonoBehaviour:
   controladorEstadoJogador: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85,
     type: 2}
   gridAreaDropavel: {fileID: 11400000, guid: f8f4c42e8f0a41e48b2d268cfaf3d612, type: 2}
+  cursorSegurandoCarta: {fileID: 21300000, guid: 7d8cad61fe8c90542bcc74a0ff4bb718,
+    type: 3}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}

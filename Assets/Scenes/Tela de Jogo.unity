@@ -442,6 +442,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71198264}
   m_CullTransparentMesh: 0
+--- !u!1 &82465712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 82465713}
+  - component: {fileID: 82465715}
+  - component: {fileID: 82465714}
+  m_Layer: 5
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &82465713
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82465712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1469478443}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -47.999992, y: 76.500084}
+  m_SizeDelta: {x: 64, y: 102}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &82465714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82465712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &82465715
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82465712}
+  m_CullTransparentMesh: 0
 --- !u!1 &101469438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1230,7 @@ GameObject:
   - component: {fileID: 186441206}
   - component: {fileID: 186441209}
   - component: {fileID: 186441207}
+  - component: {fileID: 186441208}
   m_Layer: 5
   m_Name: Voltar Menu
   m_TagString: Untagged
@@ -1236,6 +1311,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &186441208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186441205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!222 &186441209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1314,6 +1403,7 @@ GameObject:
   - component: {fileID: 237158958}
   - component: {fileID: 237158957}
   - component: {fileID: 237158956}
+  - component: {fileID: 237158959}
   m_Layer: 5
   m_Name: Cogumelo
   m_TagString: Untagged
@@ -1430,6 +1520,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237158954}
   m_CullTransparentMesh: 0
+--- !u!114 &237158959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237158954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1001 &256103403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2362,6 +2466,7 @@ GameObject:
   - component: {fileID: 515829811}
   - component: {fileID: 515829810}
   - component: {fileID: 515829812}
+  - component: {fileID: 515829813}
   m_Layer: 0
   m_Name: AdmJogo
   m_TagString: Untagged
@@ -2445,6 +2550,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005c089b9bc9c2243905eee5123fd67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &515829813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515829809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3616489a6be8046469136d4576a39fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteCursorAtual: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  imagemCursor: {fileID: 82465714}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,6 +6425,7 @@ GameObject:
   - component: {fileID: 1323656443}
   - component: {fileID: 1323656446}
   - component: {fileID: 1323656444}
+  - component: {fileID: 1323656445}
   m_Layer: 5
   m_Name: Retormar Partida
   m_TagString: Untagged
@@ -6386,6 +6506,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1323656445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323656442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!222 &1323656446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6764,6 +6898,7 @@ RectTransform:
   - {fileID: 1999641970}
   - {fileID: 18920829}
   - {fileID: 902221696}
+  - {fileID: 82465713}
   m_Father: {fileID: 1104370152}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8591,6 +8726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   infoCarta: {fileID: 1805799043}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
 --- !u!1 &2016000042
 GameObject:
   m_ObjectHideFlags: 0
@@ -8831,6 +8967,7 @@ GameObject:
   - component: {fileID: 2027219372}
   - component: {fileID: 2027219371}
   - component: {fileID: 2027219370}
+  - component: {fileID: 2027219373}
   m_Layer: 5
   m_Name: Cogumelo
   m_TagString: Untagged
@@ -8947,6 +9084,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027219368}
   m_CullTransparentMesh: 0
+--- !u!114 &2027219373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027219368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &2045916254
 GameObject:
   m_ObjectHideFlags: 0

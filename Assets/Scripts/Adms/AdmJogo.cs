@@ -310,11 +310,11 @@ public class AdmJogo : MonoBehaviour
                 {
                     StartCoroutine("ExecutarEfeito", cartaAtacada.efeito);
                 }
-                MatarCarta(cartaAtacada, jogadorInimigo);
+                MatarCarta(cartaAtacada, cartaAtacada.jogadorDono);
             }
             if (poderCartaAtacanteDepois <= 0)
             {
-                MatarCarta(cartaAtacante, jogadorAtual);
+                MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
@@ -337,7 +337,7 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             if (cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor <= 0)
             {
-                MatarCarta(cartaAtacante, jogadorAtual);
+                MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
             if (jogadorAtacado.vida <= 0)
             {

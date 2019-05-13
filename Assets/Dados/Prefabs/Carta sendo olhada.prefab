@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: {fileID: 0}
+  instCarta: {fileID: 0}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -439,7 +440,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
