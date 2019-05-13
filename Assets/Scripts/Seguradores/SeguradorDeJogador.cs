@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public Sprite moldura;
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
@@ -28,6 +29,8 @@ public class SeguradorDeJogador : ScriptableObject
     public int feiticosBaixadosNoTurno;
     public int maxFeiticosTurno;
     public int maxLendasTurno;
+
+    public Sprite textoTurnoImage;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
 
@@ -82,6 +85,7 @@ public class SeguradorDeJogador : ScriptableObject
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
         carta.transform.Find("Sombra").gameObject.SetActive(true);
         carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        carta.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
         carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
         if (carta.efeito != null && carta.efeito.eventoAtivador == cartaMorreu)
         {

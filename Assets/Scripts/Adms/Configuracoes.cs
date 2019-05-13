@@ -12,11 +12,11 @@ public static class Configuracoes
     private static ConsoleHook _admConsole;
     public static void RegistrarEvento(string e, Color color)
     {
-        if (_admConsole == null)
-        {
-            _admConsole = Resources.Load("ConsoleHook") as ConsoleHook;
-        }
-        _admConsole.RegistrarEvento(e, color);
+        // if (_admConsole == null)
+        // {
+        //     _admConsole = Resources.Load("ConsoleHook") as ConsoleHook;
+        // }
+        // _admConsole.RegistrarEvento(e, color);
     }
 
     public static AdmRecursos GetAdmRecursos()
@@ -48,7 +48,7 @@ public static class Configuracoes
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
         if (instCarta.podeAtacarNesteTurno == false)
         {
-            instCarta.transform.Find("Sombra").gameObject.SetActive(true);
+            instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spriteNaoPodeAtacar;
         }
         DefinirPaiCarta(c, p);
         if (instCarta.infoCarta.carta.efeito != null)

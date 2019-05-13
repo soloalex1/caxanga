@@ -31,16 +31,21 @@ public class SelecionarAlvoAtacado : Acao
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+
                     }
                     else
                     {
                         Configuracoes.admJogo.jogadorAtacado = Configuracoes.admJogo.jogadorLocal;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                         Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.jogadorLocal.nomeJogador + " foi selecionado para ser atacado", Color.white);
+
                         if (gridAreaDropavel != null)
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+
                     }
                     return;
                 }
@@ -50,7 +55,9 @@ public class SelecionarAlvoAtacado : Acao
                 {
                     if (instCarta == Configuracoes.admJogo.cartaAtacante)
                     {
-                        Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                        Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
+                        Configuracoes.admJogo.estadoAtual = faseDeBatalha;
                         return;
                     }
 
@@ -67,6 +74,7 @@ public class SelecionarAlvoAtacado : Acao
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
                         return;
                     }
                 }
@@ -78,6 +86,7 @@ public class SelecionarAlvoAtacado : Acao
                 {
                     gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                 }
+                Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
                 Configuracoes.admJogo.estadoAtual = faseDeBatalha;
             }

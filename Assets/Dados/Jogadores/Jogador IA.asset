@@ -12,35 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador IA
   m_EditorClassIdentifier: 
+  moldura: {fileID: 21300000, guid: 3637570b8e14c6841ade64835c8e5281, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
   numCartasMaoInicio: 5
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: b8c31aa264b081b4dba1f3639560332c, type: 2}
-  corJogador: {r: 0.8679245, g: 0.35617658, b: 0.35617658, a: 1}
-  retratoJogador: {fileID: 21300000, guid: b50c6e9de917b6942b7f5fe78cb8b1da, type: 3}
-  nomeJogador: Bastrogilda
+  corJogador: {r: 0.9490196, g: 0.85490197, b: 0.30588236, a: 1}
+  retratoJogador: {fileID: 21300000, guid: b3ef783053aeb0e44a37c2e2047d6f87, type: 3}
+  nomeJogador: Saci
   vidaInicial: 20
   magiaInicial: 10
-  magia: 10
-  vida: 20
+  magia: 9
+  vida: -5
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
-  barrasDeVida: 3
-  cartasMaoInicio:
-  - "Boitat\xE1"
-  - Saci
-  - Festa Junina
-  - Saci
-  - Curupira
-  - "Vit\xF3ria-r\xE9gia"
-  - Mapinguari
+  barrasDeVida: 0
+  cartasMaoInicio: []
   lendasBaixadasNoTurno: 0
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1
+  textoTurnoImage: {fileID: 21300000, guid: 728bbab1919c5a04bbcc8c89825ca202, type: 3}
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
-  cartasCemiterio: []
+  cartasCemiterio:
+  - {fileID: 0}

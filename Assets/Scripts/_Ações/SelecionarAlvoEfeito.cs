@@ -21,7 +21,7 @@ public class SelecionarAlvoEfeito : Acao
                     {
                         Configuracoes.admJogo.jogadorAlvo = infoJogadorAlvo.jogador;
                         Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
-                        Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual);
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
                         Configuracoes.admJogo.DefinirEstado(faseDeControle);
                         return;
                     }
@@ -43,7 +43,7 @@ public class SelecionarAlvoEfeito : Acao
                 {
                     Configuracoes.admJogo.cartaAlvo = carta;
                     Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para SOFRER o efeito", Color.white);
-                    Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual);
+                    Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
                     Configuracoes.admJogo.DefinirEstado(faseDeControle);
                     return;
                 }

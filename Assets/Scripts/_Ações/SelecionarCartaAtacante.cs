@@ -39,6 +39,7 @@ public class SelecionarCartaAtacante : Acao
                     }
                     Configuracoes.admJogo.DefinirEstado(atacando);
                     Configuracoes.admJogo.cartaAtacante = instCarta;
+                    Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
                 }
                 else
                 {
