@@ -24,24 +24,8 @@ public class FaseControleJogador : Fase
     {
         if (!foiIniciada)
         {
-            cartasOponenteViradas = false;
             Configuracoes.admJogo.DefinirEstado(estadoControleJogador);
             Configuracoes.admJogo.aoMudarFase.Raise();
-            Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno = 0;
-
-            if (!cartasOponenteViradas)
-            {
-
-                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
-                {
-                    c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-                }
-                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorAtual.cartasMao)
-                {
-                    c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
-                }
-                cartasOponenteViradas = true;
-            }
             foiIniciada = true;
         }
 

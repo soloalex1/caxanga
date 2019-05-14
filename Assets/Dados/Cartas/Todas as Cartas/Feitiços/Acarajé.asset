@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   propriedades:
-  - stringValor: "ACARAJ\xC8"
+  - stringValor: "Acaraj\xE9"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -34,7 +34,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: fe57cf93329a1054bb8a51c8151a9d85, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Festividades: Pula, pula, pula a fogueira de S\xE3o Jo\xE3o"
+  - stringValor: "Culin\xE1ria: O acaraj\xE9 \xE9 um bolinho caracter\xEDstico do
+      candombl\xE9. Sua origem \xE9 explicada por um mito sobre a rela\xE7\xE3o de
+      Xang\xF4 com suas esposas, Oxum e Ians\xE3. "
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 11400000, guid: 4231cdedf0f7e534cb299559ce8c7991, type: 2}

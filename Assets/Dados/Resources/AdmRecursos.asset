@@ -15,7 +15,6 @@ MonoBehaviour:
   tipoElemento: {fileID: 0}
   todasAsCartas:
   - {fileID: 11400000, guid: 4aac28a31937ef44698e17cc8b2983ca, type: 2}
-  - {fileID: 11400000, guid: 234bd4f6b713ce145ae96ea0e0f83081, type: 2}
   - {fileID: 11400000, guid: 39d9b46b7fde2cb4495f1c55837a5ee5, type: 2}
   - {fileID: 11400000, guid: fcc14ea63936bcb4192b5fbbc5a47c17, type: 2}
   - {fileID: 11400000, guid: 2c4d157c2bbaf4949ad8fb250e350130, type: 2}

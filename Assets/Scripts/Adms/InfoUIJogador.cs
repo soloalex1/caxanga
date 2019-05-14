@@ -10,41 +10,104 @@ public class InfoUIJogador : MonoBehaviour
     public Text vidaJogador;
     public Text magiaJogador;
     public Text nomeJogador;
+    public GameObject molduraJogador;
     Image barraDeVida;
+    public Sprite spriteNaoPodeBaixarLenda;
+    public Sprite spriteNaoPodeBaixarFeitico;
+
+    public Sprite spritePodeBaixarLenda;
+    public Sprite spritePodeBaixarFeitico;
+
     public void AtualizarTudo()
     {
         AtualizarNomeJogador();
         AtualizarVida();
         AtualizarMagia();
         AtualizarBarraDeVida();
+        AtualizarMoldura();
+    }
+
+    public void AtualizarMoldura()
+    {
+        molduraJogador.GetComponent<Image>().sprite = jogador.moldura;
     }
     public void AtualizarBarraDeVida()
     {
-        int cont = 1;
-        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(3);
+        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(2);
         for (int i = 1; i <= 3; i++)
         {
             barraDeVida = painelBarrasVida.Find("Barra de vida " + i).GetComponent<Image>();
-            if (cont <= jogador.barrasDeVida)
+            if (i <= jogador.barrasDeVida)
             {
-                barraDeVida.color = new Color(1, 1, 1, 1);
-                cont++;
+                barraDeVida.color = new Color(0, 0, 0, 0);
+            }
+            else
+            {
+                barraDeVida.color = new Color(0, 0, 0, 1);
             }
         }
     }
 
+    public void SpritesCartasUtilizaveis()
+    {
+        foreach (InstanciaCarta c in jogador.cartasMao)
+        {
+            if (c != null && c.infoCarta != null)
+            {
+                if (jogador.magia < c.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor)
+                {
+
+                    if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
+                    {
+                        c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeBaixarLenda;
+                    }
+                    else
+                    {
+                        c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeBaixarFeitico;
+                    }
+                }
+                else
+                {
+                    if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
+                    {
+                        c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spritePodeBaixarLenda;
+                    }
+                    else
+                    {
+                        c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spritePodeBaixarFeitico;
+                    }
+                }
+            }
+        }
+    }
     public void AtualizarNomeJogador()
     {
-        nomeJogador.text = jogador.nomeJogador;
+        // nomeJogador.text = jogador.nomeJogador;
         retratoJogador.sprite = jogador.retratoJogador;
     }
     public void AtualizarVida()
     {
-        vidaJogador.text = "Vida: " + jogador.vida.ToString();
+        vidaJogador.text = jogador.vida.ToString();
     }
     public void AtualizarMagia()
     {
-        magiaJogador.text = "Magia: " + jogador.magia.ToString();
+        magiaJogador.text = jogador.magia.ToString();
+        SpritesCartasUtilizaveis();
+    }
+
+    public IEnumerator AnimacaoDano(int dano)
+    {
+        gameObject.transform.Find("Coração Dano").gameObject.SetActive(true);
+        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = "-" + dano.ToString();
+        yield return new WaitForSeconds(0.8f);
+        transform.Find("Coração Dano").gameObject.SetActive(false);
+    }
+    public IEnumerator AnimacaoCura(int cura)
+    {
+        transform.Find("Coração Cura").gameObject.SetActive(true);
+        transform.Find("Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
+        yield return new WaitForSeconds(0.8f);
+        transform.Find("Coração Cura").gameObject.SetActive(false);
     }
 }
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   propriedades:
-  - stringValor: "CABE\xC7A DE CUIA"
+  - stringValor: "Cabe\xE7a de Cuia"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -34,7 +34,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 76f75302270d7764b9c5dfdbe8b4e2d7, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "Cren\xE7as e Religiosidades: Antes um jovem pescador que morava
+      nas margens do rio Parna\xEDba, o Cabe\xE7a de Cuia foi amaldi\xE7oado a ser
+      um monstro, que ficaria vagando dia e noite ap\xF3s matar a pr\xF3pria m\xE3e\uFEFF."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 0}

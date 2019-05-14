@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Ações/Selecionar Carta Atacante")]
 public class SelecionarCartaAtacante : Acao
 {
+    public GameEvent cartaAtacou;
     public EstadoJogador atacando;
     public EstadoJogador faseDeBatalha;
     public VariavelTransform gridAreaDropavel;
@@ -32,8 +33,13 @@ public class SelecionarCartaAtacante : Acao
                     {
                         gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = false;
                     }
+                    if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaAtacou)
+                    {
+                        Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
+                    }
                     Configuracoes.admJogo.DefinirEstado(atacando);
                     Configuracoes.admJogo.cartaAtacante = instCarta;
+                    Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
                 }
                 else
                 {

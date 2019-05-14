@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public Sprite moldura;
+    public GameEvent cartaEntrouEmCampo, cartaMorreu;
+    public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
     public Baralho baralho = null;
     public Baralho baralhoInicial;
@@ -21,9 +24,13 @@ public class SeguradorDeJogador : ScriptableObject
     public string[] cartasMaoInicio;
 
     [System.NonSerialized]
-    public SeguradorDeCartas seguradorCartasAtual;
+    public SeguradorDeCartas seguradorCartas;
     public int lendasBaixadasNoTurno;
+    public int feiticosBaixadosNoTurno;
+    public int maxFeiticosTurno;
     public int maxLendasTurno;
+
+    public Sprite textoTurnoImage;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
 
@@ -31,9 +38,7 @@ public class SeguradorDeJogador : ScriptableObject
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
-    public VariavelTransform variavelCemiterio;
-    List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
-
+    public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -41,6 +46,12 @@ public class SeguradorDeJogador : ScriptableObject
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
+
+        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaEntrouEmCampo)
+        {
+            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
+        }
+
         Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
         infoUI.AtualizarMagia();
     }
@@ -55,18 +66,10 @@ public class SeguradorDeJogador : ScriptableObject
         }
         if (resultado == false)
         {
-            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta Lenda", Color.white);
+            Configuracoes.RegistrarEvento("Você não tem magia o suficiente para baixar esta carta", Color.white);
         }
         return resultado;
     }
-    
-    public void LevarDano(int dano)
-    {
-        vida -= dano;
-        if (infoUI != null)
-            infoUI.AtualizarVida();
-    }
-
     public void CarregarInfoUIJogador()
     {
         if (infoUI != null)
@@ -79,8 +82,15 @@ public class SeguradorDeJogador : ScriptableObject
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);
-        carta.transform.parent = variavelCemiterio.valor;
-
+        carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
+        carta.transform.Find("Sombra").gameObject.SetActive(true);
+        carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        carta.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+        carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
+        if (carta.efeito != null && carta.efeito.eventoAtivador == cartaMorreu)
+        {
+            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
+        }
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;
         posicao.z = cartasCemiterio.Count * 10;

@@ -16,11 +16,7 @@ public class AoClicarMouse : Acao
                 IClicavel c = r.gameObject.GetComponentInParent<IClicavel>();
                 if (c != null)
                 {
-                    InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                    if (Configuracoes.admJogo.jogadorAtual.cartasMao.Contains(instCarta))
-                    {
-                        c.AoClicar();
-                    }
+                    c.AoClicar();
                     break;
                 }
             }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   propriedades:
-  - stringValor: BOI DA CARA PRETA
+  - stringValor: Boi da Cara Preta
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -34,7 +34,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 85a2a22edd7452045bc808da9fd9c163, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "M\xFAsica e Dan\xE7a: Cantigas de ninar s\xE3o can\xE7\xF5es que
+      as pessoas entoam para fazer as crian\xE7as dormirem. Normalmente abordam temas
+      como pais ausentes, entidades do sono e entidades assustadoras."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 11400000, guid: 1bfba2fe8d6f0ac428ab6273b36a95f2, type: 2}

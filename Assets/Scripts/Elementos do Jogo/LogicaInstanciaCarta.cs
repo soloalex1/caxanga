@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class LogicaInstanciaCarta : ScriptableObject
 {
     public abstract void AoClicar(InstanciaCarta c);
-    public abstract void AoSelecionar(InstanciaCarta c);
+    public abstract void AoOlhar(InstanciaCarta c);
 }

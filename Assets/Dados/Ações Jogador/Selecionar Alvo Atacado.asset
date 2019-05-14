@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446ddf35effac3844a2a056f6c2723a6, type: 3}
   m_Name: Selecionar Alvo Atacado
   m_EditorClassIdentifier: 
+  cartaFoiAtacada: {fileID: 11400000, guid: b3d566b1e38f8624fa5000f18f5ad74b, type: 2}
   faseDeBatalha: {fileID: 11400000, guid: a678b1bd9ad6b344da24135e188de5d1, type: 2}
   gridAreaDropavel: {fileID: 11400000, guid: f8f4c42e8f0a41e48b2d268cfaf3d612, type: 2}
   jogadorAtacando: {fileID: 11400000, guid: 75d68e34e60d8d145843916fd7442566, type: 2}

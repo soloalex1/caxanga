@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Ações/Selecionar Alvo Atacado")]
 public class SelecionarAlvoAtacado : Acao
 {
+    public GameEvent cartaFoiAtacada;
     public EstadoJogador faseDeBatalha;
     public VariavelTransform gridAreaDropavel;
     public EstadoJogador jogadorAtacando;
@@ -17,59 +18,65 @@ public class SelecionarAlvoAtacado : Acao
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
             {
-                SeguradorDeJogador jogadorInimigo = null;
-                if (Configuracoes.admJogo.jogadorAtual == Configuracoes.admJogo.jogadorLocal)
-                {
-                    jogadorInimigo = Configuracoes.admJogo.jogadorInimigo;
-                }
-                else
-                {
-                    jogadorInimigo = Configuracoes.admJogo.jogadorLocal;
-                }
                 //logica para atacar o jogador inimigo
-                InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponent<InfoUIJogador>();
+                InfoUIJogador infoJogadorInimigo = r.gameObject.GetComponentInParent<InfoUIJogador>();
                 if (infoJogadorInimigo != null)
                 {
-                    if (infoJogadorInimigo.jogador == jogadorInimigo)
+                    if (infoJogadorInimigo.jogador == Configuracoes.admJogo.jogadorInimigo)
                     {
-                        Configuracoes.admJogo.jogadorAtacado = jogadorInimigo;
+                        Configuracoes.admJogo.jogadorAtacado = Configuracoes.admJogo.jogadorInimigo;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                        Configuracoes.RegistrarEvento("O alvo " + jogadorInimigo.nomeJogador + " foi selecionado para ser atacado", Color.white);
+                        Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.jogadorAtacado.nomeJogador + " foi selecionado para ser atacado", Color.white);
                         if (gridAreaDropavel != null)
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+
                     }
                     else
                     {
                         Configuracoes.admJogo.jogadorAtacado = Configuracoes.admJogo.jogadorLocal;
                         Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
                         Configuracoes.RegistrarEvento("O alvo " + Configuracoes.admJogo.jogadorLocal.nomeJogador + " foi selecionado para ser atacado", Color.white);
+
                         if (gridAreaDropavel != null)
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+
                     }
+                    return;
                 }
                 //logica para atacar uma carta
                 InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                if (instCarta == Configuracoes.admJogo.cartaAtacante)
+                if (instCarta != null)
                 {
-                    Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                    return;
-                }
-                if (!jogadorInimigo.cartasBaixadas.Contains(instCarta))
-                    return;
-                if (instCarta.podeSerAtacada)
-                {
-                    Configuracoes.admJogo.cartaAtacada = instCarta;
-                    Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
-                    Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
-                    if (gridAreaDropavel != null)
+                    if (instCarta == Configuracoes.admJogo.cartaAtacante)
                     {
-                        gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                        Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                        Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
+                        Configuracoes.admJogo.estadoAtual = faseDeBatalha;
+                        return;
                     }
-                    return;
+
+                    if (instCarta.podeSerAtacada)
+                    {
+                        Configuracoes.admJogo.cartaAtacada = instCarta;
+                        Configuracoes.admJogo.DefinirEstado(faseDeBatalha);
+                        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaFoiAtacada)
+                        {
+                            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
+                        }
+                        Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
+                        if (gridAreaDropavel != null)
+                        {
+                            gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
+                        }
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+                        return;
+                    }
                 }
             }
 
@@ -79,6 +86,7 @@ public class SelecionarAlvoAtacado : Acao
                 {
                     gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                 }
+                Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.RegistrarEvento("O jogador desistiu de atacar", Color.white);
                 Configuracoes.admJogo.estadoAtual = faseDeBatalha;
             }

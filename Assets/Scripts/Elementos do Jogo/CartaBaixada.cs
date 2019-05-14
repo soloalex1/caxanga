@@ -5,11 +5,36 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ElementosJogo/CartaBaixada")]
 public class CartaBaixada : LogicaInstanciaCarta
 {
-    public override void AoClicar(InstanciaCarta c)
-    {
-    }
-    public override void AoSelecionar(InstanciaCarta c)
-    {
+    public GameEvent aoOlharCarta;
+    public VariavelCarta cartaAtual;
+    public EstadoJogador usandoEfeito;
 
+    public override void AoClicar(InstanciaCarta carta)
+    {
+        if (carta.efeito != null
+            && carta.efeito.ativacao.nomeAtivacao == "Ativa"
+            && carta.efeitoUsado == false
+            && Configuracoes.admJogo.estadoAtual.name == "Em Fase de Controle")
+        {
+            Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para ativar o efeito", Color.white);
+            Configuracoes.admJogo.efeitoAtual = carta.efeito;
+            Configuracoes.admJogo.DefinirEstado(usandoEfeito);
+            carta.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+        }
+        else
+        {
+            if (carta.efeitoUsado == true)
+            {
+                Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " já usou seu efeito", Color.white);
+            }
+        }
+    }
+    public override void AoOlhar(InstanciaCarta carta)
+    {
+        if (carta != cartaAtual.valor)//se for diferente
+        {
+            cartaAtual.Set(carta);
+            aoOlharCarta.Raise();
+        }
     }
 }

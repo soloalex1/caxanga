@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   propriedades:
-  - stringValor: FESTA JUNINA
+  - stringValor: Festa Junina
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -34,7 +34,10 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 853d4a87832add34eae9e684f2045e77, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "Festas Populares: As festas juninas no Brasil s\xE3o multiculturais,
+      se originando nas festas dos santos populares em Portugal. No Brasil, recebeu
+      o nome de \"junina\" porque acontece no m\xEAs de junho."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 11400000, guid: 866fce172b40d5d40b3b9f69b61fbb18, type: 2}

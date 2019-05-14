@@ -7,6 +7,7 @@ public class SeguradorDeCartas : ScriptableObject
 {
     public VariavelTransform gridMao;
     public VariavelTransform gridCartasBaixadas;
+    public VariavelTransform gridCemiterio;
 
     public void CarregarCartasJogador(SeguradorDeJogador seguradorJogador, InfoUIJogador InfoUIJogador)
     {
@@ -18,6 +19,28 @@ public class SeguradorDeCartas : ScriptableObject
         {
             Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridMao.valor.transform);
         }
+        foreach (InstanciaCarta c in seguradorJogador.cartasCemiterio)
+        {
+
+            Configuracoes.DefinirPaiCarta(c.infoCarta.gameObject.transform, gridCemiterio.valor.transform);
+            Vector3 posicao = Vector3.zero;
+            posicao.x = seguradorJogador.cartasCemiterio.Count * 10;
+            posicao.z = seguradorJogador.cartasCemiterio.Count * 10;
+
+            c.transform.localPosition = posicao;
+            c.transform.localRotation = Quaternion.identity;
+            c.transform.localScale = Vector3.one;
+
+        }
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        {
+            c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+        }
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorAtual.cartasMao)
+        {
+            c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        }
+
         seguradorJogador.infoUI = InfoUIJogador;
         seguradorJogador.CarregarInfoUIJogador();
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
   propriedades:
-  - stringValor: CURUPIRA
+  - stringValor: Curupira
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
@@ -34,7 +34,11 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 0a6d868b105e4ec4398a67e24920eb66, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 
+  - stringValor: "Cren\xE7as e Religiosidades: Ele \xE9 uma entidade das matas, de
+      cabelos compridos e vermelhos, e com os p\xE9s virados para tr\xE1s. Engana
+      ca\xE7adores e viajantes, fazendo-os perder o rumo certo, desorientando-os dentro
+      da floresta, com assobios e sinais falsos."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
+  efeito: {fileID: 0}
