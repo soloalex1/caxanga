@@ -56,7 +56,6 @@ public class InfoUIJogador : MonoBehaviour
             {
                 if (jogador.magia < c.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor)
                 {
-
                     if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
                     {
                         c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeBaixarLenda;

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ElementosJogo/CartaBaixada")]
+[CreateAssetMenu(menuName = "Cartas/Lógicas/CartaBaixada")]
 public class CartaBaixada : LogicaInstanciaCarta
 {
     public GameEvent aoOlharCarta;
     public VariavelCarta cartaAtual;
     public EstadoJogador usandoEfeito;
+    public Sprite cursorAlvoVerde, cursorAlvoVermelho;
 
     public override void AoClicar(InstanciaCarta carta)
     {
@@ -35,6 +36,17 @@ public class CartaBaixada : LogicaInstanciaCarta
         {
             cartaAtual.Set(carta);
             aoOlharCarta.Raise();
+            if (Configuracoes.admJogo.estadoAtual == usandoEfeito)
+            {
+                if (carta.podeSofrerEfeito)
+                {
+                    Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                }
+                else
+                {
+                    Configuracoes.admCursor.MudarSprite(cursorAlvoVermelho);
+                }
+            }
         }
     }
 }

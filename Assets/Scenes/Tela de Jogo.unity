@@ -623,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -355.89996, y: -30.300003}
+  m_AnchoredPosition: {x: -399.99994, y: -30.300003}
   m_SizeDelta: {x: 852.5, y: 1158.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &112490973
@@ -2494,7 +2494,6 @@ MonoBehaviour:
   faseDeControle: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
   rodadaAtual: 0
   numCartasPuxadasInicioRodada: 2
-  EstadoInicialTurno: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
@@ -2550,6 +2549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005c089b9bc9c2243905eee5123fd67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  telaConfiguracoes: {fileID: 0}
+  cursorIdle: {fileID: 0}
 --- !u!114 &515829813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,7 +4699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.2, y: -354.43}
+  m_AnchoredPosition: {x: -339.99994, y: -320}
   m_SizeDelta: {x: 808.1, y: 1098.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1042846462
@@ -7049,7 +7050,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d1917c492f1b7bb4faf39427199622a6, type: 3}
     m_FontSize: 104
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 300
     m_Alignment: 4
@@ -7058,7 +7059,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turno do Jogador
+  m_Text: Corpo Seco Venceu o turno
 --- !u!222 &1507579497
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8727,6 +8728,7 @@ MonoBehaviour:
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   infoCarta: {fileID: 1805799043}
   cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
 --- !u!1 &2016000042
 GameObject:
   m_ObjectHideFlags: 0
@@ -9299,7 +9301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2087334143
 RectTransform:
   m_ObjectHideFlags: 0

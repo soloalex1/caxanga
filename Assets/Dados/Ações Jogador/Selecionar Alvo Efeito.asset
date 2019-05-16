@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Selecionar Alvo Efeito
   m_EditorClassIdentifier: 
   faseDeControle: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}

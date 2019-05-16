@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ElementosJogo/CartaMao")]
+[CreateAssetMenu(menuName = "Cartas/Lógicas/CartaMao")]
 public class CartaMao : LogicaInstanciaCarta
 {
     public GameEvent aoSelecionarCartaAtual;

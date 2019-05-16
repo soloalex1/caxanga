@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class SelecionarAlvoEfeito : Acao
 {
     public EstadoJogador faseDeControle;
+    public Sprite cursorIdle;
     public override void Executar(float d)
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,12 +24,16 @@ public class SelecionarAlvoEfeito : Acao
                         Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
                         Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
                         Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        Configuracoes.admCursor.MudarSprite(cursorIdle);
                         return;
                     }
                     else
                     {
-                        Configuracoes.admJogo.cartaAlvo.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                        Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a cartas", Color.white);
+                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        Configuracoes.admJogo.efeitoAtual = null;
+                        Configuracoes.admCursor.MudarSprite(cursorIdle);
                         return;
                     }
                 }
@@ -37,7 +42,10 @@ public class SelecionarAlvoEfeito : Acao
                     if (carta != null && Configuracoes.admJogo.efeitoAtual.apenasJogador)
                     {
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a jogadores", Color.white);
-                        Configuracoes.admJogo.cartaAlvo.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                        Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        Configuracoes.admJogo.efeitoAtual = null;
+                        Configuracoes.admCursor.MudarSprite(cursorIdle);
                         return;
                     }
                 }
@@ -47,16 +55,17 @@ public class SelecionarAlvoEfeito : Acao
                     Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para SOFRER o efeito", Color.white);
                     Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
                     Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                    Configuracoes.admCursor.MudarSprite(cursorIdle);
                     return;
                 }
             }
             if (Configuracoes.admJogo.cartaAlvo == null && Configuracoes.admJogo.jogadorAlvo == null)
             {
-
                 Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                 Configuracoes.admJogo.DefinirEstado(faseDeControle);
                 Configuracoes.admJogo.efeitoAtual = null;
+                Configuracoes.admCursor.MudarSprite(cursorIdle);
             }
         }
     }

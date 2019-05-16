@@ -19,9 +19,12 @@ public class DetectarMouseSobre : Acao
         {
             IClicavel carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
             //se acertou algo, mas não é uma carta
-            if (carta != null)
+            if (carta != null && Configuracoes.admJogo.estadoAtual != null)
             {
-                Configuracoes.admCursor.MudarSprite(cursorClicavel);
+                if (Configuracoes.admJogo.estadoAtual.name != "Usando Efeito")
+                {
+                    Configuracoes.admCursor.MudarSprite(cursorClicavel);
+                }
                 carta.AoOlhar();
                 return;
             }

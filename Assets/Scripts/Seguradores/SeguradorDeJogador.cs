@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public bool passouTurno;
     public Sprite moldura;
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
@@ -21,7 +22,6 @@ public class SeguradorDeJogador : ScriptableObject
     public bool jogadorHumano;
     public bool podeSerAtacado;
     public int barrasDeVida;
-    public string[] cartasMaoInicio;
 
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartas;
@@ -33,6 +33,8 @@ public class SeguradorDeJogador : ScriptableObject
     public Sprite textoTurnoImage;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
+    public LogicaInstanciaCarta logicaCemiterio;
+
 
     [System.NonSerialized] // não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
@@ -82,6 +84,7 @@ public class SeguradorDeJogador : ScriptableObject
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);
+        carta.logicaAtual = logicaCemiterio;
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
         carta.transform.Find("Sombra").gameObject.SetActive(true);
         carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);

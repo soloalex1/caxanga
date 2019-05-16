@@ -27,6 +27,19 @@ public class FaseControleJogador : Fase
             Configuracoes.admJogo.DefinirEstado(estadoControleJogador);
             Configuracoes.admJogo.aoMudarFase.Raise();
             foiIniciada = true;
+            int cont = 0;
+            foreach (InstanciaCarta carta in Configuracoes.admJogo.jogadorAtual.cartasMao)
+            {
+                if (Configuracoes.admJogo.jogadorAtual.magia > carta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor)
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                Configuracoes.admJogo.jogadorAtual.passouTurno = true;
+            }
+            cont = 0;
         }
 
     }

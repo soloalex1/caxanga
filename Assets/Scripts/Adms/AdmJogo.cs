@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    SeguradorDeJogador jogadorVencedor;
     public bool pause;
     public GameObject telaFimDeJogo;
 
@@ -17,7 +18,6 @@ public class AdmJogo : MonoBehaviour
     bool fimDaRodada = false;
     public int rodadaAtual;
     public int numCartasPuxadasInicioRodada;
-    public EstadoJogador EstadoInicialTurno;
     public SeguradorDeJogador jogadorAtual;//variável que nos diz qual é o jogador atual.
     public SeguradorDeJogador jogadorLocal;
     public SeguradorDeJogador jogadorInimigo;
@@ -85,8 +85,11 @@ public class AdmJogo : MonoBehaviour
                 {
                     indiceTurno = 0;
                 }
-                //O jogador atual muda aqui
-                TrocarJogadorAtual();
+                if (jogadorInimigo.passouTurno == false)
+                {
+                    //O jogador atual muda aqui
+                    TrocarJogadorAtual();
+                }
                 turnos[indiceTurno].AoIniciarTurno();
                 StopCoroutine("FadeTextoTurno");
                 StartCoroutine("FadeTextoTurno");
@@ -180,6 +183,61 @@ public class AdmJogo : MonoBehaviour
             }
         }
     }
+
+    IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
+    {
+        // GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().fontSize = 50;
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu o Turno";
+        ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
+        ImagemTextoTurno.gameObject.SetActive(true);
+        pause = true;
+        yield return new WaitForSeconds(2);
+        pause = false;
+        ImagemTextoTurno.gameObject.SetActive(false);
+        FinalizarFaseAtual();
+        RedefinirJogadores();
+        mostrouVencedorTurno = true;
+    }
+
+    bool mostrouVencedorTurno;
+    IEnumerator ChecaVidaJogadores()
+    {
+        if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
+        {
+            if (jogadorAtual.vida <= 0)
+            {
+                fimDaRodada = true;
+                jogadorAtual.barrasDeVida--;
+                StartCoroutine(FadeVencedorTurno(jogadorInimigo));
+            }
+            else if (jogadorInimigo.vida <= 0)
+            {
+                fimDaRodada = true;
+                jogadorInimigo.barrasDeVida--;
+                StartCoroutine(FadeVencedorTurno(jogadorAtual));
+            }
+            else
+            {
+                Debug.Log("EMPATE");
+                jogadorAtual.barrasDeVida--;
+                jogadorInimigo.barrasDeVida--;
+                FinalizarFaseAtual();
+                RedefinirJogadores();
+            }
+            yield return new WaitWhile(() => mostrouVencedorTurno == false);
+            mostrouVencedorTurno = true;
+            if (jogadorInimigo.barrasDeVida <= 0)
+            {
+                jogadorVencedor = jogadorAtual;
+                StartCoroutine(FimDeJogo(jogadorVencedor));
+            }
+            if (jogadorAtual.barrasDeVida <= 0)
+            {
+                jogadorVencedor = jogadorInimigo;
+                StartCoroutine(FimDeJogo(jogadorVencedor));
+            }
+        }
+    }
     public void TrocarJogadorAtual()
     {
         //se na hora da troca o jogador de baixo for o Player
@@ -216,7 +274,7 @@ public class AdmJogo : MonoBehaviour
         telaFimDeJogo.gameObject.SetActive(true);
         telaFimDeJogo.transform.Find("Retrato Jogador").GetComponent<Image>().sprite = jogadorVencedor.retratoJogador;
         telaFimDeJogo.transform.Find("Moldura").GetComponent<Image>().sprite = jogadorVencedor.moldura;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         telaFimDeJogo.gameObject.SetActive(false);
         Pausar();
     }
@@ -239,6 +297,7 @@ public class AdmJogo : MonoBehaviour
                 todosJogadores[i].feiticosBaixadosNoTurno = 0;
                 todosJogadores[i].podeSerAtacado = true;
                 todosJogadores[i].podeUsarEfeito = true;
+                todosJogadores[i].passouTurno = false;
 
                 for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
                 {
@@ -266,19 +325,21 @@ public class AdmJogo : MonoBehaviour
             }
             // FinalizarFaseAtual();
             fimDaRodada = false;
-            Configuracoes.RegistrarEvento("Mudando para a próxima rodada...", Color.white);
         }
     }
 
     public Image ImagemTextoTurno;
     public IEnumerator FadeTextoTurno()
     {
-        ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
-        ImagemTextoTurno.gameObject.SetActive(true);
-        pause = true;
-        yield return new WaitForSeconds(1);
-        pause = false;
-        ImagemTextoTurno.gameObject.SetActive(false);
+        if (jogadorAtual.passouTurno == false)
+        {
+            ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
+            ImagemTextoTurno.gameObject.SetActive(true);
+            pause = true;
+            yield return new WaitForSeconds(1);
+            pause = false;
+            ImagemTextoTurno.gameObject.SetActive(false);
+        }
     }
     public void FinalizarFaseAtual()
     {
@@ -293,8 +354,8 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
             int poderCartaAtacadaAntes = cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor;
-            StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes));
-            StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes));
+            StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes * -1));
+            StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes * -1));
             yield return new WaitForSeconds(0.8f);
             cartaAtacada.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacanteAntes;
             cartaAtacante.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor -= poderCartaAtacadaAntes;
@@ -339,30 +400,10 @@ public class AdmJogo : MonoBehaviour
             {
                 MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
-            if (jogadorAtacado.vida <= 0)
-            {
-                if (jogadorInimigo.barrasDeVida > 0)
-                {
-                    Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + " derrotou o seu inimigo e venceu a rodada", jogadorAtual.corJogador);
-                    fimDaRodada = true;
-                    jogadorInimigo.barrasDeVida--;
-
-                    if (jogadorInimigo.barrasDeVida <= 0)
-                    {
-                        StartCoroutine(FimDeJogo(jogadorAtual));
-                        Configuracoes.RegistrarEvento("O jogador " + jogadorAtual.nomeJogador + "venceu a partida", jogadorAtual.corJogador);
-                        yield return null;
-                    }
-                    else
-                    {
-                        FinalizarFaseAtual();
-                        RedefinirJogadores();
-                    }
-                }
-            }
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacante = null;
             jogadorAtacado = null;
+            StartCoroutine(ChecaVidaJogadores());
         }
         yield return null;
     }
@@ -395,6 +436,7 @@ public class AdmJogo : MonoBehaviour
                 {
                     if (efeito.cartaQueInvoca.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                     {
+                        jogadorAtual.CarregarInfoUIJogador();
                         DefinirEstado(faseDeControle);
                         jogadorAtual.ColocarCartaNoCemiterio(efeito.cartaQueInvoca);
                     }

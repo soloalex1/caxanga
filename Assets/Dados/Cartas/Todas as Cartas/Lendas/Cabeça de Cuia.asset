@@ -19,7 +19,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
   - stringValor: 
-    intValor: 1
+    intValor: 2
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
   - stringValor: 
@@ -27,7 +27,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
   - stringValor: 
-    intValor: 2
+    intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
