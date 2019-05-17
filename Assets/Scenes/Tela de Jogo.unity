@@ -361,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1471,7 +1471,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 515829810}
-        m_MethodName: FinalizarFaseAtual
+        m_MethodName: EncerrarRodada
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2487,42 +2487,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: 0
+  prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
+    type: 3}
   telaFimDeJogo: {fileID: 902221695}
   telaPause: {fileID: 18920828}
-  usandoEfeito: 0
-  efeitoAtual: {fileID: 0}
-  faseDeControle: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
   rodadaAtual: 0
-  numCartasPuxadasInicioRodada: 2
+  emSeuTurno: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
+  efeitoAtual: {fileID: 0}
+  estadoAtual: {fileID: 0}
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  jogadorAtacado: {fileID: 0}
   jogadorIA: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  seguradorCartasJogadorAtual: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
+  seguradorCartasJogadorLocal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
   seguradorCartasJogadorInimigo: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
     type: 2}
-  estadoAtual: {fileID: 0}
-  prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
-    type: 3}
-  indiceTurno: 0
-  turnos:
-  - {fileID: 11400000, guid: 5246b4bfc9682414d860ae4aa864b298, type: 2}
-  - {fileID: 11400000, guid: da4f92e57a848ce49bed7f5095329ca9, type: 2}
   infoJogadorLocal: {fileID: 390571243}
   infoJogadorIA: {fileID: 816887048}
-  infoJogadores:
-  - {fileID: 390571243}
-  - {fileID: 816887048}
-  textoTurno: {fileID: 11400000, guid: 0508aa4964227f946855f51caf2f8006, type: 2}
-  aoMudarTurno: {fileID: 11400000, guid: f1162435137084a4680d883689f1f064, type: 2}
-  aoMudarFase: {fileID: 11400000, guid: 236fd74c81568894199347fcc235c1e6, type: 2}
+  jogadorAtacado: {fileID: 0}
   cartaAtacada: {fileID: 0}
   cartaAtacante: {fileID: 0}
   cartaAlvo: {fileID: 0}
   jogadorAlvo: {fileID: 0}
   ImagemTextoTurno: {fileID: 2087334144}
+  cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
+  cursorSegurandoCarta: {fileID: 21300000, guid: 7d8cad61fe8c90542bcc74a0ff4bb718,
+    type: 3}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorAlvoVermelho: {fileID: 21300000, guid: a84ff7c5781eb9149a5333c218a2b7e0, type: 3}
+  cursorAlvoVerde: {fileID: 21300000, guid: 91864b2b6ee44784aa65b83ea1160780, type: 3}
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
@@ -2531,7 +2525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515829809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10245285, y: -2.15829, z: -10.444397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2550,7 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   telaConfiguracoes: {fileID: 0}
-  cursorIdle: {fileID: 0}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
 --- !u!114 &515829813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2563,8 +2557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3616489a6be8046469136d4576a39fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteCursorAtual: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
   imagemCursor: {fileID: 82465714}
+  sobreBotao: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,7 +3407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &785307965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3699,7 +3693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.4, y: -532}
+  m_AnchoredPosition: {x: 140, y: -532}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812562179
@@ -4062,7 +4056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5713,7 +5707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5865,7 +5859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6309,7 +6303,6 @@ GameObject:
   - component: {fileID: 1320225042}
   - component: {fileID: 1320225044}
   - component: {fileID: 1320225043}
-  - component: {fileID: 1320225045}
   - component: {fileID: 1320225046}
   m_Layer: 5
   m_Name: Fase
@@ -6379,27 +6372,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320225041}
   m_CullTransparentMesh: 0
---- !u!114 &1320225045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320225041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff07cf6c4988967429ac8c36a73057a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 236fd74c81568894199347fcc235c1e6, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  raiseOnEnable: 0
-  faseAtual: {fileID: 11400000, guid: 98104beb8173f0b4faa999160db045a9, type: 2}
-  textoAlvo: {fileID: 1320225043}
 --- !u!114 &1320225046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6900,6 +6872,7 @@ RectTransform:
   - {fileID: 18920829}
   - {fileID: 902221696}
   - {fileID: 82465713}
+  - {fileID: 2026893022}
   m_Father: {fileID: 1104370152}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7059,7 +7032,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Corpo Seco Venceu o turno
+  m_Text: 'Turno de
+
+    Fulano'
 --- !u!222 &1507579497
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7155,7 +7130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8727,8 +8702,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   infoCarta: {fileID: 1805799043}
-  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
-  cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
 --- !u!1 &2016000042
 GameObject:
   m_ObjectHideFlags: 0
@@ -8890,6 +8863,101 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020198643}
+  m_CullTransparentMesh: 0
+--- !u!1 &2026893021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2026893022}
+  - component: {fileID: 2026893025}
+  - component: {fileID: 2026893024}
+  - component: {fileID: 2026893023}
+  m_Layer: 5
+  m_Name: Texto Passou
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2026893022
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026893021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1469478443}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -10, y: 500.83}
+  m_SizeDelta: {x: 455.6, y: 141.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2026893023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026893021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 4, y: 4}
+  m_UseGraphicAlpha: 1
+--- !u!114 &2026893024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026893021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8188fbeabf7af6b45936f2755c5101aa, type: 3}
+    m_FontSize: 31
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Passou
+--- !u!222 &2026893025
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026893021}
   m_CullTransparentMesh: 0
 --- !u!1 &2026959016
 GameObject:

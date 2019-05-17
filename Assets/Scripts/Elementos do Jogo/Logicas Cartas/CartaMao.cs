@@ -10,6 +10,9 @@ public class CartaMao : LogicaInstanciaCarta
     public GameEvent aoOlharCarta;
     public VariavelCarta cartaAtual;
     public EstadoJogador segurandoCarta;
+    public Sprite cursorClicavel, cursorIdle;
+
+
     public override void AoClicar(InstanciaCarta c)
     {
         cartaAtual.Set(c);
@@ -24,6 +27,14 @@ public class CartaMao : LogicaInstanciaCarta
         {
             cartaAtual.Set(carta);
             aoOlharCarta.Raise();
+            if (Configuracoes.admJogo.estadoAtual.name != "Usando Efeito" || Configuracoes.admJogo.estadoAtual.name != "Atacando")
+            {
+                Configuracoes.admCursor.MudarSprite(cursorClicavel);
+            }
+            else
+            {
+                Configuracoes.admCursor.MudarSprite(cursorIdle);
+            }
         }
     }
 }

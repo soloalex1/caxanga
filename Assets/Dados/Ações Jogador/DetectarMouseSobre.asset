@@ -15,5 +15,4 @@ MonoBehaviour:
   aoPararDeOlharCarta: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68,
     type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
-  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
-  cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}

@@ -9,22 +9,49 @@ public class DetectarMouseSobre : Acao
 
     public GameEvent aoPararDeOlharCarta;
     public VariavelCarta cartaAtual;
-    public Sprite cursorClicavel;
-    public Sprite cursorAlvoCinza;
-
+    public Sprite cursorIdle;
     public override void Executar(float d)
     {
         List<RaycastResult> resultados = Configuracoes.GetUIObjs();
         foreach (RaycastResult r in resultados)
         {
+            InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
             IClicavel carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
+
+            if (infoJogadorAlvo != null)
+            {
+                if (Configuracoes.admJogo.estadoAtual.name == "Atacando" || Configuracoes.admJogo.estadoAtual.name == "Usando Efeito")
+                {
+                    if (infoJogadorAlvo.jogador == Configuracoes.admJogo.jogadorInimigo)
+                    {
+                        if (Configuracoes.admJogo.estadoAtual.name == "Usando Efeito" && Configuracoes.admJogo.efeitoAtual.alteracaoVida < 0)
+                        {
+                            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVerde);
+                        }
+                        else
+                        {
+                            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVermelho);
+                        }
+                        return;
+                    }
+                    else
+                    {
+                        if (Configuracoes.admJogo.estadoAtual.name == "Usando Efeito" && Configuracoes.admJogo.efeitoAtual.alteracaoVida > 0)
+                        {
+                            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVerde);
+                        }
+                        else
+                        {
+                            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVermelho);
+                        }
+                        return;
+                    }
+                }
+
+            }
             //se acertou algo, mas não é uma carta
             if (carta != null && Configuracoes.admJogo.estadoAtual != null)
             {
-                if (Configuracoes.admJogo.estadoAtual.name != "Usando Efeito")
-                {
-                    Configuracoes.admCursor.MudarSprite(cursorClicavel);
-                }
                 carta.AoOlhar();
                 return;
             }
@@ -43,8 +70,13 @@ public class DetectarMouseSobre : Acao
             cartaAtual.valor.gameObject.SetActive(true);
             cartaAtual.valor = null;
         }
-        // aoPararDeOlharCarta.Raise();
-        // Debug.Log("Não to com o mouse em nada");
-
+        if (Configuracoes.admJogo.estadoAtual.name == "Em Seu Turno" && Configuracoes.admCursor.sobreBotao == false)
+        {
+            Configuracoes.admCursor.MudarSprite(cursorIdle);
+        }
+        if (Configuracoes.admJogo.estadoAtual.name == "Atacando" || Configuracoes.admJogo.estadoAtual.name == "Usando Efeito")
+        {
+            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoCinza);
+        }
     }
 }

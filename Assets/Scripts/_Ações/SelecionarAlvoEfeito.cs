@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Ações/Selecionar Alvo Efeito")]
 public class SelecionarAlvoEfeito : Acao
 {
-    public EstadoJogador faseDeControle;
+    public EstadoJogador emSeuTurno;
     public Sprite cursorIdle;
     public override void Executar(float d)
     {
@@ -23,17 +23,15 @@ public class SelecionarAlvoEfeito : Acao
                         Configuracoes.admJogo.jogadorAlvo = infoJogadorAlvo.jogador;
                         Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
                         Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
-                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                        Configuracoes.admCursor.MudarSprite(cursorIdle);
+                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                         return;
                     }
                     else
                     {
                         Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a cartas", Color.white);
-                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                         Configuracoes.admJogo.efeitoAtual = null;
-                        Configuracoes.admCursor.MudarSprite(cursorIdle);
                         return;
                     }
                 }
@@ -43,9 +41,8 @@ public class SelecionarAlvoEfeito : Acao
                     {
                         Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a jogadores", Color.white);
                         Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
-                        Configuracoes.admJogo.DefinirEstado(faseDeControle);
+                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                         Configuracoes.admJogo.efeitoAtual = null;
-                        Configuracoes.admCursor.MudarSprite(cursorIdle);
                         return;
                     }
                 }
@@ -54,8 +51,7 @@ public class SelecionarAlvoEfeito : Acao
                     Configuracoes.admJogo.cartaAlvo = carta;
                     Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para SOFRER o efeito", Color.white);
                     Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
-                    Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                    Configuracoes.admCursor.MudarSprite(cursorIdle);
+                    Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                     return;
                 }
             }
@@ -63,9 +59,7 @@ public class SelecionarAlvoEfeito : Acao
             {
                 Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
-                Configuracoes.admJogo.DefinirEstado(faseDeControle);
-                Configuracoes.admJogo.efeitoAtual = null;
-                Configuracoes.admCursor.MudarSprite(cursorIdle);
+                Configuracoes.admJogo.DefinirEstado(emSeuTurno);
             }
         }
     }

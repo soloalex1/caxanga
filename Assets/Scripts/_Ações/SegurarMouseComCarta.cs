@@ -11,7 +11,7 @@ public class SegurarMouseComCarta : Acao
 
     public VariavelCarta cartaAtual;
     public GameEvent aoJogarCartaDaMao;
-    public EstadoJogador controladorEstadoJogador;//variável para poder controlar o estado do jogador
+    public EstadoJogador emSeuTurno;//variável para poder controlar o estado do jogador
     public VariavelTransform gridAreaDropavel;
 
     public Sprite cursorSegurandoCarta;
@@ -20,7 +20,6 @@ public class SegurarMouseComCarta : Acao
     //Como todas as ações, precisamos implementar o Executar(), que vai ser chamado quando o jogador mudar de estado
     public override void Executar(float d)
     {
-        Configuracoes.admCursor.MudarSprite(cursorSegurandoCarta);
         bool btMouseApertado = Input.GetMouseButton(0);
         if (gridAreaDropavel != null)
         {
@@ -50,10 +49,9 @@ public class SegurarMouseComCarta : Acao
             cartaAtual.valor = null;
             if (Configuracoes.admJogo.estadoAtual.name != "Usando Efeito")
             {
-                Configuracoes.admJogo.DefinirEstado(controladorEstadoJogador);
+                Configuracoes.admJogo.DefinirEstado(emSeuTurno);
             }
             aoJogarCartaDaMao.Raise();
-            Configuracoes.admCursor.MudarSprite(cursorIdle);
             return;
         }
     }

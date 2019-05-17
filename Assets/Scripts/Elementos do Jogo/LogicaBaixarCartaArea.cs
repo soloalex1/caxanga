@@ -49,7 +49,6 @@ public class LogicaBaixarCartaArea : LogicaArea
                             Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.efeito;
                             Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
                             Configuracoes.admJogo.DefinirEstado(usandoEfeito);
-                            Configuracoes.admCursor.MudarSprite(cursorAlvoCinza);
                         }
                         else
                         {

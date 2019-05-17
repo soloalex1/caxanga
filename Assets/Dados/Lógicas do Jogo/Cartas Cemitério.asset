@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 8456d4ec2f1f6854da84c8dcff89a497, type: 3}
+  m_Name: "Cartas Cemit\xE9rio"
+  m_EditorClassIdentifier: Assembly-CSharp::LogicaCemiterio
   m_Name: "Cartas Cemit\xE9rio"
   m_EditorClassIdentifier: Assembly-CSharp::LogicaCemiterio

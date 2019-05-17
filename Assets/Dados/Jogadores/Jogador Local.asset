@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
-  passouTurno: 0
+  usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
+  rodada: {fileID: 11400000, guid: 428a77df8f0d4c64bb1effc37c3f6566, type: 2}
+  protegido: 0
+  silenciado: 0
+  fezAlgumaAcao: 1
+  passouRodada: 0
   moldura: {fileID: 21300000, guid: 891ef887e74db964593834fedbf0f7ef, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
@@ -23,20 +28,20 @@ MonoBehaviour:
   corJogador: {r: 0.68235296, g: 0.7372549, b: 0.92941177, a: 1}
   retratoJogador: {fileID: 21300000, guid: 2daef1a2ddeae824b871180f388ff48b, type: 3}
   nomeJogador: Corpo Seco
-  vidaInicial: 1
+  vidaInicial: 20
   magiaInicial: 10
-  magia: 10
-  vida: 1
+  magia: 5
+  vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1
   podeSerAtacado: 1
   barrasDeVida: 3
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1
   textoTurnoImage: {fileID: 21300000, guid: fc902b8f896242840be246f480e41388, type: 3}
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
-  logicaCemiterio: {fileID: 11400000, guid: 0d1d4337481b8b04687e870c6c16202b, type: 2}
+  logicaCemiterio: {fileID: 0}
   cartasCemiterio: []

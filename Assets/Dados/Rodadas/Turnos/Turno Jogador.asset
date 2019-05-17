@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f557d52a907007d43a089789b9aa90df, type: 3}
-  m_Name: "Haver\xE1 Fase Batalha"
+  m_Script: {fileID: 11500000, guid: 24db623d27d2ac84aaa8013e33e95b33, type: 3}
+  m_Name: Turno Jogador
   m_EditorClassIdentifier: 
+  jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
+  acoesIniciais:
+  - {fileID: 11400000, guid: a418d4ad6d281f747bb4ce8c171c8361, type: 2}

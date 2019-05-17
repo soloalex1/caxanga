@@ -5,7 +5,10 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
-    public bool passouTurno;
+    public EstadoJogador usandoEfeito;
+    public Rodada rodada;
+    public bool protegido, silenciado, fezAlgumaAcao;
+    public bool passouRodada;
     public Sprite moldura;
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
@@ -41,6 +44,48 @@ public class SeguradorDeJogador : ScriptableObject
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
     public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
+
+    public void InicializarJogador()
+    {
+        magia = magiaInicial;
+        vida = vidaInicial;
+        barrasDeVida = 3;
+        baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
+        baralho.cartasBaralho = new List<string>();
+        cartasCemiterio.Clear();
+        lendasBaixadasNoTurno = 0;
+        feiticosBaixadosNoTurno = 0;
+        podeUsarEfeito = true;
+        podeSerAtacado = true;
+        passouRodada = false;
+        fezAlgumaAcao = false;
+
+
+        if (this == Configuracoes.admJogo.jogadorLocal)
+        {
+            infoUI = Configuracoes.admJogo.infoJogadorLocal;
+        }
+        else
+        {
+            infoUI = Configuracoes.admJogo.infoJogadorIA;
+        }
+        foreach (string carta in baralhoInicial.cartasBaralho)
+        {
+            baralho.cartasBaralho.Add(carta);
+        }
+
+        if (jogadorHumano == true)
+        {
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorLocal;
+        }
+        else
+        {
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorInimigo;
+        }
+        CarregarInfoUIJogador();
+        PuxarCartasIniciais();
+    }
+
     public void BaixarCarta(InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -48,14 +93,26 @@ public class SeguradorDeJogador : ScriptableObject
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
-
-        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaEntrouEmCampo)
-        {
-            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
-        }
-
+        fezAlgumaAcao = true;
         Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
         infoUI.AtualizarMagia();
+
+        if (instCarta.efeito != null
+        && instCarta.efeito.eventoAtivador.name == "Carta Entrou Em Campo"
+        && instCarta.jogadorDono.podeUsarEfeito)
+        {
+            if (instCarta.efeito.apenasCarta && instCarta.efeito.alteracaoPoder < 0 && Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Count == 0)
+            {
+                return;
+            }
+            if (instCarta.efeito.afetaTodasCartas)
+            {
+                Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(instCarta.efeito));
+            }
+            Configuracoes.admJogo.efeitoAtual = instCarta.efeito;
+            Configuracoes.admJogo.DefinirEstado(usandoEfeito);
+        }
+
     }
     public bool PodeUsarCarta(Carta c)
     {
@@ -81,6 +138,23 @@ public class SeguradorDeJogador : ScriptableObject
         }
     }
 
+    public void PuxarCartasIniciais()
+    {
+
+        baralho.Embaralhar();
+        for (int i = 0; i < numCartasMaoInicio; i++)
+        {
+            Configuracoes.admJogo.PuxarCarta(this);
+        }
+
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        {
+            if (c != null)
+            {
+                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
+        }
+    }
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);

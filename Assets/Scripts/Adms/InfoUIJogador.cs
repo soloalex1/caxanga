@@ -97,7 +97,7 @@ public class InfoUIJogador : MonoBehaviour
     public IEnumerator AnimacaoDano(int dano)
     {
         gameObject.transform.Find("Coração Dano").gameObject.SetActive(true);
-        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = "-" + dano.ToString();
+        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
         yield return new WaitForSeconds(0.8f);
         transform.Find("Coração Dano").gameObject.SetActive(false);
     }

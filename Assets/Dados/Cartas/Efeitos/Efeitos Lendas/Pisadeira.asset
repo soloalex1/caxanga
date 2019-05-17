@@ -15,9 +15,9 @@ MonoBehaviour:
   ativacao: {fileID: 11400000, guid: 08d60700a0b0da54dadf1639cd78a1b3, type: 2}
   modoDeExecucao: {fileID: 11400000, guid: 9f918ddf656dfb543a0111ce77fed66c, type: 2}
   tipoEfeito: {fileID: 11400000, guid: 3c938c8f94fdd9444b959a28c12252b1, type: 2}
-  eventoAtivador: {fileID: 11400000, guid: 9f24974c542dc764fa1657f5d7c6a0cd, type: 2}
+  eventoAtivador: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   condicaoAtivacao: {fileID: 0}
-  jogadorQueInvoca: {fileID: 0}
+  jogadorQueInvoca: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
   jogadorAlvo: {fileID: 0}
   cartaQueInvoca: {fileID: 0}
   cartaAlvo: {fileID: 0}

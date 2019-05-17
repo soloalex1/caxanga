@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7a79bdd18aa00c4abe8e3cedf0b14ba, type: 3}
-  m_Name: Carta Baixada Principal
+  m_Name: Carta Baixada
   m_EditorClassIdentifier: 
   aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
+  atacando: {fileID: 11400000, guid: 75d68e34e60d8d145843916fd7442566, type: 2}
   cursorAlvoVerde: {fileID: 21300000, guid: 91864b2b6ee44784aa65b83ea1160780, type: 3}
   cursorAlvoVermelho: {fileID: 21300000, guid: a84ff7c5781eb9149a5333c218a2b7e0, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
+  gridAreaDropavel: {fileID: 11400000, guid: f8f4c42e8f0a41e48b2d268cfaf3d612, type: 2}

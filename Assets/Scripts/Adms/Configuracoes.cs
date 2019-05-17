@@ -12,6 +12,7 @@ public static class Configuracoes
 
     public static admCursor admCursor;
     private static ConsoleHook _admConsole;
+
     public static void RegistrarEvento(string e, Color color)
     {
         // if (_admConsole == null)
@@ -60,6 +61,7 @@ public static class Configuracoes
             instCarta.efeito = novoEfeito;
             instCarta.efeito.cartaQueInvoca = instCarta;
             instCarta.efeito.jogadorQueInvoca = admJogo.jogadorAtual;
+
         }
         admJogo.jogadorAtual.BaixarCarta(instCarta);
     }
