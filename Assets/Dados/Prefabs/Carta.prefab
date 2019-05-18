@@ -289,7 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
-  instCarta: {fileID: 0}
   propriedades:
   - texto: {fileID: 4947005154173240299}
     imagem: {fileID: 0}
@@ -329,14 +328,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fb7e1cc6c15449973b929744475ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carta: {fileID: 0}
   jogadorDono: {fileID: 0}
   efeito: {fileID: 0}
   efeitoUsado: 0
   podeSofrerEfeito: 1
   logicaAtual: {fileID: 0}
-  infoCarta: {fileID: 0}
-  podeAtacarNesteTurno: 0
-  podeSerAtacada: 0
+  infoCarta: {fileID: 6439320136881553125}
+  podeAtacarNesteTurno: 1
+  podeSerAtacada: 1
+  poder: 0
+  custo: 0
 --- !u!1 &4947005153425941875
 GameObject:
   m_ObjectHideFlags: 0

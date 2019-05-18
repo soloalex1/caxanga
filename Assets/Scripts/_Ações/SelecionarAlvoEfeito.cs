@@ -15,49 +15,18 @@ public class SelecionarAlvoEfeito : Acao
             foreach (RaycastResult r in resultados)
             {                //logica para afetar o jogador inimigo
                 InstanciaCarta carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
-                InfoUIJogador infoJogadorAlvo = r.gameObject.GetComponentInParent<InfoUIJogador>();
-                if (infoJogadorAlvo != null)
-                {
-                    if (!Configuracoes.admJogo.efeitoAtual.apenasCarta)
-                    {
-                        Configuracoes.admJogo.jogadorAlvo = infoJogadorAlvo.jogador;
-                        Configuracoes.RegistrarEvento(Configuracoes.admJogo.jogadorAlvo.nomeJogador + " foi selecionado para sofrer o efeito", Color.white);
-                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
-                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
-                        return;
-                    }
-                    else
-                    {
-                        Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
-                        Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a cartas", Color.white);
-                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
-                        Configuracoes.admJogo.efeitoAtual = null;
-                        return;
-                    }
-                }
-                else
-                {
-                    if (carta != null && Configuracoes.admJogo.efeitoAtual.apenasJogador)
-                    {
-                        Configuracoes.RegistrarEvento("O efeito desta carta só se aplica a jogadores", Color.white);
-                        Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
-                        Configuracoes.admJogo.DefinirEstado(emSeuTurno);
-                        Configuracoes.admJogo.efeitoAtual = null;
-                        return;
-                    }
-                }
                 if (carta != null && (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta) || Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Contains(carta)))
                 {
-                    Configuracoes.admJogo.cartaAlvo = carta;
-                    Configuracoes.RegistrarEvento(carta.infoCarta.carta.name + " foi selecionado(a) para SOFRER o efeito", Color.white);
-                    Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(Configuracoes.admJogo.efeitoAtual));
+                    Configuracoes.admEfeito.eventoAtivador.cartaQueAtivouEvento.efeito.cartaAlvo = carta;
+                    Configuracoes.admJogo.efeitoAtual.cartaAlvo = carta;
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                     return;
                 }
             }
-            if (Configuracoes.admJogo.cartaAlvo == null && Configuracoes.admJogo.jogadorAlvo == null)
+            if (Configuracoes.admJogo.efeitoAtual.cartaAlvo == null)
             {
                 Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
+                Configuracoes.admJogo.efeitoAtual = null;
                 Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                 Configuracoes.admJogo.DefinirEstado(emSeuTurno);
             }

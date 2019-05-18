@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e3854b616cb9a4c82b9608f0c20e7f, type: 3}
   m_Name: AoJogarCartaDaMao
   m_EditorClassIdentifier: 
+  cartaQueAtivouEvento: {fileID: 0}
+  listeners: []

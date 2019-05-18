@@ -10,45 +10,43 @@ public class LogicaBaixarCartaArea : LogicaArea
     public VariavelTransform gridArea;
     public EstadoJogador usandoEfeito;
     public LogicaInstanciaCarta logicaCartaBaixa;
+    public GameEvent jogadorAtivouEfeito;
 
     public override void Executar()
     {
         if (cartaAtual.valor != null)
         {
 
-            Carta c = cartaAtual.valor.infoCarta.carta;
+            InstanciaCarta c = cartaAtual.valor;
 
-            bool podeUsarCarta = Configuracoes.admJogo.jogadorAtual.PodeUsarCarta(c);
-            if (podeUsarCarta)
+            bool temMagiaParaBaixarCarta = Configuracoes.admJogo.jogadorAtual.TemMagiaParaBaixarCarta(c);
+            if (temMagiaParaBaixarCarta)
             {
-                if (cartaAtual.valor.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
+                if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
                 {
                     if (Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno < Configuracoes.admJogo.jogadorAtual.maxLendasTurno) //pode baixar carta
                     {
                         //define o pai da carta para ser o grid lá do Cartas Baixadas
-                        Configuracoes.BaixarCartaLenda(cartaAtual.valor.transform, gridArea.valor.transform, cartaAtual.valor);
-                        cartaAtual.valor.logicaAtual = logicaCartaBaixa;
-                        if (cartaAtual.valor.efeito != null)
-                        {
-                            cartaAtual.valor.efeito.cartaQueInvoca = cartaAtual.valor;
-                        }
+                        Configuracoes.admJogo.jogadorAtual.BaixarCarta(c.transform, gridArea.valor.transform, c);
+                        // Configuracoes.BaixarCartaLenda(c.transform, gridArea.valor.transform, c);
+                        c.logicaAtual = logicaCartaBaixa;
                         Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno++;
-                        cartaAtual.valor.gameObject.SetActive(true);
+                        c.gameObject.SetActive(true);
                     }
                     else
                     {
                         Configuracoes.RegistrarEvento("Você não pode baixar mais de uma Lenda por turno", Color.white);
                     }
                 }
-                if (cartaAtual.valor.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
+                if (c.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                 {
                     if (Configuracoes.admJogo.jogadorAtual.podeUsarEfeito)
                     {
                         if (Configuracoes.admJogo.jogadorAtual.feiticosBaixadosNoTurno < Configuracoes.admJogo.jogadorAtual.maxFeiticosTurno)
                         {
-                            Configuracoes.admJogo.efeitoAtual = cartaAtual.valor.efeito;
-                            Configuracoes.RegistrarEvento("Escolha um alvo para o efeito de " + cartaAtual.valor.infoCarta.carta.name, Color.white);
-                            Configuracoes.admJogo.DefinirEstado(usandoEfeito);
+                            jogadorAtivouEfeito.cartaQueAtivouEvento = c;
+                            Configuracoes.admEfeito.eventoAtivador = jogadorAtivouEfeito;
+                            jogadorAtivouEfeito.Raise();
                         }
                         else
                         {
@@ -63,7 +61,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                 }
             }
             // Dá um SetActive() pra sobrescrever o que tem no SelecaoAtual
-            cartaAtual.valor.gameObject.SetActive(true);
+            c.gameObject.SetActive(true);
 
         }
 

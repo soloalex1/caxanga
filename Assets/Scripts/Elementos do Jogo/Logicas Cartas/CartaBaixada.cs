@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Cartas/Lógicas/CartaBaixada")]
 public class CartaBaixada : LogicaInstanciaCarta
 {
-    public GameEvent aoOlharCarta;
+    public GameEvent aoOlharCarta, cartaAtacou;
     public VariavelCarta cartaAtual;
     public EstadoJogador usandoEfeito, atacando;
     public Sprite cursorAlvoVerde, cursorAlvoVermelho, cursorClicavel;
@@ -27,6 +27,9 @@ public class CartaBaixada : LogicaInstanciaCarta
             {
                 Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
             }
+            cartaAtacou.cartaQueAtivouEvento = carta;
+            Configuracoes.admEfeito.eventoAtivador = cartaAtacou;
+            cartaAtacou.Raise();
             Configuracoes.admJogo.DefinirEstado(atacando);
             Configuracoes.admJogo.cartaAtacante = carta;
             Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
@@ -42,7 +45,22 @@ public class CartaBaixada : LogicaInstanciaCarta
             {
                 if (carta.podeSofrerEfeito)
                 {
-                    Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                    if (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta))
+                    {
+                        if (carta.efeito.podeUsarEmSi)
+                        {
+                            Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                        }
+                        else
+                        {
+                            Configuracoes.admCursor.MudarSprite(cursorAlvoVermelho);
+                        }
+                    }
+                    if (Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Contains(carta))
+                    {
+                        Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                    }
+
                     return;
                 }
                 else

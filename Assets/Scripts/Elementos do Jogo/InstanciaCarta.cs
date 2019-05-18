@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InstanciaCarta : MonoBehaviour, IClicavel
 {
+    public Carta carta;
     public SeguradorDeJogador jogadorDono;
     public Efeito efeito;
     public bool efeitoUsado = false;
@@ -13,7 +14,9 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     public ExibirInfoCarta infoCarta;
     public bool podeAtacarNesteTurno;
     public bool podeSerAtacada;
+    public int poder;
 
+    public int custo;
     public bool PodeAtacar()
     {
         bool resultado = true;
@@ -30,6 +33,8 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     void Start()
     {
         infoCarta = GetComponent<ExibirInfoCarta>();
+        poder = carta.AcharPropriedadePeloNome("Poder").intValor;
+        custo = carta.AcharPropriedadePeloNome("Custo").intValor;
     }
 
     public IEnumerator AnimacaoDano(int dano)

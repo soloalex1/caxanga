@@ -17,13 +17,15 @@ MonoBehaviour:
   tipoEfeito: {fileID: 11400000, guid: 3c938c8f94fdd9444b959a28c12252b1, type: 2}
   eventoAtivador: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   condicaoAtivacao: {fileID: 0}
-  jogadorQueInvoca: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  jogadorQueInvoca: {fileID: 0}
   jogadorAlvo: {fileID: 0}
   cartaQueInvoca: {fileID: 0}
   cartaAlvo: {fileID: 0}
   alteracaoPoder: 1
   alteracaoVida: 2
   alteracaoMagia: 0
+  escolheAlvoCarta: 1
   apenasJogador: 0
-  apenasCarta: 0
   podeUsarEmSi: 1
+  afetaTodasCartas: 0
+  afetaApenasSeuJogador: 0

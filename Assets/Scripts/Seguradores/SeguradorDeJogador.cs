@@ -86,7 +86,7 @@ public class SeguradorDeJogador : ScriptableObject
         PuxarCartasIniciais();
     }
 
-    public void BaixarCarta(InstanciaCarta instCarta)
+    public void BaixarCarta(Transform c, Transform p, InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
         {
@@ -94,33 +94,26 @@ public class SeguradorDeJogador : ScriptableObject
         }
         cartasBaixadas.Add(instCarta);
         fezAlgumaAcao = true;
-        Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
         infoUI.AtualizarMagia();
 
-        if (instCarta.efeito != null
-        && instCarta.efeito.eventoAtivador.name == "Carta Entrou Em Campo"
-        && instCarta.jogadorDono.podeUsarEfeito)
+        instCarta.podeAtacarNesteTurno = false;
+        //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
+        if (instCarta.podeAtacarNesteTurno == false)
         {
-            if (instCarta.efeito.apenasCarta && instCarta.efeito.alteracaoPoder < 0 && Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Count == 0)
-            {
-                return;
-            }
-            if (instCarta.efeito.afetaTodasCartas)
-            {
-                Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.ExecutarEfeito(instCarta.efeito));
-            }
-            Configuracoes.admJogo.efeitoAtual = instCarta.efeito;
-            Configuracoes.admJogo.DefinirEstado(usandoEfeito);
+            instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spriteNaoPodeAtacar;
         }
-
+        Configuracoes.DefinirPaiCarta(c, p);
+        cartaEntrouEmCampo.cartaQueAtivouEvento = instCarta;
+        Configuracoes.admEfeito.eventoAtivador = cartaEntrouEmCampo;
+        cartaEntrouEmCampo.Raise();
+        return;
     }
-    public bool PodeUsarCarta(Carta c)
+    public bool TemMagiaParaBaixarCarta(InstanciaCarta c)
     {
         bool resultado = false;
-        Propriedades custo = c.AcharPropriedadePeloNome("Custo");
-        if (c != null && magia >= custo.intValor)
+        if (magia >= c.custo)
         {
-            magia -= custo.intValor;
+            magia -= c.custo;
             resultado = true;
         }
         if (resultado == false)
@@ -164,10 +157,9 @@ public class SeguradorDeJogador : ScriptableObject
         carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
         carta.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
         carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
-        if (carta.efeito != null && carta.efeito.eventoAtivador == cartaMorreu)
-        {
-            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
-        }
+        cartaMorreu.cartaQueAtivouEvento = carta;
+        Configuracoes.admEfeito.eventoAtivador = cartaMorreu;
+        cartaMorreu.Raise();
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;
         posicao.z = cartasCemiterio.Count * 10;

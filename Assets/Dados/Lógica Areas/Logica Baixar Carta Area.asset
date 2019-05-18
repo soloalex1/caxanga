@@ -17,3 +17,5 @@ MonoBehaviour:
   gridArea: {fileID: 11400000, guid: 446eabbf6fb030149a0ece8af0c46a2c, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
   logicaCartaBaixa: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
+  jogadorAtivouEfeito: {fileID: 11400000, guid: a91568b52a40d8f4d8f467975c296a64,
+    type: 2}

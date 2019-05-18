@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Carta Baixada
   m_EditorClassIdentifier: 
   aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
+  cartaAtacou: {fileID: 11400000, guid: 40047fccb9fbe1842b31cac8973137e9, type: 2}
   cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
   atacando: {fileID: 11400000, guid: 75d68e34e60d8d145843916fd7442566, type: 2}

@@ -16,13 +16,13 @@ MonoBehaviour:
   rodada: {fileID: 11400000, guid: 8700d358a73b67745910fd00db4d9a74, type: 2}
   protegido: 0
   silenciado: 0
-  fezAlgumaAcao: 0
+  fezAlgumaAcao: 1
   passouRodada: 0
   moldura: {fileID: 21300000, guid: 3637570b8e14c6841ade64835c8e5281, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
-  numCartasMaoInicio: 5
+  numCartasMaoInicio: 7
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: b8c31aa264b081b4dba1f3639560332c, type: 2}
   corJogador: {r: 0.9490196, g: 0.85490197, b: 0.30588236, a: 1}
@@ -30,13 +30,13 @@ MonoBehaviour:
   nomeJogador: Saci
   vidaInicial: 20
   magiaInicial: 10
-  magia: 0
+  magia: 7
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
   barrasDeVida: 3
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1

@@ -51,17 +51,15 @@ public class SelecionarAlvoAtacado : Acao
                     {
                         Configuracoes.admJogo.cartaAtacada = instCarta;
                         Configuracoes.admJogo.DefinirEstado(jogadorEmSeuTurno);
-                        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaFoiAtacada)
-                        {
-                            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
-                        }
-                        Configuracoes.RegistrarEvento("O alvo " + instCarta.infoCarta.carta.name + " foi selecionado para ser atacado", Color.white);
+                        cartaFoiAtacada.cartaQueAtivouEvento = instCarta;
+                        Configuracoes.admEfeito.eventoAtivador = cartaFoiAtacada;
+                        cartaFoiAtacada.Raise();
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
+                        Configuracoes.admJogo.jogadorAtual.fezAlgumaAcao = true;
                         if (gridAreaDropavel != null)
                         {
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
-                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
-                        Configuracoes.admJogo.jogadorAtual.fezAlgumaAcao = true;
                         return;
                     }
                 }

@@ -17,9 +17,10 @@ public class Efeito : ScriptableObject
     public int alteracaoPoder;
     public int alteracaoVida;
     public int alteracaoMagia;
+    public bool escolheAlvoCarta;
     public bool apenasJogador;
-    public bool apenasCarta;
     public bool podeUsarEmSi;
     public bool afetaTodasCartas;
+    public bool afetaApenasSeuJogador;
 
 }

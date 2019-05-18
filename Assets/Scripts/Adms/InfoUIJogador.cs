@@ -54,7 +54,7 @@ public class InfoUIJogador : MonoBehaviour
         {
             if (c != null && c.infoCarta != null)
             {
-                if (jogador.magia < c.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor)
+                if (jogador.magia < c.custo)
                 {
                     if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
                     {

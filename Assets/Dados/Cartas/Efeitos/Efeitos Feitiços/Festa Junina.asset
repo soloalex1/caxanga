@@ -24,7 +24,8 @@ MonoBehaviour:
   alteracaoPoder: 1
   alteracaoVida: 0
   alteracaoMagia: 0
+  escolheAlvoCarta: 0
   apenasJogador: 0
-  apenasCarta: 0
   podeUsarEmSi: 0
   afetaTodasCartas: 1
+  afetaApenasSeuJogador: 0
