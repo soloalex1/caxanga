@@ -13,6 +13,7 @@ public class AtivarAtaqueLendas : AcaoJogador
             if (instCarta.podeAtacarNesteTurno == false)
             {
                 instCarta.podeAtacarNesteTurno = true;
+                instCarta.gameObject.transform.Find("Sombra").gameObject.SetActive(false);
                 instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spritePodeAtacar;
             }
         }

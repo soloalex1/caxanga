@@ -41,22 +41,26 @@ public class CartaBaixada : LogicaInstanciaCarta
             {
                 if (carta.podeSofrerEfeito)
                 {
-                    if (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta))
-                    {
-                        if (carta.efeito.podeUsarEmSi)
-                        {
-                            Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
-                        }
-                        else
-                        {
-                            Configuracoes.admCursor.MudarSprite(cursorAlvoVermelho);
-                        }
-                    }
                     if (Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Contains(carta))
                     {
                         Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                        return;
                     }
-
+                    if (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta))
+                    {
+                        Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                        if (carta == Configuracoes.admJogo.efeitoAtual.cartaQueInvoca)
+                        {
+                            if (carta.efeito.podeUsarEmSi)
+                                Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                            else
+                                Configuracoes.admCursor.MudarSprite(cursorAlvoVermelho);
+                        }
+                        else
+                        {
+                            Configuracoes.admCursor.MudarSprite(cursorAlvoVerde);
+                        }
+                    }
                     return;
                 }
                 else

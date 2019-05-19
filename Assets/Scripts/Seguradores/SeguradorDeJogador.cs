@@ -102,6 +102,7 @@ public class SeguradorDeJogador : ScriptableObject
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
         if (instCarta.podeAtacarNesteTurno == false)
         {
+            instCarta.gameObject.transform.Find("Sombra").gameObject.SetActive(true);
             instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spriteNaoPodeAtacar;
         }
         Configuracoes.DefinirPaiCarta(c, p);
