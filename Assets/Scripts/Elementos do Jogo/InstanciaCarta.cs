@@ -30,9 +30,8 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         }
         return resultado;
     }
-    void Start()
+    public void SetPoderECusto()
     {
-        infoCarta = GetComponent<ExibirInfoCarta>();
         poder = carta.AcharPropriedadePeloNome("Poder").intValor;
         custo = carta.AcharPropriedadePeloNome("Custo").intValor;
     }

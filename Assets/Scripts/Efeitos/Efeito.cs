@@ -22,5 +22,4 @@ public class Efeito : ScriptableObject
     public bool podeUsarEmSi;
     public bool afetaTodasCartas;
     public bool afetaApenasSeuJogador;
-
 }

@@ -30,13 +30,13 @@ MonoBehaviour:
   nomeJogador: Corpo Seco
   vidaInicial: 20
   magiaInicial: 10
-  magia: 5
+  magia: 7
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1
   podeSerAtacado: 1
   barrasDeVida: 3
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1
@@ -44,6 +44,3 @@ MonoBehaviour:
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
   logicaCemiterio: {fileID: 0}
-  cartasCemiterio:
-  - {fileID: 0}
-  - {fileID: 0}

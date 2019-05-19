@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fb7e1cc6c15449973b929744475ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 0}
+  carta: {fileID: 11400000, guid: 2c4d157c2bbaf4949ad8fb250e350130, type: 2}
   jogadorDono: {fileID: 0}
   efeito: {fileID: 0}
   efeitoUsado: 0

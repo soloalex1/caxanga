@@ -9,7 +9,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
     public EstadoJogador usandoEfeito;
     public Ativacao ativacaoAtiva, ativacaoReativa;
     public TipoEfeito tipoUnico, tipoPassivo;
-    public ModoDeExecucao alterarMagiaJogador, alterarPoderCarta, alterarVidaJogador, alterarVidaOuPoder, cartaAtacaDuasVezes, paralisarCarta, protegerLenda, puxarCarta, reviverCarta, silenciarCarta, silenciarJogador;
+    public ModoDeExecucao alterarMagiaJogador, alterarPoderCarta, alterarVidaJogador, cartaAtacaDuasVezes, paralisarCarta, protegerLenda, puxarCarta, reviverCarta, silenciarCarta, silenciarJogador;
     private void Start()
     {
         Configuracoes.admEfeito = this;
@@ -69,9 +69,9 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                         {
                             foreach (InstanciaCarta c in efeito.jogadorQueInvoca.cartasBaixadas)
                             {
-                                StartCoroutine(efeito.cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                                StartCoroutine(c.AnimacaoCura(efeito.alteracaoPoder));
                                 c.poder += efeito.alteracaoPoder;
-                                c.infoCarta.CarregarCarta(efeito.cartaAlvo.infoCarta.carta);
+                                c.infoCarta.CarregarCarta(c.infoCarta.carta);
                             }
                         }
                         else if (efeito.alteracaoPoder < 0)
@@ -80,35 +80,52 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                             {
                                 if (c.podeSofrerEfeito)
                                 {
-                                    StartCoroutine(efeito.cartaAlvo.AnimacaoDano(efeito.alteracaoPoder));
+                                    StartCoroutine(c.AnimacaoDano(efeito.alteracaoPoder));
                                     c.poder += efeito.alteracaoPoder;
-                                    c.infoCarta.CarregarCarta(efeito.cartaAlvo.infoCarta.carta);
+                                    c.infoCarta.CarregarCarta(c.infoCarta.carta);
                                 }
                             }
                         }
                         yield return new WaitForSeconds(0.8f);
                         efeito.jogadorQueInvoca.CarregarInfoUIJogador();
-                        if (efeito.cartaAlvo.poder <= 0)
+                        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasBaixadas)
                         {
-                            Configuracoes.admJogo.MatarCarta(efeito.cartaAlvo, efeito.cartaAlvo.jogadorDono);
+                            if (c.poder <= 0)
+                            {
+                                Configuracoes.admJogo.MatarCarta(c, c.jogadorDono);
+                            }
+                            if (Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Count == 0)
+                            {
+                                break;
+                            }
                         }
-                    }
-                    if (efeito.alteracaoPoder > 0)
-                    {
-                        StartCoroutine(efeito.cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
                     }
                     else
                     {
-                        StartCoroutine(efeito.cartaAlvo.AnimacaoDano(efeito.alteracaoPoder));
+                        if (!efeito.podeUsarEmSi && efeito.cartaAlvo == efeito.cartaQueInvoca)
+                        {
+                            yield return null;
+                        }
+                        else
+                        {
+                            if (efeito.alteracaoPoder > 0)
+                            {
+                                StartCoroutine(efeito.cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
+                            }
+                            else
+                            {
+                                StartCoroutine(efeito.cartaAlvo.AnimacaoDano(efeito.alteracaoPoder));
+                            }
+                            efeito.cartaAlvo.poder += efeito.alteracaoPoder;
+                            efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.infoCarta.carta);
+                            efeito.jogadorQueInvoca.CarregarInfoUIJogador();
+                            if (efeito.cartaAlvo.poder <= 0)
+                            {
+                                Configuracoes.admJogo.MatarCarta(efeito.cartaAlvo, efeito.cartaAlvo.jogadorDono);
+                            }
+                        }
                     }
                     yield return new WaitForSeconds(0.8f);
-                    efeito.cartaAlvo.poder += efeito.alteracaoPoder;
-                    efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.infoCarta.carta);
-                    efeito.jogadorQueInvoca.CarregarInfoUIJogador();
-                    if (efeito.cartaAlvo.poder <= 0)
-                    {
-                        Configuracoes.admJogo.MatarCarta(efeito.cartaAlvo, efeito.cartaAlvo.jogadorDono);
-                    }
                 }
                 if (efeito.modoDeExecucao == cartaAtacaDuasVezes)
                 {
@@ -127,26 +144,6 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 {
                     efeito.cartaAlvo.podeAtacarNesteTurno = false;
                 }
-                if (efeito.modoDeExecucao == alterarVidaOuPoder)
-                {
-                    if (efeito.jogadorAlvo != null)
-                    {
-                        StartCoroutine(efeito.jogadorAlvo.infoUI.AnimacaoCura(efeito.alteracaoVida));
-                        yield return new WaitForSeconds(0.8f);
-                        efeito.jogadorAlvo.vida += efeito.alteracaoVida;
-                        efeito.jogadorAlvo.CarregarInfoUIJogador();
-                        efeito.jogadorQueInvoca.CarregarInfoUIJogador();
-                        yield return null;
-                    }
-                    if (efeito.cartaAlvo != null)
-                    {
-                        StartCoroutine(efeito.cartaAlvo.AnimacaoCura(efeito.alteracaoPoder));
-                        yield return new WaitForSeconds(0.8f);
-                        efeito.cartaAlvo.poder += efeito.alteracaoPoder;
-                        efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.infoCarta.carta);
-                        yield return null;
-                    }
-                }
                 if (efeito.modoDeExecucao == puxarCarta)
                 {
                     Configuracoes.admJogo.PuxarCarta(efeito.jogadorQueInvoca);
@@ -158,6 +155,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 }
                 if (efeito.cartaQueInvoca.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                 {
+                    efeito.cartaQueInvoca.jogadorDono.magia -= efeito.cartaQueInvoca.custo;
                     efeito.jogadorQueInvoca.CarregarInfoUIJogador();
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                     efeito.jogadorQueInvoca.ColocarCartaNoCemiterio(efeito.cartaQueInvoca);
@@ -171,7 +169,6 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         if (efeito.tipoEfeito == tipoPassivo)
         {
         }
-        Debug.Log("Ativei o efeito");
         yield return null;
     }
 }

@@ -22,6 +22,7 @@ public class ExibirInfoCarta : MonoBehaviour
             return;
         carta = c;
 
+        InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
 
         c.tipoCarta.Inicializar(this);
 
@@ -39,13 +40,19 @@ public class ExibirInfoCarta : MonoBehaviour
             if (ep.elemento is ElementoNum)
             {
                 ep.texto.text = p.intValor.ToString();
-                ep.texto.gameObject.SetActive(true);
-                Outline contorno = ep.texto.gameObject.GetComponent<Outline>();
-                if (contorno != null)
+                if (instCarta != null)
                 {
-                    contorno.effectColor = Color.black;
-                    contorno.effectDistance.Set(2, 2);
+                    if (ep.elemento.name == "Poder")
+                    {
+                        ep.texto.text = instCarta.poder.ToString();
+
+                    }
+                    if (ep.elemento.name == "Custo")
+                    {
+                        ep.texto.text = instCarta.custo.ToString();
+                    }
                 }
+                ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoTexto)
             {
@@ -82,7 +89,6 @@ public class ExibirInfoCarta : MonoBehaviour
         else
         {
             this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = templateLenda;
-            InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
             if (instCarta != null && instCarta.podeAtacarNesteTurno == false)
             {
                 this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeAtacar;

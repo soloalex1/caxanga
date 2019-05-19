@@ -24,6 +24,11 @@ public class DetectarMouseSobre : Acao
                 {
                     if (infoJogadorAlvo.jogador == Configuracoes.admJogo.jogadorInimigo)
                     {
+                        if (Configuracoes.admJogo.estadoAtual.name == "Atacando")
+                        {
+                            Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVerde);
+                            return;
+                        }
                         if (Configuracoes.admJogo.estadoAtual.name == "Usando Efeito" && Configuracoes.admJogo.efeitoAtual.alteracaoVida < 0)
                         {
                             Configuracoes.admCursor.MudarSprite(Configuracoes.admJogo.cursorAlvoVerde);

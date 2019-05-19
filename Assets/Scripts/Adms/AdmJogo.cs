@@ -76,11 +76,12 @@ public class AdmJogo : MonoBehaviour
         AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
         GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
         ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-        e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-        instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
+        e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
         instCarta.carta = e.carta;
-        instCarta.podeAtacarNesteTurno = true;
+        instCarta.SetPoderECusto();
+        e.CarregarCarta(instCarta.carta);
+        instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
         if (instCarta.carta.efeito != null)
         {
             Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
@@ -123,7 +124,6 @@ public class AdmJogo : MonoBehaviour
                         instCarta.efeito.jogadorAlvo = jogadorIA;
                     }
                 }
-                Debug.Log(novoEfeito.name + " afeta " + jogador.nomeJogador);
             }
         }
         instCarta.jogadorDono = jogador;
@@ -152,9 +152,10 @@ public class AdmJogo : MonoBehaviour
             StartCoroutine(FimDeJogo(jogadorVencedor));
             yield return null;
         }
-        TrocarJogadorAtual();
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
+        TrocarJogadorAtual();
+
 
     }
     void ChecaVidaJogadores()
@@ -360,7 +361,7 @@ public class AdmJogo : MonoBehaviour
         {
             cartaAtacante.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
             int poderCartaAtacanteAntes = cartaAtacante.poder;
-            StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes));
+            StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes * -1));
             StartCoroutine(cartaAtacante.AnimacaoDano(-1));
             yield return new WaitForSeconds(0.8f);
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
@@ -381,13 +382,17 @@ public class AdmJogo : MonoBehaviour
     }
     public void MatarCarta(InstanciaCarta c, SeguradorDeJogador jogador)
     {
-        for (int i = 0; i < jogador.cartasBaixadas.Count; i++)
+        foreach (InstanciaCarta carta in jogador.cartasBaixadas)
         {
             if (jogador.cartasBaixadas.Contains(c))
             {
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
+            }
+            if (jogador.cartasBaixadas.Count == 0)
+            {
+                break;
             }
         }
     }

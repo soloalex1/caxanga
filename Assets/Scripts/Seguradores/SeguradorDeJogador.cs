@@ -43,6 +43,7 @@ public class SeguradorDeJogador : ScriptableObject
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
+    [System.NonSerialized]
     public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
 
     public void InicializarJogador()
@@ -94,6 +95,7 @@ public class SeguradorDeJogador : ScriptableObject
         }
         cartasBaixadas.Add(instCarta);
         fezAlgumaAcao = true;
+        magia -= instCarta.custo;
         infoUI.AtualizarMagia();
 
         instCarta.podeAtacarNesteTurno = false;
@@ -113,7 +115,6 @@ public class SeguradorDeJogador : ScriptableObject
         bool resultado = false;
         if (magia >= c.custo)
         {
-            magia -= c.custo;
             resultado = true;
         }
         if (resultado == false)

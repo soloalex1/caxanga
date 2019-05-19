@@ -11,6 +11,7 @@ public class CartaOlhadaAtual : MonoBehaviour
 
     public void CarregarCartaOlhada()
     {
+        SetPoderECusto();
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);
     }
@@ -22,5 +23,14 @@ public class CartaOlhadaAtual : MonoBehaviour
     {
         Vector3 posicao = Vector3.zero;
         FecharCarta();
+    }
+    void SetPoderECusto()
+    {
+        if (cartaAtual.valor != null)
+        {
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor = cartaAtual.valor.custo;
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor = cartaAtual.valor.poder;
+
+        }
     }
 }

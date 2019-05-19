@@ -27,35 +27,46 @@ public class Rodada : ScriptableObject
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
 
         jogador.CarregarInfoUIJogador();
-        foreach (InstanciaCarta carta in jogador.cartasBaixadas)
+        if (jogador.cartasBaixadas.Count > 0)
         {
-            if (jogador.cartasBaixadas.Contains(carta))
+            foreach (InstanciaCarta carta in jogador.cartasBaixadas)
             {
-                Configuracoes.admJogo.MatarCarta(carta, jogador);
-            }
-            if (jogador.cartasBaixadas.Count <= 0)
-            {
-                break;
+                if (jogador.cartasBaixadas.Contains(carta))
+                {
+                    Configuracoes.admJogo.MatarCarta(carta, jogador);
+                }
+                if (jogador.cartasBaixadas.Count == 0)
+                {
+                    break;
+                }
             }
         }
+        Debug.Log(jogador.name);
+
         for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
         {
             Configuracoes.admJogo.PuxarCarta(jogador);
         }
-        Debug.Log("Jogador atual = " + Configuracoes.admJogo.jogadorAtual.nomeJogador);
-        Debug.Log("Jogador inimigo = " + Configuracoes.admJogo.jogadorInimigo.nomeJogador);
 
-        foreach (InstanciaCarta c in jogador.cartasMao)
-        {
-            if (jogador == Configuracoes.admJogo.jogadorInimigo)
-            {
-                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-            }
-            else
-            {
-                c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
-            }
-        }
+        // foreach (InstanciaCarta c in jogador.cartasMao)
+        // {
+        //     if (jogador == Configuracoes.admJogo.jogadorInimigo)
+        //     {
+        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+        //     }
+        //     else
+        //     {
+        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+        //     }
+        //     if (c.transform.Find("Fundo da Carta").gameObject.activeSelf)
+        //     {
+        //         Debug.Log("Tá escondida");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Tá mostrando");
+        //     }
+        // }
     }
     public void PassarRodada()
     {

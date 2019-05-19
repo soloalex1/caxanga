@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Vit\xF3ria-r\xE9gia"
   m_EditorClassIdentifier: 
   ativacao: {fileID: 11400000, guid: 08d60700a0b0da54dadf1639cd78a1b3, type: 2}
-  modoDeExecucao: {fileID: 11400000, guid: c9ad0ddfec1d1d44a851a7bc94bd1dae, type: 2}
+  modoDeExecucao: {fileID: 11400000, guid: df1f930a5ca1fd94fb675d5fee3d420c, type: 2}
   tipoEfeito: {fileID: 11400000, guid: 3c938c8f94fdd9444b959a28c12252b1, type: 2}
   eventoAtivador: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   condicaoAtivacao: {fileID: 0}
@@ -22,7 +22,7 @@ MonoBehaviour:
   cartaQueInvoca: {fileID: 0}
   cartaAlvo: {fileID: 0}
   alteracaoPoder: 1
-  alteracaoVida: 2
+  alteracaoVida: 0
   alteracaoMagia: 0
   escolheAlvoCarta: 1
   apenasJogador: 0

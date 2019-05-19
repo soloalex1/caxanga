@@ -23,10 +23,6 @@ public class CartaBaixada : LogicaInstanciaCarta
             {
                 gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = false;
             }
-            if (carta.efeito != null && carta.efeito.eventoAtivador.name == "Carta Atacou")
-            {
-                Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
-            }
             cartaAtacou.cartaQueAtivouEvento = carta;
             Configuracoes.admEfeito.eventoAtivador = cartaAtacou;
             cartaAtacou.Raise();
