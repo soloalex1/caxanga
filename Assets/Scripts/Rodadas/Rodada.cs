@@ -41,7 +41,6 @@ public class Rodada : ScriptableObject
                 }
             }
         }
-        Debug.Log(jogador.name);
 
         for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
         {

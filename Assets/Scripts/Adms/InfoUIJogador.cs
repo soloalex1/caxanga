@@ -9,9 +9,9 @@ public class InfoUIJogador : MonoBehaviour
     public Image retratoJogador;
     public Text vidaJogador;
     public Text magiaJogador;
-    public Text nomeJogador;
     public GameObject molduraJogador;
     Image barraDeVida;
+    public Sprite spriteBarraDeVida, spriteBarraDeVidaPerdida;
     public Sprite spriteNaoPodeBaixarLenda;
     public Sprite spriteNaoPodeBaixarFeitico;
 
@@ -33,17 +33,15 @@ public class InfoUIJogador : MonoBehaviour
     }
     public void AtualizarBarraDeVida()
     {
-        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(2);
+        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(1);
+        Debug.Log(jogador.nomeJogador + " só tem " + jogador.barrasDeVida + " barras");
         for (int i = 1; i <= 3; i++)
         {
-            barraDeVida = painelBarrasVida.Find("Barra de vida " + i).GetComponent<Image>();
-            if (i <= jogador.barrasDeVida)
+            barraDeVida = painelBarrasVida.GetChild(i - 1).GetComponent<Image>();
+            barraDeVida.sprite = spriteBarraDeVida;
+            if (i > jogador.barrasDeVida)
             {
-                barraDeVida.color = new Color(0, 0, 0, 0);
-            }
-            else
-            {
-                barraDeVida.color = new Color(0, 0, 0, 1);
+                barraDeVida.sprite = spriteBarraDeVidaPerdida;
             }
         }
     }
