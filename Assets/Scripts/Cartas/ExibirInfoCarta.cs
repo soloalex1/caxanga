@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
-    public InstanciaCarta instCarta;
     public ExibirInfoPropriedades[] propriedades;
     public GameObject mostrarPoder;
     public TipoFeitico tipoFeitico;
@@ -23,6 +22,7 @@ public class ExibirInfoCarta : MonoBehaviour
             return;
         carta = c;
 
+        InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
 
         c.tipoCarta.Inicializar(this);
 
@@ -40,13 +40,19 @@ public class ExibirInfoCarta : MonoBehaviour
             if (ep.elemento is ElementoNum)
             {
                 ep.texto.text = p.intValor.ToString();
-                ep.texto.gameObject.SetActive(true);
-                Outline contorno = ep.texto.gameObject.GetComponent<Outline>();
-                if (contorno != null)
+                if (instCarta != null)
                 {
-                    contorno.effectColor = Color.black;
-                    contorno.effectDistance.Set(2, 2);
+                    if (ep.elemento.name == "Poder")
+                    {
+                        ep.texto.text = instCarta.poder.ToString();
+
+                    }
+                    if (ep.elemento.name == "Custo")
+                    {
+                        ep.texto.text = instCarta.custo.ToString();
+                    }
                 }
+                ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoTexto)
             {
@@ -67,7 +73,7 @@ public class ExibirInfoCarta : MonoBehaviour
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
             // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextMaxSize = 32;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = true;
-            
+
 
         }
         else

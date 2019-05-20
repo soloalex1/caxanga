@@ -12,6 +12,7 @@ public static class Configuracoes
 
     public static admCursor admCursor;
     private static ConsoleHook _admConsole;
+    public static ExecutadorDeEfeitos admEfeito;
     public static void RegistrarEvento(string e, Color color)
     {
         // if (_admConsole == null)
@@ -43,26 +44,6 @@ public static class Configuracoes
         return resultados;
     }
 
-    public static void BaixarCartaLenda(Transform c, Transform p, InstanciaCarta instCarta)
-    {
-
-        instCarta.podeAtacarNesteTurno = false;
-        //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
-        if (instCarta.podeAtacarNesteTurno == false)
-        {
-            instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spriteNaoPodeAtacar;
-        }
-        DefinirPaiCarta(c, p);
-        if (instCarta.infoCarta.carta.efeito != null)
-        {
-            Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
-            novoEfeito = instCarta.infoCarta.carta.efeito;
-            instCarta.efeito = novoEfeito;
-            instCarta.efeito.cartaQueInvoca = instCarta;
-            instCarta.efeito.jogadorQueInvoca = admJogo.jogadorAtual;
-        }
-        admJogo.jogadorAtual.BaixarCarta(instCarta);
-    }
     public static void DefinirPaiCarta(Transform carta, Transform pai)//essa função é foda... queria ter ela :'(
     {
         carta.SetParent(pai);//define o pai da carta

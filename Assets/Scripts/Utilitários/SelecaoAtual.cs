@@ -10,12 +10,14 @@ public class SelecaoAtual : MonoBehaviour
     Transform mTransform;
     public void CarregarCartaOlhada()
     {
+        SetPoderECusto();
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);
     }
     public void CarregarCarta()
     {
         cartaAtual.valor.gameObject.SetActive(false);
+        SetPoderECusto();
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);
     }
@@ -31,5 +33,15 @@ public class SelecaoAtual : MonoBehaviour
     void Update()
     {
         mTransform.position = Input.mousePosition;
+    }
+
+    void SetPoderECusto()
+    {
+        if (cartaAtual.valor != null)
+        {
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor = cartaAtual.valor.custo;
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor = cartaAtual.valor.poder;
+
+        }
     }
 }

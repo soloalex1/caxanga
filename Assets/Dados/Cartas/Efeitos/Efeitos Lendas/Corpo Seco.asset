@@ -21,9 +21,11 @@ MonoBehaviour:
   jogadorAlvo: {fileID: 0}
   cartaQueInvoca: {fileID: 0}
   cartaAlvo: {fileID: 0}
-  alteracaoPoder: -2
+  alteracaoPoder: 0
   alteracaoVida: 0
   alteracaoMagia: 0
+  escolheAlvoCarta: 0
   apenasJogador: 0
-  apenasCarta: 1
   podeUsarEmSi: 0
+  afetaTodasCartas: 0
+  afetaApenasSeuJogador: 0

@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class admCursor : MonoBehaviour
 {
-    public Sprite spriteCursorAtual;
-
     public Image imagemCursor;
     public static admCursor singleton;
+
+    public bool sobreBotao;
 
 
     // Start is called before the first frame update
@@ -19,13 +19,13 @@ public class admCursor : MonoBehaviour
     {
         Configuracoes.admCursor = this;
         Cursor.visible = false;
-        // imagemCursor.gameObject.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
     }
 
     public void MudarSprite(Sprite sprite)
     {
         imagemCursor.sprite = sprite;
         imagemCursor.SetNativeSize();
+        // imagemCursor.gameObject.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
     }
     // Update is called once per frame
     void Update()

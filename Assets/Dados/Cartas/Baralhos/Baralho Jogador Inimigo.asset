@@ -13,24 +13,26 @@ MonoBehaviour:
   m_Name: Baralho Jogador Inimigo
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Pisadeira
-  - "Vit\xF3ria-r\xE9gia"
+  - "Boitat\xE1"
+  - Boiuna
+  - "Cabe\xE7a de Cuia"
+  - Corpo Seco
   - Cuca
-  - Pai do Mato
+  - Curupira
   - Lobisomem
-  - Aboio
-  - "Acaraj\xE9"
+  - Mapinguari
+  - "Mula-sem-cabe\xE7a"
+  - Pai do Mato
+  - Perna Cabeluda
   - Pisadeira
+  - Saci
   - "Vit\xF3ria-r\xE9gia"
   - Aboio
-  - Pisadeira
   - "Acaraj\xE9"
-  - Perna Cabeluda
-  - Saci
-  - Mapinguari
-  - Saci
-  - Saci
-  - Saci
-  - Saci
-  - Saci
+  - Atirei o pau no gato
+  - Boi da Cara Preta
+  - Bumba-meu-boi
+  - Festa Juinina
+  - Marcha Soldado
+  - Terezinha de Jesus
   jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}

@@ -17,6 +17,7 @@ public class AdmCena : MonoBehaviour
     public void AbrirConfigurações()
     {
         telaConfiguracoes.gameObject.SetActive(true);
+        GetComponent<admCursor>().MudarSprite(cursorIdle);
     }
 
     public void FecharConfigurações()

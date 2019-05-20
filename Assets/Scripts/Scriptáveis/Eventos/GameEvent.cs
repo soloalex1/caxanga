@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game Event")]
 public class GameEvent : ScriptableObject
 {
-    List<GameEventListener> listeners = new List<GameEventListener>();
-
+    public InstanciaCarta cartaQueAtivouEvento;
+    public List<GameEventListener> listeners;
     public void Register(GameEventListener l)
     {
         listeners.Add(l);
@@ -20,7 +20,6 @@ public class GameEvent : ScriptableObject
 
     public void Raise()
     {
-
         for (int i = 0; i < listeners.Count; i++)
         {
             listeners[i].Response();
