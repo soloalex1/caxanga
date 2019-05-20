@@ -34,7 +34,6 @@ public class InfoUIJogador : MonoBehaviour
     public void AtualizarBarraDeVida()
     {
         Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(1);
-        Debug.Log(jogador.nomeJogador + " só tem " + jogador.barrasDeVida + " barras");
         for (int i = 1; i <= 3; i++)
         {
             barraDeVida = painelBarrasVida.GetChild(i - 1).GetComponent<Image>();

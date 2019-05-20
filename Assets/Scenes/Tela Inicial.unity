@@ -199,7 +199,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tela de Jogo
+          m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3616489a6be8046469136d4576a39fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteCursorAtual: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
   imagemCursor: {fileID: 1574772697}
+  sobreBotao: 0
 --- !u!1 &178188355
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +997,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: II. Continuar
+  m_Text: II. Novo Jogo
 --- !u!222 &773187561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I. Novo jogo
+  m_Text: I. Tutorial
 --- !u!222 &1426462627
 CanvasRenderer:
   m_ObjectHideFlags: 0

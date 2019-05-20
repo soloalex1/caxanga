@@ -35,7 +35,7 @@ MonoBehaviour:
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
-  barrasDeVida: 2
+  barrasDeVida: 3
   lendasBaixadasNoTurno: 0
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
