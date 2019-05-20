@@ -9,7 +9,8 @@ public static class Configuracoes
 {
     public static AdmJogo admJogo;
     private static AdmRecursos _admRecursos;
-
+    public static AdmTutorial admTutorial;
+    public static AdmCena admCena;
     public static admCursor admCursor;
     private static ConsoleHook _admConsole;
     public static ExecutadorDeEfeitos admEfeito;

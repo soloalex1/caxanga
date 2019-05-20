@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    public Baralho baralhoTutorial1, baralhoTutorial2;
+    public bool tutorial, inicioTutorial;
     SeguradorDeJogador jogadorVencedor;
     public bool pause;
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
@@ -50,13 +52,24 @@ public class AdmJogo : MonoBehaviour
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
-        pause = false;
+        if (inicioTutorial)
+        {
+            jogadorLocal.baralho = baralhoTutorial1;
+            jogadorInimigo.baralho = baralhoTutorial2;
+            pause = true;
+        }
+        else
+        {
+            pause = false;
+        }
+
         Configuracoes.admJogo = this;
         jogadorLocal.InicializarJogador();
         jogadorIA.InicializarJogador();
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
         DefinirEstado(emSeuTurno);
-        StartCoroutine(FadeTextoTurno(jogadorAtual));
+        if (tutorial == false)
+            StartCoroutine(FadeTextoTurno(jogadorAtual));
     }
 
     private void Update()

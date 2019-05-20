@@ -114,7 +114,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8367211303785488304}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3355131975931091463}
+        m_MethodName: PassarTextoPasso
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1718955637355501130
@@ -128,6 +139,7 @@ GameObject:
   - component: {fileID: 2362890494672115454}
   - component: {fileID: 191069946519609218}
   - component: {fileID: 6111910729958330863}
+  - component: {fileID: 3355131975931091463}
   m_Layer: 0
   m_Name: PopUpNormal
   m_TagString: Untagged
@@ -193,6 +205,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3355131975931091463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718955637355501130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46967aef8b16d0f48b7e391692f373d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7794004916540619542
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +295,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ol\xE1, esta \xE9 uma peleja de Caxang\xE1. \x03Nela, voc\xEA usar\xE1
-    cartas detentoras \x03de fragmentos de magia para lhe \x03ajudar a derrotar seu
-    inimigo."
+  m_Text: O texto vai aparecer aqui
