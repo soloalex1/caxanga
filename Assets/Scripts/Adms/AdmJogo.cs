@@ -147,7 +147,7 @@ public class AdmJogo : MonoBehaviour
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedor.corJogador;
-        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada"; 
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
         ImagemTextoTurno.gameObject.SetActive(true);
         pause = true;

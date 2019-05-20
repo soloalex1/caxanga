@@ -32,7 +32,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 76f75302270d7764b9c5dfdbe8b4e2d7, type: 3}
+    sprite: {fileID: 21300000, guid: ee7bd5db9b3957c4eba6b0394f1308a2, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: "Cren\xE7as e Religiosidades: Antes um jovem pescador que morava
       nas margens do rio Parna\xEDba, o Cabe\xE7a de Cuia foi amaldi\xE7oado a ser

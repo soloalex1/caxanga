@@ -32,7 +32,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: d80e59b0fe78d184ba1b87b564fba831, type: 3}
+    sprite: {fileID: 21300000, guid: 9127365929f71cf47b03fe5ebca523c9, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: "Cren\xE7as e Religiosidades: Uma enorme cobra escura capaz de virar
       as embarca\xE7\xF5es. Tamb\xE9m pode imitar as formas das embarca\xE7\xF5es,
