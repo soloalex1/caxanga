@@ -5,17 +5,20 @@ using UnityEngine;
 public class AdmNarrativa : MonoBehaviour
 {
 
-
-
-    private Queue<string> frasesMoacir;
-    private Queue<string> frasesBoto;
+    private ArrayList frasesMoacir;
+    private ArrayList frasesBoto;
+    private ArrayList frasesIara;
 
 
     void Start(){
-        frasesMoacir = new Queue<string>();
-        frasesBoto = new Queue<string>();
+        frasesMoacir = new ArrayList();
+        frasesBoto = new ArrayList();
+        frasesIara = new ArrayList();
+
+        frasesMoacir.Add(new Dialogo("Moacir"));
 
     }
+
 
 
 

@@ -383,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 706.19, y: -129.4}
+  m_AnchoredPosition: {x: 706.19, y: -159.9}
   m_SizeDelta: {x: 503, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499709494
@@ -585,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -706.19, y: -43.11}
+  m_AnchoredPosition: {x: -706.19, y: -159.9}
   m_SizeDelta: {x: 438, y: 1097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129336303
@@ -873,9 +873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7edf873584cb84199be3f154ec6464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  papelMoacir: {fileID: 1952980628}
-  papelOponente: {fileID: 213234585}
-  personagemAtivo: Moacir
 --- !u!1 &1895605000
 GameObject:
   m_ObjectHideFlags: 0

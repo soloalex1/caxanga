@@ -6,6 +6,14 @@ using UnityEngine;
 public class Dialogo {
 
     public string nomePersonagem;
-    public string[] frases;
+    public ArrayList frases;
 
+    public Dialogo(string nome){
+        nomePersonagem = nome;
+        frases = new ArrayList();
+    }
+
+    public void PreencherDialogos(string frase){
+        frases.Add(frase);
+    }
 }
