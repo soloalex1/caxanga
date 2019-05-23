@@ -9,9 +9,9 @@ public class InfoUIJogador : MonoBehaviour
     public Image retratoJogador;
     public Text vidaJogador;
     public Text magiaJogador;
-    public Text nomeJogador;
     public GameObject molduraJogador;
     Image barraDeVida;
+    public Sprite spriteBarraDeVida, spriteBarraDeVidaPerdida;
     public Sprite spriteNaoPodeBaixarLenda;
     public Sprite spriteNaoPodeBaixarFeitico;
 
@@ -33,17 +33,14 @@ public class InfoUIJogador : MonoBehaviour
     }
     public void AtualizarBarraDeVida()
     {
-        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(2);
+        Transform painelBarrasVida = this.gameObject.transform.GetChild(0).GetChild(1);
         for (int i = 1; i <= 3; i++)
         {
-            barraDeVida = painelBarrasVida.Find("Barra de vida " + i).GetComponent<Image>();
-            if (i <= jogador.barrasDeVida)
+            barraDeVida = painelBarrasVida.GetChild(i - 1).GetComponent<Image>();
+            barraDeVida.sprite = spriteBarraDeVida;
+            if (i > jogador.barrasDeVida)
             {
-                barraDeVida.color = new Color(0, 0, 0, 0);
-            }
-            else
-            {
-                barraDeVida.color = new Color(0, 0, 0, 1);
+                barraDeVida.sprite = spriteBarraDeVidaPerdida;
             }
         }
     }
@@ -54,9 +51,8 @@ public class InfoUIJogador : MonoBehaviour
         {
             if (c != null && c.infoCarta != null)
             {
-                if (jogador.magia < c.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor)
+                if (jogador.magia < c.custo)
                 {
-
                     if (c.infoCarta.carta.tipoCarta.nomeTipo == "Lenda")
                     {
                         c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeBaixarLenda;
@@ -98,7 +94,7 @@ public class InfoUIJogador : MonoBehaviour
     public IEnumerator AnimacaoDano(int dano)
     {
         gameObject.transform.Find("Coração Dano").gameObject.SetActive(true);
-        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = "-" + dano.ToString();
+        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
         yield return new WaitForSeconds(0.8f);
         transform.Find("Coração Dano").gameObject.SetActive(false);
     }

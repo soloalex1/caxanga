@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 4
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: Todas as Lendas em campo perdem 1 de poder.
+  - stringValor: Todas as Lendas no campo inimigo perdem 1 de poder.
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}

@@ -23,7 +23,10 @@ MonoBehaviour:
   cartaAlvo: {fileID: 0}
   alteracaoPoder: 0
   alteracaoVida: 2
-  apenasJogador: 0
+  alteracaoMagia: 0
+  escolheAlvoCarta: 0
+  apenasJogador: 1
   apenasCarta: 0
-  usandoEfeito: {fileID: 11400000, guid: 1af0afd04737e7c4b81ee144aa6eec4f, type: 2}
   podeUsarEmSi: 0
+  afetaTodasCartas: 0
+  afetaApenasSeuJogador: 1

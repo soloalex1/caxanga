@@ -9,10 +9,12 @@ public class BotaoOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
         Configuracoes.admCursor.MudarSprite(cursorClicavel);
+        Configuracoes.admCursor.sobreBotao = true;
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         Configuracoes.admCursor.MudarSprite(cursorIdle);
+        Configuracoes.admCursor.sobreBotao = false;
     }
 }

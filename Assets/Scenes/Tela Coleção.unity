@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 9483494}
   - component: {fileID: 9483493}
   - component: {fileID: 9483492}
+  - component: {fileID: 9483495}
   m_Layer: 5
   m_Name: "Bot\xE3o M\xFAsica e Dan\xE7a"
   m_TagString: Untagged
@@ -230,6 +231,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9483490}
   m_CullTransparentMesh: 0
+--- !u!114 &9483495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9483490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &126450469
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +257,7 @@ GameObject:
   - component: {fileID: 126450473}
   - component: {fileID: 126450472}
   - component: {fileID: 126450471}
+  - component: {fileID: 126450474}
   m_Layer: 5
   m_Name: "Bot\xE3o Brinquedos e Brincadeiras"
   m_TagString: Untagged
@@ -348,6 +364,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126450469}
   m_CullTransparentMesh: 0
+--- !u!114 &126450474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126450469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &234527204
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005c089b9bc9c2243905eee5123fd67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  telaConfiguracoes: {fileID: 0}
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
 --- !u!4 &234527206
 Transform:
   m_ObjectHideFlags: 0
@@ -482,6 +514,7 @@ GameObject:
   - component: {fileID: 285533406}
   - component: {fileID: 285533405}
   - component: {fileID: 285533404}
+  - component: {fileID: 285533407}
   m_Layer: 5
   m_Name: "Bot\xE3o Festas Populares"
   m_TagString: Untagged
@@ -588,6 +621,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285533402}
   m_CullTransparentMesh: 0
+--- !u!114 &285533407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285533402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &399921175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1079,7 @@ GameObject:
   - component: {fileID: 1232844173}
   - component: {fileID: 1232844172}
   - component: {fileID: 1232844171}
+  - component: {fileID: 1232844174}
   m_Layer: 5
   m_Name: "Bot\xE3o Todas"
   m_TagString: Untagged
@@ -1138,6 +1186,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232844169}
   m_CullTransparentMesh: 0
+--- !u!114 &1232844174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232844169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &1270760813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1291,7 @@ GameObject:
   - component: {fileID: 1512897035}
   - component: {fileID: 1512897034}
   - component: {fileID: 1512897033}
+  - component: {fileID: 1512897036}
   m_Layer: 5
   m_Name: "Bot\xE3o Seta Retroceder"
   m_TagString: Untagged
@@ -1334,6 +1397,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512897031}
   m_CullTransparentMesh: 0
+--- !u!114 &1512897036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512897031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &1514061704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1525,7 @@ GameObject:
   - component: {fileID: 1648397330}
   - component: {fileID: 1648397329}
   - component: {fileID: 1648397328}
+  - component: {fileID: 1648397331}
   m_Layer: 5
   m_Name: "Bot\xE3o Culin\xE1ria"
   m_TagString: Untagged
@@ -1554,6 +1632,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648397326}
   m_CullTransparentMesh: 0
+--- !u!114 &1648397331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648397326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &1774710025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1658,7 @@ GameObject:
   - component: {fileID: 1774710029}
   - component: {fileID: 1774710028}
   - component: {fileID: 1774710027}
+  - component: {fileID: 1774710030}
   m_Layer: 5
   m_Name: "Bot\xE3o Cren\xE7as e Religiosidades"
   m_TagString: Untagged
@@ -1672,6 +1765,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774710025}
   m_CullTransparentMesh: 0
+--- !u!114 &1774710030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774710025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
 --- !u!1 &1912245536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1873,7 @@ GameObject:
   - component: {fileID: 1972161614}
   - component: {fileID: 1972161613}
   - component: {fileID: 1972161612}
+  - component: {fileID: 1972161615}
   m_Layer: 5
   m_Name: "Bot\xE3o Voltar"
   m_TagString: Untagged
@@ -1882,6 +1990,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972161610}
   m_CullTransparentMesh: 0
+--- !u!114 &1972161615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972161610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
+--- !u!1 &1983375281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983375284}
+  - component: {fileID: 1983375283}
+  - component: {fileID: 1983375282}
+  m_Layer: 5
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1983375282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983375281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1983375283
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983375281}
+  m_CullTransparentMesh: 0
+--- !u!224 &1983375284
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983375281}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.33029, y: 1.33029, z: 0.88685995}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 917.4308, y: 607.84485}
+  m_SizeDelta: {x: 64, y: 102}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &2080072199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,6 +2235,8 @@ GameObject:
   - component: {fileID: 2102587473}
   - component: {fileID: 2102587472}
   - component: {fileID: 2102587471}
+  - component: {fileID: 2102587474}
+  - component: {fileID: 2102587475}
   m_Layer: 5
   m_Name: "Bot\xE3o Seta Avan\xE7ar"
   m_TagString: Untagged
@@ -2062,7 +2260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 631.96, y: 100.49}
+  m_AnchoredPosition: {x: 631, y: 100.49}
   m_SizeDelta: {x: 121, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102587471
@@ -2144,6 +2342,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102587469}
   m_CullTransparentMesh: 0
+--- !u!114 &2102587474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102587469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1855c87412724aaef71806ec329dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
+  cursorClicavel: {fileID: 21300000, guid: d832fb88df6abaa4c8e1ff340fcd5293, type: 3}
+--- !u!111 &2102587475
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102587469}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 6ded9ff720a3fd640963121cc9854e61, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2129248376
 GameObject:
   m_ObjectHideFlags: 0

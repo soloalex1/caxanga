@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InstanciaCarta : MonoBehaviour, IClicavel
 {
+    public Carta carta;
     public SeguradorDeJogador jogadorDono;
     public Efeito efeito;
     public bool efeitoUsado = false;
@@ -13,7 +14,9 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     public ExibirInfoCarta infoCarta;
     public bool podeAtacarNesteTurno;
     public bool podeSerAtacada;
+    public int poder;
 
+    public int custo;
     public bool PodeAtacar()
     {
         bool resultado = true;
@@ -27,9 +30,10 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         }
         return resultado;
     }
-    void Start()
+    public void SetPoderECusto()
     {
-        infoCarta = GetComponent<ExibirInfoCarta>();
+        poder = carta.AcharPropriedadePeloNome("Poder").intValor;
+        custo = carta.AcharPropriedadePeloNome("Custo").intValor;
     }
 
     public IEnumerator AnimacaoDano(int dano)
@@ -58,7 +62,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
             transform.Find("Coração Dano").gameObject.transform.Rotate(0, 0, 0);
         }
         transform.Find("Coração Cura").gameObject.SetActive(true);
-        transform.Find("Coração Cura").Find("Texto").GetComponent<Text>().text = cura.ToString();
+        transform.Find("Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
         yield return new WaitForSeconds(0.8f);
         transform.Find("Coração Cura").gameObject.SetActive(false);
     }

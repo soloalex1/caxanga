@@ -5,6 +5,10 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public EstadoJogador usandoEfeito;
+    public Rodada rodada;
+    public bool protegido, silenciado, fezAlgumaAcao;
+    public bool passouRodada;
     public Sprite moldura;
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
@@ -21,7 +25,6 @@ public class SeguradorDeJogador : ScriptableObject
     public bool jogadorHumano;
     public bool podeSerAtacado;
     public int barrasDeVida;
-    public string[] cartasMaoInicio;
 
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartas;
@@ -33,35 +36,86 @@ public class SeguradorDeJogador : ScriptableObject
     public Sprite textoTurnoImage;
     public LogicaInstanciaCarta logicaMao;
     public LogicaInstanciaCarta logicaBaixada;
+    public LogicaInstanciaCarta logicaCemiterio;
+
 
     [System.NonSerialized] // não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
     public List<InstanciaCarta> cartasBaixadas = new List<InstanciaCarta>(); // lista de cartas no campo do jogador em questão
+    [System.NonSerialized]
     public List<InstanciaCarta> cartasCemiterio = new List<InstanciaCarta>(); // lista de cartas no cemitério
-    public void BaixarCarta(InstanciaCarta instCarta)
+
+    public void InicializarJogador()
+    {
+        magia = magiaInicial;
+        vida = vidaInicial;
+        barrasDeVida = 3;
+        baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
+        baralho.cartasBaralho = new List<string>();
+        cartasCemiterio.Clear();
+        lendasBaixadasNoTurno = 0;
+        feiticosBaixadosNoTurno = 0;
+        podeUsarEfeito = true;
+        podeSerAtacado = true;
+        passouRodada = false;
+        fezAlgumaAcao = false;
+
+
+        if (this == Configuracoes.admJogo.jogadorLocal)
+        {
+            infoUI = Configuracoes.admJogo.infoJogadorLocal;
+        }
+        else
+        {
+            infoUI = Configuracoes.admJogo.infoJogadorIA;
+        }
+        foreach (string carta in baralhoInicial.cartasBaralho)
+        {
+            baralho.cartasBaralho.Add(carta);
+        }
+
+        if (jogadorHumano == true)
+        {
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorLocal;
+        }
+        else
+        {
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorInimigo;
+        }
+        CarregarInfoUIJogador();
+        PuxarCartasIniciais();
+    }
+
+    public void BaixarCarta(Transform c, Transform p, InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
         {
             cartasMao.Remove(instCarta);
         }
         cartasBaixadas.Add(instCarta);
-
-        if (instCarta.efeito != null && instCarta.efeito.eventoAtivador == cartaEntrouEmCampo)
-        {
-            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", instCarta.efeito);
-        }
-
-        Configuracoes.RegistrarEvento(nomeJogador + " baixou a carta " + instCarta.infoCarta.carta.name + " de custo " + instCarta.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor, corJogador);
+        fezAlgumaAcao = true;
+        magia -= instCarta.custo;
         infoUI.AtualizarMagia();
+
+        instCarta.podeAtacarNesteTurno = false;
+        //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
+        if (instCarta.podeAtacarNesteTurno == false)
+        {
+            instCarta.gameObject.transform.Find("Sombra").gameObject.SetActive(true);
+            instCarta.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = instCarta.infoCarta.spriteNaoPodeAtacar;
+        }
+        Configuracoes.DefinirPaiCarta(c, p);
+        cartaEntrouEmCampo.cartaQueAtivouEvento = instCarta;
+        Configuracoes.admEfeito.eventoAtivador = cartaEntrouEmCampo;
+        cartaEntrouEmCampo.Raise();
+        return;
     }
-    public bool PodeUsarCarta(Carta c)
+    public bool TemMagiaParaBaixarCarta(InstanciaCarta c)
     {
         bool resultado = false;
-        Propriedades custo = c.AcharPropriedadePeloNome("Custo");
-        if (c != null && magia >= custo.intValor)
+        if (magia >= c.custo)
         {
-            magia -= custo.intValor;
             resultado = true;
         }
         if (resultado == false)
@@ -79,18 +133,35 @@ public class SeguradorDeJogador : ScriptableObject
         }
     }
 
+    public void PuxarCartasIniciais()
+    {
+
+        baralho.Embaralhar();
+        for (int i = 0; i < numCartasMaoInicio; i++)
+        {
+            Configuracoes.admJogo.PuxarCarta(this);
+        }
+
+        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        {
+            if (c != null)
+            {
+                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
+        }
+    }
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {
         cartasCemiterio.Add(carta);
+        carta.logicaAtual = logicaCemiterio;
         carta.transform.SetParent(seguradorCartas.gridCemiterio.valor, false);
         carta.transform.Find("Sombra").gameObject.SetActive(true);
         carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
         carta.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
         carta.transform.Find("Sombra").GetComponent<Image>().color = new Color(0, 0, 0, 0.7F);
-        if (carta.efeito != null && carta.efeito.eventoAtivador == cartaMorreu)
-        {
-            Configuracoes.admJogo.StartCoroutine("ExecutarEfeito", carta.efeito);
-        }
+        cartaMorreu.cartaQueAtivouEvento = carta;
+        Configuracoes.admEfeito.eventoAtivador = cartaMorreu;
+        cartaMorreu.Raise();
         Vector3 posicao = Vector3.zero;
         posicao.x = cartasCemiterio.Count * 10;
         posicao.z = cartasCemiterio.Count * 10;

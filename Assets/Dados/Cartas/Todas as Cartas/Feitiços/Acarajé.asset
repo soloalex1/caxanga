@@ -32,7 +32,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: fe57cf93329a1054bb8a51c8151a9d85, type: 3}
+    sprite: {fileID: 21300000, guid: c18d25712744e5b44a67ac289b2273bc, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: "Culin\xE1ria: O acaraj\xE9 \xE9 um bolinho caracter\xEDstico do
       candombl\xE9. Sua origem \xE9 explicada por um mito sobre a rela\xE7\xE3o de

@@ -13,24 +13,26 @@ MonoBehaviour:
   m_Name: Baralho Jogador Local
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Lobisomem
-  - Lobisomem
-  - Lobisomem
-  - Lobisomem
-  - Aboio
-  - "Acaraj\xE9"
-  - Saci
-  - Saci
+  - "Boitat\xE1"
+  - Boiuna
+  - "Cabe\xE7a de Cuia"
   - Corpo Seco
-  - "Acaraj\xE9"
-  - Aboio
+  - Cuca
+  - Curupira
+  - Lobisomem
+  - Mapinguari
+  - "Mula-sem-cabe\xE7a"
+  - Pai do Mato
+  - Perna Cabeluda
   - Pisadeira
-  - "Acaraj\xE9"
-  - Saci
-  - Saci
-  - Saci
-  - Saci
-  - Saci
   - Saci
   - "Vit\xF3ria-r\xE9gia"
+  - Aboio
+  - "Acaraj\xE9"
+  - Atirei o pau no gato
+  - Boi da Cara Preta
+  - Bumba-meu-boi
+  - Festa Junina
+  - Marcha Soldado
+  - Terezinha de Jesus
   jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}

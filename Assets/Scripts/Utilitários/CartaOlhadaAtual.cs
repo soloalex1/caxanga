@@ -8,24 +8,29 @@ public class CartaOlhadaAtual : MonoBehaviour
     public VariavelCarta cartaAtual;
     public ExibirInfoCarta infoCarta;
     Vector3 posicao;
-    public Sprite cursorIdle;
 
     public void CarregarCartaOlhada()
     {
+        SetPoderECusto();
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);
     }
     public void FecharCarta()
     {
         infoCarta.gameObject.SetActive(false);
-        if (Configuracoes.admCursor.imagemCursor.sprite != cursorIdle)
-        {
-            Configuracoes.admCursor.MudarSprite(cursorIdle);
-        }
     }
     private void Start()
     {
         Vector3 posicao = Vector3.zero;
         FecharCarta();
+    }
+    void SetPoderECusto()
+    {
+        if (cartaAtual.valor != null)
+        {
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Custo").intValor = cartaAtual.valor.custo;
+            cartaAtual.valor.infoCarta.carta.AcharPropriedadePeloNome("Poder").intValor = cartaAtual.valor.poder;
+
+        }
     }
 }

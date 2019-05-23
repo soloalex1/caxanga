@@ -8,6 +8,12 @@ public class AdmCena : MonoBehaviour
     public GameObject telaConfiguracoes;
     public Sprite cursorIdle;
     // gerenciamento de cenas
+
+    private void Start()
+    {
+        Configuracoes.admCena = this;
+    }
+
     public void CarregarCena(string proximaCena)
     {
         // loadSceneAsync tá demorando mais
@@ -17,6 +23,7 @@ public class AdmCena : MonoBehaviour
     public void AbrirConfigurações()
     {
         telaConfiguracoes.gameObject.SetActive(true);
+        GetComponent<admCursor>().MudarSprite(cursorIdle);
     }
 
     public void FecharConfigurações()
