@@ -3286,6 +3286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9344ee8ceaf9184fa43d76523e812b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baralhoTutorial1: {fileID: 11400000, guid: fd5696df06e1ee14fae8e283cbc7dc3a, type: 2}
+  baralhoTutorial2: {fileID: 11400000, guid: 2ecd31fd2afe1694cb1ee45a64ac1d64, type: 2}
   tutorial: 1
   inicioTutorial: 1
   pause: 0
@@ -11232,7 +11234,7 @@ MonoBehaviour:
   popUpPequenoCima: {fileID: 200492598}
   popUpPequenoBaixo: {fileID: 52563240}
   popUpMedio: {fileID: 1840001326}
-  tempoEsperaAnimacao: 1
+  tempoEsperaAnimacao: 4
   posicoesPopUps:
   - {fileID: 324590275}
   - {fileID: 1701735072}

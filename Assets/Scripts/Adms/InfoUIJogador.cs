@@ -93,17 +93,17 @@ public class InfoUIJogador : MonoBehaviour
 
     public IEnumerator AnimacaoDano(int dano)
     {
-        gameObject.transform.Find("Coração Dano").gameObject.SetActive(true);
-        transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
+        gameObject.transform.Find("Painel Jogador/Coração Dano").gameObject.SetActive(true);
+        transform.Find("Painel Jogador/Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
         yield return new WaitForSeconds(0.8f);
-        transform.Find("Coração Dano").gameObject.SetActive(false);
+        transform.Find("Painel Jogador/Coração Dano").gameObject.SetActive(false);
     }
     public IEnumerator AnimacaoCura(int cura)
     {
-        transform.Find("Coração Cura").gameObject.SetActive(true);
-        transform.Find("Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
+        transform.Find("Painel Jogador/Coração Cura").gameObject.SetActive(true);
+        transform.Find("Painel Jogador/Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
         yield return new WaitForSeconds(0.8f);
-        transform.Find("Coração Cura").gameObject.SetActive(false);
+        transform.Find("Painel Jogador/Coração Cura").gameObject.SetActive(false);
     }
 }
 
