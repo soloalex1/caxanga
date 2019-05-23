@@ -147,7 +147,7 @@ public class AdmJogo : MonoBehaviour
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedor.corJogador;
-        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada"; 
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
         ImagemTextoTurno.gameObject.SetActive(true);
         pause = true;
@@ -396,6 +396,10 @@ public class AdmJogo : MonoBehaviour
     }
     public void MatarCarta(InstanciaCarta c, SeguradorDeJogador jogador)
     {
+        if (jogador.cartasBaixadas.Count == 0)
+        {
+            return;
+        }
         foreach (InstanciaCarta carta in jogador.cartasBaixadas)
         {
             if (jogador.cartasBaixadas.Contains(c))
@@ -403,9 +407,6 @@ public class AdmJogo : MonoBehaviour
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
-            }
-            if (jogador.cartasBaixadas.Count == 0)
-            {
                 break;
             }
         }
