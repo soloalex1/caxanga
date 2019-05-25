@@ -6,36 +6,26 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Tutorial/Passo Tutorial")]
 public class PassoTutorial : ScriptableObject
 {
-    GameEvent eventoFinalizador;
+    public GameEvent eventoFinalizador;
     public string[] textos;
     public int indiceTexto = 0;
-    public GameObject[] modais;
+    public GameObject prefabModal;
+    public GameObject modal;
+    public VariavelTransform posicaoModal;
     public GameObject[] objetosDestacados;
     public bool turnoJogador;
 
     public void AoIniciar()
     {
-        for (int i = 0; i < modais.Length; i++)
-        {
-            if (modais[i] != null)
-            {
-                modais[i].SetActive(true);
-            }
-        }
-        //Somente se houver mais de um modal ao mesmo tempo
-        if (modais.Length > 1)
-        {
-            for (int i = 0; i < modais.Length; i++)
-            {
-                if (modais[i] != null)
-                {
-                    modais[i].transform.Find("Texto").GetComponent<Text>().text = textos[i];
-                }
-            }
-        }
-        else
-        {
-            modais[0].transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
-        }
+        indiceTexto = 0;
+        Instantiate(prefabModal, posicaoModal.valor);
+        prefabModal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
+        modal = posicaoModal.valor.Find("PopUpNormal(Clone)").gameObject;
+    }
+    public void AtualizarTexto()
+    {
+        Debug.Log("Vou atualizar o texto");
+        // modal = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Passo 1 Modal/PopUpNormal(Clone)").gameObject;
+        modal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
     }
 }

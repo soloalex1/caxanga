@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
   m_Name: Passo 1
   m_EditorClassIdentifier: 
-  textos: []
-  indiceTexto: 0
-  modais: []
+  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  textos:
+  - Oi, estou testando
+  - "Oi, j\xE1 testei"
+  indiceTexto: 1
+  prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
+    type: 3}
+  modal: {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 1aae7ea986f89d44082330f967b4358c, type: 2}
   objetosDestacados: []
   turnoJogador: 0

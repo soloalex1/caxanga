@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2436997406674004847}
   - component: {fileID: 8367211303785488304}
   - component: {fileID: 6636623558393809993}
+  - component: {fileID: 2850994394760630288}
   m_Layer: 0
   m_Name: "Bot\xE3o Seta"
   m_TagString: Untagged
@@ -115,8 +116,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3355131975931091463}
-        m_MethodName: PassarTextoPasso
+      - m_Target: {fileID: 2850994394760630288}
+        m_MethodName: ApertouBotao
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -128,6 +129,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2850994394760630288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824182879148539609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83fcbcb06cd49848943fe272ba7eb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passouTexto: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
 --- !u!1 &1718955637355501130
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +153,6 @@ GameObject:
   - component: {fileID: 2362890494672115454}
   - component: {fileID: 191069946519609218}
   - component: {fileID: 6111910729958330863}
-  - component: {fileID: 3355131975931091463}
   m_Layer: 0
   m_Name: PopUpNormal
   m_TagString: Untagged
@@ -205,18 +218,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &3355131975931091463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718955637355501130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46967aef8b16d0f48b7e391692f373d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7794004916540619542
 GameObject:
   m_ObjectHideFlags: 0
