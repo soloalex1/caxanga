@@ -31,4 +31,8 @@ public class AdmCena : MonoBehaviour
         telaConfiguracoes.gameObject.SetActive(false);
         GetComponent<admCursor>().MudarSprite(cursorIdle);
     }
+    public void FecherJogo()
+    {
+        Application.Quit();
+    }
 }

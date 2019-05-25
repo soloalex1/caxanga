@@ -2724,12 +2724,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1343696057}
-  m_Father: {fileID: 816887047}
-  m_RootOrder: 1
+  m_Father: {fileID: 1258155881}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.86, y: -114.19}
+  m_AnchoredPosition: {x: 111.89012, y: 14.01001}
   m_SizeDelta: {x: 175.1, y: 175.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408210557
@@ -3073,12 +3073,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419070522}
-  m_Father: {fileID: 816887047}
-  m_RootOrder: 2
+  m_Father: {fileID: 1258155881}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.85996, y: -114.19}
+  m_AnchoredPosition: {x: 111.89004, y: 14.01001}
   m_SizeDelta: {x: 166.95, y: 166.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461566571
@@ -3286,6 +3286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9344ee8ceaf9184fa43d76523e812b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baralhoTutorial1: {fileID: 11400000, guid: fd5696df06e1ee14fae8e283cbc7dc3a, type: 2}
+  baralhoTutorial2: {fileID: 11400000, guid: 2ecd31fd2afe1694cb1ee45a64ac1d64, type: 2}
   tutorial: 1
   inicioTutorial: 1
   pause: 0
@@ -4736,9 +4738,9 @@ RectTransform:
   m_Father: {fileID: 1104370152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: -532}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1100, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812562179
@@ -4807,14 +4809,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1258155881}
-  - {fileID: 408210556}
-  - {fileID: 461566570}
   m_Father: {fileID: 1104370152}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 910, y: 490}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &816887048
@@ -6355,7 +6355,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7077,9 +7077,9 @@ RectTransform:
   m_Father: {fileID: 1104370152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.022, y: 648.6}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1017.022, y: 108.599976}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182343311
@@ -7451,12 +7451,14 @@ RectTransform:
   - {fileID: 711339110}
   - {fileID: 2068713082}
   - {fileID: 790022256}
+  - {fileID: 408210556}
+  - {fileID: 461566570}
   m_Father: {fileID: 816887047}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216.75006, y: -128.20001}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -266.75006, y: -178.20001}
   m_SizeDelta: {x: 533.5, y: 356.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1258155883
@@ -8710,11 +8712,11 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -11232,7 +11234,7 @@ MonoBehaviour:
   popUpPequenoCima: {fileID: 200492598}
   popUpPequenoBaixo: {fileID: 52563240}
   popUpMedio: {fileID: 1840001326}
-  tempoEsperaAnimacao: 1
+  tempoEsperaAnimacao: 4
   posicoesPopUps:
   - {fileID: 324590275}
   - {fileID: 1701735072}

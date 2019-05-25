@@ -30,4 +30,5 @@ ehthumbs.db
 [Oo]bj/
 [Bb]uild
 sysinfo.txt
+ProjectVersion.txt
 *.stackdump
