@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public GameEvent jogouBoiuna;
     public EstadoJogador usandoEfeito;
     public Rodada rodada;
     public bool protegido, silenciado, fezAlgumaAcao;
@@ -109,6 +110,10 @@ public class SeguradorDeJogador : ScriptableObject
         cartaEntrouEmCampo.cartaQueAtivouEvento = instCarta;
         Configuracoes.admEfeito.eventoAtivador = cartaEntrouEmCampo;
         cartaEntrouEmCampo.Raise();
+        if (Configuracoes.admJogo.tutorial && instCarta.carta.name == "Boiuna")
+        {
+            jogouBoiuna.Raise();
+        }
         return;
     }
     public bool TemMagiaParaBaixarCarta(InstanciaCarta c)

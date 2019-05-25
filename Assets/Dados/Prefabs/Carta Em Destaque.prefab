@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
-  instCarta: {fileID: 0}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}

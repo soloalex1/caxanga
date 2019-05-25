@@ -28,7 +28,6 @@ public class LogicaBaixarCartaArea : LogicaArea
                     {
                         //define o pai da carta para ser o grid lá do Cartas Baixadas
                         Configuracoes.admJogo.jogadorAtual.BaixarCarta(c.transform, gridArea.valor.transform, c);
-                        // Configuracoes.BaixarCartaLenda(c.transform, gridArea.valor.transform, c);
                         c.logicaAtual = logicaCartaBaixa;
                         Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno++;
                         c.gameObject.SetActive(true);

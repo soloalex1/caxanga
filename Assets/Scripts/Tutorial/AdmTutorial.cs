@@ -7,24 +7,39 @@ public class AdmTutorial : MonoBehaviour
 {
     public PassoTutorial[] passos;
     public PassoTutorial passoAtual;
+    int indicePasso;
     GameEventListener gmListener;
+
     private void Start()
     {
-        gmListener = GetComponent<GameEventListener>();
-        for (int i = 0; i < passos.Length; i++)
-        {
-            gmListener.gameEvents.Add(passos[i].eventoFinalizador);
-        }
-        passoAtual = passos[0];
+        indicePasso = 0;
+        passoAtual = passos[indicePasso];
         passoAtual.AoIniciar();
     }
     public void ativouEvento()
     {
-        Debug.Log("Eu ouvi isso hein");
         if (passoAtual.indiceTexto != passoAtual.textos.Length - 1)
         {
+            if (passoAtual.objetosDestacados.Length > 1)
+            {
+                passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado].SetActive(false);
+                passoAtual.indiceObjDestacado++;
+                Instantiate(passoAtual.objetosDestacados[passoAtual.indiceObjDestacado], this.transform);
+                passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado] = passoAtual.objetosDestacados[passoAtual.indiceObjDestacado];
+            }
             passoAtual.indiceTexto++;
             passoAtual.AtualizarTexto();
+            return;
+        }
+        else
+        {
+            passoAtual.FinalizarPasso();
+            indicePasso++;
+            if (passos.Length > indicePasso)
+            {
+                passoAtual = passos[indicePasso];
+                passoAtual.AoIniciar();
+            }
         }
     }
 }

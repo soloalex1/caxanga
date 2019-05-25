@@ -54,8 +54,9 @@ public class AdmJogo : MonoBehaviour
         */
         if (inicioTutorial)
         {
-            jogadorLocal.baralho = baralhoTutorial1;
-            jogadorInimigo.baralho = baralhoTutorial2;
+            jogadorLocal.baralhoInicial = baralhoTutorial1;
+            jogadorInimigo.baralhoInicial = baralhoTutorial2;
+            Debug.Log("Entrei porra");
             pause = true;
         }
         else

@@ -8,6 +8,5 @@ public class PassarTexto : MonoBehaviour
     public void ApertouBotao()
     {
         passouTexto.Raise();
-        Debug.Log("Apertou o botao");
     }
 }

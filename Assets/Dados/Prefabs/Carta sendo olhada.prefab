@@ -98,7 +98,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7, y: 60}
+  m_AnchoredPosition: {x: 548, y: 60}
   m_SizeDelta: {x: 750.04, y: 1043.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8307601525992657370
@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
-  instCarta: {fileID: 0}
+  carta: {fileID: 11400000, guid: 28cb4ceb32b721147be2cce53b99e060, type: 2}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -237,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2145960327427446542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -385,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7976089226829216234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -446,8 +445,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'O efeito da carta vai aparecer bem aqui aqui aqui aqui aqui aqui aqui aqui
-    aqui aqui aqui aqui aqui aqui aqui '
+  m_Text: 
 --- !u!1 &7976089227117427891
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,9 +569,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Nome da Carta
-
-'
+  m_Text: Boiuna
 --- !u!1 &7976089227209152885
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,9 +649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1
-
-'
+  m_Text: 3
 --- !u!114 &5061596234602708318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,9 +744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1
-
-'
+  m_Text: 4
 --- !u!114 &3147387897426827716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +825,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9127365929f71cf47b03fe5ebca523c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -920,4 +912,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Categoria: a historia da carta \xE9 essa..."
+  m_Text: "Cren\xE7as e Religiosidades: Uma enorme cobra escura capaz de virar as
+    embarca\xE7\xF5es. Tamb\xE9m pode imitar as formas das embarca\xE7\xF5es, atraindo
+    n\xE1ufragos para o fundo do rio, ou assumir a forma de uma mulher."
