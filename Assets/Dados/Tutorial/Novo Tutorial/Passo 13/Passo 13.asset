@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
-  m_Name: Passo 9
+  m_Name: Passo 13
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   textos:
-  - "Agora baixe a carta Boitat\xE1 e encerre a vez, ela auxiliar\xE1 voc\xEA em seu
-    pr\xF3ximo turno."
+  - "Parab\xE9ns, voc\xEA concluiu o tutorial!"
+  - "Nessa atividade, voc\xEA experimentou uma rodada de Caxang\xE1."
+  - "Agora, voc\xEA j\xE1 entendeu as mec\xE2nicas b\xE1sicas da peleja e pode come\xE7ar
+    sua aventura!"
   indiceTexto: 1
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
+  posicaoModal: {fileID: 11400000, guid: 5108973e7419e044fb0f6b3cb543244d, type: 2}
   objetosDestacados:
   - {fileID: 0}
   objetosDestacadosNaTela: []
