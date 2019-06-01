@@ -2854,6 +2854,9 @@ MonoBehaviour:
   cartaAlvo: {fileID: 0}
   jogadorAlvo: {fileID: 0}
   cartaMatou: {fileID: 11400000, guid: 62f5597960c0dad44833aa07c77e301b, type: 2}
+  jogadorPassouTurno: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
+  lobisomemInimigaMorreu: {fileID: 11400000, guid: 47932a475e6e0ad43a175dc6345a1523,
+    type: 2}
   ImagemTextoTurno: {fileID: 2087334144}
   cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
   cursorSegurandoCarta: {fileID: 21300000, guid: 7d8cad61fe8c90542bcc74a0ff4bb718,
@@ -5834,7 +5837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1017.0215, y: 108.59961}
+  m_AnchoredPosition: {x: -1017, y: 108.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182343311
@@ -9340,6 +9343,8 @@ MonoBehaviour:
   gameEvents:
   - {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   - {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
+  - {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
+  - {fileID: 11400000, guid: 47932a475e6e0ad43a175dc6345a1523, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:

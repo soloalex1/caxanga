@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
   m_Name: Passo 6
   m_EditorClassIdentifier: 
-  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  eventoFinalizador: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
   textos:
   - Todas as cartas lendas precisam esperar um turno antes de atacar.
   - "Logo, voc\xEA n\xE3o tem muito o que fazer agora, ent\xE3o encerre seu turno!"
   indiceTexto: 1
-  prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
   modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 69fe0475a9f739a499b6d474316228a3, type: 2}

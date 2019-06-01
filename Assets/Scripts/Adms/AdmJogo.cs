@@ -37,7 +37,7 @@ public class AdmJogo : MonoBehaviour
     public InstanciaCarta cartaAtacante;
     public InstanciaCarta cartaAlvo;
     public SeguradorDeJogador jogadorAlvo;
-    public GameEvent cartaMatou;
+    public GameEvent cartaMatou, jogadorPassouTurno, lobisomemInimigaMorreu;
     public Image ImagemTextoTurno;
     public Sprite cursorAlvoCinza, cursorSegurandoCarta, cursorIdle, cursorAlvoVermelho, cursorAlvoVerde;
 
@@ -195,17 +195,6 @@ public class AdmJogo : MonoBehaviour
                 jogadorAtual.rodada.PassarRodada();
                 jogadorInimigo.rodada.IniciarRodada();
             }
-            // yield return new WaitWhile(() => mostrouVencedorTurno == false);
-            // if (jogadorInimigo.barrasDeVida <= 0)
-            // {
-            //     jogadorVencedor = jogadorAtual;
-            //     StartCoroutine(FimDeJogo(jogadorVencedor));
-            // }
-            // if (jogadorAtual.barrasDeVida <= 0)
-            // {
-            //     jogadorVencedor = jogadorInimigo;
-            //     StartCoroutine(FimDeJogo(jogadorVencedor));
-            // }
         }
     }
     public void TrocarJogadorAtual()
@@ -299,6 +288,7 @@ public class AdmJogo : MonoBehaviour
     }
     public void EncerrarRodada()
     {
+        jogadorPassouTurno.Raise();
         jogadorAtual.rodada.turno.FinalizarTurno();
         if (jogadorAtual.fezAlgumaAcao)//somente passou o turno
         {
@@ -309,7 +299,7 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                ChecaVidaJogadores();
+                // ChecaVidaJogadores();
                 jogadorAtual.rodada.turno.IniciarTurno();
             }
         }
@@ -318,16 +308,7 @@ public class AdmJogo : MonoBehaviour
             jogadorAtual.rodada.PassarRodada();
             if (jogadorInimigo.passouRodada && jogadorAtual.passouRodada)
             {
-                if (jogadorAtual.vida > jogadorInimigo.vida)
-                {
-                    jogadorInimigo.barrasDeVida--;
-                    StartCoroutine(FadeVencedorTurno(jogadorAtual));
-                }
-                if (jogadorAtual.vida < jogadorInimigo.vida)
-                {
-                    jogadorAtual.barrasDeVida--;
-                    StartCoroutine(FadeVencedorTurno(jogadorInimigo));
-                }
+                ChecaVidaJogadores();
             }
             else
             {
@@ -408,6 +389,8 @@ public class AdmJogo : MonoBehaviour
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
+                if (tutorial && c.infoCarta.carta.name == "Lobisomem")
+                    lobisomemInimigaMorreu.Raise();
                 break;
             }
         }
