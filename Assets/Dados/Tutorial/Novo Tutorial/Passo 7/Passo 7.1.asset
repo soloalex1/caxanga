@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
-  m_Name: Passo 10
+  m_Name: Passo 7.1
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   textos:
-  - "Outra forma de ataque \xE9 o ataque direto."
-  - "Com ele, voc\xEA diminui a vida do inimigo em um valor correspondente ao poder
-    de ataque da lenda atacante."
-  - "A carta, por\xE9m, perde 1 de seu poder, e, se o poder chegar a 0, a carta \xE9
-    levada ao cemit\xE9rio."
-  - "Escolha o Boitat\xE1 e ataque diretamente seu inimigo!"
+  - "As cartas de Feiti\xE7o, por sua vez, n\xE3o v\xE3o para o campo e nem possuem
+    poder, apenas custo."
+  - "Voc\xEA possui recurso o suficiente para utilizar o Aboio, por exemplo."
+  - "O Aboio custar\xE1 3 de recurso e, como todo Feiti\xE7o, ao ser utilizado logo
+    ir\xE1 para o cemit\xE9rio. A Boiuna ficar\xE1 com 6 de poder."
   indiceTexto: 1
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 69fe0475a9f739a499b6d474316228a3, type: 2}
+  posicaoModal: {fileID: 11400000, guid: 92f5a2be6f9d28a4f9a39c835804afa2, type: 2}
   objetosDestacados:
-  - {fileID: 0}
+  - {fileID: 1274933164439770382, guid: 481e2d845c5bfec49800c6221bac4746, type: 3}
   objetosDestacadosNaTela: []
-  cartaMostrada: {fileID: 0}
+  cartaMostrada: {fileID: 11400000, guid: fcc14ea63936bcb4192b5fbbc5a47c17, type: 2}
   turnoJogador: 1
   jogadorInterage: 1
   indiceObjDestacado: 0
