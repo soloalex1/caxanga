@@ -21,6 +21,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         {
             if (eventoAtivador == eventoAtivador.cartaQueAtivouEvento.efeito.eventoAtivador)
             {
+
                 StartCoroutine(Efeito(eventoAtivador.cartaQueAtivouEvento.efeito));
             }
         }
@@ -60,6 +61,9 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 if (efeito.modoDeExecucao == silenciarJogador)
                 {
                     efeito.jogadorAlvo.podeUsarEfeito = false;
+                    efeito.jogadorAlvo.silenciado = true;
+                    efeito.jogadorAlvo.CarregarInfoUIJogador();
+                    Debug.Log("Entrei no efeito");
                 }
                 if (efeito.modoDeExecucao == alterarPoderCarta)
                 {
@@ -163,6 +167,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 }
                 if (efeito.cartaQueInvoca.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                 {
+                    efeito.jogadorQueInvoca.fezAlgumaAcao = true;
                     efeito.cartaQueInvoca.jogadorDono.magia -= efeito.cartaQueInvoca.custo;
                     efeito.jogadorQueInvoca.CarregarInfoUIJogador();
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);
@@ -177,7 +182,6 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         if (efeito.tipoEfeito == tipoPassivo)
         {
         }
-        efeito.jogadorQueInvoca.fezAlgumaAcao = true;
         yield return null;
     }
 }

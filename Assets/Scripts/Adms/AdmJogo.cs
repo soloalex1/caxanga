@@ -135,6 +135,9 @@ public class AdmJogo : MonoBehaviour
                     {
                         instCarta.efeito.jogadorAlvo = jogadorIA;
                     }
+                    Debug.Log(instCarta.efeito.name);
+                    Debug.Log(instCarta.efeito.jogadorAlvo.nomeJogador);
+
                 }
             }
         }
