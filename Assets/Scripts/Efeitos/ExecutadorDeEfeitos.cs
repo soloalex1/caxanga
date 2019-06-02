@@ -177,6 +177,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         if (efeito.tipoEfeito == tipoPassivo)
         {
         }
+        efeito.jogadorQueInvoca.fezAlgumaAcao = true;
         yield return null;
     }
 }

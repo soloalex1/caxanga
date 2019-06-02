@@ -24,7 +24,7 @@ MonoBehaviour:
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
-  numCartasMaoInicio: 5
+  numCartasMaoInicio: 4
   baralho: {fileID: 0}
   baralhoInicial: {fileID: 11400000, guid: 8bb9b740d22c69e46ae62e67464f7ed5, type: 2}
   corJogador: {r: 0.68235296, g: 0.7372549, b: 0.92941177, a: 1}

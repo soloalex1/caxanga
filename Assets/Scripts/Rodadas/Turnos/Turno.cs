@@ -26,10 +26,11 @@ public class Turno : ScriptableObject
         }
         foreach (InstanciaCarta c in jogador.cartasBaixadas)
         {
-
             c.protegido = false;
             c.podeSofrerEfeito = true;
             c.podeSerAtacada = true;
+            c.infoCarta.protegido = false;
+            c.infoCarta.CarregarCarta(c.infoCarta.carta);
         }
     }
     public void FinalizarTurno()

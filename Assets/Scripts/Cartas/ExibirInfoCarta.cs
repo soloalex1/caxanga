@@ -27,7 +27,6 @@ public class ExibirInfoCarta : MonoBehaviour
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();
-
         for (int i = 0; i < propriedades.Length; i++)
         {
             Propriedades p = c.propriedades[i];
@@ -40,12 +39,12 @@ public class ExibirInfoCarta : MonoBehaviour
             if (ep.elemento is ElementoNum)
             {
                 ep.texto.text = p.intValor.ToString();
+
                 if (instCarta != null)
                 {
                     if (ep.elemento.name == "Poder")
                     {
                         ep.texto.text = instCarta.poder.ToString();
-
                     }
                     if (ep.elemento.name == "Custo")
                     {
@@ -96,7 +95,6 @@ public class ExibirInfoCarta : MonoBehaviour
         }
         if (protegido)
         {
-            Debug.Log("teste maluco");
             imagemProtegido.SetActive(true);
         }
         else

@@ -145,7 +145,7 @@ public class AdmJogo : MonoBehaviour
     }
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
-        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedor.corJogador;
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedorTurno.corJogador;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
         ImagemTextoTurno.gameObject.SetActive(true);
@@ -171,6 +171,7 @@ public class AdmJogo : MonoBehaviour
     }
     void ChecaVidaJogadores()
     {
+
         if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
         {
             if (jogadorAtual.vida <= 0)
@@ -183,15 +184,27 @@ public class AdmJogo : MonoBehaviour
                 jogadorInimigo.barrasDeVida--;
                 StartCoroutine(FadeVencedorTurno(jogadorAtual));
             }
+            return;
+        }
+        if (jogadorAtual.passouRodada && jogadorInimigo.passouRodada)
+        {
+            if (jogadorAtual.vida > jogadorInimigo.vida)
+            {
+                jogadorInimigo.barrasDeVida--;
+
+                StartCoroutine(FadeVencedorTurno(jogadorAtual));
+            }
+            else if (jogadorAtual.vida < jogadorInimigo.vida)
+            {
+                jogadorAtual.barrasDeVida--;
+                StartCoroutine(FadeVencedorTurno(jogadorInimigo));
+            }
             else
             {
-                Debug.Log("EMPATE");
-                jogadorAtual.barrasDeVida--;
-                jogadorInimigo.barrasDeVida--;
-                jogadorAtual.rodada.PassarRodada();
-                jogadorInimigo.rodada.IniciarRodada();
+                Debug.Log("Empate");
             }
         }
+
     }
     public void TrocarJogadorAtual()
     {
@@ -297,6 +310,14 @@ public class AdmJogo : MonoBehaviour
                 }
                 else
                 {
+                    foreach (InstanciaCarta c in jogadorInimigo.cartasBaixadas)
+                    {
+                        c.protegido = false;
+                        c.podeSofrerEfeito = true;
+                        c.podeSerAtacada = true;
+                        c.infoCarta.protegido = false;
+                        c.infoCarta.CarregarCarta(c.infoCarta.carta);
+                    }
                     if (jogadorAtual == jogadorLocal)
                     {
                         Configuracoes.turnoDaIATutorial = true;
@@ -307,7 +328,6 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                // ChecaVidaJogadores();
                 jogadorAtual.rodada.turno.IniciarTurno();
             }
         }
@@ -374,7 +394,6 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.poder--;
             jogadorAtacado.infoUI.AtualizarVida();
-            Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " atacou " + jogadorInimigo.nomeJogador + " e lhe tirou " + poderCartaAtacanteAntes + " de vida", jogadorAtual.corJogador);
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             if (cartaAtacante.poder <= 0)
             {
