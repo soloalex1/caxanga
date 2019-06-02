@@ -2812,6 +2812,10 @@ MonoBehaviour:
   cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
   cursorAlvoVermelho: {fileID: 21300000, guid: a84ff7c5781eb9149a5333c218a2b7e0, type: 3}
   cursorAlvoVerde: {fileID: 21300000, guid: 91864b2b6ee44784aa65b83ea1160780, type: 3}
+  cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
+  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
+  aoPararDeOlharCarta: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68,
+    type: 2}
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
@@ -5453,7 +5457,7 @@ PrefabInstance:
     - target: {fileID: 7976089226829216234, guid: 481e2d845c5bfec49800c6221bac4746,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -59.423332
+      value: -54.4
       objectReference: {fileID: 0}
     - target: {fileID: 2145960327427446542, guid: 481e2d845c5bfec49800c6221bac4746,
         type: 3}
@@ -5473,7 +5477,7 @@ PrefabInstance:
     - target: {fileID: 2145960327427446542, guid: 481e2d845c5bfec49800c6221bac4746,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -136.37
+      value: -121.3
       objectReference: {fileID: 0}
     - target: {fileID: 649089369035219232, guid: 481e2d845c5bfec49800c6221bac4746,
         type: 3}
@@ -5493,7 +5497,7 @@ PrefabInstance:
     - target: {fileID: 649089369035219232, guid: 481e2d845c5bfec49800c6221bac4746,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.14665
+      value: -204.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 481e2d845c5bfec49800c6221bac4746, type: 3}

@@ -38,7 +38,6 @@ public class SeguradorDeJogador : ScriptableObject
     public LogicaInstanciaCarta logicaBaixada;
     public LogicaInstanciaCarta logicaCemiterio;
 
-
     [System.NonSerialized] // não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
@@ -87,6 +86,8 @@ public class SeguradorDeJogador : ScriptableObject
         PuxarCartasIniciais();
     }
 
+
+
     public void BaixarCarta(Transform c, Transform p, InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
@@ -97,6 +98,7 @@ public class SeguradorDeJogador : ScriptableObject
         fezAlgumaAcao = true;
         magia -= instCarta.custo;
         infoUI.AtualizarMagia();
+        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.DestacarCartaBaixada(instCarta));
 
         instCarta.podeAtacarNesteTurno = false;
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço

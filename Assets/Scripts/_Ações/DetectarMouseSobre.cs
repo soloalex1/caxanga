@@ -10,6 +10,7 @@ public class DetectarMouseSobre : Acao
     public GameEvent aoPararDeOlharCarta;
     public VariavelCarta cartaAtual;
     public Sprite cursorIdle;
+
     public override void Executar(float d)
     {
         List<RaycastResult> resultados = Configuracoes.GetUIObjs();
@@ -68,7 +69,11 @@ public class DetectarMouseSobre : Acao
                 cartaAtual.valor.gameObject.SetActive(true);
                 cartaAtual.valor = null;
             }
-            aoPararDeOlharCarta.Raise();
+
+            if(!Configuracoes.cartaRecemJogada){
+                aoPararDeOlharCarta.Raise();
+            }
+            
         }
         if (cartaAtual.valor != null)
         {

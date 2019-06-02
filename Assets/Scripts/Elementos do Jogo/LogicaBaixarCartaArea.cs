@@ -47,6 +47,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                             jogadorAtivouEfeito.cartaQueAtivouEvento = c;
                             Configuracoes.admEfeito.eventoAtivador = jogadorAtivouEfeito;
                             jogadorAtivouEfeito.Raise();
+                            Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.DestacarCartaBaixada(c));
                         }
                         else
                         {

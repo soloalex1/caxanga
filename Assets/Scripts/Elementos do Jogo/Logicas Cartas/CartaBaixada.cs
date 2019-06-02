@@ -34,9 +34,15 @@ public class CartaBaixada : LogicaInstanciaCarta
     public override void AoOlhar(InstanciaCarta carta)
     {
         if (carta != cartaAtual.valor)//se for diferente
-        {
-            cartaAtual.Set(carta);
-            aoOlharCarta.Raise();
+           {   
+            
+             // impedindo o mouseleave de matar o destaque na carta recém jogada
+            if(!Configuracoes.cartaRecemJogada)
+            {
+                cartaAtual.Set(carta);
+                aoOlharCarta.Raise();
+            }         
+
             if (Configuracoes.admJogo.estadoAtual == usandoEfeito)
             {
                 if (carta.podeSofrerEfeito)

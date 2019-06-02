@@ -16,7 +16,7 @@ MonoBehaviour:
   rodada: {fileID: 11400000, guid: 428a77df8f0d4c64bb1effc37c3f6566, type: 2}
   protegido: 0
   silenciado: 0
-  fezAlgumaAcao: 0
+  fezAlgumaAcao: 1
   passouRodada: 0
   moldura: {fileID: 21300000, guid: 9a0d7db97a2f12f4db881b283cda19ae, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
@@ -30,13 +30,13 @@ MonoBehaviour:
   nomeJogador: Moacir
   vidaInicial: 20
   magiaInicial: 10
-  magia: 10
+  magia: 3
   vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 1
   podeSerAtacado: 1
   barrasDeVida: 3
-  lendasBaixadasNoTurno: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1
@@ -44,3 +44,7 @@ MonoBehaviour:
   logicaMao: {fileID: 11400000, guid: 7bc115552d5bfe942a98f6722cfa0dd5, type: 2}
   logicaBaixada: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
   logicaCemiterio: {fileID: 0}
+  cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
+  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
+  aoPararDeOlharCarta: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68,
+    type: 2}

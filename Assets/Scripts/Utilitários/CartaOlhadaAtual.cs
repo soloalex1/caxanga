@@ -10,7 +10,7 @@ public class CartaOlhadaAtual : MonoBehaviour
     Vector3 posicao;
 
     public void CarregarCartaOlhada()
-    {
+    { 
         SetPoderECusto();
         infoCarta.CarregarCarta(cartaAtual.valor.infoCarta.carta);
         infoCarta.gameObject.SetActive(true);

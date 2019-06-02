@@ -40,6 +40,8 @@ public class AdmJogo : MonoBehaviour
     public GameEvent cartaMatou;
     public Image ImagemTextoTurno;
     public Sprite cursorAlvoCinza, cursorSegurandoCarta, cursorIdle, cursorAlvoVermelho, cursorAlvoVerde;
+    public VariavelCarta cartaAtual;
+    public GameEvent aoOlharCarta, aoPararDeOlharCarta;
 
     public static AdmJogo singleton;
     private void Awake()
@@ -410,5 +412,22 @@ public class AdmJogo : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public IEnumerator DestacarCartaBaixada(InstanciaCarta instCarta){
+        // fechando outras cartas em destaque   
+        aoPararDeOlharCarta.Raise();
+
+        cartaAtual.Set(instCarta);
+
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada/Carta sendo olhada").SetActive(true);
+        Configuracoes.cartaRecemJogada = true;
+        aoOlharCarta.Raise();
+
+        yield return new WaitForSeconds(1.5f);
+
+        Configuracoes.cartaRecemJogada = false;
+
+        aoPararDeOlharCarta.Raise();
     }
 }
