@@ -20,8 +20,7 @@ MonoBehaviour:
     type: 3}
   modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 4a275044e62e7484baeb08e1fd8e5fc0, type: 2}
-  objetosDestacados:
-  - {fileID: 0}
+  objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
   turnoJogador: 1

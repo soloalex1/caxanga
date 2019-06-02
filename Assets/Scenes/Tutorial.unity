@@ -2006,6 +2006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventoAtivador: {fileID: 0}
+  aboioEmBoiuna: {fileID: 11400000, guid: 861b24324dc44a94eb0425a17be47661, type: 2}
   emSeuTurno: {fileID: 11400000, guid: 26f6b0b5bf382b14596dd22579be9f85, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
   ativacaoAtiva: {fileID: 11400000, guid: 08d60700a0b0da54dadf1639cd78a1b3, type: 2}
@@ -2281,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 5108973e7419e044fb0f6b3cb543244d, type: 2}
 --- !u!1 &408210555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,8 +2890,8 @@ MonoBehaviour:
   estadoAtual: {fileID: 0}
   jogadorAtual: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
   jogadorLocal: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
-  jogadorInimigo: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
-  jogadorIA: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  jogadorInimigo: {fileID: 11400000, guid: 1f7cf397944a6f046b802991bf264a5a, type: 2}
+  jogadorIA: {fileID: 11400000, guid: 1f7cf397944a6f046b802991bf264a5a, type: 2}
   seguradorCartasJogadorLocal: {fileID: 11400000, guid: 7403de3fcfd23bf49a4af30476b199cd,
     type: 2}
   seguradorCartasJogadorInimigo: {fileID: 11400000, guid: e204abf5377d1864691db82cb812e64c,
@@ -2906,6 +2907,9 @@ MonoBehaviour:
   jogadorPassouTurno: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
   lobisomemInimigaMorreu: {fileID: 11400000, guid: 47932a475e6e0ad43a175dc6345a1523,
     type: 2}
+  boiunaAtacouLobis: {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
+  boinaAtacouJogador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
+  turnoInimigoIA: {fileID: 11400000, guid: 235177d48b352984fa32e98be6db3bb4, type: 2}
   ImagemTextoTurno: {fileID: 2087334144}
   cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
   cursorSegurandoCarta: {fileID: 21300000, guid: 7d8cad61fe8c90542bcc74a0ff4bb718,
@@ -4066,6 +4070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816887047}
   - component: {fileID: 816887048}
+  - component: {fileID: 816887049}
   m_Layer: 5
   m_Name: Jogador Qualquer
   m_TagString: Untagged
@@ -4121,6 +4126,36 @@ MonoBehaviour:
     type: 3}
   spritePodeBaixarFeitico: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4,
     type: 3}
+--- !u!114 &816887049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816887046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa642a70c43ca445b7162ffb9cf17d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvents:
+  - {fileID: 11400000, guid: 235177d48b352984fa32e98be6db3bb4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1929916182}
+        m_MethodName: ChamarTurnoIA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &817998430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5974,7 +6009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 8dca5e22ff829c54d9656439a8836dab, type: 2}
 --- !u!1 &1198298218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6689,7 +6724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 92f5a2be6f9d28a4f9a39c835804afa2, type: 2}
 --- !u!1001 &1314971848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7163,7 +7198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 30de718075568e048914ec61b5c3859e, type: 2}
 --- !u!1001 &1388541309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8473,7 +8508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: cd90ce5f7dc457b4db4023799142494c, type: 2}
 --- !u!1 &1741234195
 GameObject:
   m_ObjectHideFlags: 0
@@ -8750,7 +8785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 4a275044e62e7484baeb08e1fd8e5fc0, type: 2}
 --- !u!224 &1759528159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9506,7 +9541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859befc07fbef5841a986577e13dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variavelTransform: {fileID: 11400000, guid: 6621fcde2b5e71c40821b6ff7128287f, type: 2}
+  variavelTransform: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
 --- !u!1 &1927266164
 GameObject:
   m_ObjectHideFlags: 0
@@ -9627,7 +9662,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd878cf5bf21c984c983e6aa6eae72b5, type: 2}
   - {fileID: 11400000, guid: c7af1a71acb0cca4a9f0ed7352d4828f, type: 2}
   - {fileID: 11400000, guid: 2efba7c8a513b104db5f73b2bb0948dd, type: 2}
-  passoAtual: {fileID: 0}
+  - {fileID: 11400000, guid: 98af368f2444b7c49a1e33f2ad12f60a, type: 2}
+  - {fileID: 11400000, guid: 10a63df28e4cb1f45a0eb058febe2f35, type: 2}
+  - {fileID: 11400000, guid: c3b67c0e939e44f4f865fa75453bb6e8, type: 2}
+  - {fileID: 11400000, guid: 75dd9c92ffb345c4f82ad40ccc2c5f2a, type: 2}
+  - {fileID: 11400000, guid: fdfd42283a202fe42b5ae144681e90e3, type: 2}
+  - {fileID: 11400000, guid: f3dd1ed1458429344a440b9e18d37a02, type: 2}
+  - {fileID: 11400000, guid: ca3b50c449e90624aa8ceebb117dec4d, type: 2}
+  - {fileID: 11400000, guid: a58c0f67869764d4da665fda0491e460, type: 2}
+  - {fileID: 11400000, guid: e8e81a05e4125bf498ba47296d940558, type: 2}
+  - {fileID: 11400000, guid: f027981121926d44e96ad15195c12e1b, type: 2}
+  - {fileID: 11400000, guid: 85f7073aa3f64934791d9eebe884619b, type: 2}
+  - {fileID: 11400000, guid: 708933a56c7255647902af6c3a805ac2, type: 2}
+  passoAtual: {fileID: 11400000, guid: 65f48bb95f5d2d344b76e58cb5e1c1e6, type: 2}
+  campoInimigo: {fileID: 11400000, guid: 8869980cff1b27949bc9e43df5f712d8, type: 2}
+  logicaCartaBaixa: {fileID: 11400000, guid: 2c81943379b225d43be72e38db9b375c, type: 2}
 --- !u!114 &1929916183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9644,7 +9693,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   - {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
   - {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
-  - {fileID: 11400000, guid: 47932a475e6e0ad43a175dc6345a1523, type: 2}
+  - {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
+  - {fileID: 11400000, guid: 861b24324dc44a94eb0425a17be47661, type: 2}
+  - {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
+  - {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:

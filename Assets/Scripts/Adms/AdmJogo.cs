@@ -37,7 +37,7 @@ public class AdmJogo : MonoBehaviour
     public InstanciaCarta cartaAtacante;
     public InstanciaCarta cartaAlvo;
     public SeguradorDeJogador jogadorAlvo;
-    public GameEvent cartaMatou, jogadorPassouTurno, lobisomemInimigaMorreu;
+    public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boinaAtacouJogador, turnoInimigoIA;
     public Image ImagemTextoTurno;
     public Sprite cursorAlvoCinza, cursorSegurandoCarta, cursorIdle, cursorAlvoVermelho, cursorAlvoVerde;
 
@@ -56,7 +56,6 @@ public class AdmJogo : MonoBehaviour
         {
             jogadorLocal.baralhoInicial = baralhoTutorial1;
             jogadorInimigo.baralhoInicial = baralhoTutorial2;
-            Debug.Log("Entrei porra");
             pause = true;
         }
         else
@@ -82,7 +81,6 @@ public class AdmJogo : MonoBehaviour
                 estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
             }
         }
-
     }
 
     public void PuxarCarta(SeguradorDeJogador jogador)
@@ -170,8 +168,6 @@ public class AdmJogo : MonoBehaviour
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
         TrocarJogadorAtual();
-
-
     }
     void ChecaVidaJogadores()
     {
@@ -288,14 +284,26 @@ public class AdmJogo : MonoBehaviour
     }
     public void EncerrarRodada()
     {
-        jogadorPassouTurno.Raise();
         jogadorAtual.rodada.turno.FinalizarTurno();
         if (jogadorAtual.fezAlgumaAcao)//somente passou o turno
         {
             if (jogadorInimigo.passouRodada == false)
             {
-                TrocarJogadorAtual();
-                jogadorAtual.rodada.turno.IniciarTurno();
+                if (tutorial == false)
+                {
+                    TrocarJogadorAtual();
+                    jogadorAtual.rodada.turno.IniciarTurno();
+
+                }
+                else
+                {
+                    if (jogadorAtual == jogadorLocal)
+                    {
+                        Configuracoes.turnoDaIATutorial = true;
+                        jogadorPassouTurno.Raise();
+                        turnoInimigoIA.Raise();
+                    }
+                }
             }
             else
             {
@@ -330,13 +338,11 @@ public class AdmJogo : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
             cartaAtacada.poder -= poderCartaAtacanteAntes;
             cartaAtacante.poder -= poderCartaAtacadaAntes;
-            Configuracoes.RegistrarEvento("A carta " + cartaAtacante.infoCarta.carta.name + " atacou a carta " + cartaAtacada.infoCarta.carta.name + " e tirou " + poderCartaAtacanteAntes, Color.white);
             int poderCartaAtacanteDepois = cartaAtacante.poder;
             int poderCartaAtacadaDepois = cartaAtacada.poder;
 
             if (poderCartaAtacadaDepois <= 0)
             {
-
                 cartaMatou.cartaQueAtivouEvento = cartaAtacante;
                 Configuracoes.admEfeito.eventoAtivador = cartaMatou;
                 cartaMatou.Raise();
@@ -348,9 +354,14 @@ public class AdmJogo : MonoBehaviour
             }
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
+            if (tutorial && cartaAtacante.carta.name == "Boiuna" && cartaAtacada.carta.name == "Lobisomem")
+            {
+                boiunaAtacouLobis.Raise();
+            }
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacada = null;
             cartaAtacante = null;
+
         }
         //Atacar um jogador
         if (cartaAtacante != null && jogadorAtacado != null)
@@ -373,6 +384,10 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante = null;
             jogadorAtacado = null;
             ChecaVidaJogadores();
+            if (tutorial && cartaAtacante.carta.name == "Boiuna")
+            {
+                boinaAtacouJogador.Raise();
+            }
         }
         yield return null;
     }
@@ -389,8 +404,6 @@ public class AdmJogo : MonoBehaviour
                 c.gameObject.SetActive(false);
                 jogador.ColocarCartaNoCemiterio(c);
                 jogador.cartasBaixadas.Remove(c);
-                if (tutorial && c.infoCarta.carta.name == "Lobisomem")
-                    lobisomemInimigaMorreu.Raise();
                 break;
             }
         }

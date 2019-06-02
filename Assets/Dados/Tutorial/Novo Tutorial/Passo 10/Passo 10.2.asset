@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
   m_Name: Passo 10.2
   m_EditorClassIdentifier: 
-  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  eventoFinalizador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
   textos:
   - "A carta, por\xE9m, perde 1 de seu poder, e, se o poder chegar a 0, a carta \xE9
     levada ao cemit\xE9rio. Escolha o Boitat\xE1 e ataque diretamente seu inimigo!"
   indiceTexto: 1
-  prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 69fe0475a9f739a499b6d474316228a3, type: 2}
-  objetosDestacados:
-  - {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
+  objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
   turnoJogador: 1

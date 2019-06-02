@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExecutadorDeEfeitos : MonoBehaviour
 {
-    public GameEvent eventoAtivador;
+    public GameEvent eventoAtivador, aboioEmBoiuna;
     public EstadoJogador emSeuTurno;
     public EstadoJogador usandoEfeito;
     public Ativacao ativacaoAtiva, ativacaoReativa;
@@ -126,6 +126,10 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                         }
                     }
                     yield return new WaitForSeconds(0.8f);
+                    if (Configuracoes.admJogo.tutorial && efeito.name == "Aboio" && efeito.cartaAlvo.carta.name == "Boiuna")
+                    {
+                        aboioEmBoiuna.Raise();
+                    }
                 }
                 if (efeito.modoDeExecucao == cartaAtacaDuasVezes)
                 {

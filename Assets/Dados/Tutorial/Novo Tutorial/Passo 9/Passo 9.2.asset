@@ -10,21 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
-  m_Name: Passo 9
+  m_Name: Passo 9.2
   m_EditorClassIdentifier: 
-  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  eventoFinalizador: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
   textos:
-  - "Agora baixe a carta Boitat\xE1 e encerre a vez, ela auxiliar\xE1 voc\xEA em seu
-    pr\xF3ximo turno."
-  indiceTexto: 1
-  prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
+  - "N\xE3o h\xE1 mais a\xE7\xF5es para se fazer. Passe seu turno."
+  indiceTexto: 0
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
-  objetosDestacados:
-  - {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 8dca5e22ff829c54d9656439a8836dab, type: 2}
+  objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
-  turnoJogador: 1
   jogadorInterage: 1
   indiceObjDestacado: 0

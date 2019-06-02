@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
   jogouBoiuna: {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
+  jogouBoitata: {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
   rodada: {fileID: 11400000, guid: 428a77df8f0d4c64bb1effc37c3f6566, type: 2}
   protegido: 0

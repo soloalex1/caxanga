@@ -21,11 +21,9 @@ MonoBehaviour:
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 69fe0475a9f739a499b6d474316228a3, type: 2}
-  objetosDestacados:
-  - {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
+  objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
-  turnoJogador: 1
-  jogadorInterage: 1
+  jogadorInterage: 0
   indiceObjDestacado: 0

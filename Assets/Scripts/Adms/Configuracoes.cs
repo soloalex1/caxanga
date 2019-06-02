@@ -14,6 +14,8 @@ public static class Configuracoes
     public static admCursor admCursor;
     private static ConsoleHook _admConsole;
     public static ExecutadorDeEfeitos admEfeito;
+
+    public static bool turnoDaIATutorial;
     public static void RegistrarEvento(string e, Color color)
     {
         // if (_admConsole == null)

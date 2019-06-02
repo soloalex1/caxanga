@@ -19,15 +19,15 @@ MonoBehaviour:
   - "Voc\xEA possui recurso o suficiente para utilizar o Aboio, por exemplo."
   - "O Aboio custar\xE1 3 de recurso e, como todo Feiti\xE7o, ao ser utilizado logo
     ir\xE1 para o cemit\xE9rio. A Boiuna ficar\xE1 com 6 de poder."
-  indiceTexto: 1
+  indiceTexto: 2
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 92f5a2be6f9d28a4f9a39c835804afa2, type: 2}
   objetosDestacados:
   - {fileID: 1274933164439770382, guid: 481e2d845c5bfec49800c6221bac4746, type: 3}
-  objetosDestacadosNaTela: []
+  objetosDestacadosNaTela:
+  - {fileID: 0}
   cartaMostrada: {fileID: 11400000, guid: fcc14ea63936bcb4192b5fbbc5a47c17, type: 2}
-  turnoJogador: 1
-  jogadorInterage: 1
+  jogadorInterage: 0
   indiceObjDestacado: 0

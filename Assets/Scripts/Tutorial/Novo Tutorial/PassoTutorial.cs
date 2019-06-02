@@ -15,13 +15,29 @@ public class PassoTutorial : ScriptableObject
     public GameObject[] objetosDestacados;
     public GameObject[] objetosDestacadosNaTela;
     public Carta cartaMostrada;
-    public bool turnoJogador;
-
     public bool jogadorInterage;
     public int indiceObjDestacado;
 
-    public void AoIniciar()
+    public IEnumerator AoIniciar()
     {
+        if (GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada").transform.GetChild(0) != null)
+        {
+            GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada").transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (Configuracoes.turnoDaIATutorial)
+        {
+            yield return new WaitUntil(() => Configuracoes.turnoDaIATutorial == false);
+        }
+
+        if (jogadorInterage)
+        {
+            Configuracoes.admJogo.pause = false;
+        }
+        else
+        {
+            Configuracoes.admJogo.pause = true;
+        }
+
         indiceTexto = 0;
         indiceObjDestacado = 0;
         objetosDestacadosNaTela = new GameObject[objetosDestacados.Length];
@@ -38,22 +54,27 @@ public class PassoTutorial : ScriptableObject
             Instantiate(objetosDestacados[indiceObjDestacado], GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objeto Destacado").transform);
             objetosDestacadosNaTela[indiceObjDestacado] = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objeto Destacado");
         }
-        Configuracoes.admJogo.pause = false;
-        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Fundo").SetActive(false);
-
+        if (jogadorInterage == false)
+        {
+            GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Fundo").SetActive(true);
+        }
+        else
+        {
+            GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Fundo").SetActive(false);
+        }
+        yield return null;
     }
     public void AtualizarTexto()
     {
-        // modal = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Passo 1 Modal/PopUpNormal(Clone)").gameObject;
         modal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
     }
     public void FinalizarPasso()
     {
+        modal.SetActive(false);
+        Destroy(modal);
         if (objetosDestacados.Length > 0)
         {
-            Debug.Log(indiceObjDestacado);
             Destroy(objetosDestacadosNaTela[indiceObjDestacado].transform.GetChild(indiceObjDestacado).gameObject);
         }
-        modal.SetActive(false);
     }
 }

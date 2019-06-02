@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartasBaralho:
   - Aboio
+  - Boiuna
+  - "Boitat\xE1"
+  - "Boitat\xE1"
+  - Boiuna
+  - "Boitat\xE1"
+  - Boiuna
   - Aboio
-  - Aboio
-  - Aboio
-  - Aboio
   - Boiuna
-  - Boiuna
-  - Boiuna
-  - Boiuna
-  - Boiuna
+  - "Boitat\xE1"
   jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}

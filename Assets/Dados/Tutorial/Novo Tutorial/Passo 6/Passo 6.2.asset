@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
   m_Name: Passo 6.2
   m_EditorClassIdentifier: 
-  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  eventoFinalizador: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
   textos:
   - "Logo, voc\xEA n\xE3o tem muito o que fazer agora, ent\xE3o encerre seu turno!"
   indiceTexto: 1
