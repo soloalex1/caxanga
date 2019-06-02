@@ -147,7 +147,7 @@ public class SeguradorDeJogador : ScriptableObject
     {
         if (Configuracoes.admJogo.tutorial == false)
         {
-            baralho.Embaralhar();
+            // baralho.Embaralhar();
         }
         else
         {

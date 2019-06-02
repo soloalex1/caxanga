@@ -142,7 +142,11 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 }
                 if (efeito.modoDeExecucao == protegerLenda)
                 {
+                    efeito.cartaAlvo.protegido = true;
+                    efeito.cartaAlvo.infoCarta.protegido = true;
+                    efeito.cartaAlvo.podeSerAtacada = false;
                     efeito.cartaAlvo.podeSofrerEfeito = false;
+                    efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.carta);
                 }
                 if (efeito.modoDeExecucao == silenciarCarta)
                 {

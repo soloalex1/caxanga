@@ -6,24 +6,24 @@ public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
     public ExibirInfoPropriedades[] propriedades;
-    public GameObject mostrarPoder;
+    public GameObject mostrarPoder, imagemProtegido;
     public TipoFeitico tipoFeitico;
     public TipoLenda tipoLenda;
-
+    public bool protegido;
     public Sprite templateLenda;
     public Sprite templateFeitico;
     public Sprite spritePodeAtacar;
 
     public Sprite spriteNaoPodeAtacar;
-
     public void CarregarCarta(Carta c)
     {
+
+        imagemProtegido = transform.Find("Frente da Carta/Protegido").gameObject;
         if (c == null)
             return;
         carta = c;
 
         InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
-
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();
@@ -93,6 +93,15 @@ public class ExibirInfoCarta : MonoBehaviour
             {
                 this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeAtacar;
             }
+        }
+        if (protegido)
+        {
+            Debug.Log("teste maluco");
+            imagemProtegido.SetActive(true);
+        }
+        else
+        {
+            imagemProtegido.SetActive(false);
         }
 
     }
