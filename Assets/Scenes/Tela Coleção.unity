@@ -649,7 +649,6 @@ MonoBehaviour:
   baralho: {fileID: 11400000, guid: e5c62af710ee2e54d9714a7f05e6feef, type: 2}
   prefabCarta: {fileID: 4298387790361344561, guid: f2f4fe9278826f547a753842e2ae6431,
     type: 3}
-  carta: {fileID: 0}
   paginaEsquerda: {fileID: 376570968}
   paginaDireita: {fileID: 1178911515}
 --- !u!1 &236443024
