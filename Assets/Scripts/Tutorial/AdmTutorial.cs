@@ -21,6 +21,7 @@ public class AdmTutorial : MonoBehaviour
         indicePasso = 0;
         passoAtual = passos[indicePasso];
         StartCoroutine(passoAtual.AoIniciar());
+        gmListener = GetComponent<GameEventListener>();
     }
 
     public void ChamarTurnoIA()
@@ -34,7 +35,8 @@ public class AdmTutorial : MonoBehaviour
     IEnumerator turnoIAOponente()
     {
         StartCoroutine(Configuracoes.admJogo.FadeTextoTurno(Configuracoes.admJogo.jogadorInimigo));
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
+        Debug.Log(passoAtual.name);
         switch (passoAtual.name)
         {
             case "Passo 7.1":
@@ -58,43 +60,66 @@ public class AdmTutorial : MonoBehaviour
                         jogadorAtivouEfeito.cartaQueAtivouEvento = c;
                         Configuracoes.admEfeito.eventoAtivador = jogadorAtivouEfeito;
                         jogadorAtivouEfeito.Raise();
+                        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.DestacarCartaBaixada(c));
                         Configuracoes.admJogo.pause = true;
                         break;
                     }
                 }
                 break;
+            case "Passo 11":
+                Debug.Log("Vou fazer ele passar");
+                Configuracoes.admJogo.jogadorInimigo.rodada.turno.FinalizarTurno();
+                Configuracoes.admJogo.jogadorInimigo.rodada.PassarRodada();
+                break;
             default:
                 break;
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         Configuracoes.admJogo.jogadorAtual.rodada.turno.IniciarTurno();
+        yield return new WaitForSeconds(1);
         Configuracoes.turnoDaIATutorial = false;
     }
-
+    private void Update()
+    {
+        if (passoAtual.jogadorInterage == false)
+        {
+            Configuracoes.admJogo.pause = true;
+        }
+    }
     public void ativouEvento()
     {
-        //SE NÃO FOR O ULTIMO TEXTO
-        if (passoAtual.indiceTexto != passoAtual.textos.Length - 1)
+        if (Configuracoes.eventoDisparado == passoAtual.eventoFinalizador)
         {
-            if (passoAtual.objetosDestacados.Length > 1)
+            //SE NÃO FOR O ULTIMO TEXTO
+            if (passoAtual.indiceTexto != passoAtual.textos.Length - 1)
             {
-                passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado].SetActive(false);
-                passoAtual.indiceObjDestacado++;
-                Instantiate(passoAtual.objetosDestacados[passoAtual.indiceObjDestacado], this.transform);
-                passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado] = passoAtual.objetosDestacados[passoAtual.indiceObjDestacado];
+                if (passoAtual.objetosDestacados.Length > 1)
+                {
+                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado].SetActive(false);
+                    passoAtual.indiceObjDestacado++;
+                    Instantiate(passoAtual.objetosDestacados[passoAtual.indiceObjDestacado], this.transform);
+                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado] = passoAtual.objetosDestacados[passoAtual.indiceObjDestacado];
+                }
+                passoAtual.indiceTexto++;
+                passoAtual.AtualizarTexto();
+                return;
             }
-            passoAtual.indiceTexto++;
-            passoAtual.AtualizarTexto();
-            return;
-        }
-        else // SE FOR O ULTIMO TEXTO
-        {
-            passoAtual.FinalizarPasso();
-            indicePasso++;
-            if (passos.Length > indicePasso)
+            else // SE FOR O ULTIMO TEXTO
             {
-                passoAtual = passos[indicePasso];
-                StartCoroutine(passoAtual.AoIniciar());
+                passoAtual.FinalizarPasso();
+                indicePasso++;
+                if (passos.Length > indicePasso)
+                {
+                    passoAtual = passos[indicePasso];
+                    StartCoroutine(passoAtual.AoIniciar());
+                }
+            }
+        }
+        else
+        {
+            if (gmListener.gameEvents.Contains(Configuracoes.eventoDisparado))
+            {
+                Debug.Log("Vc fez o evento errado hein");
             }
         }
     }

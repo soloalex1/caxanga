@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Isso significa que ele acredita que n\xE3o ir\xE1 conseguir vencer essa rodada
     e n\xE3o pretende gastar mais cartas."
   - "Ou talvez isso fa\xE7a parte da estrat\xE9gia dele."
-  indiceTexto: 1
+  indiceTexto: 2
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}

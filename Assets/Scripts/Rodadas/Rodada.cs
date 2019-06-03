@@ -46,26 +46,6 @@ public class Rodada : ScriptableObject
         {
             Configuracoes.admJogo.PuxarCarta(jogador);
         }
-
-        // foreach (InstanciaCarta c in jogador.cartasMao)
-        // {
-        //     if (jogador == Configuracoes.admJogo.jogadorInimigo)
-        //     {
-        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-        //     }
-        //     else
-        //     {
-        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
-        //     }
-        //     if (c.transform.Find("Fundo da Carta").gameObject.activeSelf)
-        //     {
-        //         Debug.Log("Tá escondida");
-        //     }
-        //     else
-        //     {
-        //         Debug.Log("Tá mostrando");
-        //     }
-        // }
     }
     public void PassarRodada()
     {

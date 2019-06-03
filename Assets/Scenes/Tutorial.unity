@@ -337,6 +337,8 @@ RectTransform:
   - {fileID: 566470380}
   - {fileID: 1167112991}
   - {fileID: 1745126673}
+  - {fileID: 144190218}
+  - {fileID: 817998431}
   m_Father: {fileID: 390571242}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1007,17 +1009,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144190217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6666666, y: 0.6666666, z: 1}
   m_Children:
   - {fileID: 1847724426}
-  m_Father: {fileID: 390571242}
-  m_RootOrder: 1
+  m_Father: {fileID: 52607518}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.7, y: 79.6}
+  m_AnchoredPosition: {x: -154.6666, y: -75.99997}
   m_SizeDelta: {x: 235.01, y: 235.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144190219
@@ -1040,7 +1042,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a858e0d8d84d00c44a54821f179bb1c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a898622d9c8a5244188b3018e7ec5167, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2245,8 +2247,6 @@ RectTransform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 52607518}
-  - {fileID: 144190218}
-  - {fileID: 817998431}
   m_Father: {fileID: 1104370152}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2955,7 +2955,8 @@ MonoBehaviour:
   cartaMatou: {fileID: 11400000, guid: 62f5597960c0dad44833aa07c77e301b, type: 2}
   jogadorPassouTurno: {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
   boiunaAtacouLobis: {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
-  boinaAtacouJogador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
+  boitataAtacouJogador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc,
+    type: 2}
   turnoInimigoIA: {fileID: 11400000, guid: 235177d48b352984fa32e98be6db3bb4, type: 2}
   ImagemTextoTurno: {fileID: 2087334144}
   cursorAlvoCinza: {fileID: 21300000, guid: 513e64d00ff0a11489595e4a53b9b3f4, type: 3}
@@ -2964,6 +2965,10 @@ MonoBehaviour:
   cursorIdle: {fileID: 21300000, guid: 40e642970136d2f4cacd1691cb3e926a, type: 3}
   cursorAlvoVermelho: {fileID: 21300000, guid: a84ff7c5781eb9149a5333c218a2b7e0, type: 3}
   cursorAlvoVerde: {fileID: 21300000, guid: 91864b2b6ee44784aa65b83ea1160780, type: 3}
+  cartaAtual: {fileID: 11400000, guid: a9f401eb1577d69409a9bf7d3127af12, type: 2}
+  aoOlharCarta: {fileID: 11400000, guid: 46c2c4de0c713e34ead6d9354f9befa3, type: 2}
+  aoPararDeOlharCarta: {fileID: 11400000, guid: b4590dfe88c6ed8499324aaa0aae6d68,
+    type: 2}
 --- !u!4 &515829811
 Transform:
   m_ObjectHideFlags: 0
@@ -4228,17 +4233,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817998430}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6666666, y: 0.6666666, z: 1}
   m_Children:
   - {fileID: 1769706523}
-  m_Father: {fileID: 390571242}
-  m_RootOrder: 2
+  m_Father: {fileID: 52607518}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.7, y: 79.6}
+  m_AnchoredPosition: {x: -154.66661, y: -75.999985}
   m_SizeDelta: {x: 235.01, y: 235.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817998432
@@ -9125,8 +9130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.9, y: -2.5}
-  m_SizeDelta: {x: 160, y: 97.4}
+  m_AnchoredPosition: {x: -12, y: 0.0000038147}
+  m_SizeDelta: {x: 186.1, y: 124.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769706524
 MonoBehaviour:
@@ -9167,18 +9172,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 0f442892567c85749b6300f020233780, type: 3}
     m_FontSize: 90
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
-    m_MaxSize: 90
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '-5
-
-'
+  m_Text: -5
 --- !u!222 &1769706526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9393,8 +9396,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.9, y: -2.5}
-  m_SizeDelta: {x: 160, y: 97.4}
+  m_AnchoredPosition: {x: -13, y: 0.00000095367}
+  m_SizeDelta: {x: 170.9, y: 109.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847724427
 MonoBehaviour:
@@ -9435,18 +9438,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 0f442892567c85749b6300f020233780, type: 3}
     m_FontSize: 90
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
-    m_MaxSize: 90
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+5
-
-'
+  m_Text: +5
 --- !u!222 &1847724429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9740,13 +9741,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvents:
-  - {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
-  - {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
-  - {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
-  - {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
   - {fileID: 11400000, guid: 861b24324dc44a94eb0425a17be47661, type: 2}
-  - {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
+  - {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   - {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
+  - {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
+  - {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
+  - {fileID: 11400000, guid: 2189bc44457a83b439334dfdf550e955, type: 2}
+  - {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:

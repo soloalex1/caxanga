@@ -22,6 +22,7 @@ public class GameEvent : ScriptableObject
     {
         for (int i = 0; i < listeners.Count; i++)
         {
+            Configuracoes.eventoDisparado = this;
             listeners[i].Response();
         }
     }

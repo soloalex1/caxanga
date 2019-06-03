@@ -37,7 +37,7 @@ public class AdmJogo : MonoBehaviour
     public InstanciaCarta cartaAtacante;
     public InstanciaCarta cartaAlvo;
     public SeguradorDeJogador jogadorAlvo;
-    public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boinaAtacouJogador, turnoInimigoIA;
+    public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boitataAtacouJogador, turnoInimigoIA;
     public Image ImagemTextoTurno;
     public Sprite cursorAlvoCinza, cursorSegurandoCarta, cursorIdle, cursorAlvoVermelho, cursorAlvoVerde;
     public VariavelCarta cartaAtual;
@@ -290,7 +290,7 @@ public class AdmJogo : MonoBehaviour
         {
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogador.corJogador;
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = "Turno de\n" + jogador.nomeJogador;
-            ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
+            ImagemTextoTurno.GetComponent<Image>().sprite = jogador.textoTurnoImage;
             ImagemTextoTurno.gameObject.SetActive(true);
             pause = true;
             yield return new WaitForSeconds(1);
@@ -402,9 +402,9 @@ public class AdmJogo : MonoBehaviour
             {
                 MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
-            if (tutorial && cartaAtacante.carta.name == "Boiuna")
+            if (tutorial && cartaAtacante.carta.name == "Boitatá")
             {
-                boinaAtacouJogador.Raise();
+                boitataAtacouJogador.Raise();
             }
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacante = null;
@@ -432,7 +432,8 @@ public class AdmJogo : MonoBehaviour
         }
     }
 
-    public IEnumerator DestacarCartaBaixada(InstanciaCarta instCarta){
+    public IEnumerator DestacarCartaBaixada(InstanciaCarta instCarta)
+    {
         // fechando outras cartas em destaque   
         aoPararDeOlharCarta.Raise();
 

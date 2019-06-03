@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Nessa atividade, voc\xEA experimentou uma rodada de Caxang\xE1."
   - "Agora, voc\xEA j\xE1 entendeu as mec\xE2nicas b\xE1sicas da peleja e pode come\xE7ar
     sua aventura!"
-  indiceTexto: 1
+  indiceTexto: 2
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
   modal: {fileID: 0}
@@ -26,6 +26,5 @@ MonoBehaviour:
   objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
-  turnoJogador: 1
   jogadorInterage: 1
   indiceObjDestacado: 0

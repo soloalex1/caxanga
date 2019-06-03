@@ -11,6 +11,7 @@ public static class Configuracoes
     private static AdmRecursos _admRecursos;
     public static AdmTutorial admTutorial;
     public static AdmCena admCena;
+    public static GameEvent eventoDisparado;
     public static admCursor admCursor;
     private static ConsoleHook _admConsole;
     public static ExecutadorDeEfeitos admEfeito;
