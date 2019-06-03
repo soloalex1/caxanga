@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: 'Azedar o leite: Reduz em 2 o Poder de uma Lenda inimiga'
+  - stringValor: 'Azedar o leite: Causa 2 de dano em uma Lenda inimiga.'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -41,3 +41,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 9830e60fdc503234ebdb9c770f3d20b3, type: 2}
+  protegido: 0

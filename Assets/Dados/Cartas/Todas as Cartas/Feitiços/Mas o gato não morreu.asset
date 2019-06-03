@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9d4b2670406acf4ebe9678b7648fea1, type: 3}
-  m_Name: Marcha Soldado
+  m_Name: "Mas o gato n\xE3o morreu"
   m_EditorClassIdentifier: 
   tipoCarta: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   propriedades:
-  - stringValor: Marcha Soldado
+  - stringValor: "Mas o gato n\xE3o morreu"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
   - stringValor: 
-    intValor: 3
+    intValor: 4
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: 'Fogo no Quartel: Causa 1 de dano a todas as Lendas inimigas.'
+  - stringValor: "Ressuscitar: Pega uma Lenda do seu Cemit\xE9rio e a coloca na sua
+      m\xE3o."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -32,13 +33,12 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 5d86db67b7fbde440a6093bdcfaf30ef, type: 3}
+    sprite: {fileID: 21300000, guid: 653ea19f8e7d8dd4b958e19ebafdc9ae, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Brinquedos e Brincadeiras: Marcha Soldado \xE9 uma cantiga de roda
-      tradicional brasileira, tradi\xE7\xE3o cultural passada de gera\xE7\xE3o em
-      gera\xE7\xE3o pelas brincadeiras infantis."
+  - stringValor: "Brinquedos e Brincadeiras: O gato da paulada est\xE1 voltando para
+      se vingar!"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
-  efeito: {fileID: 11400000, guid: d85ee0bf693c8354fa91f77eb1d93178, type: 2}
+  efeito: {fileID: 11400000, guid: 281c3f025b76ae148b2040a6fd0cfc86, type: 2}
   protegido: 0

@@ -60,6 +60,7 @@ public class SeguradorDeJogador : ScriptableObject
         podeSerAtacado = true;
         passouRodada = false;
         fezAlgumaAcao = false;
+        silenciado = false;
 
 
         if (this == Configuracoes.admJogo.jogadorLocal)

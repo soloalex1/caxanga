@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 2
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Aumenta at\xE9 2 de influ\xEAncia de sua Entidade."
+  - stringValor: 'Sabor Junino: Recupera 2 de vida do seu jogador.'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -41,3 +41,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: e447062679a3e2a45a19ca4760b0cf66, type: 2}
+  protegido: 0

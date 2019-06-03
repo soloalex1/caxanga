@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 4
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Aumenta 5 de influ\xEAncia da entidade aliada alvo."
+  - stringValor: "Azeite de Dend\xEA: Recupera 5 de vida do seu jogador."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -41,3 +41,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 4231cdedf0f7e534cb299559ce8c7991, type: 2}
+  protegido: 0
