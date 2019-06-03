@@ -6,28 +6,27 @@ public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
     public ExibirInfoPropriedades[] propriedades;
-    public GameObject mostrarPoder;
+    public GameObject mostrarPoder, imagemProtegido;
     public TipoFeitico tipoFeitico;
     public TipoLenda tipoLenda;
-
+    public bool protegido;
     public Sprite templateLenda;
     public Sprite templateFeitico;
     public Sprite spritePodeAtacar;
 
     public Sprite spriteNaoPodeAtacar;
-
     public void CarregarCarta(Carta c)
     {
+
+        imagemProtegido = transform.Find("Frente da Carta/Protegido").gameObject;
         if (c == null)
             return;
         carta = c;
 
         InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
-
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();
-
         for (int i = 0; i < propriedades.Length; i++)
         {
             Propriedades p = c.propriedades[i];
@@ -40,12 +39,12 @@ public class ExibirInfoCarta : MonoBehaviour
             if (ep.elemento is ElementoNum)
             {
                 ep.texto.text = p.intValor.ToString();
+
                 if (instCarta != null)
                 {
                     if (ep.elemento.name == "Poder")
                     {
                         ep.texto.text = instCarta.poder.ToString();
-
                     }
                     if (ep.elemento.name == "Custo")
                     {
@@ -93,6 +92,14 @@ public class ExibirInfoCarta : MonoBehaviour
             {
                 this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeAtacar;
             }
+        }
+        if (protegido)
+        {
+            imagemProtegido.SetActive(true);
+        }
+        else
+        {
+            imagemProtegido.SetActive(false);
         }
 
     }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
+  m_Name: Passo 8
+  m_EditorClassIdentifier: 
+  eventoFinalizador: {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
+  textos:
+  - "Agora que Boiuna est\xE1 com mais poder que a lenda inimiga, ataque-a sem medo
+    de perder sua lenda! Lendas s\xF3 podem atacar uma vez por turno."
+  indiceTexto: 0
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
+    type: 3}
+  modal: {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: cd90ce5f7dc457b4db4023799142494c, type: 2}
+  objetosDestacados: []
+  objetosDestacadosNaTela: []
+  cartaMostrada: {fileID: 0}
+  jogadorInterage: 1
+  indiceObjDestacado: 0

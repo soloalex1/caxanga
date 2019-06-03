@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExecutadorDeEfeitos : MonoBehaviour
 {
-    public GameEvent eventoAtivador;
+    public GameEvent eventoAtivador, aboioEmBoiuna;
     public EstadoJogador emSeuTurno;
     public EstadoJogador usandoEfeito;
     public Ativacao ativacaoAtiva, ativacaoReativa;
@@ -21,6 +21,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         {
             if (eventoAtivador == eventoAtivador.cartaQueAtivouEvento.efeito.eventoAtivador)
             {
+
                 StartCoroutine(Efeito(eventoAtivador.cartaQueAtivouEvento.efeito));
             }
         }
@@ -60,6 +61,9 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 if (efeito.modoDeExecucao == silenciarJogador)
                 {
                     efeito.jogadorAlvo.podeUsarEfeito = false;
+                    efeito.jogadorAlvo.silenciado = true;
+                    efeito.jogadorAlvo.CarregarInfoUIJogador();
+                    Debug.Log("Entrei no efeito");
                 }
                 if (efeito.modoDeExecucao == alterarPoderCarta)
                 {
@@ -126,6 +130,10 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                         }
                     }
                     yield return new WaitForSeconds(0.8f);
+                    if (Configuracoes.admJogo.tutorial && efeito.name == "Aboio" && efeito.cartaAlvo.carta.name == "Boiuna")
+                    {
+                        aboioEmBoiuna.Raise();
+                    }
                 }
                 if (efeito.modoDeExecucao == cartaAtacaDuasVezes)
                 {
@@ -138,7 +146,11 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 }
                 if (efeito.modoDeExecucao == protegerLenda)
                 {
+                    efeito.cartaAlvo.protegido = true;
+                    efeito.cartaAlvo.infoCarta.protegido = true;
+                    efeito.cartaAlvo.podeSerAtacada = false;
                     efeito.cartaAlvo.podeSofrerEfeito = false;
+                    efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.carta);
                 }
                 if (efeito.modoDeExecucao == silenciarCarta)
                 {
@@ -155,6 +167,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                 }
                 if (efeito.cartaQueInvoca.infoCarta.carta.tipoCarta.nomeTipo == "Feitiço")
                 {
+                    efeito.jogadorQueInvoca.fezAlgumaAcao = true;
                     efeito.cartaQueInvoca.jogadorDono.magia -= efeito.cartaQueInvoca.custo;
                     efeito.jogadorQueInvoca.CarregarInfoUIJogador();
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);

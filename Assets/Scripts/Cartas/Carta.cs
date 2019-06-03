@@ -8,6 +8,7 @@ public class Carta : ScriptableObject
     public TipoCarta tipoCarta;
     public Propriedades[] propriedades;
     public Efeito efeito;
+    public bool protegido;
     public Propriedades AcharPropriedadePeloNome(string nomePropriedade)
     {
         foreach (Propriedades p in propriedades)

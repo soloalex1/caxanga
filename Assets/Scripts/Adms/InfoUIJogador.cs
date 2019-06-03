@@ -20,6 +20,18 @@ public class InfoUIJogador : MonoBehaviour
 
     public void AtualizarTudo()
     {
+        if (!Configuracoes.admJogo.tutorial)
+        {
+            if (jogador.silenciado)
+            {
+                transform.Find("Painel Jogador/Silenciado").gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.Find("Painel Jogador/Silenciado").gameObject.SetActive(false);
+            }
+        }
+
         AtualizarNomeJogador();
         AtualizarVida();
         AtualizarMagia();

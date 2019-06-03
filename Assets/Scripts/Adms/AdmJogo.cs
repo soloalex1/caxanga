@@ -37,7 +37,7 @@ public class AdmJogo : MonoBehaviour
     public InstanciaCarta cartaAtacante;
     public InstanciaCarta cartaAlvo;
     public SeguradorDeJogador jogadorAlvo;
-    public GameEvent cartaMatou;
+    public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boinaAtacouJogador, turnoInimigoIA;
     public Image ImagemTextoTurno;
     public Sprite cursorAlvoCinza, cursorSegurandoCarta, cursorIdle, cursorAlvoVermelho, cursorAlvoVerde;
     public VariavelCarta cartaAtual;
@@ -56,8 +56,8 @@ public class AdmJogo : MonoBehaviour
         */
         if (inicioTutorial)
         {
-            jogadorLocal.baralho = baralhoTutorial1;
-            jogadorInimigo.baralho = baralhoTutorial2;
+            jogadorLocal.baralhoInicial = baralhoTutorial1;
+            jogadorInimigo.baralhoInicial = baralhoTutorial2;
             pause = true;
         }
         else
@@ -83,7 +83,6 @@ public class AdmJogo : MonoBehaviour
                 estadoAtual.Tick(Time.deltaTime);//percorre as ações do jogador naquele estado e permite que ele as execute
             }
         }
-
     }
 
     public void PuxarCarta(SeguradorDeJogador jogador)
@@ -148,7 +147,7 @@ public class AdmJogo : MonoBehaviour
     }
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
-        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedor.corJogador;
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedorTurno.corJogador;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
         ImagemTextoTurno.gameObject.SetActive(true);
@@ -171,11 +170,10 @@ public class AdmJogo : MonoBehaviour
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
         TrocarJogadorAtual();
-
-
     }
     void ChecaVidaJogadores()
     {
+
         if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
         {
             if (jogadorAtual.vida <= 0)
@@ -188,26 +186,27 @@ public class AdmJogo : MonoBehaviour
                 jogadorInimigo.barrasDeVida--;
                 StartCoroutine(FadeVencedorTurno(jogadorAtual));
             }
+            return;
+        }
+        if (jogadorAtual.passouRodada && jogadorInimigo.passouRodada)
+        {
+            if (jogadorAtual.vida > jogadorInimigo.vida)
+            {
+                jogadorInimigo.barrasDeVida--;
+
+                StartCoroutine(FadeVencedorTurno(jogadorAtual));
+            }
+            else if (jogadorAtual.vida < jogadorInimigo.vida)
+            {
+                jogadorAtual.barrasDeVida--;
+                StartCoroutine(FadeVencedorTurno(jogadorInimigo));
+            }
             else
             {
-                Debug.Log("EMPATE");
-                jogadorAtual.barrasDeVida--;
-                jogadorInimigo.barrasDeVida--;
-                jogadorAtual.rodada.PassarRodada();
-                jogadorInimigo.rodada.IniciarRodada();
+                Debug.Log("Empate");
             }
-            // yield return new WaitWhile(() => mostrouVencedorTurno == false);
-            // if (jogadorInimigo.barrasDeVida <= 0)
-            // {
-            //     jogadorVencedor = jogadorAtual;
-            //     StartCoroutine(FimDeJogo(jogadorVencedor));
-            // }
-            // if (jogadorAtual.barrasDeVida <= 0)
-            // {
-            //     jogadorVencedor = jogadorInimigo;
-            //     StartCoroutine(FimDeJogo(jogadorVencedor));
-            // }
         }
+
     }
     public void TrocarJogadorAtual()
     {
@@ -289,6 +288,7 @@ public class AdmJogo : MonoBehaviour
     {
         if (jogador.passouRodada == false)
         {
+            GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogador.corJogador;
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = "Turno de\n" + jogador.nomeJogador;
             ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
             ImagemTextoTurno.gameObject.SetActive(true);
@@ -305,12 +305,32 @@ public class AdmJogo : MonoBehaviour
         {
             if (jogadorInimigo.passouRodada == false)
             {
-                TrocarJogadorAtual();
-                jogadorAtual.rodada.turno.IniciarTurno();
+                if (tutorial == false)
+                {
+                    TrocarJogadorAtual();
+                    jogadorAtual.rodada.turno.IniciarTurno();
+
+                }
+                else
+                {
+                    foreach (InstanciaCarta c in jogadorInimigo.cartasBaixadas)
+                    {
+                        c.protegido = false;
+                        c.podeSofrerEfeito = true;
+                        c.podeSerAtacada = true;
+                        c.infoCarta.protegido = false;
+                        c.infoCarta.CarregarCarta(c.infoCarta.carta);
+                    }
+                    if (jogadorAtual == jogadorLocal)
+                    {
+                        Configuracoes.turnoDaIATutorial = true;
+                        jogadorPassouTurno.Raise();
+                        turnoInimigoIA.Raise();
+                    }
+                }
             }
             else
             {
-                ChecaVidaJogadores();
                 jogadorAtual.rodada.turno.IniciarTurno();
             }
         }
@@ -319,16 +339,7 @@ public class AdmJogo : MonoBehaviour
             jogadorAtual.rodada.PassarRodada();
             if (jogadorInimigo.passouRodada && jogadorAtual.passouRodada)
             {
-                if (jogadorAtual.vida > jogadorInimigo.vida)
-                {
-                    jogadorInimigo.barrasDeVida--;
-                    StartCoroutine(FadeVencedorTurno(jogadorAtual));
-                }
-                if (jogadorAtual.vida < jogadorInimigo.vida)
-                {
-                    jogadorAtual.barrasDeVida--;
-                    StartCoroutine(FadeVencedorTurno(jogadorInimigo));
-                }
+                ChecaVidaJogadores();
             }
             else
             {
@@ -350,13 +361,11 @@ public class AdmJogo : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
             cartaAtacada.poder -= poderCartaAtacanteAntes;
             cartaAtacante.poder -= poderCartaAtacadaAntes;
-            Configuracoes.RegistrarEvento("A carta " + cartaAtacante.infoCarta.carta.name + " atacou a carta " + cartaAtacada.infoCarta.carta.name + " e tirou " + poderCartaAtacanteAntes, Color.white);
             int poderCartaAtacanteDepois = cartaAtacante.poder;
             int poderCartaAtacadaDepois = cartaAtacada.poder;
 
             if (poderCartaAtacadaDepois <= 0)
             {
-
                 cartaMatou.cartaQueAtivouEvento = cartaAtacante;
                 Configuracoes.admEfeito.eventoAtivador = cartaMatou;
                 cartaMatou.Raise();
@@ -368,9 +377,14 @@ public class AdmJogo : MonoBehaviour
             }
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             cartaAtacada.infoCarta.CarregarCarta(cartaAtacada.infoCarta.carta);
+            if (tutorial && cartaAtacante.carta.name == "Boiuna" && cartaAtacada.carta.name == "Lobisomem")
+            {
+                boiunaAtacouLobis.Raise();
+            }
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacada = null;
             cartaAtacante = null;
+
         }
         //Atacar um jogador
         if (cartaAtacante != null && jogadorAtacado != null)
@@ -383,16 +397,20 @@ public class AdmJogo : MonoBehaviour
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.poder--;
             jogadorAtacado.infoUI.AtualizarVida();
-            Configuracoes.RegistrarEvento(jogadorAtual.nomeJogador + " atacou " + jogadorInimigo.nomeJogador + " e lhe tirou " + poderCartaAtacanteAntes + " de vida", jogadorAtual.corJogador);
             cartaAtacante.infoCarta.CarregarCarta(cartaAtacante.infoCarta.carta);
             if (cartaAtacante.poder <= 0)
             {
                 MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
+            if (tutorial && cartaAtacante.carta.name == "Boiuna")
+            {
+                boinaAtacouJogador.Raise();
+            }
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacante = null;
             jogadorAtacado = null;
             ChecaVidaJogadores();
+
         }
         yield return null;
     }

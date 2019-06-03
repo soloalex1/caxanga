@@ -32,7 +32,7 @@ RectTransform:
   - {fileID: 2145960327427446542}
   - {fileID: 649089369035219232}
   m_Father: {fileID: 5383568237988492631}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -98,7 +98,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7, y: 60}
+  m_AnchoredPosition: {x: 548, y: 60}
   m_SizeDelta: {x: 750.04, y: 1043.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8307601525992657370
@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 51c2ee82d31cec64f8f3aa6f688ec094, type: 2}
-  instCarta: {fileID: 0}
+  carta: {fileID: 11400000, guid: fcc14ea63936bcb4192b5fbbc5a47c17, type: 2}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -135,13 +134,89 @@ MonoBehaviour:
     imagem: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   mostrarPoder: {fileID: 7976089227117427891}
+  imagemProtegido: {fileID: 4375510957202102488}
   tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
+  protegido: 0
   templateLenda: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
   templateFeitico: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
   spritePodeAtacar: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
   spriteNaoPodeAtacar: {fileID: 21300000, guid: 746204a71d3e27b48961e00bf12f0389,
     type: 3}
+--- !u!1 &4375510957202102488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8253842690095843088}
+  - component: {fileID: 6691657776728314512}
+  - component: {fileID: 7650448305634830049}
+  m_Layer: 5
+  m_Name: Protegido
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8253842690095843088
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375510957202102488}
+  m_LocalRotation: {x: -0.008726558, y: -0, z: -0, w: 0.999962}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2}
+  m_LocalScale: {x: 0.39999995, y: 0.39996344, z: 1.0001307}
+  m_Children: []
+  m_Father: {fileID: 5383568237988492631}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1, y: 501}
+  m_SizeDelta: {x: 608.5, y: 563.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6691657776728314512
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375510957202102488}
+  m_CullTransparentMesh: 0
+--- !u!114 &7650448305634830049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375510957202102488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 7bf28d7995ccc8540a7cd9bd45de7e5a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &5642848132162286904
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +246,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8253842690095843088}
   - {fileID: 7976089227149765851}
   - {fileID: 7976089227209152886}
   - {fileID: 754335083295630721}
@@ -211,7 +287,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -446,8 +522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'O efeito da carta vai aparecer bem aqui aqui aqui aqui aqui aqui aqui aqui
-    aqui aqui aqui aqui aqui aqui aqui '
+  m_Text: Aumenta o poder de uma Lenda aliada em 2.
 --- !u!1 &7976089227117427891
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7976089227117427884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -478,7 +553,7 @@ RectTransform:
   m_Children:
   - {fileID: 7976089227440671309}
   m_Father: {fileID: 5383568237988492631}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -523,7 +598,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5383568237988492631}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -571,9 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Nome da Carta
-
-'
+  m_Text: Aboio
 --- !u!1 &7976089227209152885
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +678,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5383568237988492631}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -653,9 +726,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1
-
-'
+  m_Text: 3
 --- !u!114 &5061596234602708318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,9 +821,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1
-
-'
+  m_Text: 0
 --- !u!114 &3147387897426827716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +902,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13c952e5c7d8c33469d2c312dd6898d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -920,4 +989,5 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Categoria: a historia da carta \xE9 essa..."
+  m_Text: "M\xFAsica e Dan\xE7a: \xC9 um canto vagaroso, no ritmo do movimento dos
+    animais, que termina incitando a boiada de forma n\xE3o cantada."

@@ -12,8 +12,6 @@ public class CartaBaixada : LogicaInstanciaCarta
     public Sprite cursorAlvoVerde, cursorAlvoVermelho, cursorClicavel;
     public VariavelTransform gridAreaDropavel;
 
-
-
     public override void AoClicar(InstanciaCarta carta)
     {
         if (carta.podeAtacarNesteTurno)

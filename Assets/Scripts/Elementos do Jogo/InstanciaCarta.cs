@@ -15,7 +15,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
     public bool podeAtacarNesteTurno;
     public bool podeSerAtacada;
     public int poder;
-
+    public bool protegido;
     public int custo;
     public bool PodeAtacar()
     {

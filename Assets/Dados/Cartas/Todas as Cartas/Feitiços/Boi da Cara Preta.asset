@@ -19,7 +19,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 591e766b2348135478e7190adb15a52a, type: 2}
   - stringValor: 
-    intValor: 3
+    intValor: 2
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
   - stringValor: 'Medo de Careta: Paralisa uma Lenda inimiga por um turno.'
@@ -41,3 +41,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 1bfba2fe8d6f0ac428ab6273b36a95f2, type: 2}
+  protegido: 0

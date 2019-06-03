@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
+  m_Name: Passo 2
+  m_EditorClassIdentifier: 
+  eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
+  textos:
+  - "O tabuleiro \xE9 dividido em 3 partes: o cemit\xE9rio, o baralho, e o campo."
+  - "Aten\xE7\xE3o! As cartas s\xF3 s\xE3o puxadas no come\xE7o da rodada."
+  indiceTexto: 0
+  prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
+    type: 3}
+  modal: {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 207749aa0bdf9454ebb94183d37ae736, type: 2}
+  objetosDestacados:
+  - {fileID: 4857236014998182355, guid: bd50b91ed493f5f4d8a8b764059d2326, type: 3}
+  objetosDestacadosNaTela: []
+  turnoJogador: 0
+  objDestacadoSomeSozinho: 1
+  indiceObjDestacado: 0

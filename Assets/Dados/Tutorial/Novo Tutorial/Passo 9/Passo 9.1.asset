@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
+  m_Name: Passo 9.1
+  m_EditorClassIdentifier: 
+  eventoFinalizador: {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
+  textos:
+  - "Agora baixe a carta Boitat\xE1 e encerre a vez, ela auxiliar\xE1 voc\xEA em seu
+    pr\xF3ximo turno."
+  indiceTexto: 0
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
+    type: 3}
+  modal: {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 8dca5e22ff829c54d9656439a8836dab, type: 2}
+  objetosDestacados: []
+  objetosDestacadosNaTela: []
+  cartaMostrada: {fileID: 0}
+  jogadorInterage: 1
+  indiceObjDestacado: 0

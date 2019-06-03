@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
+  m_Name: Passo 10.2
+  m_EditorClassIdentifier: 
+  eventoFinalizador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
+  textos:
+  - "A carta, por\xE9m, perde 1 de seu poder, e, se o poder chegar a 0, a carta \xE9
+    levada ao cemit\xE9rio. Escolha o Boitat\xE1 e ataque diretamente seu inimigo!"
+  indiceTexto: 1
+  prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
+    type: 3}
+  modal: {fileID: 0}
+  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
+  objetosDestacados: []
+  objetosDestacadosNaTela: []
+  cartaMostrada: {fileID: 0}
+  turnoJogador: 1
+  jogadorInterage: 1
+  indiceObjDestacado: 0
