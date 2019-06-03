@@ -12,6 +12,8 @@ public class AdmTutorial : MonoBehaviour
     public VariavelTransform campoInimigo;
 
     public LogicaInstanciaCarta logicaCartaBaixa;
+    public GameEvent jogadorAtivouEfeito;
+
 
 
     private void Start()
@@ -31,7 +33,8 @@ public class AdmTutorial : MonoBehaviour
 
     IEnumerator turnoIAOponente()
     {
-        yield return new WaitForSeconds(1);
+        StartCoroutine(Configuracoes.admJogo.FadeTextoTurno(Configuracoes.admJogo.jogadorInimigo));
+        yield return new WaitForSeconds(1.5f);
         switch (passoAtual.name)
         {
             case "Passo 7.1":
@@ -47,6 +50,19 @@ public class AdmTutorial : MonoBehaviour
                     }
                 }
                 break;
+            case "Passo 10.1":
+                foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+                {
+                    if (c.carta.name == "Atirei o pau no gato")
+                    {
+                        jogadorAtivouEfeito.cartaQueAtivouEvento = c;
+                        Configuracoes.admEfeito.eventoAtivador = jogadorAtivouEfeito;
+                        jogadorAtivouEfeito.Raise();
+                        Configuracoes.admJogo.pause = true;
+                        break;
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -57,6 +73,7 @@ public class AdmTutorial : MonoBehaviour
 
     public void ativouEvento()
     {
+        //SE NÃO FOR O ULTIMO TEXTO
         if (passoAtual.indiceTexto != passoAtual.textos.Length - 1)
         {
             if (passoAtual.objetosDestacados.Length > 1)
@@ -70,7 +87,7 @@ public class AdmTutorial : MonoBehaviour
             passoAtual.AtualizarTexto();
             return;
         }
-        else
+        else // SE FOR O ULTIMO TEXTO
         {
             passoAtual.FinalizarPasso();
             indicePasso++;

@@ -70,7 +70,6 @@ public class PassoTutorial : ScriptableObject
     }
     public void FinalizarPasso()
     {
-        modal.SetActive(false);
         Destroy(modal);
         if (objetosDestacados.Length > 0)
         {

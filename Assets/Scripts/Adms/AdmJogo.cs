@@ -135,9 +135,6 @@ public class AdmJogo : MonoBehaviour
                     {
                         instCarta.efeito.jogadorAlvo = jogadorIA;
                     }
-                    Debug.Log(instCarta.efeito.name);
-                    Debug.Log(instCarta.efeito.jogadorAlvo.nomeJogador);
-
                 }
             }
         }
@@ -289,6 +286,7 @@ public class AdmJogo : MonoBehaviour
     {
         if (jogador.passouRodada == false)
         {
+            GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogador.corJogador;
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = "Turno de\n" + jogador.nomeJogador;
             ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
             ImagemTextoTurno.gameObject.SetActive(true);
@@ -402,14 +400,15 @@ public class AdmJogo : MonoBehaviour
             {
                 MatarCarta(cartaAtacante, cartaAtacante.jogadorDono);
             }
-            cartaAtacante.podeAtacarNesteTurno = false;
-            cartaAtacante = null;
-            jogadorAtacado = null;
-            ChecaVidaJogadores();
             if (tutorial && cartaAtacante.carta.name == "Boiuna")
             {
                 boinaAtacouJogador.Raise();
             }
+            cartaAtacante.podeAtacarNesteTurno = false;
+            cartaAtacante = null;
+            jogadorAtacado = null;
+            ChecaVidaJogadores();
+
         }
         yield return null;
     }

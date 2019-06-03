@@ -19,7 +19,7 @@ MonoBehaviour:
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 8dca5e22ff829c54d9656439a8836dab, type: 2}
+  posicaoModal: {fileID: 11400000, guid: 6bcdedcbbeca3cc47994c3bbe35f79b3, type: 2}
   objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}

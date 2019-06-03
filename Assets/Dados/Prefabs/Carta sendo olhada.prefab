@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 7f20a61e0ff8868458aa82807d043388, type: 2}
+  carta: {fileID: 11400000, guid: fcc14ea63936bcb4192b5fbbc5a47c17, type: 2}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -134,9 +134,10 @@ MonoBehaviour:
     imagem: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   mostrarPoder: {fileID: 7976089227117427891}
-  imagemProtegido: {fileID: 0}
+  imagemProtegido: {fileID: 4375510957202102488}
   tipoFeitico: {fileID: 11400000, guid: 3fcdbd01aa5b57b47949bdce45f0d4a2, type: 2}
   tipoLenda: {fileID: 11400000, guid: d5ee4d35ff72a48448a852420d76e5a2, type: 2}
+  protegido: 0
   templateLenda: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
   templateFeitico: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
   spritePodeAtacar: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
@@ -286,7 +287,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04dba6ec5813bb148b72e1161ec57579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da21f3667770f05499a1d851be9222b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -901,7 +902,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 13476d3575c024943ba93953741a3a24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13c952e5c7d8c33469d2c312dd6898d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
