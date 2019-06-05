@@ -64,8 +64,9 @@ public class PassoTutorial : ScriptableObject
         }
         yield return null;
     }
-    public void AtualizarTexto()
+    public void ProximoTexto()
     {
+        indiceTexto++;
         modal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
     }
     public void FinalizarPasso()

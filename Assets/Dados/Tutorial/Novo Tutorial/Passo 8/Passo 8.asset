@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: fbf73e695c5d17541a31d36f6359bd5a, type: 2}
   textos:
-  - "Agora que Boiuna est\xE1 com mais poder que a lenda inimiga, ataque-a sem medo
-    de perder sua lenda! Lendas s\xF3 podem atacar uma vez por turno."
+  - "Agora que Boiuna est\xE1 com o mesmo poder que a lenda inimiga, ataque-a. Aten\xE7\xE3o:
+    uma Lenda s\xF3 pode atacar uma vez por turno."
   indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}

@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: b8e026f8eb19f39478befaeb8355adbc, type: 2}
   textos:
-  - "A carta, por\xE9m, perde 1 de seu poder, e, se o poder chegar a 0, a carta \xE9
-    levada ao cemit\xE9rio. Escolha o Boitat\xE1 e ataque diretamente seu inimigo!"
-  indiceTexto: 1
+  - "Escolha o Boitat\xE1 e ataque diretamente seu inimigo!"
+  indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
   modal: {fileID: 0}
-  posicaoModal: {fileID: 11400000, guid: 642257c3a19d4004788ddcd05314109c, type: 2}
+  posicaoModal: {fileID: 11400000, guid: 61ce26b1b722aaf4092ef1312a57a738, type: 2}
   objetosDestacados: []
   objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
-  turnoJogador: 1
   jogadorInterage: 1
   indiceObjDestacado: 0

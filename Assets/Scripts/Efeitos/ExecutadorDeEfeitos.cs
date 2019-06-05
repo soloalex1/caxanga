@@ -182,6 +182,12 @@ public class ExecutadorDeEfeitos : MonoBehaviour
         if (efeito.tipoEfeito == tipoPassivo)
         {
         }
+        efeito.cartaQueInvoca.infoCarta.CarregarCarta(efeito.cartaQueInvoca.carta);
+        if (efeito.cartaAlvo != null)
+        {
+            efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.carta);
+        }
+
         yield return null;
     }
 }
