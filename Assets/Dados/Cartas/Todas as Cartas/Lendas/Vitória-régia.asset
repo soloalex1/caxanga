@@ -22,8 +22,8 @@ MonoBehaviour:
     intValor: 2
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Ben\xE7\xE3o da Lua: Aumente 1 de poder de uma Lenda OU aumente
-      2 de influ\xEAncia da sua Entidade"
+  - stringValor: "Ben\xE7\xE3o da Lua: Aumente 2 de poder de uma Lenda OU recupere
+      1 de vida do seu jogador."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -43,3 +43,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: df519207870bb2b418796dd33a738cf4, type: 2}
+  protegido: 0

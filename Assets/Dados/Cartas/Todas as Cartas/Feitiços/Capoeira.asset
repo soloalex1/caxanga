@@ -22,8 +22,8 @@ MonoBehaviour:
     intValor: 5
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Efeito \xFAnico: Escolha uma Lenda. Essa Lenda pode atacar duas
-      vezes neste turno."
+  - stringValor: "Martelo Rodado: Escolha uma Lenda aliada que j\xE1 atacou neste
+      turno. Esta Lenda pode atacar novamente."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -35,7 +35,7 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: eed4ff3197a7faa408cd5a19322a9a20, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "M\xFAsica e Dan\xE7a: A capoeira ou \xE9 uma express\xE3o cultural
+  - stringValor: "M\xFAsica e Dan\xE7a: A capoeira \xE9 uma express\xE3o cultural
       brasileira que mistura arte marcial, esporte, cultura popular, dan\xE7a e m\xFAsica.
       Desenvolvida por descendentes de escravos, \xE9 caracterizada por movimentos
       \xE1geis e complexos."
@@ -43,3 +43,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 05fad2a9381058048ad9cffd6af2e9ab, type: 2}
+  protegido: 0
