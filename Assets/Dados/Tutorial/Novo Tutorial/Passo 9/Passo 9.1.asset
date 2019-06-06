@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
   textos:
-  - "Agora baixe a carta Boitat\xE1 e encerre a vez, ela auxiliar\xE1 voc\xEA em seu
-    pr\xF3ximo turno."
+  - "Agora baixe a carta Boitat\xE1 e encerre a vez, ela auxiliar\xE1 voc\xEA em
+    seu pr\xF3ximo turno."
   indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
-  modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 8dca5e22ff829c54d9656439a8836dab, type: 2}
+  seta: {fileID: 5352441900014871746, guid: c98d541734a55bb49b7a6882eaedb7de, type: 3}
+  numSetas: 1
+  posicoesSeta:
+  - {fileID: 11400000, guid: fad08b302545841449f6480ff332d7c4, type: 2}
   objetosDestacados: []
-  objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
   jogadorInterage: 1
-  indiceObjDestacado: 0
