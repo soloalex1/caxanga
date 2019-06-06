@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c42792aa186fd4aae575e0a1a190c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 28cb4ceb32b721147be2cce53b99e060, type: 2}
+  carta: {fileID: 11400000, guid: da8a88aa218df2142a49427e81400dd8, type: 2}
   propriedades:
   - texto: {fileID: 7976089227149765844}
     imagem: {fileID: 0}
@@ -908,7 +908,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9127365929f71cf47b03fe5ebca523c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d86db67b7fbde440a6093bdcfaf30ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

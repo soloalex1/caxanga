@@ -53,8 +53,8 @@ public class PassoTutorial : ScriptableObject
                 objetosDestacadosNaTela.Add(Instantiate(objDestacado, posicaoObjsDestacados));
                 if (cartaMostrada != null && objDestacado.GetComponent<ExibirInfoCarta>() != null)
                 {
-                    objDestacado.GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
-                    objDestacado.GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
+                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count-1].GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
+                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count-1].GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
                 }
             }            
         }
@@ -64,6 +64,30 @@ public class PassoTutorial : ScriptableObject
             for (int i = 0; i < numSetas; i++)
             {
                 setas.Add(Instantiate(seta, posicoesSeta[i].valor));
+                switch(this.name)
+                {
+                    case "Passo 3.1":
+                        setas[i].GetComponent<Animator>().Play("seta_direita");
+                        break;
+                    case "Passo 3.2":
+                        setas[i].GetComponent<Animator>().Play("seta_direita");
+                        break;
+                    case "Passo 5":
+                        setas[i].GetComponent<Animator>().Play("seta_baixo");
+                        break;
+                    case "Passo 6.2":
+                        setas[i].GetComponent<Animator>().Play("seta_baixo");
+                        break;
+                    case "Passo 7.2":
+                        setas[i].GetComponent<Animator>().Play("seta_baixo");
+                        break;
+                    case "Passo 9.1":
+                        setas[i].GetComponent<Animator>().Play("seta_baixo");
+                        break;
+                    case "Passo 9.2":
+                        setas[i].GetComponent<Animator>().Play("seta_baixo");
+                        break;
+                }
             }
             
         }
