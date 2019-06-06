@@ -10,13 +10,16 @@ public class PassoTutorial : ScriptableObject
     public string[] textos;
     public int indiceTexto = 0;
     public GameObject prefabModal;
-    public GameObject modal;
+    GameObject modal;
     public VariavelTransform posicaoModal;
+    public GameObject seta;
+    List<GameObject> setas;
+    public int numSetas;
+    public VariavelTransform[] posicoesSeta;
     public GameObject[] objetosDestacados;
-    public GameObject[] objetosDestacadosNaTela;
+    List <GameObject> objetosDestacadosNaTela;
     public Carta cartaMostrada;
     public bool jogadorInterage;
-    public int indiceObjDestacado;
 
     public IEnumerator AoIniciar()
     {
@@ -39,20 +42,30 @@ public class PassoTutorial : ScriptableObject
         }
 
         indiceTexto = 0;
-        indiceObjDestacado = 0;
-        objetosDestacadosNaTela = new GameObject[objetosDestacados.Length];
-        Instantiate(prefabModal, posicaoModal.valor);
-        modal = posicaoModal.valor.Find(prefabModal.name + "(Clone)").gameObject;
+        modal = Instantiate(prefabModal, posicaoModal.valor);
         modal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
         if (objetosDestacados.Length > 0)
         {
-            if (cartaMostrada != null)
+            objetosDestacadosNaTela = new List<GameObject>();
+            Transform posicaoObjsDestacados = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objetos Destacados").transform;
+            foreach (GameObject objDestacado in objetosDestacados)
             {
-                objetosDestacados[indiceObjDestacado].GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
-                objetosDestacados[indiceObjDestacado].GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
+                objetosDestacadosNaTela.Add(Instantiate(objDestacado, posicaoObjsDestacados));
+                if (cartaMostrada != null && objDestacado.GetComponent<ExibirInfoCarta>() != null)
+                {
+                    objDestacado.GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
+                    objDestacado.GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
+                }
+            }            
+        }
+        if (numSetas > 0 && seta != null && posicoesSeta.Length > 0)
+        {
+            setas = new List<GameObject>();
+            for (int i = 0; i < numSetas; i++)
+            {
+                setas.Add(Instantiate(seta, posicoesSeta[i].valor));
             }
-            Instantiate(objetosDestacados[indiceObjDestacado], GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objeto Destacado").transform);
-            objetosDestacadosNaTela[indiceObjDestacado] = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objeto Destacado");
+            
         }
         if (jogadorInterage == false)
         {
@@ -71,10 +84,21 @@ public class PassoTutorial : ScriptableObject
     }
     public void FinalizarPasso()
     {
-        Destroy(modal);
-        if (objetosDestacados.Length > 0)
+        if (modal!=null)
+            Destroy(modal);
+        if (numSetas > 0 && seta != null && setas.Count > 0)
         {
-            Destroy(objetosDestacadosNaTela[indiceObjDestacado].transform.GetChild(indiceObjDestacado).gameObject);
+            for (int i = 0; i < setas.Count; i++)
+            {
+                Destroy(setas[i]);
+            }
+        }
+        if (objetosDestacadosNaTela.Count > 0)
+        {
+            foreach (GameObject obj in objetosDestacadosNaTela)
+            {
+                Destroy(obj.gameObject);
+            }
         }
     }
 }

@@ -92,13 +92,6 @@ public class AdmTutorial : MonoBehaviour
             //SE NÃO FOR O ULTIMO TEXTO
             if (passoAtual.indiceTexto < passoAtual.textos.Length - 1)
             {
-                if (passoAtual.objetosDestacados.Length > 1)
-                {
-                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado].SetActive(false);
-                    passoAtual.indiceObjDestacado++;
-                    Instantiate(passoAtual.objetosDestacados[passoAtual.indiceObjDestacado], this.transform);
-                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado] = passoAtual.objetosDestacados[passoAtual.indiceObjDestacado];
-                }
                 passoAtual.ProximoTexto();
                 return;
             }

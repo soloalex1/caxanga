@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   textos:
-  - "O jogo est\xE1 dividido primeiramente em turnos, em cada turno voc\xEA deve jogar
-    pelo menos 1 carta (para assim poder encerr\xE1-lo), seja ela Lenda ou Feiti\xE7o."
+  - "O jogo est\xE1 dividido primeiramente em turnos, em cada turno voc\xEA deve
+    jogar pelo menos 1 carta, seja ela Lenda ou Feiti\xE7o. Voc\xEA s\xF3 pode encerrar
+    seu turno se tiver jogado uma carta."
   indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
-  modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 494b0345130dac047ba3b2d1d6605947, type: 2}
+  seta: {fileID: 0}
+  numSetas: 0
+  posicoesSeta: []
   objetosDestacados: []
-  objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
-  turnoJogador: 0
-  objDestacadoSomeSozinho: 0
-  indiceObjDestacado: 0
+  jogadorInterage: 0

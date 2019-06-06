@@ -10,26 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6135a758e6b270049a4b0c07db772052, type: 3}
-  m_Name: Passo 3
+  m_Name: Passo 3.1
   m_EditorClassIdentifier: 
   eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   textos:
-  - "Em Caxang\xE1, existem dois tipos de cartas: Lendas e Feiti\xE7os."
   - "As Lendas s\xE3o as criaturas que voc\xEA pode p\xF4r em campo. Somente elas
     possuem poder, por isso, s\xF3 por meio delas voc\xEA pode atacar seu oponente."
-  - "O poder representa tanto a vida quanto a for\xE7a de ataque de sua Lenda. J\xE1
-    o custo representa quanto a carta necessita do recurso do Her\xF3i para ser baixada
-    em campo."
-  indiceTexto: 2
+  indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
-  modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: dee940116946e694bb5accc914be3a24, type: 2}
+  seta: {fileID: 5352441900014871746, guid: c98d541734a55bb49b7a6882eaedb7de, type: 3}
+  numSetas: 1
+  posicoesSeta:
+  - {fileID: 11400000, guid: 62653b74e933a2c419d26c8396cb6344, type: 2}
   objetosDestacados:
   - {fileID: 1274933164439770382, guid: 481e2d845c5bfec49800c6221bac4746, type: 3}
-  objetosDestacadosNaTela:
-  - {fileID: 0}
   cartaMostrada: {fileID: 11400000, guid: 28cb4ceb32b721147be2cce53b99e060, type: 2}
-  turnoJogador: 0
-  objDestacadoSomeSozinho: 0
-  indiceObjDestacado: 0
+  jogadorInterage: 0

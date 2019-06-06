@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Rodadas/Turno")]
 public class Turno : ScriptableObject
 {
-    bool terminou = false;
+    bool terminou;
     public SeguradorDeJogador jogador;
     public AcaoJogador[] acoesIniciais;
     public void IniciarTurno()
