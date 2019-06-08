@@ -15,10 +15,13 @@ public class AdmColecao : MonoBehaviour
 
     AdmRecursos ar;
 
+    int dirPagina;
+
     void Start()
     {
         ar = Configuracoes.GetAdmRecursos();
-        InstanciarColecao(0);
+        dirPagina = 0;
+        InstanciarColecao(dirPagina);
     }
 
     void InstanciarColecao(int index){
@@ -29,9 +32,7 @@ public class AdmColecao : MonoBehaviour
             infoCarta = carta.GetComponent<ExibirInfoCarta>();
             instCarta = carta.GetComponent<InstanciaCarta>();
             infoCarta.CarregarCarta(ar.obterInstanciaCarta(baralho.cartasBaralho[i]));
-            
-            Debug.Log("carreguei a carta " + baralho.cartasBaralho[i].ToString()); 
-
+    
             instCarta.carta = infoCarta.carta;
             instCarta.SetPoderECusto();
             infoCarta.CarregarCarta(instCarta.carta);
@@ -51,8 +52,16 @@ public class AdmColecao : MonoBehaviour
         
     }
 
-    void AoClicarBotao(){
+    public void AoClicarBotao(int i){
+        if(i % 2 == 0){
+            Debug.Log("esquerda");
+        } else {
+            Debug.Log("direita");
+        }
+    }
 
+    public void AoClicarCarta(){
+        
     }
 
 }
