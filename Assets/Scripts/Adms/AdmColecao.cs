@@ -26,6 +26,18 @@ public class AdmColecao : MonoBehaviour
 
     void InstanciarColecao(int index){
 
+        // limpando as páginas
+
+        foreach (Transform i in paginaEsquerda.transform)
+        {
+            GameObject.Destroy(i.gameObject);   
+        }
+
+        foreach (Transform i in paginaDireita.transform)
+        {
+            GameObject.Destroy(i.gameObject);   
+        }
+
         for(int i = index; i < (index + 8); i++ )
         {
             carta = Instantiate(prefabCarta) as GameObject;
@@ -54,14 +66,14 @@ public class AdmColecao : MonoBehaviour
 
     public void AoClicarBotao(int i){
         if(i % 2 == 0){
-            Debug.Log("esquerda");
+            if(i >= 8) InstanciarColecao(i - 8);
+            else InstanciarColecao(0);
         } else {
-            Debug.Log("direita");
+            InstanciarColecao(i + 8);
         }
     }
 
     public void AoClicarCarta(){
-        
-    }
 
+    }
 }
