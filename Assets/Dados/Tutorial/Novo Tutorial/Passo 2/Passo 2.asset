@@ -15,15 +15,19 @@ MonoBehaviour:
   eventoFinalizador: {fileID: 11400000, guid: af8b9b6dbd377654b87f6e2948641931, type: 2}
   textos:
   - "O tabuleiro \xE9 dividido em 3 partes: o cemit\xE9rio, o baralho, e o campo."
-  - "Aten\xE7\xE3o! As cartas s\xF3 s\xE3o puxadas no come\xE7o da rodada."
-  indiceTexto: 0
+  - "ATEN\xC7\xC3O! Voc\xEA s\xF3 puxa cartas para sua m\xE3o no \xEDnicio de uma
+    rodada. Depois, voc\xEA deve administrar suas cartas at\xE9 o fim da rodada."
+  - "ATEN\xC7\xC3O! Na pr\xF3xima rodada, a magia dos dois jogadores ser\xE1 restaurada
+    e ambos ir\xE3o manter suas cartas e puxar mais 3 cartas."
+  - "Em Caxang\xE1 existem dois tipos de cartas: Lendas e Feiti\xE7os."
+  indiceTexto: 3
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}
-  modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 207749aa0bdf9454ebb94183d37ae736, type: 2}
+  seta: {fileID: 0}
+  numSetas: 0
+  posicoesSeta: []
   objetosDestacados:
   - {fileID: 4857236014998182355, guid: bd50b91ed493f5f4d8a8b764059d2326, type: 3}
-  objetosDestacadosNaTela: []
-  turnoJogador: 0
-  objDestacadoSomeSozinho: 1
-  indiceObjDestacado: 0
+  cartaMostrada: {fileID: 0}
+  jogadorInterage: 0

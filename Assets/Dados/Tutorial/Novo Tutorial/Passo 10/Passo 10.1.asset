@@ -17,6 +17,8 @@ MonoBehaviour:
   - "Outra forma de ataque \xE9 o ataque direto."
   - "Com ele, voc\xEA diminui a vida do inimigo em um valor correspondente ao poder
     de ataque da lenda atacante."
+  - "A carta, por\xE9m, perde 1 de seu poder, e, se o poder chegar a 0, a carta \xE9
+    levada ao cemit\xE9rio. "
   indiceTexto: 1
   prefabModal: {fileID: 1718955637355501130, guid: c662f565fb11adc4ab81341b760dd3ea,
     type: 3}

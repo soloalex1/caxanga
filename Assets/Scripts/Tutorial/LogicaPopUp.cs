@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LogicaPopUp : MonoBehaviour
 {
-    GameEvent jogadorPassouTexto;
-    public void PassarTextoTutorial()
-    {
-        jogadorPassouTexto.Raise();
-    }
+    // GameEvent jogadorPassouTexto;
+    // public void PassarTextoTutorial()
+    // {
+    //     jogadorPassouTexto.Raise();
+    // }
 
 }

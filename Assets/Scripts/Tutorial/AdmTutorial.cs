@@ -36,7 +36,7 @@ public class AdmTutorial : MonoBehaviour
     {
         StartCoroutine(Configuracoes.admJogo.FadeTextoTurno(Configuracoes.admJogo.jogadorInimigo));
         yield return new WaitForSeconds(2f);
-        Debug.Log(passoAtual.name);
+        // Debug.Log(passoAtual.name);
         switch (passoAtual.name)
         {
             case "Passo 7.1":
@@ -67,7 +67,6 @@ public class AdmTutorial : MonoBehaviour
                 }
                 break;
             case "Passo 11":
-                Debug.Log("Vou fazer ele passar");
                 Configuracoes.admJogo.jogadorInimigo.rodada.turno.FinalizarTurno();
                 Configuracoes.admJogo.jogadorInimigo.rodada.PassarRodada();
                 break;
@@ -91,17 +90,9 @@ public class AdmTutorial : MonoBehaviour
         if (Configuracoes.eventoDisparado == passoAtual.eventoFinalizador)
         {
             //SE NÃO FOR O ULTIMO TEXTO
-            if (passoAtual.indiceTexto != passoAtual.textos.Length - 1)
+            if (passoAtual.indiceTexto < passoAtual.textos.Length - 1)
             {
-                if (passoAtual.objetosDestacados.Length > 1)
-                {
-                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado].SetActive(false);
-                    passoAtual.indiceObjDestacado++;
-                    Instantiate(passoAtual.objetosDestacados[passoAtual.indiceObjDestacado], this.transform);
-                    passoAtual.objetosDestacadosNaTela[passoAtual.indiceObjDestacado] = passoAtual.objetosDestacados[passoAtual.indiceObjDestacado];
-                }
-                passoAtual.indiceTexto++;
-                passoAtual.AtualizarTexto();
+                passoAtual.ProximoTexto();
                 return;
             }
             else // SE FOR O ULTIMO TEXTO
@@ -112,6 +103,10 @@ public class AdmTutorial : MonoBehaviour
                 {
                     passoAtual = passos[indicePasso];
                     StartCoroutine(passoAtual.AoIniciar());
+                }
+                else
+                {
+                    Configuracoes.admCena.CarregarCena("Tela Inicial");
                 }
             }
         }
