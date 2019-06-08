@@ -10,32 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332b0d6684fa10b438d5d5e125ac0d50, type: 3}
-  m_Name: baralho teste
+  m_Name: Baralho Completo
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Saci
-  - Saci
-  - Chupa-cabra
-  - Festa Junina
-  - Festa Junina
-  - Festa Junina
   - Aboio
-  - Aboio
-  - Saci
+  - "Acaraj\xE9"
+  - Atirei o pau no gato
+  - Boi da Cara Preta
+  - "Boitat\xE1"
+  - Boiuna
+  - Bumba-meu-boi
+  - "Cabe\xE7a de Cuia"
+  - Corpo Seco
+  - Cuca
+  - Curupira
+  - Festa Junina
+  - Lobisomem
+  - Mapinguari
+  - Marcha Soldado
+  - "Mula-sem-cabe\xE7a"
   - Pai do Mato
   - Perna Cabeluda
-  - Festa Junina
-  - Saci
-  - "Vit\xF3ria-r\xE9gia"
-  - Aboio
-  - Aboio
-  - Aboio
-  - Festa Junina
-  - Saci
-  - Aboio
-  - Bumba-meu-boi
   - Pisadeira
-  - Iara
-  - Visagem
-  - "Mula-sem-cabe\xE7a"
+  - Saci
+  - Terezinha de Jesus
+  - "Vit\xF3ria-r\xE9gia"
   jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}

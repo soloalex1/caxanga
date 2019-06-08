@@ -283,7 +283,6 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.admCursor.MudarSprite(spriteCursor);
     }
 
-
     public IEnumerator FadeTextoTurno(SeguradorDeJogador jogador)
     {
         if (jogador.passouRodada == false)
@@ -343,6 +342,12 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
+                if (tutorial){
+                    ChecaVidaJogadores();
+                    jogadorPassouTurno.Raise();
+                    jogadorAtual.rodada.turno.IniciarTurno();
+                    return;
+                }
                 TrocarJogadorAtual();
                 jogadorAtual.rodada.turno.IniciarTurno();
             }
@@ -431,7 +436,6 @@ public class AdmJogo : MonoBehaviour
             }
         }
     }
-
     public IEnumerator DestacarCartaBaixada(InstanciaCarta instCarta)
     {
         // fechando outras cartas em destaque   
