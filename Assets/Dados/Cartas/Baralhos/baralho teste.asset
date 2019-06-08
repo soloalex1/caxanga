@@ -15,7 +15,7 @@ MonoBehaviour:
   cartasBaralho:
   - Saci
   - Saci
-  - Festa Junina
+  - Chupa-cabra
   - Festa Junina
   - Festa Junina
   - Festa Junina
@@ -29,7 +29,7 @@ MonoBehaviour:
   - "Vit\xF3ria-r\xE9gia"
   - Aboio
   - Aboio
-  - Festa Junina
+  - Aboio
   - Festa Junina
   - Saci
   - Aboio
@@ -37,5 +37,5 @@ MonoBehaviour:
   - Pisadeira
   - Iara
   - Visagem
-  - Chupa-cabra
+  - "Mula-sem-cabe\xE7a"
   jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}
