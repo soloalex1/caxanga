@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class AdmJogo : MonoBehaviour
 {
     public float tempoAnimacaoCuraDano;
-
+    public int numMaxCartasMao;
     public Baralho baralhoTutorial1, baralhoTutorial2;
     public bool tutorial, inicioTutorial;
     SeguradorDeJogador jogadorVencedor;
@@ -89,63 +89,66 @@ public class AdmJogo : MonoBehaviour
 
     public void PuxarCarta(SeguradorDeJogador jogador)
     {
-        AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
-        GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
-        ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-        InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-        e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
-        instCarta.carta = e.carta;
-        instCarta.SetPoderECusto();
-        e.CarregarCarta(instCarta.carta);
-        instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
-        if (instCarta.carta.efeito != null)
+        if (jogador.cartasMao.Count < numMaxCartasMao)
         {
-            Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
-            // novoEfeito = instCarta.carta.efeito;
-            novoEfeito.name = instCarta.carta.efeito.name;
-            novoEfeito.afetaApenasSeuJogador = instCarta.carta.efeito.afetaApenasSeuJogador;
-            novoEfeito.afetaTodasCartas = instCarta.carta.efeito.afetaTodasCartas;
-            novoEfeito.alteracaoMagia = instCarta.carta.efeito.alteracaoMagia;
-            novoEfeito.alteracaoPoder = instCarta.carta.efeito.alteracaoPoder;
-            novoEfeito.alteracaoVida = instCarta.carta.efeito.alteracaoVida;
-            novoEfeito.apenasJogador = instCarta.carta.efeito.apenasJogador;
-            novoEfeito.ativacao = instCarta.carta.efeito.ativacao;
-            novoEfeito.cartaAlvo = instCarta.carta.efeito.cartaAlvo;
-            novoEfeito.cartaQueInvoca = instCarta;
-            novoEfeito.condicaoAtivacao = instCarta.carta.efeito.condicaoAtivacao;
-            novoEfeito.escolheAlvoCarta = instCarta.carta.efeito.escolheAlvoCarta;
-            novoEfeito.eventoAtivador = instCarta.carta.efeito.eventoAtivador;
-            novoEfeito.jogadorAlvo = instCarta.carta.efeito.jogadorAlvo;
-            novoEfeito.jogadorQueInvoca = jogador;
-            novoEfeito.modoDeExecucao = instCarta.carta.efeito.modoDeExecucao;
-            novoEfeito.podeUsarEmSi = instCarta.carta.efeito.podeUsarEmSi;
-            novoEfeito.tipoEfeito = instCarta.carta.efeito.tipoEfeito;
-            instCarta.efeito = novoEfeito;
-
-            if (instCarta.efeito.apenasJogador)
+            AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
+            GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
+            ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
+            InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
+            e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
+            instCarta.carta = e.carta;
+            instCarta.SetPoderECusto();
+            e.CarregarCarta(instCarta.carta);
+            instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
+            if (instCarta.carta.efeito != null)
             {
-                //afeta vc
-                if (instCarta.efeito.afetaApenasSeuJogador)
+                Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
+                // novoEfeito = instCarta.carta.efeito;
+                novoEfeito.name = instCarta.carta.efeito.name;
+                novoEfeito.afetaApenasSeuJogador = instCarta.carta.efeito.afetaApenasSeuJogador;
+                novoEfeito.afetaTodasCartas = instCarta.carta.efeito.afetaTodasCartas;
+                novoEfeito.alteracaoMagia = instCarta.carta.efeito.alteracaoMagia;
+                novoEfeito.alteracaoPoder = instCarta.carta.efeito.alteracaoPoder;
+                novoEfeito.alteracaoVida = instCarta.carta.efeito.alteracaoVida;
+                novoEfeito.apenasJogador = instCarta.carta.efeito.apenasJogador;
+                novoEfeito.ativacao = instCarta.carta.efeito.ativacao;
+                novoEfeito.cartaAlvo = instCarta.carta.efeito.cartaAlvo;
+                novoEfeito.cartaQueInvoca = instCarta;
+                novoEfeito.condicaoAtivacao = instCarta.carta.efeito.condicaoAtivacao;
+                novoEfeito.escolheAlvoCarta = instCarta.carta.efeito.escolheAlvoCarta;
+                novoEfeito.eventoAtivador = instCarta.carta.efeito.eventoAtivador;
+                novoEfeito.jogadorAlvo = instCarta.carta.efeito.jogadorAlvo;
+                novoEfeito.jogadorQueInvoca = jogador;
+                novoEfeito.modoDeExecucao = instCarta.carta.efeito.modoDeExecucao;
+                novoEfeito.podeUsarEmSi = instCarta.carta.efeito.podeUsarEmSi;
+                novoEfeito.tipoEfeito = instCarta.carta.efeito.tipoEfeito;
+                instCarta.efeito = novoEfeito;
+
+                if (instCarta.efeito.apenasJogador)
                 {
-                    instCarta.efeito.jogadorAlvo = jogador;
-                }
-                else//afeta o inimigo
-                {
-                    if (jogador == jogadorIA)
+                    //afeta vc
+                    if (instCarta.efeito.afetaApenasSeuJogador)
                     {
-                        instCarta.efeito.jogadorAlvo = jogadorLocal;
+                        instCarta.efeito.jogadorAlvo = jogador;
                     }
-                    else
+                    else//afeta o inimigo
                     {
-                        instCarta.efeito.jogadorAlvo = jogadorIA;
+                        if (jogador == jogadorIA)
+                        {
+                            instCarta.efeito.jogadorAlvo = jogadorLocal;
+                        }
+                        else
+                        {
+                            instCarta.efeito.jogadorAlvo = jogadorIA;
+                        }
                     }
                 }
             }
+            instCarta.jogadorDono = jogador;
+            Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+            jogador.cartasMao.Add(instCarta);
+            jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
         }
-        instCarta.jogadorDono = jogador;
-        Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
-        jogador.cartasMao.Add(instCarta);
-        jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
     }
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
@@ -171,11 +174,11 @@ public class AdmJogo : MonoBehaviour
         }
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
-        TrocarJogadorAtual();
+        if (jogadorAtual != jogadorVencedorTurno)
+            TrocarJogadorAtual();
     }
     void ChecaVidaJogadores()
     {
-
         if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
         {
             if (jogadorAtual.vida <= 0)
@@ -187,6 +190,10 @@ public class AdmJogo : MonoBehaviour
             {
                 jogadorInimigo.barrasDeVida--;
                 StartCoroutine(FadeVencedorTurno(jogadorAtual));
+            }
+            if (jogadorAtual.vida <= 0 && jogadorInimigo.vida <= 0)
+            {
+                StartCoroutine(Empate());
             }
             return;
         }
@@ -205,7 +212,7 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                Debug.Log("Empate");
+                StartCoroutine(Empate());
             }
         }
 
@@ -284,7 +291,41 @@ public class AdmJogo : MonoBehaviour
         if (Configuracoes.admCursor != null)
             Configuracoes.admCursor.MudarSprite(spriteCursor);
     }
+    public IEnumerator Empate()
+    {
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = new Color(255, 255, 255);
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = "Empate";
+        ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
+        ImagemTextoTurno.gameObject.SetActive(true);
+        pause = true;
+        yield return new WaitForSeconds(1);
+        pause = false;
+        ImagemTextoTurno.gameObject.SetActive(false);
+        jogadorAtual.barrasDeVida--;
+        jogadorInimigo.barrasDeVida--;
+        if (jogadorInimigo.barrasDeVida <= 0 && jogadorAtual.barrasDeVida <= 0)
+        {
+            Configuracoes.admCena.CarregarCena("Tela Inicial");
+            yield return null;
+        }
+        if (jogadorInimigo.barrasDeVida <= 0)
+        {
+            jogadorVencedor = jogadorAtual;
+            StartCoroutine(FimDeJogo(jogadorVencedor));
+            yield return null;
+        }
+        else if (jogadorAtual.barrasDeVida <= 0)
+        {
+            jogadorVencedor = jogadorInimigo;
+            StartCoroutine(FimDeJogo(jogadorVencedor));
+            yield return null;
+        }
+        jogadorAtual.rodada.IniciarRodada();
+        jogadorInimigo.rodada.IniciarRodada();
+        TrocarJogadorAtual();
 
+
+    }
     public IEnumerator FadeTextoTurno(SeguradorDeJogador jogador)
     {
         if (jogador.passouRodada == false)
@@ -344,7 +385,8 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                if (tutorial){
+                if (tutorial)
+                {
                     ChecaVidaJogadores();
                     jogadorPassouTurno.Raise();
                     jogadorAtual.rodada.turno.IniciarTurno();

@@ -43,7 +43,7 @@ public class SelecionarAlvoEfeito : Acao
                 InstanciaCarta carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
                 if (carta != null && (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta) || Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Contains(carta)))
                 {
-                    if (carta != Configuracoes.admJogo.efeitoAtual.cartaQueInvoca)
+                    if (Configuracoes.admJogo.efeitoAtual.podeUsarEmSi || carta != Configuracoes.admJogo.efeitoAtual.cartaQueInvoca)
                     {
                         Configuracoes.admEfeito.eventoAtivador.cartaQueAtivouEvento.efeito.cartaAlvo = carta;
                         Configuracoes.admJogo.efeitoAtual.cartaAlvo = carta;

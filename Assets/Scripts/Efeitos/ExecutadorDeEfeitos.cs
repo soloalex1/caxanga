@@ -63,7 +63,6 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                     efeito.jogadorAlvo.podeUsarEfeito = false;
                     efeito.jogadorAlvo.silenciado = true;
                     efeito.jogadorAlvo.CarregarInfoUIJogador();
-                    Debug.Log("Entrei no efeito");
                 }
                 if (efeito.modoDeExecucao == alterarPoderCarta)
                 {
