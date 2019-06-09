@@ -34,11 +34,12 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 9f336e67639d6964594745399106fb94, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Festas Populares: A hist\xF3ria mais comum aborda um boi morto por
-      um escravo, a pedido da esposa gr\xE1vida.  Com a ajuda de curandeiros, o boi
-      \xE9 ent\xE3o ressuscitado.\uFEFF"
+  - stringValor: "Festas Populares: A hist\xF3ria mais comum aborda um boi morto
+      por um escravo, a pedido da esposa gr\xE1vida.  Com a ajuda de curandeiros,
+      o boi \xE9 ent\xE3o ressuscitado.\uFEFF"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 8286654bc5bae2149983388e2e12e268, type: 2}
+  categoria: Festas Populares
   protegido: 0

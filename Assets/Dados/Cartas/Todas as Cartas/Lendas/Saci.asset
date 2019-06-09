@@ -34,11 +34,12 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: O Saci \xE9 um negro jovem de uma perna
-      s\xF3, portador de uma carapu\xE7a sobre a cabe\xE7a que lhe concede poderes
-      m\xE1gicos."
+  - stringValor: "Cren\xE7as e Religiosidades: O Saci \xE9 um negro jovem de uma
+      perna s\xF3, portador de uma carapu\xE7a sobre a cabe\xE7a que lhe concede
+      poderes m\xE1gicos."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 9830e60fdc503234ebdb9c770f3d20b3, type: 2}
+  categoria: "Cren\xE7as e Religiosidades"
   protegido: 0

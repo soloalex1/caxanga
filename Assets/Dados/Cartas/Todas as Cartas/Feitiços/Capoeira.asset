@@ -43,4 +43,5 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 05fad2a9381058048ad9cffd6af2e9ab, type: 2}
+  categoria: "M\xFAsica e Dan\xE7a"
   protegido: 0

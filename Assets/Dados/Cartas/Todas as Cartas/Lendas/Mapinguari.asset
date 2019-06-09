@@ -36,8 +36,11 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: "Cren\xE7as e Religiosidades: Segundo povos nativos, o Mapinguari
       possuiria um cheiro horr\xEDvel, semelhante ao de um gamb\xE1. Esse mau cheiro
-      faz com que sua presa fique tonta, o que permite ao bicho apanh\xE1-la com facilidade.\uFEFF"
+      faz com que sua presa fique tonta, o que permite ao bicho apanh\xE1-la com
+      facilidade.\uFEFF"
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0

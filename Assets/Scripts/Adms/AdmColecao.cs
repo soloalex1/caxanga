@@ -1,79 +1,149 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AdmColecao : MonoBehaviour
 {
     public Baralho baralho;
     public GameObject prefabCarta, paginaEsquerda, paginaDireita;
-
-    int numPagina = 0;
+    public int numMaxCartasPag;
+    public int numPagina = 0;
+    public string categoriaAtual = "Todas";
+    bool olhandoCarta;
+    public GameObject cartaOlhada, telaColecao1, telaColecao2;
     GameObject carta;
     ExibirInfoCarta infoCarta;
-
-    InstanciaCarta instCarta;
-
     AdmRecursos ar;
+    public Sprite cursorClicavel, cursorIdle;
+    int peChildCount;
+    public GameObject botoesLivro, botaoTodos;
+    int indice, numCartasPags;
 
-    int dirPagina;
-
+    public Text textoDescricao;
     void Start()
     {
         ar = Configuracoes.GetAdmRecursos();
-        dirPagina = 0;
-        InstanciarColecao(dirPagina);
+        InstanciarColecao(categoriaAtual);
+        EventSystem m_EventSystem = EventSystem.current;
+        m_EventSystem.SetSelectedGameObject(botaoTodos);
+        olhandoCarta = false;
     }
+    void Update()
+    {
+        if (!olhandoCarta)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                List<RaycastResult> resultados = Configuracoes.GetUIObjs();
+                foreach (RaycastResult r in resultados)
+                {
+                    ExibirInfoCarta c = r.gameObject.GetComponentInParent<ExibirInfoCarta>();
+                    if (c != null)
+                    {
+                        telaColecao1.SetActive(false);
+                        telaColecao2.SetActive(true);
+                        cartaOlhada.GetComponent<ExibirInfoCarta>().carta = c.carta;
+                        cartaOlhada.GetComponent<ExibirInfoCarta>().CarregarCarta(c.carta);
+                        textoDescricao.text = c.carta.textoDescricao;
+                        olhandoCarta = true;
+                        break;
+                    }
+                }
+            }
+        }
 
-    void InstanciarColecao(int index){
-
+    }
+    void InstanciarColecao(string categoriaAtual)
+    {
+        peChildCount = 0;
         // limpando as páginas
 
         foreach (Transform i in paginaEsquerda.transform)
         {
-            GameObject.Destroy(i.gameObject);   
+            Destroy(i.gameObject);
         }
 
         foreach (Transform i in paginaDireita.transform)
         {
-            GameObject.Destroy(i.gameObject);   
+            Destroy(i.gameObject);
         }
-
-        for(int i = index; i < (index + 8); i++ )
+        numCartasPags = 0;
+        indice = numPagina * numMaxCartasPag;
+        while (indice < baralho.cartasBaralho.Count)
         {
-            carta = Instantiate(prefabCarta) as GameObject;
-            infoCarta = carta.GetComponent<ExibirInfoCarta>();
-            instCarta = carta.GetComponent<InstanciaCarta>();
-            infoCarta.CarregarCarta(ar.obterInstanciaCarta(baralho.cartasBaralho[i]));
-    
-            instCarta.carta = infoCarta.carta;
-            instCarta.SetPoderECusto();
-            infoCarta.CarregarCarta(instCarta.carta);
-
-            // joga as cartas fisicamente na mão do jogador
-            if((i - index) < 4){
-                Configuracoes.DefinirPaiCarta(carta.transform, paginaEsquerda.transform);
-            } else {
-                numPagina++;
-                Configuracoes.DefinirPaiCarta(carta.transform, paginaDireita.transform);
+            if (numCartasPags >= 8)
+                break;
+            if (indice < baralho.cartasBaralho.Count)
+            {
+                Carta valorCarta = ar.obterInstanciaCarta(baralho.cartasBaralho[indice]);
+                if (valorCarta.categoria == categoriaAtual || categoriaAtual == "Todas")
+                {
+                    carta = Instantiate(prefabCarta) as GameObject;
+                    infoCarta = carta.GetComponent<ExibirInfoCarta>();
+                    infoCarta.CarregarCarta(valorCarta);
+                    carta.AddComponent<BotaoOver>();
+                    carta.GetComponent<BotaoOver>().cursorClicavel = cursorClicavel;
+                    carta.GetComponent<BotaoOver>().cursorIdle = cursorIdle;
+                    // joga as cartas fisicamente na mão do jogador
+                    if (peChildCount < 4)
+                    {
+                        Configuracoes.DefinirPaiCarta(carta.transform, paginaEsquerda.transform);
+                        peChildCount++;
+                    }
+                    else
+                    {
+                        Configuracoes.DefinirPaiCarta(carta.transform, paginaDireita.transform);
+                    }
+                    carta.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+                    numCartasPags++;
+                }
             }
-            carta.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+            else
+            {
+                break;
+            }
+            indice++;
         }
     }
-    void Update()
+
+    public void Avancar()
     {
-        
-    }
-
-    public void AoClicarBotao(int i){
-        if(i % 2 == 0){
-            if(i >= 8) InstanciarColecao(i - 8);
-            else InstanciarColecao(0);
-        } else {
-            InstanciarColecao(i + 8);
+        if (numPagina < baralho.cartasBaralho.Count / numMaxCartasPag && numCartasPags == 8)
+        {
+            numPagina++;
+            InstanciarColecao(categoriaAtual);
         }
-    }
 
-    public void AoClicarCarta(){
+    }
+    public void Voltar()
+    {
+        if (olhandoCarta)
+        {
+            telaColecao1.SetActive(true);
+            telaColecao2.SetActive(false);
+            olhandoCarta = false;
+        }
+        else
+        {
+            if (numPagina > 0)
+            {
+                numPagina--;
+                InstanciarColecao(categoriaAtual);
+            }
+
+        }
+
+    }
+    public void MudarCategoria(string categoria)
+    {
+        if (olhandoCarta == false)
+        {
+            categoriaAtual = categoria;
+            numPagina = 0;
+            InstanciarColecao(categoriaAtual);
+        }
 
     }
 }

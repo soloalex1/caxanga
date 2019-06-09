@@ -42,4 +42,5 @@ MonoBehaviour:
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: a634c99891919f7408a43bfd332e1d30, type: 2}
+  categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
