@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    public float tempoAnimacaoCuraDano;
+
     public Baralho baralhoTutorial1, baralhoTutorial2;
     public bool tutorial, inicioTutorial;
     SeguradorDeJogador jogadorVencedor;
@@ -363,7 +365,7 @@ public class AdmJogo : MonoBehaviour
             int poderCartaAtacadaAntes = cartaAtacada.poder;
             StartCoroutine(cartaAtacada.AnimacaoDano(poderCartaAtacanteAntes * -1));
             StartCoroutine(cartaAtacante.AnimacaoDano(poderCartaAtacadaAntes * -1));
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(tempoAnimacaoCuraDano);
             cartaAtacada.poder -= poderCartaAtacanteAntes;
             cartaAtacante.poder -= poderCartaAtacadaAntes;
             int poderCartaAtacanteDepois = cartaAtacante.poder;
@@ -398,7 +400,7 @@ public class AdmJogo : MonoBehaviour
             int poderCartaAtacanteAntes = cartaAtacante.poder;
             StartCoroutine(jogadorAtacado.infoUI.AnimacaoDano(poderCartaAtacanteAntes * -1));
             StartCoroutine(cartaAtacante.AnimacaoDano(-1));
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(tempoAnimacaoCuraDano);
             jogadorAtacado.vida -= poderCartaAtacanteAntes;
             cartaAtacante.poder--;
             jogadorAtacado.infoUI.AtualizarVida();

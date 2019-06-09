@@ -18,10 +18,11 @@ MonoBehaviour:
   indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
-  modal: {fileID: 0}
   posicaoModal: {fileID: 11400000, guid: 61ce26b1b722aaf4092ef1312a57a738, type: 2}
+  seta: {fileID: 5352441900014871746, guid: c98d541734a55bb49b7a6882eaedb7de, type: 3}
+  numSetas: 1
+  posicoesSeta:
+  - {fileID: 11400000, guid: 63eb90c24ba6f4e42a40b8a3b6caa18f, type: 2}
   objetosDestacados: []
-  objetosDestacadosNaTela: []
   cartaMostrada: {fileID: 0}
   jogadorInterage: 1
-  indiceObjDestacado: 0

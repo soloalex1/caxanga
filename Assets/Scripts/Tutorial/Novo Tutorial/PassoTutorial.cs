@@ -87,6 +87,9 @@ public class PassoTutorial : ScriptableObject
                     case "Passo 9.2":
                         setas[i].GetComponent<Animator>().Play("seta_baixo");
                         break;
+                    case "Passo 10.2":
+                        setas[i].GetComponent<Animator>().Play("seta_direita");
+                        break;
                 }
             }
             

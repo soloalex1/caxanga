@@ -107,14 +107,14 @@ public class InfoUIJogador : MonoBehaviour
     {
         gameObject.transform.Find("Painel Jogador/Coração Dano").gameObject.SetActive(true);
         transform.Find("Painel Jogador/Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
         transform.Find("Painel Jogador/Coração Dano").gameObject.SetActive(false);
     }
     public IEnumerator AnimacaoCura(int cura)
     {
         transform.Find("Painel Jogador/Coração Cura").gameObject.SetActive(true);
         transform.Find("Painel Jogador/Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
         transform.Find("Painel Jogador/Coração Cura").gameObject.SetActive(false);
     }
 }

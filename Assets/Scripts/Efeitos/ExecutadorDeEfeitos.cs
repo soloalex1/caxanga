@@ -53,7 +53,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                     else
                         StartCoroutine(efeito.jogadorAlvo.infoUI.AnimacaoDano(efeito.alteracaoVida));
 
-                    yield return new WaitForSeconds(0.8f);
+                    yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
                     efeito.jogadorAlvo.vida += efeito.alteracaoVida;
                     efeito.jogadorAlvo.CarregarInfoUIJogador();
                     efeito.jogadorQueInvoca.CarregarInfoUIJogador();
@@ -90,7 +90,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                                 }
                             }
                         }
-                        yield return new WaitForSeconds(0.8f);
+                        yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
                         efeito.jogadorQueInvoca.CarregarInfoUIJogador();
                         foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasBaixadas)
                         {
@@ -129,7 +129,7 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                             }
                         }
                     }
-                    yield return new WaitForSeconds(0.8f);
+                    yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
                     if (Configuracoes.admJogo.tutorial && efeito.name == "Aboio" && efeito.cartaAlvo.carta.name == "Boiuna")
                     {
                         aboioEmBoiuna.Raise();
