@@ -3022,7 +3022,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515829809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d44a1c293b1debd4cbe356466e602cfe, type: 3}
   m_Name: 
@@ -11196,6 +11196,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 158736906}
     m_Modifications:
+    - target: {fileID: 1274933164439770382, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+        type: 3}
+      propertyPath: m_Name
+      value: Mouse Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274933164439770382, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8307601525992657370, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
         type: 3}
       propertyPath: propriedades.Array.size
@@ -11212,16 +11222,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e,
         type: 2}
-    - target: {fileID: 1274933164439770382, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
-        type: 3}
-      propertyPath: m_Name
-      value: Mouse Card
-      objectReference: {fileID: 0}
-    - target: {fileID: 1274933164439770382, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4444810429067335748, guid: 505f2f78b6799a64d8b18f4ff1782fa8,
         type: 3}
       propertyPath: m_LocalPosition.x
