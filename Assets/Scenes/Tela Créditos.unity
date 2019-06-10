@@ -1288,7 +1288,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4a877fdf1e5289f45a2d441821555fb5, type: 3}
-    m_FontSize: 20
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1299,11 +1299,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam
-    a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Casamentiss faiz malandris
-    se pirulit\xE1. Manduma pindureta quium dia nois paga. Copo furadis \xE9 disculpa
-    de bebadis, arcu quam euismod magna. Si u mundo t\xE1 muito paradis? Toma um
-    m\xE9 que o mundo vai girarzis! M\xE9 faiz elementum girarzis, nisi eros vermeio."
+  m_Text: "O jogo Caxang\xE1 \xE9 uma obra de fic\xE7\xE3o cientifica, inspirada
+    na cantiga \"Escravos de J\xF3\". Seu significado \xE9 dif\xEDcil de ser definido
+    devido a falta de fontes concretas sobre o significado da letra."
 --- !u!222 &682713053
 CanvasRenderer:
   m_ObjectHideFlags: 0

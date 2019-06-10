@@ -32,7 +32,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 0c201b0d9af222d4ab841660e9eab60a, type: 3}
+    sprite: {fileID: 21300000, guid: 1457e91f201e2a2419213f4ea3b00e31, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: A lenda o descreve como uma grande serpente de fogo. Ele protege
       os animais e as matas daqueles que lhe fazem mal e principalmente, que realizam
