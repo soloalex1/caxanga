@@ -159,6 +159,7 @@ public class AdmJogo : MonoBehaviour
             {
                 carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
             }
+            
             else
             {
                 carta.transform.Find("Fundo da Carta").gameObject.SetActive(true);
