@@ -33,7 +33,7 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 4c98c8ba28942e44a90199f7611ac1ab, type: 3}
+    sprite: {fileID: 21300000, guid: 5e16f64ca93e00144b68e1a0d34de87f, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
   - stringValor: "Cren\xE7as e Religiosidades: Um dia, tendo parado para descansar
       \xE0 beira de um lago, viu em sua superf\xEDcie a imagem da deusa amada: a
@@ -45,3 +45,4 @@ MonoBehaviour:
   efeito: {fileID: 11400000, guid: df519207870bb2b418796dd33a738cf4, type: 2}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
+  textoDescricao: 
