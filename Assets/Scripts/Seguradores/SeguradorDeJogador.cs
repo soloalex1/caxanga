@@ -66,11 +66,11 @@ public class SeguradorDeJogador : ScriptableObject
 
         if (this == Configuracoes.admJogo.jogadorLocal)
         {
-            infoUI = Configuracoes.admJogo.infoJogadorLocal;
+            infoUI = Configuracoes.admJogo.infoJogadorAtual;
         }
         else
         {
-            infoUI = Configuracoes.admJogo.infoJogadorIA;
+            infoUI = Configuracoes.admJogo.infoJogadorInimigo;
         }
         foreach (string carta in baralhoInicial.cartasBaralho)
         {
@@ -79,7 +79,7 @@ public class SeguradorDeJogador : ScriptableObject
 
         if (jogadorHumano == true)
         {
-            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorLocal;
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorAtual;
         }
         else
         {

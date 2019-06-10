@@ -36,9 +36,8 @@ public class SelecionarAlvoAtacado : Acao
                     else
                     {
                         Configuracoes.admJogo.TocarSomNaoPode();
-
                     }
-                    break;
+                    return;
                 }
                 //logica para atacar uma carta
                 InstanciaCarta instCarta = r.gameObject.GetComponentInParent<InstanciaCarta>();

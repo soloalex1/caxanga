@@ -13,29 +13,14 @@ MonoBehaviour:
   m_Name: baralho teste
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - Saci
-  - Saci
-  - Chupa-cabra
-  - Festa Junina
-  - Festa Junina
-  - Festa Junina
-  - Aboio
-  - Aboio
-  - Saci
-  - Pai do Mato
-  - Perna Cabeluda
-  - Festa Junina
-  - Saci
-  - "Vit\xF3ria-r\xE9gia"
-  - Aboio
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
-  - "Vit\xF3ria-r\xE9gia"
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
+  - Terezinha de Jesus
   jogador: {fileID: 0}

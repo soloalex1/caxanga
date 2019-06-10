@@ -16,6 +16,7 @@ public static class Configuracoes
     private static ConsoleHook _admConsole;
     public static ExecutadorDeEfeitos admEfeito;
     public static bool cartaRecemJogada;
+    public static bool semSom = false;
     public static float volumeMusicaFundo = 0.1f;
     public static float volumeSFX = 0.05f;
 

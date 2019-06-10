@@ -18,7 +18,7 @@ MonoBehaviour:
   rodada: {fileID: 11400000, guid: 8700d358a73b67745910fd00db4d9a74, type: 2}
   protegido: 0
   silenciado: 0
-  fezAlgumaAcao: 0
+  fezAlgumaAcao: 1
   passouRodada: 0
   moldura: {fileID: 21300000, guid: 0c10f29ed0ddd7b48b657e5fb75f83f4, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
@@ -32,7 +32,7 @@ MonoBehaviour:
   nomeJogador: Boto
   vidaInicial: 1
   magiaInicial: 10
-  magia: 10
+  magia: 5
   vida: 1
   infoUI: {fileID: 0}
   jogadorHumano: 0

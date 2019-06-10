@@ -73,6 +73,7 @@ public class InfoUIJogador : MonoBehaviour
                     {
                         c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeBaixarFeitico;
                     }
+                    c.gameObject.transform.Find("Sombra").gameObject.SetActive(true);
                 }
                 else
                 {
@@ -84,6 +85,7 @@ public class InfoUIJogador : MonoBehaviour
                     {
                         c.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spritePodeBaixarFeitico;
                     }
+                    c.gameObject.transform.Find("Sombra").gameObject.SetActive(false);
                 }
             }
         }

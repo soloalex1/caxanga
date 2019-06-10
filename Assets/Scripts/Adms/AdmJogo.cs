@@ -19,6 +19,7 @@ public class AdmJogo : MonoBehaviour
     public GameObject telaFimDeJogo;
 
     public GameObject telaPause;
+    [HideInInspector]
     public int rodadaAtual;
     public EstadoJogador emSeuTurno;
     public Efeito efeitoAtual;
@@ -28,16 +29,21 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorIA;
 
-    public SeguradorDeCartas seguradorCartasJogadorLocal;
+    public SeguradorDeCartas seguradorCartasJogadorAtual;
     public SeguradorDeCartas seguradorCartasJogadorInimigo;
 
     //definir no editor \/
-    public InfoUIJogador infoJogadorLocal;
-    public InfoUIJogador infoJogadorIA;
+    public InfoUIJogador infoJogadorAtual;
+    public InfoUIJogador infoJogadorInimigo;
+    [HideInInspector]
     public SeguradorDeJogador jogadorAtacado;
+    [HideInInspector]
     public InstanciaCarta cartaAtacada;
+    [HideInInspector]
     public InstanciaCarta cartaAtacante;
+    [HideInInspector]
     public InstanciaCarta cartaAlvo;
+    [HideInInspector]
     public SeguradorDeJogador jogadorAlvo;
     public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boitataAtacouJogador, turnoInimigoIA;
     public Image ImagemTextoTurno;
@@ -181,7 +187,7 @@ public class AdmJogo : MonoBehaviour
         TrocarJogadorAtual();
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
-         if (jogadorAtual != jogadorVencedorTurno)
+        if (jogadorAtual != jogadorVencedorTurno)
         {
             TrocarJogadorAtual();
         }
@@ -239,8 +245,10 @@ public class AdmJogo : MonoBehaviour
             jogadorAtual = jogadorLocal;
             jogadorInimigo = jogadorIA;
         }
-        seguradorCartasJogadorLocal.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
-        seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
+        jogadorAtual.seguradorCartas = seguradorCartasJogadorAtual;
+        jogadorInimigo.seguradorCartas = seguradorCartasJogadorInimigo;
+        seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorAtual);
+        seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorInimigo);
 
         jogadorAtual.rodada.turno.IniciarTurno();
     }
