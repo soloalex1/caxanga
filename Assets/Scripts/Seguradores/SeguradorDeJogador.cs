@@ -55,6 +55,8 @@ public class SeguradorDeJogador : ScriptableObject
         baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
         baralho.cartasBaralho = new List<string>();
         baralho.jogador = this;
+        cartasBaixadas.Clear();
+        cartasMao.Clear();
         cartasCemiterio.Clear();
         lendasBaixadasNoTurno = 0;
         feiticosBaixadosNoTurno = 0;
@@ -155,15 +157,10 @@ public class SeguradorDeJogador : ScriptableObject
                 baralho.Embaralhar();
             }
         }
-        else
-        {
-            numCartasMaoInicio = 5;
-        }
         for (int i = 0; i < numCartasMaoInicio; i++)
         {
             Configuracoes.admJogo.PuxarCarta(this);
         }
-
         // foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
         // {
         //     if (c != null)

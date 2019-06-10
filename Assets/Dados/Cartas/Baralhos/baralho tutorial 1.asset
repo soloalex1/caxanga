@@ -19,8 +19,8 @@ MonoBehaviour:
   - "Boitat\xE1"
   - Boiuna
   - Chupa-cabra
-  - Corpo Seco
+  - Saci
   - Aboio
   - Boiuna
-  - Saci
-  jogador: {fileID: 0}
+  - "Boitat\xE1"
+  jogador: {fileID: 11400000, guid: 8c2a2c30ba1238b47afc8cf4b69f7953, type: 2}

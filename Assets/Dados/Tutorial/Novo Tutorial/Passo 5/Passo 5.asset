@@ -15,7 +15,7 @@ MonoBehaviour:
   eventoFinalizador: {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
   textos:
   - "A Boiuna possui 4 de ataque e 3 de custo, e \xE9 uma boa op\xE7\xE3o para come\xE7ar
-    a rodada. Jogue-a."
+    a rodada. Clique e arraste ela para o campo para jog\xE1-la!"
   indiceTexto: 0
   prefabModal: {fileID: 1718955637355501130, guid: 93785eaaf3298044bab933d9cba99c88,
     type: 3}
