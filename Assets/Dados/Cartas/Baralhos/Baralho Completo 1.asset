@@ -25,14 +25,17 @@ MonoBehaviour:
   - Cuca
   - Curupira
   - Festa Junina
+  - Iara
   - Lobisomem
   - Mapinguari
   - Marcha Soldado
   - "Mula-sem-cabe\xE7a"
   - Pai do Mato
   - Perna Cabeluda
+  - "P\xE9 de Moleque"
   - Pisadeira
   - Saci
   - Terezinha de Jesus
+  - Visagem
   - "Vit\xF3ria-r\xE9gia"
   jogador: {fileID: 0}

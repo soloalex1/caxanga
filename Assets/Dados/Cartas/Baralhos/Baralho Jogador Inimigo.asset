@@ -15,24 +15,4 @@ MonoBehaviour:
   cartasBaralho:
   - "Boitat\xE1"
   - Boiuna
-  - "Cabe\xE7a de Cuia"
-  - Corpo Seco
-  - Cuca
-  - Curupira
-  - Lobisomem
-  - Mapinguari
-  - "Mula-sem-cabe\xE7a"
-  - Pai do Mato
-  - Perna Cabeluda
-  - Pisadeira
-  - Saci
-  - "Vit\xF3ria-r\xE9gia"
-  - Aboio
-  - "Acaraj\xE9"
-  - Atirei o pau no gato
-  - Boi da Cara Preta
-  - Bumba-meu-boi
-  - Festa Juinina
-  - Marcha Soldado
-  - Terezinha de Jesus
   jogador: {fileID: 0}
