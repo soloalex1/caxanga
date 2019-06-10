@@ -8,11 +8,11 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    public AudioClip hit, somBaixarCarta, somNaoPode, somCura;
     public float tempoAnimacaoCuraDano;
     public int numMaxCartasMao;
     public Baralho baralhoTutorial1, baralhoTutorial2;
     public bool tutorial, inicioTutorial;
-    SeguradorDeJogador jogadorVencedor;
     public bool pause;
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
 
@@ -52,10 +52,12 @@ public class AdmJogo : MonoBehaviour
     }
     private void Start()
     {
+
         /*  
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
+        Configuracoes.admJogo = this;
         if (inicioTutorial)
         {
             jogadorLocal.baralhoInicial = baralhoTutorial1;
@@ -66,8 +68,7 @@ public class AdmJogo : MonoBehaviour
         {
             pause = false;
         }
-
-        Configuracoes.admJogo = this;
+        GetComponent<AudioSource>().volume = Configuracoes.volumeSFX;
         jogadorLocal.InicializarJogador();
         jogadorIA.InicializarJogador();
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
@@ -148,10 +149,19 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
             jogador.cartasMao.Add(instCarta);
             jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
+            if (jogador == jogadorAtual)
+            {
+                carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+            }
+            else
+            {
+                carta.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
         }
     }
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
+        aoPararDeOlharCarta.Raise();
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedorTurno.corJogador;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
@@ -162,22 +172,21 @@ public class AdmJogo : MonoBehaviour
         ImagemTextoTurno.gameObject.SetActive(false);
         if (jogadorInimigo.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorAtual;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
-            yield return null;
+            StartCoroutine(FimDeJogo(jogadorAtual));
         }
         if (jogadorAtual.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorInimigo;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
-            yield return null;
+            StartCoroutine(FimDeJogo(jogadorInimigo));
         }
+        TrocarJogadorAtual();
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
-        if (jogadorAtual != jogadorVencedorTurno)
+         if (jogadorAtual != jogadorVencedorTurno)
+        {
             TrocarJogadorAtual();
+        }
     }
-    void ChecaVidaJogadores()
+    public void ChecaVidaJogadores()
     {
         if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
         {
@@ -253,9 +262,13 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.admCursor.MudarSprite(cursorAlvoCinza);
         }
         pause = false;
+        StartCoroutine(RetomarMesmo());
+    }
+    IEnumerator RetomarMesmo()
+    {
+        yield return new WaitForSeconds(0.2f);
         telaPause.gameObject.SetActive(false);
     }
-
     public IEnumerator FimDeJogo(SeguradorDeJogador jogadorVencedor)
     {
         telaFimDeJogo.gameObject.SetActive(true);
@@ -310,24 +323,50 @@ public class AdmJogo : MonoBehaviour
         }
         if (jogadorInimigo.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorAtual;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
+            StartCoroutine(FimDeJogo(jogadorAtual));
             yield return null;
         }
         else if (jogadorAtual.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorInimigo;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
+            StartCoroutine(FimDeJogo(jogadorInimigo));
             yield return null;
         }
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
         TrocarJogadorAtual();
+    }
 
-
+    public void TocarSomCartaBaixada()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somBaixarCarta;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomNaoPode()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somNaoPode;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomDano()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = hit;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomCura()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somCura;
+        GetComponent<AudioSource>().Play();
     }
     public IEnumerator FadeTextoTurno(SeguradorDeJogador jogador)
     {
+        aoPararDeOlharCarta.Raise();
         if (jogador.passouRodada == false)
         {
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogador.corJogador;
@@ -342,6 +381,11 @@ public class AdmJogo : MonoBehaviour
     }
     public void EncerrarRodada()
     {
+        if (pause == true)
+        {
+            return;
+        }
+        aoPararDeOlharCarta.Raise();
         jogadorAtual.rodada.turno.FinalizarTurno();
         if (jogadorAtual.fezAlgumaAcao)//somente passou o turno
         {
@@ -433,7 +477,6 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacada = null;
             cartaAtacante = null;
-
         }
         //Atacar um jogador
         if (cartaAtacante != null && jogadorAtacado != null)
@@ -459,7 +502,6 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante = null;
             jogadorAtacado = null;
             ChecaVidaJogadores();
-
         }
         yield return null;
     }
@@ -490,11 +532,8 @@ public class AdmJogo : MonoBehaviour
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada/Carta sendo olhada").SetActive(true);
         Configuracoes.cartaRecemJogada = true;
         aoOlharCarta.Raise();
-
         yield return new WaitForSeconds(1.5f);
-
         Configuracoes.cartaRecemJogada = false;
-
         aoPararDeOlharCarta.Raise();
     }
 }

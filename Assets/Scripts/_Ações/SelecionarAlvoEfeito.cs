@@ -9,6 +9,7 @@ public class SelecionarAlvoEfeito : Acao
     public Sprite cursorIdle;
     public override void Executar(float d)
     {
+        //desisti de escolher um alvo
         if (Configuracoes.admJogo.efeitoAtual.apenasJogador == false)
         {
             if (Configuracoes.admJogo.efeitoAtual.alteracaoPoder > 0)
@@ -17,7 +18,6 @@ public class SelecionarAlvoEfeito : Acao
                 {
                     Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                     Configuracoes.admJogo.efeitoAtual = null;
-                    Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                     return;
                 }
@@ -28,18 +28,17 @@ public class SelecionarAlvoEfeito : Acao
                 {
                     Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                     Configuracoes.admJogo.efeitoAtual = null;
-                    Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                     Configuracoes.admJogo.DefinirEstado(emSeuTurno);
                     return;
                 }
             }
         }
-
         if (Input.GetMouseButtonDown(0))
         {
             List<RaycastResult> resultados = Configuracoes.GetUIObjs();
             foreach (RaycastResult r in resultados)
-            {                //logica para afetar o jogador inimigo
+            {
+                //logica para afetar o jogador inimigo
                 InstanciaCarta carta = r.gameObject.GetComponentInParent<InstanciaCarta>();
                 if (carta != null && (Configuracoes.admJogo.jogadorAtual.cartasBaixadas.Contains(carta) || Configuracoes.admJogo.jogadorInimigo.cartasBaixadas.Contains(carta)))
                 {
@@ -59,12 +58,16 @@ public class SelecionarAlvoEfeito : Acao
                         return;
                     }
                 }
+                else
+                {
+                    Configuracoes.admJogo.TocarSomNaoPode();
+
+                }
             }
             if (Configuracoes.admJogo.efeitoAtual.cartaAlvo == null)
             {
                 Configuracoes.admJogo.efeitoAtual.cartaQueInvoca.gameObject.transform.localScale = new Vector3(0.28f, 0.28f, 1);
                 Configuracoes.admJogo.efeitoAtual = null;
-                Configuracoes.RegistrarEvento("Desisti de escolher um alvo", Color.white);
                 Configuracoes.admJogo.DefinirEstado(emSeuTurno);
             }
         }

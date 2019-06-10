@@ -9,4 +9,7 @@ public class PassarTexto : MonoBehaviour
     {
         passouTexto.Raise();
     }
+    public void TocarSom(){
+        Configuracoes.admTutorial.TocarSomBotao();
+    }
 }

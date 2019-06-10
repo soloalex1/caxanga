@@ -33,6 +33,11 @@ public class SelecionarAlvoAtacado : Acao
                         Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.Atacar());
                         Configuracoes.admJogo.jogadorAtual.fezAlgumaAcao = true;
                     }
+                    else
+                    {
+                        Configuracoes.admJogo.TocarSomNaoPode();
+
+                    }
                     break;
                 }
                 //logica para atacar uma carta
@@ -61,6 +66,10 @@ public class SelecionarAlvoAtacado : Acao
                             gridAreaDropavel.valor.GetComponent<Image>().raycastTarget = true;
                         }
                         return;
+                    }
+                    else
+                    {
+                        Configuracoes.admJogo.TocarSomNaoPode();
                     }
                 }
             }

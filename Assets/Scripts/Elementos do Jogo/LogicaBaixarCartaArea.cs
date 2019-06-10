@@ -34,6 +34,7 @@ public class LogicaBaixarCartaArea : LogicaArea
                     }
                     else
                     {
+                        Configuracoes.admJogo.TocarSomNaoPode();
                         Configuracoes.RegistrarEvento("Você não pode baixar mais de uma Lenda por turno", Color.white);
                     }
                 }
@@ -50,11 +51,13 @@ public class LogicaBaixarCartaArea : LogicaArea
                         }
                         else
                         {
+                            Configuracoes.admJogo.TocarSomNaoPode();
                             Configuracoes.RegistrarEvento("Você não pode baixar mais de um Feitiço por turno", Color.white);
                         }
                     }
                     else
                     {
+                        Configuracoes.admJogo.TocarSomNaoPode();
                         Configuracoes.RegistrarEvento("Você não pode utilizar efeitos neste turno", Color.white);
                     }
 

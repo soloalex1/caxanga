@@ -40,7 +40,6 @@ public class SeguradorDeCartas : ScriptableObject
         {
             c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
         }
-
         seguradorJogador.infoUI = InfoUIJogador;
         seguradorJogador.CarregarInfoUIJogador();
     }

@@ -17,7 +17,7 @@ public class PassoTutorial : ScriptableObject
     public int numSetas;
     public VariavelTransform[] posicoesSeta;
     public GameObject[] objetosDestacados;
-    List <GameObject> objetosDestacadosNaTela;
+    List<GameObject> objetosDestacadosNaTela;
     public Carta cartaMostrada;
     public bool jogadorInterage;
 
@@ -38,25 +38,25 @@ public class PassoTutorial : ScriptableObject
         }
         else
         {
+            yield return new WaitUntil(() => Configuracoes.admJogo != null);
             Configuracoes.admJogo.pause = true;
         }
-
+        objetosDestacadosNaTela = new List<GameObject>();
         indiceTexto = 0;
         modal = Instantiate(prefabModal, posicaoModal.valor);
         modal.transform.Find("Texto").GetComponent<Text>().text = textos[indiceTexto];
         if (objetosDestacados.Length > 0)
         {
-            objetosDestacadosNaTela = new List<GameObject>();
             Transform posicaoObjsDestacados = GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Tutorial/Objetos Destacados").transform;
             foreach (GameObject objDestacado in objetosDestacados)
             {
                 objetosDestacadosNaTela.Add(Instantiate(objDestacado, posicaoObjsDestacados));
                 if (cartaMostrada != null && objDestacado.GetComponent<ExibirInfoCarta>() != null)
                 {
-                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count-1].GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
-                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count-1].GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
+                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count - 1].GetComponent<ExibirInfoCarta>().carta = cartaMostrada;
+                    objetosDestacadosNaTela[objetosDestacadosNaTela.Count - 1].GetComponent<ExibirInfoCarta>().CarregarCarta(cartaMostrada);
                 }
-            }            
+            }
         }
         if (numSetas > 0 && seta != null && posicoesSeta.Length > 0)
         {
@@ -64,7 +64,7 @@ public class PassoTutorial : ScriptableObject
             for (int i = 0; i < numSetas; i++)
             {
                 setas.Add(Instantiate(seta, posicoesSeta[i].valor));
-                switch(this.name)
+                switch (this.name)
                 {
                     case "Passo 3.1":
                         setas[i].GetComponent<Animator>().Play("seta_direita");
@@ -92,7 +92,7 @@ public class PassoTutorial : ScriptableObject
                         break;
                 }
             }
-            
+
         }
         if (jogadorInterage == false)
         {
@@ -111,7 +111,7 @@ public class PassoTutorial : ScriptableObject
     }
     public void FinalizarPasso()
     {
-        if (modal!=null)
+        if (modal != null)
             Destroy(modal);
         if (numSetas > 0 && seta != null && setas.Count > 0)
         {

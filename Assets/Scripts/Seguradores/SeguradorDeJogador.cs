@@ -14,7 +14,8 @@ public class SeguradorDeJogador : ScriptableObject
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
-    public Baralho baralho = null;
+    [HideInInspector]
+    public Baralho baralho;
     public Baralho baralhoInicial;
     public Color corJogador;
     public Sprite retratoJogador;
@@ -53,6 +54,7 @@ public class SeguradorDeJogador : ScriptableObject
         barrasDeVida = 3;
         baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
         baralho.cartasBaralho = new List<string>();
+        baralho.jogador = this;
         cartasCemiterio.Clear();
         lendasBaixadasNoTurno = 0;
         feiticosBaixadosNoTurno = 0;
@@ -61,7 +63,6 @@ public class SeguradorDeJogador : ScriptableObject
         passouRodada = false;
         fezAlgumaAcao = false;
         silenciado = false;
-
 
         if (this == Configuracoes.admJogo.jogadorLocal)
         {
@@ -96,7 +97,7 @@ public class SeguradorDeJogador : ScriptableObject
         {
             cartasMao.Remove(instCarta);
         }
-        cartasBaixadas.Add(instCarta);
+        cartasBaixadas.Add(instCarta);  
         fezAlgumaAcao = true;
         magia -= instCarta.custo;
         infoUI.AtualizarMagia();
@@ -121,7 +122,7 @@ public class SeguradorDeJogador : ScriptableObject
         {
             jogouBoitata.Raise();
         }
-
+        Configuracoes.admJogo.TocarSomCartaBaixada();
         return;
     }
     public bool TemMagiaParaBaixarCarta(InstanciaCarta c)
@@ -150,8 +151,9 @@ public class SeguradorDeJogador : ScriptableObject
     {
         if (Configuracoes.admJogo.tutorial == false)
         {
-            if (Configuracoes.admJogo.tutorial == false)
+            if (Configuracoes.admJogo.tutorial == false){
                 baralho.Embaralhar();
+            }
         }
         else
         {
@@ -162,13 +164,13 @@ public class SeguradorDeJogador : ScriptableObject
             Configuracoes.admJogo.PuxarCarta(this);
         }
 
-        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
-        {
-            if (c != null)
-            {
-                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-            }
-        }
+        // foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        // {
+        //     if (c != null)
+        //     {
+        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+        //     }
+        // }
     }
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {

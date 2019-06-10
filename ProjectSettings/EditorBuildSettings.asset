@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tela de Jogo.unity
     guid: 168929295adab004089b7162a40812ee
   - enabled: 1
-    path: "Assets/Scenes/Tela Cole\xE7\xE3o.unity"
-    guid: 7b5ed71af1bd02b4599784e6e2b719fb
-  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: f8a1ae2dbfb80d94c9eb1cb08b8a981b
   - enabled: 1

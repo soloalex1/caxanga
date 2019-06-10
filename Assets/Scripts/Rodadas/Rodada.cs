@@ -25,7 +25,6 @@ public class Rodada : ScriptableObject
         jogador.podeUsarEfeito = true;
         jogador.passouRodada = false;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
-
         jogador.CarregarInfoUIJogador();
         if (jogador.cartasBaixadas.Count > 0)
         {
@@ -44,7 +43,8 @@ public class Rodada : ScriptableObject
 
         for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
         {
-            Configuracoes.admJogo.PuxarCarta(jogador);
+            if (jogador.cartasMao.Count < Configuracoes.admJogo.numMaxCartasMao)
+                Configuracoes.admJogo.PuxarCarta(jogador);
         }
     }
     public void PassarRodada()
