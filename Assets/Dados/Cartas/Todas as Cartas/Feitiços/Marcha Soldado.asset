@@ -34,12 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 5d86db67b7fbde440a6093bdcfaf30ef, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Brinquedos e Brincadeiras: Marcha Soldado \xE9 uma cantiga de roda
-      tradicional brasileira, tradi\xE7\xE3o cultural passada de gera\xE7\xE3o em
-      gera\xE7\xE3o pelas brincadeiras infantis."
+  - stringValor: "Cantiga de roda: brincadeira destinada a crian\xE7as, com melodia
+      que remete as m\xFAsicas populares brasileiras, passada de gera\xE7\xE3o em
+      gera\xE7\xE3o."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: d85ee0bf693c8354fa91f77eb1d93178, type: 2}
   categoria: Brinquedos e Brincadeiras
   protegido: 0
+  textoDescricao: "Cantigas de roda como essa s\xE3o de sabedoria popular, sendo
+    desconhecida a sua origem. S\xE3o passadas de gera\xE7\xE3o em gera\xE7\xE3o,
+    comumente utilizadas em brincadeiras infantis. "

@@ -34,12 +34,14 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 8937b8beac2c761449952d8ac1e11273, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e religiosidades: Trata-se de uma criatura que \xE9
-      homem de dia e lobo nas noites de lua cheia. Acredita-se, assim, que est\xE1
-      condenado a essa transforma\xE7\xE3o at\xE9 o final de sua vida."
+  - stringValor: "Homem de dia, lobo nas noites de lua cheia. Acredita-se, assim,
+      que est\xE1 condenado a essa transforma\xE7\xE3o at\xE9 o final de sua vida."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
+  textoDescricao: "Em todas as noites de lua cheia, o homem se transforma em lobisomem
+    e passa a visitar 7 partes da regi\xE3o, 7 p\xE1tios de igreja, 7 vilas e 7 encruzilhadas.
+    Por onde ele passa, desliga todas as luzes que v\xEA e uiva de forma aterrorizante."

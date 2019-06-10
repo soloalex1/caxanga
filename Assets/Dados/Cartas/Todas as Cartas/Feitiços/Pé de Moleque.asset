@@ -34,12 +34,13 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 2d186b1f06c826543a49827f55689743, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Culin\xE1ria: Doce t\xEDpico feito a partir da mistura de amendoim
-      torrado com rapadura. A denomina\xE7\xE3o referencia ao cal\xE7amento de pedras
-      irregulares presente em cidades brasileiras."
+  - stringValor: "\xC9 um doce t\xEDpico feito a partir da mistura de amendoim torrado
+      com rapadura, muito presente nas festas juninas."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: e447062679a3e2a45a19ca4760b0cf66, type: 2}
   categoria: "Culin\xE1ria"
   protegido: 0
+  textoDescricao: "A denomina\xE7\xE3o referencia ao cal\xE7amento de pedras irregulares
+    presente nas cidades coloniais brasileiras."

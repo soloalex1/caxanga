@@ -28,7 +28,8 @@ public class AdmCena : MonoBehaviour
     {
         //cria uma operação assíncrona para carregar a tela sem travar o jogo
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nomeTela);
-        fadeInstanciado.GetComponent<Animator>().Play(0);
+        // fadeInstanciado.GetComponent<Animator>().Play(0);
+        Instantiate(telaCarregamento, transformTelaCarregamento);
         //enquanto a tela não for carregada
         while (!asyncLoad.isDone)
         {
@@ -39,6 +40,10 @@ public class AdmCena : MonoBehaviour
     }
     public void CarregarCena(string proximaCena)
     {
+        if (proximaCena == "Coleção" || proximaCena == "Tela Créditos")
+        {
+            Configuracoes.tempoMusica = GetComponent<TocarSons>().fonteAudio.time;
+        }
         StartCoroutine(CarregarTela(proximaCena));
     }
 

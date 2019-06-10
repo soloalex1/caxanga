@@ -34,11 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 0f27aba7a05488b418612340beb8a551, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e religiosidades: Criatura horrenda, que se alimenta
-      do sangue dos animais. Tem uma bizarra prefer\xEAncia por cabras."
+  - stringValor: "Criatura horrenda, que se alimenta do sangue dos animais. Tem uma
+      bizarra prefer\xEAncia por cabras."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
+  textoDescricao: "Magro e de apar\xEAncia macabra, o Chupa-cabra ataca animais durante
+    a noite, principalmente em \xE1reas rurais, bebendo sangue e deixando cad\xE1veres
+    com marcas bizarras. \xC9 conhecido como \"vampiro do interior\" e temido por
+    criadores em todo o pa\xEDs."

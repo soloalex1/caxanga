@@ -55,6 +55,10 @@ public class ExibirInfoCarta : MonoBehaviour
             else if (p.elemento is ElementoTexto)
             {
                 ep.texto.text = p.stringValor;
+                if (ep.elemento.name == "Detalhes")
+                {
+                    ep.texto.text = carta.categoria +": "+ p.stringValor;
+                }
                 ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoImagem)
@@ -68,9 +72,8 @@ public class ExibirInfoCarta : MonoBehaviour
         {
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(false);
-            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childControlHeight = true;
+            // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childControlHeight = true;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
-            // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextMaxSize = 32;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = true;
 
 
@@ -80,7 +83,7 @@ public class ExibirInfoCarta : MonoBehaviour
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(true);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(true);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childControlHeight = false;
-
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = false;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.UpperCenter;
         }
         if (carta.tipoCarta == tipoFeitico)

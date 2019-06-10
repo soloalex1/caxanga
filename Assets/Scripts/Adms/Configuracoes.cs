@@ -19,6 +19,7 @@ public static class Configuracoes
     public static bool semSom = false;
     public static float volumeMusicaFundo = 0.1f;
     public static float volumeSFX = 0.05f;
+    public static float tempoMusica;
 
     public static bool turnoDaIATutorial;
     public static void RegistrarEvento(string e, Color color)

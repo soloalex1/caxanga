@@ -34,13 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 14d1bbd92b05f154e9c9459e8c9ea416, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Mistura-se \xE0s sombras dos muros
-      altos ou fica por tr\xE1s das \xE1rvores de troncos retorcidos. Quando a v\xEDtima
-      desavisada passa, a criatura se movimenta ligeira para alcan\xE7\xE1-la."
+  - stringValor: "Mistura-se \xE0s sombras dos muros altos ou fica por tr\xE1s das
+      \xE1rvores de troncos retorcidos."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
-  textoDescricao: 
+  textoDescricao: "Espreita as v\xEDtimas escondida pelas trevas das ruas desertas.
+    Al\xE9m do p\xE2nico, causa hematomas, escoria\xE7\xF5es, e por vezes quebra
+    ossos de quem lhe cruza o caminho, seja homem ou mulher, jovem ou velho. N\xE3o
+    se conhece o motivo de tanto \xF3dio."

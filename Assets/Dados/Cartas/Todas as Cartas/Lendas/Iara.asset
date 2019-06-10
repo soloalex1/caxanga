@@ -34,13 +34,14 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 060e4cf71dfd5d94ea18c4f441e75d66, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Uma das entidades mais poderosas do
-      mundo conhecido, a Senhora das \xC1guas protege os rios e lagos da regi\xE3o
-      amaz\xF4nica, mantendo o equil\xEDbrio da natureza e guardando as criaturas
-      que vivem nas \xE1guas."
+  - stringValor: "Os homens mortais sempre s\xE3o atra\xEDdos pela beleza da Iara,
+      que leva as pessoas para o fundo do rio entoando uma melodia m\xE1gica."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: a634c99891919f7408a43bfd332e1d30, type: 2}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
+  textoDescricao: "Uma das entidades mais poderosas do mundo conhecido, a Senhora
+    das \xC1guas protege os rios e lagos da regi\xE3o amaz\xF4nica, mantendo o equil\xEDbrio
+    da natureza e guardando as criaturas que l\xE1 vivem."

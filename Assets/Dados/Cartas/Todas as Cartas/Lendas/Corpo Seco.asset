@@ -34,13 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 13476d3575c024943ba93953741a3a24, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Ser mal\xEDgno que se esconde nas
-      matas, surpreendendo e assombrando viajantes."
+  - stringValor: "Ser mal\xEDgno que se esconde nas matas, surpreendendo e assombrando
+      viajantes."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 303e09a03060e5945855c1ea31034ca4, type: 2}
-  categoria: "Cren\xE7as e Religiosidades"
+  categoria: "Mal\xEDgno e mesquinho, o corpo-seco um dia foi humano cruel. De tal
+    forma que batia e maltratava seus pais. Quando morreu, nem o c\xE9u nem o inferno
+    suportaram tamanha maldade. Hoje, vaga pela terra procurando viajantes para atormentar."
   protegido: 0
   textoDescricao: "Mal\xEDgno e mesquinho, o corpo-seco um dia foi humano cruel.
     De tal forma que batia e maltratava seus pais. Quando morreu, nem o c\xE9u nem

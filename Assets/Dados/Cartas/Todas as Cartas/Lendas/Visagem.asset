@@ -34,13 +34,14 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 0f124b94508b6ce468d8f2b33d14aabd, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: As visagens s\xE3o um tipo de apari\xE7\xE3o
-      que vaga por este mundo, normalmente falecidos que ainda t\xEAm assuntos inacabados
-      e assombram os viajantes."
+  - stringValor: "Apari\xE7\xE3o que vaga por este mundo, normalmente falecidos que
+      ainda t\xEAm assuntos inacabados e assombram os viajantes."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
   categoria: "Cren\xE7as e Religiosidades"
   protegido: 0
-  textoDescricao: 
+  textoDescricao: "Fantasma com forma vagamente humana, seu simples vislumbre aterroriza
+    mesmo o mais corajoso dos viajantes. Os mais velhos recomendam evitar as visagens,
+    e deix\xE1-las terminarem seus assuntos neste mundo."

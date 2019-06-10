@@ -34,12 +34,16 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 9f336e67639d6964594745399106fb94, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Festas Populares: A hist\xF3ria mais comum aborda um boi morto
-      por um escravo, a pedido da esposa gr\xE1vida.  Com a ajuda de curandeiros,
-      o boi \xE9 ent\xE3o ressuscitado.\uFEFF"
+  - stringValor: "\xC9 um personagem de uma dan\xE7a do folclore popular brasileiro,
+      com humanos e animais fant\xE1sticos, que gira em torno de uma lenda sobre
+      a morte e ressurrei\xE7\xE3o de um boi."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 8286654bc5bae2149983388e2e12e268, type: 2}
   categoria: Festas Populares
   protegido: 0
+  textoDescricao: "A hist\xF3ria mais comum sobre a origem do boi aborda uma escrava
+    gr\xE1vida, que pede ao marido para comer l\xEDngua de boi. O escravo ent\xE3o
+    mata o boi e \xE9 preso a mando do dono da fazenda. Com a ajuda de curandeiros,
+    o boi \xE9 ent\xE3o ressuscitado."

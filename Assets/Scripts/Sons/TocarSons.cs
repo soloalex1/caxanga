@@ -13,6 +13,7 @@ public class TocarSons : MonoBehaviour
         fonteAudio.loop = true;
         fonteAudio.clip = somDeFundo;
         fonteAudio.volume = Configuracoes.volumeMusicaFundo;
+        fonteAudio.time = Configuracoes.tempoMusica;
         fonteAudio.Play();
     }
     public void DesligarSons()
