@@ -18,7 +18,7 @@ public class AdmColecao : MonoBehaviour
     AdmRecursos ar;
     public Sprite cursorClicavel, cursorIdle;
     int peChildCount;
-    public GameObject botoesLivro, botaoTodos;
+    public GameObject botoesLivro;
     int indice, numCartasPags;
 
     public Text textoDescricao;
@@ -26,8 +26,6 @@ public class AdmColecao : MonoBehaviour
     {
         ar = Configuracoes.GetAdmRecursos();
         InstanciarColecao(categoriaAtual);
-        EventSystem m_EventSystem = EventSystem.current;
-        m_EventSystem.SetSelectedGameObject(botaoTodos);
         olhandoCarta = false;
     }
     void Update()
@@ -48,6 +46,8 @@ public class AdmColecao : MonoBehaviour
                         cartaOlhada.GetComponent<ExibirInfoCarta>().CarregarCarta(c.carta);
                         textoDescricao.text = c.carta.textoDescricao;
                         olhandoCarta = true;
+                        Configuracoes.admCursor.MudarSprite(cursorIdle);
+                        Configuracoes.admCursor.sobreBotao = false;
                         break;
                     }
                 }
@@ -82,6 +82,7 @@ public class AdmColecao : MonoBehaviour
                 {
                     carta = Instantiate(prefabCarta) as GameObject;
                     infoCarta = carta.GetComponent<ExibirInfoCarta>();
+                    infoCarta.carta = valorCarta;
                     infoCarta.CarregarCarta(valorCarta);
                     carta.AddComponent<BotaoOver>();
                     carta.GetComponent<BotaoOver>().cursorClicavel = cursorClicavel;
@@ -140,10 +141,15 @@ public class AdmColecao : MonoBehaviour
     {
         if (olhandoCarta == false)
         {
+            foreach (Transform t in botoesLivro.transform)
+            {
+                t.GetComponent<Image>().color = new Color(255, 255, 255);
+            }
+            EventSystem m_EventSystem = EventSystem.current;
+            m_EventSystem.currentSelectedGameObject.GetComponent<Image>().color = new Color(0.8584906f, 0.8338431f, 0.1822268f);
             categoriaAtual = categoria;
             numPagina = 0;
             InstanciarColecao(categoriaAtual);
         }
-
     }
 }

@@ -28,18 +28,22 @@ public class CartaBaixada : LogicaInstanciaCarta
             Configuracoes.admJogo.cartaAtacante = carta;
             Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
         }
+        else
+        {
+            Configuracoes.admJogo.TocarSomNaoPode();
+        }
     }
     public override void AoOlhar(InstanciaCarta carta)
     {
         if (carta != cartaAtual.valor)//se for diferente
-           {   
-            
-             // impedindo o mouseleave de matar o destaque na carta recém jogada
-            if(!Configuracoes.cartaRecemJogada)
+        {
+
+            // impedindo o mouseleave de matar o destaque na carta recém jogada
+            if (!Configuracoes.cartaRecemJogada)
             {
                 cartaAtual.Set(carta);
                 aoOlharCarta.Raise();
-            }         
+            }
 
             if (Configuracoes.admJogo.estadoAtual == usandoEfeito)
             {

@@ -8,17 +8,18 @@ using UnityEngine.UI;
 
 public class AdmJogo : MonoBehaviour
 {
+    public AudioClip hit, somBaixarCarta, somNaoPode, somCura;
     public float tempoAnimacaoCuraDano;
-
+    public int numMaxCartasMao;
     public Baralho baralhoTutorial1, baralhoTutorial2;
     public bool tutorial, inicioTutorial;
-    SeguradorDeJogador jogadorVencedor;
     public bool pause;
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
 
     public GameObject telaFimDeJogo;
 
     public GameObject telaPause;
+    [HideInInspector]
     public int rodadaAtual;
     public EstadoJogador emSeuTurno;
     public Efeito efeitoAtual;
@@ -28,16 +29,21 @@ public class AdmJogo : MonoBehaviour
     public SeguradorDeJogador jogadorInimigo;
     public SeguradorDeJogador jogadorIA;
 
-    public SeguradorDeCartas seguradorCartasJogadorLocal;
+    public SeguradorDeCartas seguradorCartasJogadorAtual;
     public SeguradorDeCartas seguradorCartasJogadorInimigo;
 
     //definir no editor \/
-    public InfoUIJogador infoJogadorLocal;
-    public InfoUIJogador infoJogadorIA;
+    public InfoUIJogador infoJogadorAtual;
+    public InfoUIJogador infoJogadorInimigo;
+    [HideInInspector]
     public SeguradorDeJogador jogadorAtacado;
+    [HideInInspector]
     public InstanciaCarta cartaAtacada;
+    [HideInInspector]
     public InstanciaCarta cartaAtacante;
+    [HideInInspector]
     public InstanciaCarta cartaAlvo;
+    [HideInInspector]
     public SeguradorDeJogador jogadorAlvo;
     public GameEvent cartaMatou, jogadorPassouTurno, boiunaAtacouLobis, boitataAtacouJogador, turnoInimigoIA;
     public Image ImagemTextoTurno;
@@ -52,10 +58,12 @@ public class AdmJogo : MonoBehaviour
     }
     private void Start()
     {
+
         /*  
         A classe estática configurações vai possuir o admJogo como atributo,
         assim, nas configurações podemos mudar o admJogo também.
         */
+        Configuracoes.admJogo = this;
         if (inicioTutorial)
         {
             jogadorLocal.baralhoInicial = baralhoTutorial1;
@@ -66,8 +74,7 @@ public class AdmJogo : MonoBehaviour
         {
             pause = false;
         }
-
-        Configuracoes.admJogo = this;
+        GetComponent<AudioSource>().volume = Configuracoes.volumeSFX;
         jogadorLocal.InicializarJogador();
         jogadorIA.InicializarJogador();
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
@@ -89,66 +96,78 @@ public class AdmJogo : MonoBehaviour
 
     public void PuxarCarta(SeguradorDeJogador jogador)
     {
-        AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
-        GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
-        ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
-        InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
-        e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
-        instCarta.carta = e.carta;
-        instCarta.SetPoderECusto();
-        e.CarregarCarta(instCarta.carta);
-        instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
-        if (instCarta.carta.efeito != null)
+        if (jogador.cartasMao.Count < numMaxCartasMao)
         {
-            Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
-            // novoEfeito = instCarta.carta.efeito;
-            novoEfeito.name = instCarta.carta.efeito.name;
-            novoEfeito.afetaApenasSeuJogador = instCarta.carta.efeito.afetaApenasSeuJogador;
-            novoEfeito.afetaTodasCartas = instCarta.carta.efeito.afetaTodasCartas;
-            novoEfeito.alteracaoMagia = instCarta.carta.efeito.alteracaoMagia;
-            novoEfeito.alteracaoPoder = instCarta.carta.efeito.alteracaoPoder;
-            novoEfeito.alteracaoVida = instCarta.carta.efeito.alteracaoVida;
-            novoEfeito.apenasJogador = instCarta.carta.efeito.apenasJogador;
-            novoEfeito.ativacao = instCarta.carta.efeito.ativacao;
-            novoEfeito.cartaAlvo = instCarta.carta.efeito.cartaAlvo;
-            novoEfeito.cartaQueInvoca = instCarta;
-            novoEfeito.condicaoAtivacao = instCarta.carta.efeito.condicaoAtivacao;
-            novoEfeito.escolheAlvoCarta = instCarta.carta.efeito.escolheAlvoCarta;
-            novoEfeito.eventoAtivador = instCarta.carta.efeito.eventoAtivador;
-            novoEfeito.jogadorAlvo = instCarta.carta.efeito.jogadorAlvo;
-            novoEfeito.jogadorQueInvoca = jogador;
-            novoEfeito.modoDeExecucao = instCarta.carta.efeito.modoDeExecucao;
-            novoEfeito.podeUsarEmSi = instCarta.carta.efeito.podeUsarEmSi;
-            novoEfeito.tipoEfeito = instCarta.carta.efeito.tipoEfeito;
-            instCarta.efeito = novoEfeito;
-
-            if (instCarta.efeito.apenasJogador)
+            AdmRecursos ar = Configuracoes.GetAdmRecursos();//precisamos acessar o admRecursos
+            GameObject carta = Instantiate(prefabCarta) as GameObject;//instanciamos a carta de acordo com o prefab
+            ExibirInfoCarta e = carta.GetComponent<ExibirInfoCarta>();//pegamos todas as informações atribuidas de texto e posição dela
+            InstanciaCarta instCarta = carta.GetComponent<InstanciaCarta>();
+            e.CarregarCarta(ar.obterInstanciaCarta(jogador.baralho.cartasBaralho[jogador.baralho.cartasBaralho.Count - 1]));//e por fim dizemos que os textos escritos serão os da carta na mão do jogador
+            instCarta.carta = e.carta;
+            instCarta.SetPoderECusto();
+            e.CarregarCarta(instCarta.carta);
+            instCarta.logicaAtual = jogador.logicaMao;//define a lógica pra ser a lógica da mão
+            if (instCarta.carta.efeito != null)
             {
-                //afeta vc
-                if (instCarta.efeito.afetaApenasSeuJogador)
+                Efeito novoEfeito = ScriptableObject.CreateInstance("Efeito") as Efeito;
+                // novoEfeito = instCarta.carta.efeito;
+                novoEfeito.name = instCarta.carta.efeito.name;
+                novoEfeito.afetaApenasSeuJogador = instCarta.carta.efeito.afetaApenasSeuJogador;
+                novoEfeito.afetaTodasCartas = instCarta.carta.efeito.afetaTodasCartas;
+                novoEfeito.alteracaoMagia = instCarta.carta.efeito.alteracaoMagia;
+                novoEfeito.alteracaoPoder = instCarta.carta.efeito.alteracaoPoder;
+                novoEfeito.alteracaoVida = instCarta.carta.efeito.alteracaoVida;
+                novoEfeito.apenasJogador = instCarta.carta.efeito.apenasJogador;
+                novoEfeito.ativacao = instCarta.carta.efeito.ativacao;
+                novoEfeito.cartaAlvo = instCarta.carta.efeito.cartaAlvo;
+                novoEfeito.cartaQueInvoca = instCarta;
+                novoEfeito.condicaoAtivacao = instCarta.carta.efeito.condicaoAtivacao;
+                novoEfeito.escolheAlvoCarta = instCarta.carta.efeito.escolheAlvoCarta;
+                novoEfeito.eventoAtivador = instCarta.carta.efeito.eventoAtivador;
+                novoEfeito.jogadorAlvo = instCarta.carta.efeito.jogadorAlvo;
+                novoEfeito.jogadorQueInvoca = jogador;
+                novoEfeito.modoDeExecucao = instCarta.carta.efeito.modoDeExecucao;
+                novoEfeito.podeUsarEmSi = instCarta.carta.efeito.podeUsarEmSi;
+                novoEfeito.tipoEfeito = instCarta.carta.efeito.tipoEfeito;
+                instCarta.efeito = novoEfeito;
+
+                if (instCarta.efeito.apenasJogador)
                 {
-                    instCarta.efeito.jogadorAlvo = jogador;
-                }
-                else//afeta o inimigo
-                {
-                    if (jogador == jogadorIA)
+                    //afeta vc
+                    if (instCarta.efeito.afetaApenasSeuJogador)
                     {
-                        instCarta.efeito.jogadorAlvo = jogadorLocal;
+                        instCarta.efeito.jogadorAlvo = jogador;
                     }
-                    else
+                    else//afeta o inimigo
                     {
-                        instCarta.efeito.jogadorAlvo = jogadorIA;
+                        if (jogador == jogadorIA)
+                        {
+                            instCarta.efeito.jogadorAlvo = jogadorLocal;
+                        }
+                        else
+                        {
+                            instCarta.efeito.jogadorAlvo = jogadorIA;
+                        }
                     }
                 }
             }
+            instCarta.jogadorDono = jogador;
+            Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
+            jogador.cartasMao.Add(instCarta);
+            jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
+            if (jogador == jogadorAtual)
+            {
+                carta.transform.Find("Fundo da Carta").gameObject.SetActive(false);
+            }
+            else
+            {
+                carta.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+            }
         }
-        instCarta.jogadorDono = jogador;
-        Configuracoes.DefinirPaiCarta(carta.transform, jogador.seguradorCartas.gridMao.valor);//joga as cartas fisicamente na mão do jogador
-        jogador.cartasMao.Add(instCarta);
-        jogador.baralho.cartasBaralho.RemoveAt(jogador.baralho.cartasBaralho.Count - 1);
     }
     IEnumerator FadeVencedorTurno(SeguradorDeJogador jogadorVencedorTurno)
     {
+        aoPararDeOlharCarta.Raise();
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogadorVencedorTurno.corJogador;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
@@ -159,23 +178,22 @@ public class AdmJogo : MonoBehaviour
         ImagemTextoTurno.gameObject.SetActive(false);
         if (jogadorInimigo.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorAtual;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
-            yield return null;
+            StartCoroutine(FimDeJogo(jogadorAtual));
         }
         if (jogadorAtual.barrasDeVida <= 0)
         {
-            jogadorVencedor = jogadorInimigo;
-            StartCoroutine(FimDeJogo(jogadorVencedor));
-            yield return null;
+            StartCoroutine(FimDeJogo(jogadorInimigo));
         }
+        TrocarJogadorAtual();
         jogadorAtual.rodada.IniciarRodada();
         jogadorInimigo.rodada.IniciarRodada();
-        TrocarJogadorAtual();
+        if (jogadorAtual != jogadorVencedorTurno)
+        {
+            TrocarJogadorAtual();
+        }
     }
-    void ChecaVidaJogadores()
+    public void ChecaVidaJogadores()
     {
-
         if (jogadorAtual.vida <= 0 || jogadorInimigo.vida <= 0)
         {
             if (jogadorAtual.vida <= 0)
@@ -187,6 +205,10 @@ public class AdmJogo : MonoBehaviour
             {
                 jogadorInimigo.barrasDeVida--;
                 StartCoroutine(FadeVencedorTurno(jogadorAtual));
+            }
+            if (jogadorAtual.vida <= 0 && jogadorInimigo.vida <= 0)
+            {
+                StartCoroutine(Empate());
             }
             return;
         }
@@ -205,7 +227,7 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                Debug.Log("Empate");
+                StartCoroutine(Empate());
             }
         }
 
@@ -223,8 +245,10 @@ public class AdmJogo : MonoBehaviour
             jogadorAtual = jogadorLocal;
             jogadorInimigo = jogadorIA;
         }
-        seguradorCartasJogadorLocal.CarregarCartasJogador(jogadorAtual, infoJogadorLocal);
-        seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorIA);
+        jogadorAtual.seguradorCartas = seguradorCartasJogadorAtual;
+        jogadorInimigo.seguradorCartas = seguradorCartasJogadorInimigo;
+        seguradorCartasJogadorAtual.CarregarCartasJogador(jogadorAtual, infoJogadorAtual);
+        seguradorCartasJogadorInimigo.CarregarCartasJogador(jogadorInimigo, infoJogadorInimigo);
 
         jogadorAtual.rodada.turno.IniciarTurno();
     }
@@ -246,9 +270,13 @@ public class AdmJogo : MonoBehaviour
             Configuracoes.admCursor.MudarSprite(cursorAlvoCinza);
         }
         pause = false;
+        StartCoroutine(RetomarMesmo());
+    }
+    IEnumerator RetomarMesmo()
+    {
+        yield return new WaitForSeconds(0.2f);
         telaPause.gameObject.SetActive(false);
     }
-
     public IEnumerator FimDeJogo(SeguradorDeJogador jogadorVencedor)
     {
         telaFimDeJogo.gameObject.SetActive(true);
@@ -284,9 +312,69 @@ public class AdmJogo : MonoBehaviour
         if (Configuracoes.admCursor != null)
             Configuracoes.admCursor.MudarSprite(spriteCursor);
     }
+    public IEnumerator Empate()
+    {
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = new Color(255, 255, 255);
+        GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = "Empate";
+        ImagemTextoTurno.GetComponent<Image>().sprite = jogadorAtual.textoTurnoImage;
+        ImagemTextoTurno.gameObject.SetActive(true);
+        pause = true;
+        yield return new WaitForSeconds(1);
+        pause = false;
+        ImagemTextoTurno.gameObject.SetActive(false);
+        jogadorAtual.barrasDeVida--;
+        jogadorInimigo.barrasDeVida--;
+        if (jogadorInimigo.barrasDeVida <= 0 && jogadorAtual.barrasDeVida <= 0)
+        {
+            Configuracoes.admCena.CarregarCena("Tela Inicial");
+            yield return null;
+        }
+        if (jogadorInimigo.barrasDeVida <= 0)
+        {
+            StartCoroutine(FimDeJogo(jogadorAtual));
+            yield return null;
+        }
+        else if (jogadorAtual.barrasDeVida <= 0)
+        {
+            StartCoroutine(FimDeJogo(jogadorInimigo));
+            yield return null;
+        }
+        jogadorAtual.rodada.IniciarRodada();
+        jogadorInimigo.rodada.IniciarRodada();
+        TrocarJogadorAtual();
+    }
 
+    public void TocarSomCartaBaixada()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somBaixarCarta;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomNaoPode()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somNaoPode;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomDano()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = hit;
+        GetComponent<AudioSource>().Play();
+    }
+    public void TocarSomCura()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somCura;
+        GetComponent<AudioSource>().Play();
+    }
     public IEnumerator FadeTextoTurno(SeguradorDeJogador jogador)
     {
+        aoPararDeOlharCarta.Raise();
         if (jogador.passouRodada == false)
         {
             GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().color = jogador.corJogador;
@@ -301,6 +389,11 @@ public class AdmJogo : MonoBehaviour
     }
     public void EncerrarRodada()
     {
+        if (pause == true)
+        {
+            return;
+        }
+        aoPararDeOlharCarta.Raise();
         jogadorAtual.rodada.turno.FinalizarTurno();
         if (jogadorAtual.fezAlgumaAcao)//somente passou o turno
         {
@@ -344,7 +437,8 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                if (tutorial){
+                if (tutorial)
+                {
                     ChecaVidaJogadores();
                     jogadorPassouTurno.Raise();
                     jogadorAtual.rodada.turno.IniciarTurno();
@@ -391,7 +485,6 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante.podeAtacarNesteTurno = false;
             cartaAtacada = null;
             cartaAtacante = null;
-
         }
         //Atacar um jogador
         if (cartaAtacante != null && jogadorAtacado != null)
@@ -417,7 +510,6 @@ public class AdmJogo : MonoBehaviour
             cartaAtacante = null;
             jogadorAtacado = null;
             ChecaVidaJogadores();
-
         }
         yield return null;
     }
@@ -448,11 +540,8 @@ public class AdmJogo : MonoBehaviour
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada/Carta sendo olhada").SetActive(true);
         Configuracoes.cartaRecemJogada = true;
         aoOlharCarta.Raise();
-
         yield return new WaitForSeconds(1.5f);
-
         Configuracoes.cartaRecemJogada = false;
-
         aoPararDeOlharCarta.Raise();
     }
 }

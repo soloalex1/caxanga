@@ -46,6 +46,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         {
             transform.Find("Coração Dano").gameObject.transform.Rotate(0, 0, 0);
         }
+        Configuracoes.admJogo.TocarSomDano();
         transform.Find("Coração Dano").gameObject.SetActive(true);
         transform.Find("Coração Dano").Find("Texto").GetComponent<Text>().text = dano.ToString();
         yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
@@ -63,6 +64,7 @@ public class InstanciaCarta : MonoBehaviour, IClicavel
         }
         transform.Find("Coração Cura").gameObject.SetActive(true);
         transform.Find("Coração Cura").Find("Texto").GetComponent<Text>().text = "+" + cura.ToString();
+        Configuracoes.admJogo.TocarSomCura();
         yield return new WaitForSeconds(Configuracoes.admJogo.tempoAnimacaoCuraDano);
         transform.Find("Coração Cura").gameObject.SetActive(false);
     }

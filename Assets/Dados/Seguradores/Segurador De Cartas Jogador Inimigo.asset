@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69748b20e784f344fa1406e6a5c4e903, type: 3}
-  m_Name: Segurador De Cartas Jogador IA
+  m_Name: Segurador De Cartas Jogador Inimigo
   m_EditorClassIdentifier: 
   gridMao: {fileID: 11400000, guid: 96a402a3289cd8c46b76904f67263498, type: 2}
   gridCartasBaixadas: {fileID: 11400000, guid: 8869980cff1b27949bc9e43df5f712d8, type: 2}

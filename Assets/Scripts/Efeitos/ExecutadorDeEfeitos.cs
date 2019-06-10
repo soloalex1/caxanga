@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExecutadorDeEfeitos : MonoBehaviour
 {
+    public AudioClip audioProtegido, audioSilencio;
     public GameEvent eventoAtivador, aboioEmBoiuna;
     public EstadoJogador emSeuTurno;
     public EstadoJogador usandoEfeito;
@@ -57,13 +58,15 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                     efeito.jogadorAlvo.vida += efeito.alteracaoVida;
                     efeito.jogadorAlvo.CarregarInfoUIJogador();
                     efeito.jogadorQueInvoca.CarregarInfoUIJogador();
+                    Configuracoes.admJogo.ChecaVidaJogadores();
                 }
                 if (efeito.modoDeExecucao == silenciarJogador)
                 {
+                    Configuracoes.admJogo.GetComponent<AudioSource>().clip = audioSilencio;
+                    Configuracoes.admJogo.GetComponent<AudioSource>().Play();
                     efeito.jogadorAlvo.podeUsarEfeito = false;
                     efeito.jogadorAlvo.silenciado = true;
                     efeito.jogadorAlvo.CarregarInfoUIJogador();
-                    Debug.Log("Entrei no efeito");
                 }
                 if (efeito.modoDeExecucao == alterarPoderCarta)
                 {
@@ -150,6 +153,8 @@ public class ExecutadorDeEfeitos : MonoBehaviour
                     efeito.cartaAlvo.infoCarta.protegido = true;
                     efeito.cartaAlvo.podeSerAtacada = false;
                     efeito.cartaAlvo.podeSofrerEfeito = false;
+                    Configuracoes.admJogo.GetComponent<AudioSource>().clip = audioProtegido;
+                    Configuracoes.admJogo.GetComponent<AudioSource>().Play();
                     efeito.cartaAlvo.infoCarta.CarregarCarta(efeito.cartaAlvo.carta);
                 }
                 if (efeito.modoDeExecucao == silenciarCarta)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class AdmTutorial : MonoBehaviour
 {
+    public AudioClip somBotaoPressed;
     public PassoTutorial[] passos;
     public PassoTutorial passoAtual;
     int indicePasso;
@@ -14,13 +15,13 @@ public class AdmTutorial : MonoBehaviour
     public LogicaInstanciaCarta logicaCartaBaixa;
     public GameEvent jogadorAtivouEfeito;
 
-
-
     private void Start()
     {
+        Configuracoes.admTutorial = this;
         indicePasso = 0;
         passoAtual = passos[indicePasso];
         StartCoroutine(passoAtual.AoIniciar());
+        GetComponent<AudioSource>().volume = Configuracoes.volumeSFX;
         gmListener = GetComponent<GameEventListener>();
     }
 
@@ -32,6 +33,13 @@ public class AdmTutorial : MonoBehaviour
         }
     }
 
+    public void TocarSomBotao()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = somBotaoPressed;
+        GetComponent<AudioSource>().Play();
+    }
     IEnumerator turnoIAOponente()
     {
         StartCoroutine(Configuracoes.admJogo.FadeTextoTurno(Configuracoes.admJogo.jogadorInimigo));

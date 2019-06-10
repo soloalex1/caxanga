@@ -35,4 +35,4 @@ MonoBehaviour:
   - Festa Juinina
   - Marcha Soldado
   - Terezinha de Jesus
-  jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  jogador: {fileID: 0}
