@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: 'Azedar o leite: Reduz em 2 o Poder de uma Lenda inimiga'
+  - stringValor: 'Azedar o leite: Causa 2 de dano em uma Lenda inimiga.'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -34,10 +34,14 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 5fe6227c40ce3f54f99f01d1d1b3cdf7, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: O Saci \xE9 um negro jovem de uma perna
-      s\xF3, portador de uma carapu\xE7a sobre a cabe\xE7a que lhe concede poderes
-      m\xE1gicos."
+  - stringValor: "Menino travesso de uma perna s\xF3, com poderes m\xE1gicos e um
+      senso de humor diab\xF3lico."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 9830e60fdc503234ebdb9c770f3d20b3, type: 2}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0
+  textoDescricao: "O saci \xE9 um menino perneta, buli\xE7oso e inquieto. Anda aos
+    pulos, usando uma carapu\xE7a vermelha, fonte de seus poderes. \xC9 viciado em
+    tabaco e se diverte ao pregar travessuras aos desavisados."

@@ -34,10 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 8a4b2d6731a7c2246a564205cb3ac860, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Segundo povos nativos, o Mapinguari
-      possuiria um cheiro horr\xEDvel, semelhante ao de um gamb\xE1. Esse mau cheiro
-      faz com que sua presa fique tonta, o que permite ao bicho apanh\xE1-la com facilidade.\uFEFF"
+  - stringValor: "Vivendo nas profundezas da selva amaz\xF4nica, o Mapinguari n\xE3o
+      teme ca\xE7adores, pois seu sopro pode dilatar o metal do cano das espingardas. "
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0
+  textoDescricao: "Coberto de uma longa pelagem, o Mapinguari possui longas garras
+    e evita a \xE1gua, tendo pele semelhante \xE0 de um jacar\xE9. Tamb\xE9m possui
+    um cheiro horr\xEDvel, que faz com que sua presa fique tonta, o que lhe permite
+    apanh\xE1-la com facilidade. "

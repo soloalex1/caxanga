@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Tela Inicial.unity
     guid: 2fa28066b1030d646accae0c89bac304
@@ -18,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tela de Jogo.unity
     guid: 168929295adab004089b7162a40812ee
   - enabled: 1
-    path: "Assets/Scenes/Tela Cole\xE7\xE3o.unity"
-    guid: 7b5ed71af1bd02b4599784e6e2b719fb
+    path: Assets/Scenes/Tutorial.unity
+    guid: f8a1ae2dbfb80d94c9eb1cb08b8a981b
   - enabled: 1
-    path: "Assets/Scenes/Tela Configura\xE7\xF5es.unity"
-    guid: ae5e621a8a604d4459fbbf0b65ec3783
+    path: "Assets/Scenes/Cole\xE7\xE3o.unity"
+    guid: bbc411f5b1533d842be6299150557c93
   m_configObjects: {}

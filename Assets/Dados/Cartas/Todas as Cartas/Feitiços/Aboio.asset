@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: Aumenta o poder de uma Lenda aliada em 2.
+  - stringValor: 'Aboiar: Aumenta o poder de uma Lenda aliada em 2.'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -34,9 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 13c952e5c7d8c33469d2c312dd6898d3, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "M\xFAsica e Dan\xE7a: \xC9 um canto vagaroso, no ritmo do movimento
-      dos animais, que termina incitando a boiada de forma n\xE3o cantada."
+  - stringValor: "\xC9 um canto vagaroso, no ritmo do movimento dos animais, que
+      termina incitando a boiada de forma n\xE3o cantada."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 63c85ec8e20cc0848ac52bc697f750eb, type: 2}
+  categoria: "M\xFAsica e Dan\xE7a"
+  protegido: 0
+  textoDescricao: "Serve tanto para o gado solto no campo, assim como para o gado
+    curraleiro e at\xE9 para as vacas de leite, mas em menor escala, porque nesse
+    caso n\xE3o \xE9 executado por um vaqueiro que se preze e tenha vergonha nas
+    ventas. "

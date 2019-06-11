@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Rodadas/Turno")]
 public class Turno : ScriptableObject
 {
-    bool terminou = false;
+    bool terminou;
     public SeguradorDeJogador jogador;
     public AcaoJogador[] acoesIniciais;
     public void IniciarTurno()
@@ -14,15 +14,8 @@ public class Turno : ScriptableObject
         terminou = false;
         jogador.lendasBaixadasNoTurno = 0;
         jogador.feiticosBaixadosNoTurno = 0;
-        if (jogador.protegido == false)
-        {
-            jogador.podeSerAtacado = true;
-        }
-        if (jogador.silenciado == false)
-        {
-            jogador.podeUsarEfeito = true;
-        }
-
+        jogador.protegido = false;
+        jogador.podeSerAtacado = true;
         Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.FadeTextoTurno(jogador));
 
         if (acoesIniciais == null)
@@ -31,9 +24,21 @@ public class Turno : ScriptableObject
         {
             acoesIniciais[i].Executar(jogador);
         }
+        foreach (InstanciaCarta c in jogador.cartasBaixadas)
+        {
+            c.protegido = false;
+            c.podeSofrerEfeito = true;
+            c.podeSerAtacada = true;
+            c.infoCarta.protegido = false;
+            c.infoCarta.CarregarCarta(c.infoCarta.carta);
+        }
     }
     public void FinalizarTurno()
     {
-        terminou = true;
+        if (jogador.silenciado)
+        {
+            jogador.silenciado = false;
+            jogador.podeUsarEfeito = true;
+        }
     }
 }

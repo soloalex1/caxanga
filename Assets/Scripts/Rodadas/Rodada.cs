@@ -25,7 +25,6 @@ public class Rodada : ScriptableObject
         jogador.podeUsarEfeito = true;
         jogador.passouRodada = false;
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Texto Passou").SetActive(false);
-
         jogador.CarregarInfoUIJogador();
         if (jogador.cartasBaixadas.Count > 0)
         {
@@ -44,28 +43,9 @@ public class Rodada : ScriptableObject
 
         for (int j = 0; j < numCartasPuxadasInicioRodada; j++)
         {
-            Configuracoes.admJogo.PuxarCarta(jogador);
+            if (jogador.cartasMao.Count < Configuracoes.admJogo.numMaxCartasMao)
+                Configuracoes.admJogo.PuxarCarta(jogador);
         }
-
-        // foreach (InstanciaCarta c in jogador.cartasMao)
-        // {
-        //     if (jogador == Configuracoes.admJogo.jogadorInimigo)
-        //     {
-        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-        //     }
-        //     else
-        //     {
-        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(false);
-        //     }
-        //     if (c.transform.Find("Fundo da Carta").gameObject.activeSelf)
-        //     {
-        //         Debug.Log("Tá escondida");
-        //     }
-        //     else
-        //     {
-        //         Debug.Log("Tá mostrando");
-        //     }
-        // }
     }
     public void PassarRodada()
     {

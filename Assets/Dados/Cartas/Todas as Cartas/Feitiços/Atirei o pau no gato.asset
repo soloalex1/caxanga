@@ -22,7 +22,7 @@ MonoBehaviour:
     intValor: 2
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Reduz 2 de influ\xEAncia da Entidade inimiga"
+  - stringValor: 'Paulada: Causa 2 de dano direto ao oponente.'
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -32,10 +32,17 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 8db34112a9fbb404eac717ebefb79635, type: 3}
+    sprite: {fileID: 21300000, guid: 8eca58c5e1ba1674ab3163004eee5292, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: 'Brinquedos e Brincadeiras:  '
+  - stringValor: "Cantiga de roda: brincadeira destinada a crian\xE7as, com melodia
+      que remete as m\xFAsicas populares brasileiras, passada de gera\xE7\xE3o em
+      gera\xE7\xE3o."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 281c3f025b76ae148b2040a6fd0cfc86, type: 2}
+  categoria: Brinquedos e Brincadeiras
+  protegido: 0
+  textoDescricao: "Cantigas de roda como essa s\xE3o de sabedoria popular, sendo
+    desconhecida a sua origem. S\xE3o passadas de gera\xE7\xE3o em gera\xE7\xE3o,
+    comumente utilizadas em brincadeiras infantis. "

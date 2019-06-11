@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Seguradores/Segurador de Jogador")]
 public class SeguradorDeJogador : ScriptableObject
 {
+    public GameEvent jogouBoiuna, jogouBoitata;
     public EstadoJogador usandoEfeito;
     public Rodada rodada;
     public bool protegido, silenciado, fezAlgumaAcao;
@@ -13,7 +14,8 @@ public class SeguradorDeJogador : ScriptableObject
     public GameEvent cartaEntrouEmCampo, cartaMorreu;
     public bool podeUsarEfeito = true;
     public int numCartasMaoInicio;
-    public Baralho baralho = null;
+    [HideInInspector]
+    public Baralho baralho;
     public Baralho baralhoInicial;
     public Color corJogador;
     public Sprite retratoJogador;
@@ -38,7 +40,6 @@ public class SeguradorDeJogador : ScriptableObject
     public LogicaInstanciaCarta logicaBaixada;
     public LogicaInstanciaCarta logicaCemiterio;
 
-
     [System.NonSerialized] // não precisa serializar porque é selfdata (Não entendi nesse momento ainda, quem sabe qnd eu terminar toda a lógica)
     public List<InstanciaCarta> cartasMao = new List<InstanciaCarta>(); // lista de cartas na mão do jogador em questão
     [System.NonSerialized]
@@ -53,6 +54,9 @@ public class SeguradorDeJogador : ScriptableObject
         barrasDeVida = 3;
         baralho = ScriptableObject.CreateInstance("Baralho") as Baralho;
         baralho.cartasBaralho = new List<string>();
+        baralho.jogador = this;
+        cartasBaixadas.Clear();
+        cartasMao.Clear();
         cartasCemiterio.Clear();
         lendasBaixadasNoTurno = 0;
         feiticosBaixadosNoTurno = 0;
@@ -60,15 +64,15 @@ public class SeguradorDeJogador : ScriptableObject
         podeSerAtacado = true;
         passouRodada = false;
         fezAlgumaAcao = false;
-
+        silenciado = false;
 
         if (this == Configuracoes.admJogo.jogadorLocal)
         {
-            infoUI = Configuracoes.admJogo.infoJogadorLocal;
+            infoUI = Configuracoes.admJogo.infoJogadorAtual;
         }
         else
         {
-            infoUI = Configuracoes.admJogo.infoJogadorIA;
+            infoUI = Configuracoes.admJogo.infoJogadorInimigo;
         }
         foreach (string carta in baralhoInicial.cartasBaralho)
         {
@@ -77,7 +81,7 @@ public class SeguradorDeJogador : ScriptableObject
 
         if (jogadorHumano == true)
         {
-            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorLocal;
+            seguradorCartas = Configuracoes.admJogo.seguradorCartasJogadorAtual;
         }
         else
         {
@@ -87,16 +91,19 @@ public class SeguradorDeJogador : ScriptableObject
         PuxarCartasIniciais();
     }
 
+
+
     public void BaixarCarta(Transform c, Transform p, InstanciaCarta instCarta)
     {
         if (cartasMao.Contains(instCarta))
         {
             cartasMao.Remove(instCarta);
         }
-        cartasBaixadas.Add(instCarta);
+        cartasBaixadas.Add(instCarta);  
         fezAlgumaAcao = true;
         magia -= instCarta.custo;
         infoUI.AtualizarMagia();
+        Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.DestacarCartaBaixada(instCarta));
 
         instCarta.podeAtacarNesteTurno = false;
         //Aqui a gente vai executar os efeitos das cartas, bem como as diferenças em carta e feitiço
@@ -109,6 +116,15 @@ public class SeguradorDeJogador : ScriptableObject
         cartaEntrouEmCampo.cartaQueAtivouEvento = instCarta;
         Configuracoes.admEfeito.eventoAtivador = cartaEntrouEmCampo;
         cartaEntrouEmCampo.Raise();
+        if (Configuracoes.admJogo.tutorial && instCarta.carta.name == "Boiuna")
+        {
+            jogouBoiuna.Raise();
+        }
+        if (Configuracoes.admJogo.tutorial && instCarta.carta.name == "Boitatá")
+        {
+            jogouBoitata.Raise();
+        }
+        Configuracoes.admJogo.TocarSomCartaBaixada();
         return;
     }
     public bool TemMagiaParaBaixarCarta(InstanciaCarta c)
@@ -135,20 +151,23 @@ public class SeguradorDeJogador : ScriptableObject
 
     public void PuxarCartasIniciais()
     {
-
-        baralho.Embaralhar();
+        if (Configuracoes.admJogo.tutorial == false)
+        {
+            if (Configuracoes.admJogo.tutorial == false){
+                baralho.Embaralhar();
+            }
+        }
         for (int i = 0; i < numCartasMaoInicio; i++)
         {
             Configuracoes.admJogo.PuxarCarta(this);
         }
-
-        foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
-        {
-            if (c != null)
-            {
-                c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
-            }
-        }
+        // foreach (InstanciaCarta c in Configuracoes.admJogo.jogadorInimigo.cartasMao)
+        // {
+        //     if (c != null)
+        //     {
+        //         c.transform.Find("Fundo da Carta").gameObject.SetActive(true);
+        //     }
+        // }
     }
     public void ColocarCartaNoCemiterio(InstanciaCarta carta)
     {

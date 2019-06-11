@@ -22,8 +22,7 @@ MonoBehaviour:
     intValor: 5
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Pisar: No pr\xF3ximo turno, a entidade inimiga n\xE3o pode utilizar
-      nenhum feiti\xE7o"
+  - stringValor: "Pisar: No pr\xF3ximo turno, silencia o oponente."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -33,13 +32,16 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 99b6a7d67c535fc42a24bd715f4ce141, type: 3}
+    sprite: {fileID: 21300000, guid: 423fc91475aa92b469985efb82b2c053, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Geralmente \xE9 descrita como uma mulher
-      muito magra, com dedos compridos, unhas sujas e amareladas, que pisa na barriga
-      das pessoas e as deixa com falta de ar. Nunca ri, gargalha. Uma gargalhada estridente
-      e horripilante."
+  - stringValor: Criatura que visita as casas na calada da noite para pisar na barriga
+      das pessoas, deixando-as com falta de ar.
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 71b621abdec7f5745ac95039c2cdcecb, type: 2}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0
+  textoDescricao: "Geralmente \xE9 descrita como uma mulher muito magra, com dedos
+    compridos, unhas sujas e amareladas, que pisa na barriga das pessoas e as deixa
+    com falta de ar. Nunca ri, gargalha. Uma gargalhada estridente e horripilante."

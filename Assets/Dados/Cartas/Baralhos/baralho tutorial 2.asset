@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: baralho tutorial 2
   m_EditorClassIdentifier: 
   cartasBaralho:
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  - "Cabe\xE7a de Cuia"
-  jogador: {fileID: 11400000, guid: 2ba21b242bfd9244193459a528226399, type: 2}
+  - Lobisomem
+  - Lobisomem
+  - Atirei o pau no gato
+  - Lobisomem
+  - Lobisomem
+  - Lobisomem
+  - Atirei o pau no gato
+  - Atirei o pau no gato
+  - Lobisomem
+  - Lobisomem
+  jogador: {fileID: 11400000, guid: 1f7cf397944a6f046b802991bf264a5a, type: 2}

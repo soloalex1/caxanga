@@ -22,7 +22,8 @@ MonoBehaviour:
     intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: Aumenta 1 de poder para todas as Lendas aliadas.
+  - stringValor: "Fogo de S\xE3o Jo\xE3o: Aumenta 1 de poder para todas as Lendas
+      aliadas."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -32,12 +33,18 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 853d4a87832add34eae9e684f2045e77, type: 3}
+    sprite: {fileID: 21300000, guid: 5e1dc03d0802a274a8a96a1eda03d9bb, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Festas Populares: As festas juninas no Brasil s\xE3o multiculturais,
-      se originando nas festas dos santos populares em Portugal. No Brasil, recebeu
-      o nome de \"junina\" porque acontece no m\xEAs de junho."
+  - stringValor: "As festas juninas no Brasil s\xE3o multiculturais, se originando
+      nas festas dos santos populares em Portugal. No Brasil, recebem o nome de \"junina\"
+      porque acontecem no m\xEAs de junho. "
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 11400000, guid: 866fce172b40d5d40b3b9f69b61fbb18, type: 2}
+  categoria: Festas Populares
+  protegido: 0
+  textoDescricao: "Com a vinda dos portugueses, as festas tamb\xE9m chegaram ao Brasil,
+    e se juntaram a elementos do pa\xEDs e tradi\xE7\xF5es sertanejas. Comidas, dan\xE7as
+    e enfeites utilizados nas festas de hoje s\xE3o uma jun\xE7\xE3o da cultura africana,
+    europeia e ind\xEDgena."

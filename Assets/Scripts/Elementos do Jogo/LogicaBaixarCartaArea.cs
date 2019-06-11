@@ -28,13 +28,13 @@ public class LogicaBaixarCartaArea : LogicaArea
                     {
                         //define o pai da carta para ser o grid lá do Cartas Baixadas
                         Configuracoes.admJogo.jogadorAtual.BaixarCarta(c.transform, gridArea.valor.transform, c);
-                        // Configuracoes.BaixarCartaLenda(c.transform, gridArea.valor.transform, c);
                         c.logicaAtual = logicaCartaBaixa;
                         Configuracoes.admJogo.jogadorAtual.lendasBaixadasNoTurno++;
                         c.gameObject.SetActive(true);
                     }
                     else
                     {
+                        Configuracoes.admJogo.TocarSomNaoPode();
                         Configuracoes.RegistrarEvento("Você não pode baixar mais de uma Lenda por turno", Color.white);
                     }
                 }
@@ -47,14 +47,17 @@ public class LogicaBaixarCartaArea : LogicaArea
                             jogadorAtivouEfeito.cartaQueAtivouEvento = c;
                             Configuracoes.admEfeito.eventoAtivador = jogadorAtivouEfeito;
                             jogadorAtivouEfeito.Raise();
+                            Configuracoes.admJogo.StartCoroutine(Configuracoes.admJogo.DestacarCartaBaixada(c));
                         }
                         else
                         {
+                            Configuracoes.admJogo.TocarSomNaoPode();
                             Configuracoes.RegistrarEvento("Você não pode baixar mais de um Feitiço por turno", Color.white);
                         }
                     }
                     else
                     {
+                        Configuracoes.admJogo.TocarSomNaoPode();
                         Configuracoes.RegistrarEvento("Você não pode utilizar efeitos neste turno", Color.white);
                     }
 

@@ -12,26 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbbf626e70d8b4493dcd12fd024c9f, type: 3}
   m_Name: Jogador Local
   m_EditorClassIdentifier: 
+  jogouBoiuna: {fileID: 11400000, guid: 59d2de2502557bb469a51212fb8750b7, type: 2}
+  jogouBoitata: {fileID: 11400000, guid: 4baeb9fe116fa2447ba0eefbaa77b1ee, type: 2}
   usandoEfeito: {fileID: 11400000, guid: cb72331ebc95e3348a1c9127665325b3, type: 2}
   rodada: {fileID: 11400000, guid: 428a77df8f0d4c64bb1effc37c3f6566, type: 2}
   protegido: 0
   silenciado: 0
-  fezAlgumaAcao: 0
+  fezAlgumaAcao: 1
   passouRodada: 0
   moldura: {fileID: 21300000, guid: 9a0d7db97a2f12f4db881b283cda19ae, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
   cartaMorreu: {fileID: 11400000, guid: b72c5d42e384b094aa0f44db5021e13a, type: 2}
   podeUsarEfeito: 1
-  numCartasMaoInicio: 6
+  numCartasMaoInicio: 5
   baralho: {fileID: 0}
-  baralhoInicial: {fileID: 11400000, guid: fa7faa2089006dc458feb68fd71e3e7d, type: 2}
+  baralhoInicial: {fileID: 11400000, guid: fd5696df06e1ee14fae8e283cbc7dc3a, type: 2}
   corJogador: {r: 0.68235296, g: 0.7372549, b: 0.92941177, a: 1}
   retratoJogador: {fileID: 21300000, guid: 349d838abba441b43ab2a823d4c29efd, type: 3}
   nomeJogador: Moacir
   vidaInicial: 20
   magiaInicial: 10
-  magia: 10
-  vida: 20
+  magia: 1
+  vida: 18
   infoUI: {fileID: 0}
   jogadorHumano: 1
   podeSerAtacado: 1

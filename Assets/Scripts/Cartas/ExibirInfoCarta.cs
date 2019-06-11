@@ -6,28 +6,27 @@ public class ExibirInfoCarta : MonoBehaviour
 {
     public Carta carta;
     public ExibirInfoPropriedades[] propriedades;
-    public GameObject mostrarPoder;
+    public GameObject mostrarPoder, imagemProtegido;
     public TipoFeitico tipoFeitico;
     public TipoLenda tipoLenda;
-
+    public bool protegido;
     public Sprite templateLenda;
     public Sprite templateFeitico;
     public Sprite spritePodeAtacar;
 
     public Sprite spriteNaoPodeAtacar;
-
     public void CarregarCarta(Carta c)
     {
+
+        imagemProtegido = transform.Find("Frente da Carta/Protegido").gameObject;
         if (c == null)
             return;
         carta = c;
 
         InstanciaCarta instCarta = GetComponent<InstanciaCarta>();
-
         c.tipoCarta.Inicializar(this);
 
         FecharPropsIndefinidas();
-
         for (int i = 0; i < propriedades.Length; i++)
         {
             Propriedades p = c.propriedades[i];
@@ -45,7 +44,6 @@ public class ExibirInfoCarta : MonoBehaviour
                     if (ep.elemento.name == "Poder")
                     {
                         ep.texto.text = instCarta.poder.ToString();
-
                     }
                     if (ep.elemento.name == "Custo")
                     {
@@ -57,6 +55,10 @@ public class ExibirInfoCarta : MonoBehaviour
             else if (p.elemento is ElementoTexto)
             {
                 ep.texto.text = p.stringValor;
+                if (ep.elemento.name == "Detalhes")
+                {
+                    ep.texto.text = carta.categoria +": "+ p.stringValor;
+                }
                 ep.texto.gameObject.SetActive(true);
             }
             else if (p.elemento is ElementoImagem)
@@ -70,8 +72,8 @@ public class ExibirInfoCarta : MonoBehaviour
         {
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(false);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(false);
+            // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childControlHeight = true;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
-            // gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextMaxSize = 32;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = true;
 
 
@@ -80,6 +82,8 @@ public class ExibirInfoCarta : MonoBehaviour
         {
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Linha").gameObject.SetActive(true);
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Efeito").gameObject.SetActive(true);
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childControlHeight = false;
+            gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").Find("Texto Categoria").gameObject.GetComponent<Text>().resizeTextForBestFit = false;
             gameObject.transform.Find("Frente da Carta").Find("Grid Efeito + Texto").gameObject.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.UpperCenter;
         }
         if (carta.tipoCarta == tipoFeitico)
@@ -93,6 +97,14 @@ public class ExibirInfoCarta : MonoBehaviour
             {
                 this.gameObject.transform.Find("Frente da Carta").GetComponent<Image>().sprite = spriteNaoPodeAtacar;
             }
+        }
+        if (protegido)
+        {
+            imagemProtegido.SetActive(true);
+        }
+        else
+        {
+            imagemProtegido.SetActive(false);
         }
 
     }

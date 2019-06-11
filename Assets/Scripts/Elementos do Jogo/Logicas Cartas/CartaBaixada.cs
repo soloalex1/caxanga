@@ -12,8 +12,6 @@ public class CartaBaixada : LogicaInstanciaCarta
     public Sprite cursorAlvoVerde, cursorAlvoVermelho, cursorClicavel;
     public VariavelTransform gridAreaDropavel;
 
-
-
     public override void AoClicar(InstanciaCarta carta)
     {
         if (carta.podeAtacarNesteTurno)
@@ -30,13 +28,23 @@ public class CartaBaixada : LogicaInstanciaCarta
             Configuracoes.admJogo.cartaAtacante = carta;
             Configuracoes.admJogo.cartaAtacante.gameObject.transform.localScale = new Vector3(0.35f, 0.35f, 1);
         }
+        else
+        {
+            Configuracoes.admJogo.TocarSomNaoPode();
+        }
     }
     public override void AoOlhar(InstanciaCarta carta)
     {
         if (carta != cartaAtual.valor)//se for diferente
         {
-            cartaAtual.Set(carta);
-            aoOlharCarta.Raise();
+
+            // impedindo o mouseleave de matar o destaque na carta recém jogada
+            if (!Configuracoes.cartaRecemJogada)
+            {
+                cartaAtual.Set(carta);
+                aoOlharCarta.Raise();
+            }
+
             if (Configuracoes.admJogo.estadoAtual == usandoEfeito)
             {
                 if (carta.podeSofrerEfeito)

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69748b20e784f344fa1406e6a5c4e903, type: 3}
+  m_Name: Segurador De Cartas Jogador Inimigo
+  m_EditorClassIdentifier: 
+  gridMao: {fileID: 11400000, guid: 96a402a3289cd8c46b76904f67263498, type: 2}
+  gridCartasBaixadas: {fileID: 11400000, guid: 8869980cff1b27949bc9e43df5f712d8, type: 2}
+  gridCemiterio: {fileID: 11400000, guid: 1787aeded8bead448951db2acefe3fdc, type: 2}

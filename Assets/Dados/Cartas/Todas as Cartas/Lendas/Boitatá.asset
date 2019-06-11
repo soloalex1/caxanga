@@ -22,8 +22,7 @@ MonoBehaviour:
     intValor: 3
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 740004994b1ed5c489921f3ddb25e087, type: 2}
-  - stringValor: "Paralisar: Impede que uma Lenda inimiga ataque at\xE9 o pr\xF3ximo
-      turno"
+  - stringValor: 
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 64ea6464d97cad845a67f539a5c14cb8, type: 2}
@@ -33,12 +32,18 @@ MonoBehaviour:
     elemento: {fileID: 11400000, guid: 89fc0fcd2d56987459290248141d1aba, type: 2}
   - stringValor: 
     intValor: 0
-    sprite: {fileID: 21300000, guid: 0c201b0d9af222d4ab841660e9eab60a, type: 3}
+    sprite: {fileID: 21300000, guid: 1457e91f201e2a2419213f4ea3b00e31, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e religiosidades: A lenda o descreve como uma grande
-      serpente de fogo. Ele protege os animais e as matas daqueles que lhe fazem mal
-      e principalmente, que realizam queimadas.\uFEFF"
+  - stringValor: A lenda o descreve como uma grande serpente de fogo. Ele protege
+      os animais e as matas daqueles que lhe fazem mal e principalmente, que realizam
+      queimadas.
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0
+  textoDescricao: "Essa serpente tem uma longa amizade com o Curupira, e pode se
+    transformar num tronco em chamas, com o intuito de enganar e queimar quem invade
+    e destr\xF3i as matas. Acredita-se que aquele que olhar o Boitat\xE1 diretamente
+    torna-se cego e louco. "

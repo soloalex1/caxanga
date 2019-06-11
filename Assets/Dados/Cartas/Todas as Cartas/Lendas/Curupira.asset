@@ -34,11 +34,15 @@ MonoBehaviour:
     intValor: 0
     sprite: {fileID: 21300000, guid: 0a6d868b105e4ec4398a67e24920eb66, type: 3}
     elemento: {fileID: 11400000, guid: 870324baccfa37544841d421a93ea095, type: 2}
-  - stringValor: "Cren\xE7as e Religiosidades: Ele \xE9 uma entidade das matas, de
-      cabelos compridos e vermelhos, e com os p\xE9s virados para tr\xE1s. Engana
-      ca\xE7adores e viajantes, fazendo-os perder o rumo certo, desorientando-os dentro
-      da floresta, com assobios e sinais falsos."
+  - stringValor: "Algumas culturas acreditam que o Curupira seja um dos seres mais
+      antigos da mata, t\xE3o antigo quanto o pr\xF3prio Tup\xE3."
     intValor: 0
     sprite: {fileID: 0}
     elemento: {fileID: 11400000, guid: 8f965e4d19fbcca4981a063c36a7400e, type: 2}
   efeito: {fileID: 0}
+  categoria: "Cren\xE7as e Religiosidades"
+  protegido: 0
+  textoDescricao: "Ele \xE9 uma entidade das matas, de cabelos compridos e vermelhos,
+    e com os p\xE9s virados para tr\xE1s. Engana ca\xE7adores e viajantes, fazendo-os
+    perder o rumo certo, desorientando-os dentro da floresta, com assobios e sinais
+    falsos."
