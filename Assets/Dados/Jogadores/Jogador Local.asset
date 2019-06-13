@@ -26,7 +26,7 @@ MonoBehaviour:
   podeUsarEfeito: 1
   numCartasMaoInicio: 5
   baralho: {fileID: 0}
-  baralhoInicial: {fileID: 11400000, guid: fd5696df06e1ee14fae8e283cbc7dc3a, type: 2}
+  baralhoInicial: {fileID: 11400000, guid: 46f232043bca0c145bd3a80760425629, type: 2}
   corJogador: {r: 0.68235296, g: 0.7372549, b: 0.92941177, a: 1}
   retratoJogador: {fileID: 21300000, guid: 349d838abba441b43ab2a823d4c29efd, type: 3}
   nomeJogador: Moacir

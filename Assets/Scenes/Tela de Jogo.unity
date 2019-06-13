@@ -3241,6 +3241,7 @@ MonoBehaviour:
   numMaxCartasMao: 7
   baralhoTutorial1: {fileID: 11400000, guid: fd5696df06e1ee14fae8e283cbc7dc3a, type: 2}
   baralhoTutorial2: {fileID: 11400000, guid: 2ecd31fd2afe1694cb1ee45a64ac1d64, type: 2}
+  baralhoCompleto: {fileID: 11400000, guid: 46f232043bca0c145bd3a80760425629, type: 2}
   tutorial: 0
   inicioTutorial: 0
   pause: 0
