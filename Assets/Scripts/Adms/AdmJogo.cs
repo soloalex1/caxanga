@@ -11,7 +11,7 @@ public class AdmJogo : MonoBehaviour
     public AudioClip hit, somBaixarCarta, somNaoPode, somCura;
     public float tempoAnimacaoCuraDano;
     public int numMaxCartasMao;
-    public Baralho baralhoTutorial1, baralhoTutorial2;
+    public Baralho baralhoTutorial1, baralhoTutorial2, baralhoCompleto;
     public bool tutorial, inicioTutorial;
     public bool pause;
     public GameObject prefabCarta;//quando formos instanciar uma carta, precisamos saber qual é a carta, por isso passamos essa referencia
@@ -72,6 +72,8 @@ public class AdmJogo : MonoBehaviour
         }
         else
         {
+            jogadorLocal.baralhoInicial = baralhoCompleto;
+            jogadorInimigo.baralhoInicial = baralhoCompleto;
             pause = false;
         }
         GetComponent<AudioSource>().volume = Configuracoes.volumeSFX;
