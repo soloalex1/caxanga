@@ -32,13 +32,14 @@ MonoBehaviour:
   nomeJogador: Boto
   vidaInicial: 20
   magiaInicial: 10
-  magia: 3
-  vida: 15
+  magia: 10
+  vida: 20
   infoUI: {fileID: 0}
   jogadorHumano: 0
   podeSerAtacado: 1
   barrasDeVida: 3
-  lendasBaixadasNoTurno: 0
+  morteSubita: 0
+  lendasBaixadasNoTurno: 1
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
   maxLendasTurno: 1

@@ -10,6 +10,20 @@ public class Turno : ScriptableObject
     public AcaoJogador[] acoesIniciais;
     public void IniciarTurno()
     {
+        // for (int i = 0; i < jogador.cartasMao.Count; i++)
+        // {
+        //     if (jogador.TemMagiaParaBaixarCarta(jogador.cartasMao[i]))
+        //     {
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         if (i == jogador.cartasMao.Count - 1)
+        //         {
+        //             jogador.morteSubita = true;
+        //         }
+        //     }
+        // }
         jogador.fezAlgumaAcao = false;
         terminou = false;
         jogador.lendasBaixadasNoTurno = 0;

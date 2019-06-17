@@ -27,6 +27,7 @@ public class SeguradorDeJogador : ScriptableObject
     public bool jogadorHumano;
     public bool podeSerAtacado;
     public int barrasDeVida;
+    public bool morteSubita;
 
     [System.NonSerialized]
     public SeguradorDeCartas seguradorCartas;
