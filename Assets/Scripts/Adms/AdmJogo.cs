@@ -175,7 +175,6 @@ public class AdmJogo : MonoBehaviour
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Fundo turno/Turno").GetComponent<Text>().text = jogadorVencedorTurno.nomeJogador + "\nVenceu a Rodada";
         ImagemTextoTurno.GetComponent<Image>().sprite = jogadorVencedorTurno.textoTurnoImage;
         ImagemTextoTurno.gameObject.SetActive(true);
-        rodadaAtual++;
         pause = true;
         yield return new WaitForSeconds(2);
         pause = false;
@@ -429,9 +428,6 @@ public class AdmJogo : MonoBehaviour
             }
             else
             {
-                // Debug.Log("aa");
-                // if (jogadorInimigo.morteSubita)
-                //     jogadorInimigo.rodada.PassarRodada();
                 jogadorAtual.rodada.turno.IniciarTurno();
             }
         }
@@ -541,7 +537,9 @@ public class AdmJogo : MonoBehaviour
     {
         // fechando outras cartas em destaque   
         aoPararDeOlharCarta.Raise();
+
         cartaAtual.Set(instCarta);
+
         GameObject.Find("/Screen Overlay Canvas/Interface do Usuário/Carta Sendo Olhada/Carta sendo olhada").SetActive(true);
         Configuracoes.cartaRecemJogada = true;
         aoOlharCarta.Raise();

@@ -18,7 +18,7 @@ MonoBehaviour:
   rodada: {fileID: 11400000, guid: 428a77df8f0d4c64bb1effc37c3f6566, type: 2}
   protegido: 0
   silenciado: 0
-  fezAlgumaAcao: 0
+  fezAlgumaAcao: 1
   passouRodada: 0
   moldura: {fileID: 21300000, guid: 9a0d7db97a2f12f4db881b283cda19ae, type: 3}
   cartaEntrouEmCampo: {fileID: 11400000, guid: 2fbf75347372bab4db981744b63e3eb5, type: 2}
@@ -32,13 +32,12 @@ MonoBehaviour:
   nomeJogador: Moacir
   vidaInicial: 20
   magiaInicial: 10
-  magia: 0
-  vida: 20
+  magia: 1
+  vida: 18
   infoUI: {fileID: 0}
   jogadorHumano: 1
   podeSerAtacado: 1
   barrasDeVida: 3
-  morteSubita: 1
   lendasBaixadasNoTurno: 0
   feiticosBaixadosNoTurno: 0
   maxFeiticosTurno: 1
