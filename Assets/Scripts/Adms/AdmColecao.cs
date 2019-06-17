@@ -139,17 +139,21 @@ public class AdmColecao : MonoBehaviour
     }
     public void MudarCategoria(string categoria)
     {
-        if (olhandoCarta == false)
+        if (olhandoCarta)
         {
-            foreach (Transform t in botoesLivro.transform)
-            {
-                t.GetComponent<Image>().color = new Color(255, 255, 255);
-            }
-            EventSystem m_EventSystem = EventSystem.current;
-            m_EventSystem.currentSelectedGameObject.GetComponent<Image>().color = new Color(0.8584906f, 0.8338431f, 0.1822268f);
-            categoriaAtual = categoria;
-            numPagina = 0;
-            InstanciarColecao(categoriaAtual);
+            telaColecao2.SetActive(false);
+            telaColecao1.SetActive(true);
+            olhandoCarta = false;
         }
+
+        foreach (Transform t in botoesLivro.transform)
+        {
+            t.GetComponent<Image>().color = new Color(255, 255, 255);
+        }
+        EventSystem m_EventSystem = EventSystem.current;
+        m_EventSystem.currentSelectedGameObject.GetComponent<Image>().color = new Color(0.8584906f, 0.8338431f, 0.1822268f);
+        categoriaAtual = categoria;
+        numPagina = 0;
+        InstanciarColecao(categoriaAtual);
     }
 }
